@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+    <style>
+        .my-custom-scrollbar {
+            position: relative;
+            height: 200px;
+            overflow: auto;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand bg-info navbar-dark bg-primary" style="background-color: #296810!important;">
+        <a class="navbar-brand"><img src="../Images/Logo.png" style="margin-left: 2%;max-width: 90px;" alt="Logo"
+                class="logo">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+
+        <div class="navbar-header">
+            <div class="navbar-brand" href="#">Edit Professional Account</div>
+        </div>
+
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="dropdown">
+                <button class="dropdown-toggle btn text-center" data-toggle="dropdown" style="color:white">diogo_fae
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu text-center">
+                    <li><a href="http://127.0.0.1:3000/Staff/changePassword.html">Change Password</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:3000/SignUp/Login.html"
+                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+                    Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2"
+            style="background-color: #343a40!important; padding-right: 0%;">
+            <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
+                <a href="http://127.0.0.1:3000/Staff/viewAccount.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">View Account</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Staff/editAccount.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Edit Account</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Staff/viewCreateRequestsEmployer.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Review New Employer Accounts</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Staff/viewCreateRequestsProfessional.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Review New Professional Accounts</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Staff/viewDeleteRequestsEmployer.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Review Employer Account Deletion Requests</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Staff/viewDeleteRequestsProfessional.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Review Professional Account Deletion Requests</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Staff/browseEmployerAccounts.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Browse Employer Accounts</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Staff/browseProfessionalAccounts.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Browse Professional Accounts</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Staff/changePassword.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Change Password</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Staff/deleteAccount.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Delete Account</span>
+                    </div>
+                </a>
+            </ul>
+        </div>
+
+        <!-- MAIN -->
+        <div class="col py-3">
+            <form class="needs-validation" novalidate>
+                <!-- Top Buttons -->
+                <div class="container-fluid mt-0">
+                    <div class="col-md- order-md-1 d-flex justify-content-between">
+                        <a type="button" class="btn btn-danger"
+                            href="http://127.0.0.1:3000/Browse%20P%20accounts.html">Cancel</a>
+                        <button class="btn btn-success" type="button" onclick="validateAndShowModal()">Save</button>
+                    </div>
+                </div>
+                <div class="row py-5">
+                    <div class="col-md-1 order-md-1 mb-2">
+                    </div>
+                    <div class="col-md-5 order-md-2">
+                        <div class="mb-3">
+                            <label for="username" class="font-weight-bold">Username</label>
+                            <div class="input-group">
+                                <div>
+                                    lorem_ipsum
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="font-weight-bold">First name</label>
+                                <div>
+                                    Lorem
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="font-weight-bold">Last name</label>
+                                <div>
+                                    Ipsum
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="font-weight-bold">Address</label>
+                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address2" class="font-weight-bold">Address 2 <span
+                                    class="text-muted">(Optional)</span></label>
+                            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="city" class="font-weight-bold">City</label>
+                                <input type="text" class="form-control" id="zip" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Please enter a city.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state" class="font-weight-bold">State</label>
+                                <select class="custom-select d-block w-100" id="state" required>
+                                    <option value="">Choose...</option>
+                                    <option>Alabama</option>
+                                    <option>Alaska</option>
+                                    <option>Arizona</option>
+                                    <option>Arkansas</option>
+                                    <option>California</option>
+                                    <option>Colorado</option>
+                                    <option>Connecticut</option>
+                                    <option>Delaware</option>
+                                    <option>Florida</option>
+                                    <option>Georgia</option>
+                                    <option>Hawaii</option>
+                                    <option>Idaho</option>
+                                    <option>Illinois</option>
+                                    <option>Indiana</option>
+                                    <option>Iowa</option>
+                                    <option>Kansas</option>
+                                    <option>Kentucky</option>
+                                    <option>Louisiana</option>
+                                    <option>Maine</option>
+                                    <option>Maryland</option>
+                                    <option>Massachusetts</option>
+                                    <option>Michigan</option>
+                                    <option>Minnesota</option>
+                                    <option>Mississippi</option>
+                                    <option>Missouri</option>
+                                    <option>Montana</option>
+                                    <option>Nebraska</option>
+                                    <option>Nevada</option>
+                                    <option>New Hampshire</option>
+                                    <option>New Jersey</option>
+                                    <option>New Mexico</option>
+                                    <option>New York</option>
+                                    <option>North Carolina</option>
+                                    <option>North Dakota</option>
+                                    <option>Ohio</option>
+                                    <option>Oklahoma</option>
+                                    <option>Oregon</option>
+                                    <option>Pennsylvania</option>
+                                    <option>Rhode Island</option>
+                                    <option>South Carolina</option>
+                                    <option>South Dakota</option>
+                                    <option>Tennessee</option>
+                                    <option>Texas</option>
+                                    <option>Utah</option>
+                                    <option>Vermont</option>
+                                    <option>Virginia</option>
+                                    <option>Washington</option>
+                                    <option>West Virginia</option>
+                                    <option>Wisconsin</option>
+                                    <option>Wyoming</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a state.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="zip" class="font-weight-bold">Zip</label>
+                                <input type="text" class="form-control" id="zip" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Please enter the zip code.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="font-weight-bold">Phone</label>
+                                <input type="text" class="form-control" id="phone" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Please enter a phone number.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="font-weight-bold">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="you@example.com"
+                                    required>
+                                <div class="invalid-feedback">
+                                    Please enter an email address.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 order-md-2 mb-2">
+                        <div class="mb-3">
+                            <label for="institution" class="font-weight-bold">Name of the institution</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="institution"
+                                    placeholder="Name of the institution" required>
+                                <div class="invalid-feedback" style="width: 100%;">
+                                    Please enter the name of the institution.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="hdc" class="font-weight-bold">Highest Degree Completed</label>
+                                <select class="custom-select d-block w-100" id="country" required>
+                                    <option value="">Choose...</option>
+                                    <option>Under graduate</option>
+                                    <option>Graduate</option>
+                                    <option>PhD</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please enter the Qualification.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="dc" class="font-weight-bold">Degree Completion</label>
+                                <div class="input-group date" data-provide="datepicker" id="datepickerDegree"
+                                    data-date-format="mm-yyyy">
+                                    <input type="text" class="form-control" readonly="readonly" name="date"
+                                        style="background-color: white;">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter the month and year of completion.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="qualifications" class="font-weight-bold">Qualifications</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="categoryname" placeholder="Category Name">
+                            </div>
+                            <div class="input-group" style="margin-top: 4%;">
+                                <input type="text" class="form-control" id="categoryskills" placeholder="Skills">
+                            </div>
+                            <div id="input-live-help" class="extra-text">Enter skills separated by a comma.</div>
+                            <div class="invalid-feedback" id="cat-table-invalid-feedback">Please enter at least 2
+                                categories.</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9 mb-3">
+                                <button type="button" class="btn btn-outline-primary" onclick="add()">Add</button>
+                            </div>
+                            <div class="col-md-3 mb-3" style="text-align: right;">
+                                <button type="button" class="btn btn-outline-danger"
+                                    onclick="deleteLastRow()">Delete</button>
+                            </div>
+                        </div>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                            <table id="categorytable" class="table table-bordered">
+                                <thead>
+                                    <tr style="background-color: #3A98B9;">
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Skills</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Languages</td>
+                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Previous Employment</td>
+                                        <td>Software Engineer</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <!-- Main Col END -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <title>SMU Hiring</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+    <script>
+        // Fixes dropdown menu not showing when clicking the button
+        $('.dropdown').click(function () {
+            $('.dropdown-menu').toggleClass('show');
+        });
+        $(document).click(function (event) {
+            if (!$(event.target).closest('.dropdown').length) {
+                // If the click is outside the dropdown, hide the dropdown menu
+                $('.dropdown-menu').removeClass('show');
+            }
+        });
+
+        $("#datepickerDegree").datepicker({
+            format: "mm-yyyy",
+            startView: "months",
+            minViewMode: "months"
+        });
+    </script>
+
+    <script>
+        function validateAndShowModal() {
+            // Validate your inputs here, for example:
+            var inputsValid = validateInputs();
+            var form = document.querySelector('.needs-validation');
+
+            if (inputsValid) {
+                // If all inputs are valid, show the modal
+                $('#exampleModal').modal('show');
+            } else {
+                // If any input is not valid, handle the validation error (e.g., display an error message)
+                form.classList.add('was-validated');
+            }
+        }
+
+        function validateInputs() {
+            // Implement your input validation logic here
+            // Return true if all inputs are valid, false otherwise
+            // Example validation logic:
+            var inputs = document.querySelectorAll('.needs-validation input');
+            for (var i = 0; i < inputs.length; i++) {
+                if (!inputs[i].checkValidity()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function saveChanges() {
+            // Implement the logic to save changes here
+            // This function is called when the "Save changes" button inside the modal is clicked
+            // Close the modal if needed: $('#exampleModal').modal('hide');
+        }
+    </script>
+
+    <script>
+        var count = 1;
+
+        function add() {
+            var category = document.getElementById("categoryname").value.trim();
+            var skills = document.getElementById("categoryskills").value.trim();
+
+            // Check if both categoryname and categoryskills are not empty
+            if (category !== "" && skills !== "") {
+                var table = document.getElementById("categorytable");
+
+                // Add a new row at the bottom of the table
+                var row = table.insertRow(-1);
+
+                var col1 = row.insertCell(0);
+                var col2 = row.insertCell(1);
+                col1.innerHTML = category;
+                col2.innerHTML = skills;
+
+                // Reset the category field and skills fields to be blank
+                document.getElementById("categoryname").value = "";
+                document.getElementById("categoryskills").value = "";
+
+                // Update the count to the new row count
+                count = table.rows.length;
+            }
+        }
+
+        function deleteLastRow() {
+            var table = document.getElementById("categorytable");
+            var rowCount = table.rows.length;
+
+            // Check if there is at least one row to delete
+            if (rowCount > 1) {
+                table.deleteRow(rowCount - 1);
+                count--; // Decrement the count to maintain accurate row count
+            }
+        }
+    </script>
+
+</body>
+
+</html>

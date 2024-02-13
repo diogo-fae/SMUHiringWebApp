@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+    <style>
+        .my-custom-scrollbar {
+            position: relative;
+            height: 200px;
+            overflow: auto;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand bg-info navbar-dark bg-primary" style="background-color: #62849b!important;">
+        <a class="navbar-brand"><img src="../Images/Logo.png" style="margin-left: 2%;max-width: 90px;" alt="Logo"
+                class="logo">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+
+        <div class="navbar-header">
+            <div class="navbar-brand" href="#">Edit Job Description</div>
+        </div>
+
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="dropdown">
+                <button class="dropdown-toggle btn text-center" data-toggle="dropdown" style="color:white">diogo_fae
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu text-center">
+                    <li><a href="http://127.0.0.1:3000/Employer/changePassword.html">Change Password</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:3000/SignUp/Login.html"
+                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+                    Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2"
+            style="background-color: #343a40!important; padding-right: 0%;">
+            <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
+                <a href="http://127.0.0.1:3000/Employer/viewAccount.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">View Account</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Employer/editAccount.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Edit Account</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Employer/browseJobs.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Browse Job Descriptions</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Employer/postJob.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Post New Job Description</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Employer/payment.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Make Payment</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Employer/changePassword.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Change Password</span>
+                    </div>
+                </a>
+                <a href="http://127.0.0.1:3000/Employer/deleteAccount.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Delete Account</span>
+                    </div>
+                </a>
+            </ul>
+        </div>
+
+        <!-- Main Col -->
+        <div class="col py-3">
+            <form class="needs-validation" novalidate>
+                <!-- Top Buttons -->
+                <div class="container-fluid mt-0">
+                    <div class="col-md- order-md-1 d-flex justify-content-between">
+                        <a type="button" class="btn btn-danger"
+                            href="http://127.0.0.1:3000/Employer/browseJobs.html">Cancel</a>
+                        <button class="btn btn-success" type="button" onclick="validateAndShowModal()">Save</button>
+                    </div>
+                </div>
+
+                <!-- Confirmation Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Your changes have been saved.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Set columns and top-margin -->
+                <div class="row py-5">
+                    <!-- Spacing Col -->
+                    <div class="col-md-1 order-md-1">
+                    </div>
+                    <!-- First Col -->
+                    <div class="col-md-5 order-md-2">
+                        <!-- Job ID -->
+                        <div class="mb-5">
+                            <label for="jobID" class="font-weight-bold">Job ID</label>
+                            <div class="input-group">
+                                <div>
+                                    123
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Position Name -->
+                        <div class="mb-5">
+                            <label for="positionName" class="font-weight-bold">Position Name</label>
+                            <div class="input-group">
+                                <div>
+                                    Software Engineer
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Supervisor Name -->
+                        <div class="row">
+                            <div class="col-md-6 mb-5">
+                                <label for="supervisorFirstName" class="font-weight-bold">Supervisor First Name</label>
+                                <input type="text" class="form-control" id="supervisorFirstName" placeholder="" value=""
+                                    required>
+                                <div class="invalid-feedback">
+                                    Please enter the contact person's last name.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-5">
+                                <label for="supervisorLastName" class="font-weight-bold">Supervisor Last Name</label>
+                                <input type="text" class="form-control" id="supervisorLastName" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Please enter the contact person's last name.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Supervisor Email -->
+                        <div class="mb-5">
+                            <label for="supervisorEmail" class="font-weight-bold">Supervisor Email</label>
+                            <input type="text" class="form-control" id="supervisorEmail" placeholder="you@example.com"
+                                value="" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email.
+                            </div>
+                        </div>
+                        <!-- Supervisor Phone Number -->
+                        <div class="mb-5">
+                            <label for="supervisorPhoneNumber" class="font-weight-bold">Supervisor Phone Number</label>
+                            <input type="number" class="form-control" id="supervisorPhoneNumber"
+                                placeholder="4695554516" value="" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid phone number.
+                            </div>
+                        </div>
+                        <!-- Pay per Hour -->
+                        <div class="mb-5">
+                            <label for="payPerHour" class="font-weight-bold">Pay per Hour</label>
+                            <input type="number" class="form-control" id="payPerHour" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid value.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second Col -->
+                    <div class="col-md-5 order-md-2">
+                        <!-- Dates -->
+                        <div class="row">
+                            <div class="col-md-4 mb-5">
+                                <label for="startDate" class="font-weight-bold">Start Date</label>
+                                <div class="input-group date" data-provide="datepicker" id="datepickerStart"
+                                    data-date-format="mm-yyyy">
+                                    <input type="text" class="form-control" id="startDate" value="" required
+                                        style="background-color: white;" placeholder="MM-YYYY">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Month and Year of start is required.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-5">
+                                <label for="endDate" class="font-weight-bold">End Date</label>
+                                <div class="input-group date" data-provide="datepicker" id="datepickerEnd"
+                                    data-date-format="mm-yyyy">
+                                    <input type="text" class="form-control" id="endDate" value="" required
+                                        style="background-color: white;" placeholder="MM-YYYY">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Month and Year of completion is required.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Times -->
+                        <div class="row">
+                            <div class="col-md-4 mb-5">
+                                <label for="startTime" class="font-weight-bold">Start Time</label>
+                                <input type="text" class="form-control" id="payPerHour" placeholder="08:00" value=""
+                                    required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid value.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-5">
+                                <label for="endTime" class="font-weight-bold">End Time</label>
+                                <input type="text" class="form-control" id="payPerHour" placeholder="18:30" value=""
+                                    required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid value.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Qualifications -->
+                        <div class="mb-5">
+                            <!-- Inputs -->
+                            <div class="mb-3">
+                                <label for="qualifications" class="font-weight-bold">Required Qualifications</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="categoryname"
+                                        placeholder="Category Name">
+                                </div>
+                                <div class="input-group" style="margin-top: 4%;">
+                                    <input type="text" class="form-control" id="categoryskills" placeholder="Skills">
+                                </div>
+                                <b-form-text id="input-live-help">Enter skills separated by a comma.</b-form-text>
+                                <div class="invalid-feedback" id="cat-table-invalid-feedback">Please enter at least 2
+                                    categories.</div>
+                            </div>
+                            <!-- Add and Remove Buttons -->
+                            <div class="row">
+                                <div class="col-md-9 mb-3">
+                                    <button class="btn btn-outline-primary" onclick="add()" form="none">Add</button>
+                                </div>
+                                <div class="col mb-3">
+                                    <button class="btn btn-outline-danger" onclick="deleteLastRow()"
+                                        form="none">Delete</button>
+                                </div>
+                            </div>
+
+                            <!-- Table -->
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 350px;">
+                                <table id="categorytable" class="table table-bordered">
+                                    <thead>
+                                        <tr style="background-color: #62849b;color: white;">
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Skills</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Languages</td>
+                                            <td>Python, C++, C#, Java, Ruby, PHP</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Previous Employment</td>
+                                            <td>Full Stack Developer, Software Engineer, Software Development Engineer,
+                                                Software Development Engineer Intern</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Languages</td>
+                                            <td>Python, C++, C#, Java, Ruby, PHP</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Previous Employment</td>
+                                            <td>Full Stack Developer, Software Engineer, Software Development Engineer,
+                                                Software Development Engineer Intern</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Languages</td>
+                                            <td>Python, C++, C#, Java, Ruby, PHP</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Previous Employment</td>
+                                            <td>Full Stack Developer, Software Engineer, Software Development Engineer,
+                                                Software Development Engineer Intern</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Languages</td>
+                                            <td>Python, C++, C#, Java, Ruby, PHP</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Previous Employment</td>
+                                            <td>Full Stack Developer, Software Engineer, Software Development Engineer,
+                                                Software Development Engineer Intern</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <!-- Main Col END -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <title>SMU Hiring</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+
+
+        })();
+    </script>
+
+    <script>
+        $("#datepickerStart").datepicker({
+            format: "mm-yyyy",
+            startView: "months",
+            minViewMode: "months"
+        });
+        $("#datepickerEnd").datepicker({
+            format: "mm-yyyy",
+            startView: "months",
+            minViewMode: "months"
+        });
+    </script>
+
+    <script>
+        // Fixes dropdown menu not showing when clicking the button
+        $('.dropdown').click(function () {
+            $('.dropdown-menu').toggleClass('show');
+        });
+        $(document).click(function (event) {
+            if (!$(event.target).closest('.dropdown').length) {
+                // If the click is outside the dropdown, hide the dropdown menu
+                $('.dropdown-menu').removeClass('show');
+            }
+        });
+    </script>
+
+    <script>
+        function validateAndShowModal() {
+            // Validate your inputs here, for example:
+            var inputsValid = validateInputs();
+            var form = document.querySelector('.needs-validation');
+            var categorytable = document.getElementById('categorytable');
+
+            if (inputsValid && categorytable.rows.length >= 3) {
+                // If all inputs are valid, show the modal
+                $('#exampleModal').modal('show');
+            } else {
+                // If any input is not valid, handle the validation error (e.g., display an error message)
+                form.classList.add('was-validated');
+                if (categorytable.rows.length < 3) {
+                    document.getElementById('cat-table-invalid-feedback').style.display = 'block';
+                }
+            }
+        }
+
+        function validateAndContinue(href) {
+            // Validate inputs here
+            var inputsValid = validateInputs();
+            var form = document.querySelector('.needs-validation');
+
+            if (inputsValid) {
+                // If all inputs are valid, navigate to the link specified in the button's href
+                window.location.href = href;
+            } else {
+                // If any input is not valid, handle the validation error (e.g., display an error message)
+                form.classList.add('was-validated');
+            }
+        }
+
+        function validateInputs() {
+            // Implement your input validation logic here
+            // Return true if all inputs are valid, false otherwise
+            // Example validation logic:
+            var inputs = document.querySelectorAll('.needs-validation input');
+            for (var i = 0; i < inputs.length; i++) {
+                if (!inputs[i].checkValidity()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function saveChanges() {
+            // Implement the logic to save changes here
+            // This function is called when the "Save changes" button inside the modal is clicked
+            // Close the modal if needed: $('#exampleModal').modal('hide');
+        }
+    </script>
+
+    <script>
+        var count = 1;
+
+        function add() {
+            var category = document.getElementById("categoryname").value.trim();
+            var skills = document.getElementById("categoryskills").value.trim();
+
+            // Check if both categoryname and categoryskills are not empty
+            if (category !== "" && skills !== "") {
+                var table = document.getElementById("categorytable");
+
+                // Add a new row at the bottom of the table
+                var row = table.insertRow(-1);
+
+                var col1 = row.insertCell(0);
+                var col2 = row.insertCell(1);
+                col1.innerHTML = category;
+                col2.innerHTML = skills;
+
+                // Reset the category field and skills fields to be blank
+                document.getElementById("categoryname").value = "";
+                document.getElementById("categoryskills").value = "";
+
+                // Update the count to the new row count
+                count = table.rows.length;
+            }
+        }
+
+        function deleteLastRow() {
+            var table = document.getElementById("categorytable");
+            var rowCount = table.rows.length;
+
+            // Check if there is at least one row to delete
+            if (rowCount > 1) {
+                table.deleteRow(rowCount - 1);
+                count--; // Decrement the count to maintain accurate row count
+            }
+        }
+    </script>
+
+</body>
+
+</html>
