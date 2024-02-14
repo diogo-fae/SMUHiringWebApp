@@ -432,6 +432,7 @@
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();
             var form = document.querySelector('.needs-validation');
+            var categorytable = document.getElementById('categorytable');
 
             if (inputsValid) {
                 // If all inputs are valid, show the modal
@@ -439,6 +440,12 @@
             } else {
                 // If any input is not valid, handle the validation error (e.g., display an error message)
                 form.classList.add('was-validated');
+                if (categorytable.rows.length < 3) {
+                    document.getElementById('cat-table-invalid-feedback').style.display = 'block';
+                }
+                else {
+                    document.getElementById('cat-table-invalid-feedback').style.display = 'none';
+                }
             }
         }
 
@@ -488,6 +495,13 @@
                 // Update the count to the new row count
                 count = table.rows.length;
             }
+
+            if (table.rows.length < 3) {
+                document.getElementById('cat-table-invalid-feedback').style.display = 'block';
+            }
+            else {
+                document.getElementById('cat-table-invalid-feedback').style.display = 'none';
+            }
         }
 
         function deleteLastRow() {
@@ -498,6 +512,13 @@
             if (rowCount > 1) {
                 table.deleteRow(rowCount - 1);
                 count--; // Decrement the count to maintain accurate row count
+            }
+
+            if (table.rows.length < 3) {
+                document.getElementById('cat-table-invalid-feedback').style.display = 'block';
+            }
+            else {
+                document.getElementById('cat-table-invalid-feedback').style.display = 'none';
             }
         }
     </script>

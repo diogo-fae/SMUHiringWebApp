@@ -440,6 +440,9 @@
                 if (categorytable.rows.length < 3) {
                     document.getElementById('cat-table-invalid-feedback').style.display = 'block';
                 }
+                else {
+                    document.getElementById('cat-table-invalid-feedback').style.display = 'none';
+                }
             }
         }
 
@@ -503,6 +506,13 @@
                 // Update the count to the new row count
                 count = table.rows.length;
             }
+
+            if (table.rows.length < 3) {
+                document.getElementById('cat-table-invalid-feedback').style.display = 'block';
+            }
+            else {
+                document.getElementById('cat-table-invalid-feedback').style.display = 'none';
+            }
         }
 
         function deleteLastRow() {
@@ -513,6 +523,13 @@
             if (rowCount > 1) {
                 table.deleteRow(rowCount - 1);
                 count--; // Decrement the count to maintain accurate row count
+            }
+
+            if (table.rows.length < 3) {
+                document.getElementById('cat-table-invalid-feedback').style.display = 'block';
+            }
+            else {
+                document.getElementById('cat-table-invalid-feedback').style.display = 'none';
             }
         }
     </script>
