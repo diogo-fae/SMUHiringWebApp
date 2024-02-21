@@ -84,9 +84,12 @@
                                 <div class="mb-5">
                                     <label for="username" class="font-weight-bold">Username</label>
                                     <input type="text" class="form-control" id="username" placeholder="" value=""
-                                        required>
+                                        required pattern="[a-zA-Z].{7,}">
+                                    <b-form-text id="input-live-help">Username must start with an alphabet and be at
+                                        least 8 characters long.</b-form-text>
                                     <div class="invalid-feedback">
-                                        Please enter a unique username.
+                                        If username already meets requirements, please enter a different username
+                                        because it already exists.
                                     </div>
                                 </div>
                                 <!-- Name -->

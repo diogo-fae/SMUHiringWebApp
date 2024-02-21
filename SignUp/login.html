@@ -84,7 +84,7 @@
                                 <div class="mb-5">
                                     <label for="username" class="font-weight-bold">Username</label>
                                     <input type="text" class="form-control" id="username" placeholder="" value=""
-                                        required>
+                                        required oninput="checkLogin()">
                                     <div class="invalid-feedback">
                                         Please enter a registered username.
                                     </div>
@@ -93,7 +93,7 @@
                                 <div class="mb-5">
                                     <label for="password" class="font-weight-bold">Password</label>
                                     <input type="password" class="form-control" id="password" placeholder="" value=""
-                                        required>
+                                        required oninput="checkLogin()">
                                     <div class="invalid-feedback">
                                         Please enter the correct password.
                                     </div>
@@ -225,6 +225,39 @@
             // Implement the logic to save changes here
             // This function is called when the "Save changes" button inside the modal is clicked
             // Close the modal if needed: $('#exampleModal').modal('hide');
+        }
+
+        function checkLogin() {
+            checkUsername();
+            checkPassword();
+        }
+
+        function checkUsername() {
+            // Make sure the username exists
+            var existingUsernames = ['johnDoe', 'janeSmith', 'bobJohnson', 'diogo_fae'];
+            var username = document.getElementById('username');
+
+            // Create a regular expression pattern based on the existing usernames
+            var pattern = "^(" + existingUsernames.join('|') + ")$";
+
+            // Set the pattern attribute of passwordRetyped dynamically
+            username.pattern = pattern;
+        }
+
+        function checkPassword() {
+            var usernames_passwords = {
+                'johnDoe': '1234567.d',
+                'janeSmith': '1234567.s',
+                'bobJohnson': '1234567.j',
+                'diogo_fae': '1234567.f'
+            };
+
+            // Makes sure that the retyped password is exactly like the password first typed
+            var username = document.getElementById('username');
+            var password = document.getElementById('password');
+
+            // Set the pattern attribute of passwordRetyped dynamically
+            password.pattern = usernames_passwords[username.value];
         }
     </script>
 
