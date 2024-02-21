@@ -98,9 +98,8 @@
                                         Please enter the correct password.
                                     </div>
                                 </div>
-                                <button href="http://127.0.0.1:3000/Employer/changePassword.html" type="button"
-                                    class="btn btn-success" id="continueBtnP"
-                                    onclick="validateAndContinue(this.getAttribute('href'))">Login</button>
+                                <button href="#" type="button" class="btn btn-success" id="loginBtn"
+                                    onclick="validateAndContinue()">Login</button>
                             </form>
                         </div>
                     </div>
@@ -194,14 +193,15 @@
             }
         }
 
-        function validateAndContinue(href) {
+        function validateAndContinue() {
             // Validate inputs here
             var inputsValid = validateInputs();
             var form = document.querySelector('.needs-validation');
+            var loginBtn = document.getElementById('loginBtn');
 
             if (inputsValid) {
                 // If all inputs are valid, navigate to the link specified in the button's href
-                window.location.href = href;
+                window.location.href = loginBtn.href;
             } else {
                 // If any input is not valid, handle the validation error (e.g., display an error message)
                 form.classList.add('was-validated');
@@ -230,33 +230,48 @@
         function checkLogin() {
             checkUsername();
             checkPassword();
+            updateUserType();
+        }
+
+        function updateUserType() {
+            // Update the link to the correct pages according to the user type from the usernames
+            var usernames_usertypes = {
+                'sujana_d': 'http://127.0.0.1:3000/Professional/viewAccount.html',
+                'diogo_fae_staff': 'http://127.0.0.1:3000/Staff/viewAccount.html',
+                'diogo_fae': 'http://127.0.0.1:3000/Employer/viewAccount.html',
+                'root': 'http://127.0.0.1:3000/Root/viewAccount.html'
+            }
+
+            var loginBtn = document.getElementById('loginBtn');
+            var username = document.getElementById('username');
+            loginBtn.href = usernames_usertypes[username.value];
         }
 
         function checkUsername() {
             // Make sure the username exists
-            var existingUsernames = ['johnDoe', 'janeSmith', 'bobJohnson', 'diogo_fae'];
+            var existingUsernames = ['sujana_d', 'diogo_fae_staff', 'root', 'diogo_fae'];
             var username = document.getElementById('username');
 
             // Create a regular expression pattern based on the existing usernames
             var pattern = "^(" + existingUsernames.join('|') + ")$";
 
-            // Set the pattern attribute of passwordRetyped dynamically
+            // Set the pattern attribute of password dynamically
             username.pattern = pattern;
         }
 
         function checkPassword() {
             var usernames_passwords = {
-                'johnDoe': '1234567.d',
-                'janeSmith': '1234567.s',
-                'bobJohnson': '1234567.j',
-                'diogo_fae': '1234567.f'
+                'sujana_d': '1234567.d',
+                'diogo_fae_staff': '1234567.s',
+                'diogo_fae': '1234567.f',
+                'root': '1234567.r'
             };
 
-            // Makes sure that the retyped password is exactly like the password first typed
+            // Makes sure that the password belongs to the correct user
             var username = document.getElementById('username');
             var password = document.getElementById('password');
 
-            // Set the pattern attribute of passwordRetyped dynamically
+            // Set the pattern attribute of password dynamically
             password.pattern = usernames_passwords[username.value];
         }
     </script>
