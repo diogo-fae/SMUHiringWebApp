@@ -113,7 +113,7 @@
                         <!-- Phone -->
                         <div class="mb-5">
                             <label for="phoneNumber" class="font-weight-bold">Password</label>
-                            <input type="text" class="form-control" id="phoneNumber" placeholder="123-456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="12"
+                            <input type="text" class="form-control" id="phoneNumber" required placeholder="123-456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="12"
                              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number (e.g., 123-456-7890)">
                             <div class="invalid-feedback">
                                 Please enter the password.
@@ -315,27 +315,27 @@
         }
 
         function formatPhoneNumber(input) {
-            // Remove all non-numeric characters
-            var phoneNumber = input.value.replace(/\D/g, '');
-            
-            // Check if the input value is empty or not a number
-            if (!phoneNumber || isNaN(phoneNumber)) {
-                input.value = ''; // Clear the input field
-                return;
-            }
-
-            // Format the phone number with hyphens
-            var formattedPhoneNumber = '';
-            for (var i = 0; i < phoneNumber.length; i++) {
-                if (i === 3 || i === 6) {
-                    formattedPhoneNumber += '-';
-                }
-                formattedPhoneNumber += phoneNumber[i];
-            }
-
-            // Update the input value with the formatted phone number
-            input.value = formattedPhoneNumber;
+        // Remove all non-numeric characters
+        var phoneNumber = input.value.replace(/\D/g, '');
+        
+        // Check if the input value is empty or not a number
+        if (!phoneNumber || isNaN(phoneNumber)) {
+            input.value = ''; // Clear the input field
+            return;
         }
+
+        // Format the phone number with hyphens
+        var formattedPhoneNumber = '';
+        for (var i = 0; i < phoneNumber.length; i++) {
+            if (i === 3 || i === 6) {
+                formattedPhoneNumber += '-';
+            }
+            formattedPhoneNumber += phoneNumber[i];
+        }
+
+        // Update the input value with the formatted phone number
+        input.value = formattedPhoneNumber;
+    }
     </script>
 
 </body>
