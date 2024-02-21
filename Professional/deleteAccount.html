@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+    <style>
+        .my-custom-scrollbar {
+            position: relative;
+            height: 200px;
+            overflow: auto;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand bg-info navbar-dark bg-primary" style="background-color: #3A98B9!important;">
+        <a class="navbar-brand"><img src="/Images/Logo.png" style="margin-left: 10%;max-width: 90px;" alt="Logo" class="logo">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Delete Account</a>
+        </div>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" style="color:white">Sujana
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a href="/Professional/changePassword.html">Change Password</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#" style="color:white"><i class="fas fa-sign-in-alt"></i>
+                    Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2" style="background-color: #343a40!important; padding-right: 0%;min-height: 800px">
+            <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
+                <a href="/Professional/editProfessionalDetails.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Edit Account</span>
+                    </div>
+                </a>
+                <a href="/Professional/browseJobs.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Browse Job Descriptions</span>
+                    </div>
+                </a>
+                <a href="#" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%" data-toggle="modal" data-target="#initiateJobModal">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Initiate Job Matchings</span>
+                    </div>
+                </a>
+                <a href="/Professional/payment.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Make Payment</span>
+                    </div>
+                </a>
+                <a href="/Professional/deleteAccount.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Delete Account</span>
+                    </div>
+                </a>
+            </ul>
+        </div>
+
+        <!-- Main Col -->
+        <div class="col py-3">
+            <form class="needs-validation" novalidate>
+                <!-- Set columns and top-margin -->
+                <div class="row py-5">
+                    <!-- Spacing Col -->
+                    <div class="col-md-4 order-md-1">
+                    </div>
+                    <!-- First Col -->
+                    <div class="col-md-4 order-md-2">
+                        <div class="mb-5">
+                            <label for="email" class="font-weight-bold">Username</label>
+                            <input type="text" class="form-control" id="email" placeholder="you@example.com" value="" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                                required>
+                            <div class="invalid-feedback">
+                                Please enter a valid username.
+                            </div>
+                        </div>
+                        <!-- Phone -->
+                        <div class="mb-5">
+                            <label for="phoneNumber" class="font-weight-bold">Password</label>
+                            <input type="text" class="form-control" id="phoneNumber" placeholder="123-456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="12"
+                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number (e.g., 123-456-7890)">
+                            <div class="invalid-feedback">
+                                Please enter the password.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 order-md-3">
+                    </div>
+                   
+                </div>
+                <!-- Request Button -->
+                <div class="container-fluid text-center">
+                    <button class="btn btn-danger center" type="button" onclick="validateAndShowModal()">Request
+                        Account Deletion</button>
+                </div>
+
+                <!-- Confirmation Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header border-0">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body text-center">
+                              The account deletion request has been submitted.
+                          </div>
+                          <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="modal fade" id="initiateJobModal" tabindex="-1" role="dialog" aria-labelledby="initiateJobModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header border-0">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center">
+                            Your Job matching has been initiated.
+                        </div>
+                        <div class="modal-footer border-0">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <!-- Main Col END -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <title>SMU Hiring</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+
+
+        })();
+    </script>
+
+    <script>
+        $("#datepickerStart").datepicker({
+            format: "mm-yyyy",
+            startView: "months",
+            minViewMode: "months"
+        });
+        $("#datepickerEnd").datepicker({
+            format: "mm-yyyy",
+            startView: "months",
+            minViewMode: "months"
+        });
+    </script>
+
+    <script>
+        // Fixes dropdown menu not showing when clicking the button
+        $('.dropdown').click(function () {
+            $('.dropdown-menu').toggleClass('show');
+        });
+        $(document).click(function (event) {
+            if (!$(event.target).closest('.dropdown').length) {
+                // If the click is outside the dropdown, hide the dropdown menu
+                $('.dropdown-menu').removeClass('show');
+            }
+        });
+    </script>
+
+    <script>
+        function validateAndShowModal() {
+            // Validate your inputs here, for example:
+            var inputsValid = validateInputs();
+            var form = document.querySelector('.needs-validation');
+
+            if (inputsValid) {
+                // If all inputs are valid, show the modal
+                $('#exampleModal').modal('show');
+            } else {
+                // If any input is not valid, handle the validation error (e.g., display an error message)
+                form.classList.add('was-validated');
+            }
+        }
+
+        function validateInputs() {
+            // Implement your input validation logic here
+            // Return true if all inputs are valid, false otherwise
+            // Example validation logic:
+            var inputs = document.querySelectorAll('.needs-validation input');
+            for (var i = 0; i < inputs.length; i++) {
+                if (!inputs[i].checkValidity()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function saveChanges() {
+            // Implement the logic to save changes here
+            // This function is called when the "Save changes" button inside the modal is clicked
+            // Close the modal if needed: $('#exampleModal').modal('hide');
+        }
+    </script>
+
+    <script>
+        var count = 1;
+
+        function add() {
+            var category = document.getElementById("categoryname").value.trim();
+            var skills = document.getElementById("categoryskills").value.trim();
+
+            // Check if both categoryname and categoryskills are not empty
+            if (category !== "" && skills !== "") {
+                var table = document.getElementById("categorytable");
+
+                // Add a new row at the bottom of the table
+                var row = table.insertRow(-1);
+
+                var col1 = row.insertCell(0);
+                var col2 = row.insertCell(1);
+                col1.innerHTML = category;
+                col2.innerHTML = skills;
+
+                // Reset the category field and skills fields to be blank
+                document.getElementById("categoryname").value = "";
+                document.getElementById("categoryskills").value = "";
+
+                // Update the count to the new row count
+                count = table.rows.length;
+            }
+        }
+
+        function deleteLastRow() {
+            var table = document.getElementById("categorytable");
+            var rowCount = table.rows.length;
+
+            // Check if there is at least one row to delete
+            if (rowCount > 1) {
+                table.deleteRow(rowCount - 1);
+                count--; // Decrement the count to maintain accurate row count
+            }
+        }
+
+        function formatPhoneNumber(input) {
+            // Remove all non-numeric characters
+            var phoneNumber = input.value.replace(/\D/g, '');
+            
+            // Check if the input value is empty or not a number
+            if (!phoneNumber || isNaN(phoneNumber)) {
+                input.value = ''; // Clear the input field
+                return;
+            }
+
+            // Format the phone number with hyphens
+            var formattedPhoneNumber = '';
+            for (var i = 0; i < phoneNumber.length; i++) {
+                if (i === 3 || i === 6) {
+                    formattedPhoneNumber += '-';
+                }
+                formattedPhoneNumber += phoneNumber[i];
+            }
+
+            // Update the input value with the formatted phone number
+            input.value = formattedPhoneNumber;
+        }
+    </script>
+
+</body>
+
+</html>
