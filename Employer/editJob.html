@@ -178,15 +178,15 @@
                         <div class="row">
                             <div class="col-md-6 mb-5">
                                 <label for="supervisorFirstName" class="font-weight-bold">Supervisor First Name</label>
-                                <input type="text" class="form-control" id="supervisorFirstName" placeholder="" value=""
-                                    required>
+                                <input type="text" class="form-control" id="supervisorFirstName" placeholder=""
+                                    value="">
                                 <div class="invalid-feedback">
                                     Please enter the contact person's last name.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-5">
                                 <label for="supervisorLastName" class="font-weight-bold">Supervisor Last Name</label>
-                                <input type="text" class="form-control" id="supervisorLastName" placeholder="" required>
+                                <input type="text" class="form-control" id="supervisorLastName" placeholder="">
                                 <div class="invalid-feedback">
                                     Please enter the contact person's last name.
                                 </div>
@@ -196,7 +196,7 @@
                         <div class="mb-5">
                             <label for="supervisorEmail" class="font-weight-bold">Supervisor Email</label>
                             <input type="text" class="form-control" id="supervisorEmail" placeholder="you@example.com"
-                                value="" required>
+                                value="">
                             <div class="invalid-feedback">
                                 Please enter a valid email.
                             </div>
@@ -204,8 +204,8 @@
                         <!-- Supervisor Phone Number -->
                         <div class="mb-5">
                             <label for="supervisorPhoneNumber" class="font-weight-bold">Supervisor Phone Number</label>
-                            <input type="number" class="form-control" id="supervisorPhoneNumber"
-                                placeholder="4695554516" value="" required>
+                            <input type="text" class="form-control" id="supervisorPhoneNumber" placeholder="4695554516"
+                                pattern="^\d{10}$" value="">
                             <div class="invalid-feedback">
                                 Please enter a valid phone number.
                             </div>
@@ -213,7 +213,7 @@
                         <!-- Pay per Hour -->
                         <div class="mb-5">
                             <label for="payPerHour" class="font-weight-bold">Pay per Hour</label>
-                            <input type="number" class="form-control" id="payPerHour" placeholder="" value="" required>
+                            <input type="number" class="form-control" id="payPerHour" placeholder="" value="">
                             <div class="invalid-feedback">
                                 Please enter a valid value.
                             </div>
@@ -227,7 +227,7 @@
                                 <label for="startDate" class="font-weight-bold">Start Date</label>
                                 <div class="input-group date" data-provide="datepicker" id="datepickerStart"
                                     data-date-format="mm-yyyy">
-                                    <input type="text" class="form-control" id="startDate" value="" required
+                                    <input type="text" class="form-control" id="startDate" value=""
                                         style="background-color: white;" placeholder="MM-YYYY">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
@@ -241,7 +241,7 @@
                                 <label for="endDate" class="font-weight-bold">End Date</label>
                                 <div class="input-group date" data-provide="datepicker" id="datepickerEnd"
                                     data-date-format="mm-yyyy">
-                                    <input type="text" class="form-control" id="endDate" value="" required
+                                    <input type="text" class="form-control" id="endDate" value=""
                                         style="background-color: white;" placeholder="MM-YYYY">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
@@ -256,16 +256,14 @@
                         <div class="row">
                             <div class="col-md-4 mb-5">
                                 <label for="startTime" class="font-weight-bold">Start Time</label>
-                                <input type="text" class="form-control" id="payPerHour" placeholder="08:00" value=""
-                                    required>
+                                <input type="text" class="form-control" id="payPerHour" placeholder="08:00" value="">
                                 <div class="invalid-feedback">
                                     Please enter a valid value.
                                 </div>
                             </div>
                             <div class="col-md-4 mb-5">
                                 <label for="endTime" class="font-weight-bold">End Time</label>
-                                <input type="text" class="form-control" id="payPerHour" placeholder="18:30" value=""
-                                    required>
+                                <input type="text" class="form-control" id="payPerHour" placeholder="18:30" value="">
                                 <div class="invalid-feedback">
                                     Please enter a valid value.
                                 </div>
