@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    
     <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
 
     <!-- Bootstrap core CSS -->
@@ -20,42 +20,38 @@
             height: 200px;
             overflow: auto;
         }
-
         .table-wrapper-scroll-y {
             display: block;
         }
+        .extra-text{
+            font-size: 10px;
+            margin-top: 5px;
+        }
     </style>
-</head>
+  </head>
 
-<body class="bg-light">
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand bg-info navbar-dark bg-primary" style="background-color: #296810!important;">
-        <a class="navbar-brand"><img src="../Images/Logo.png" style="margin-left: 2%;max-width: 90px;" alt="Logo"
-                class="logo">
+  <body class="bg-light">
+    <nav class="navbar navbar-expand bg-info navbar-dark bg-primary" style="background-color: #3A98B9!important;">
+        <a class="navbar-brand"><img src="/Images/Logo.png" style="margin-left: 10%;max-width: 90px;" alt="Logo" class="logo">
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
-
         <div class="navbar-header">
-            <div class="navbar-brand" href="#">Edit Professional Account</div>
+            <a class="navbar-brand" href="#">Edit Professional Details</a>
         </div>
-
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
-
         <ul class="nav navbar-nav my-2 my-lg-0">
             <li class="dropdown">
-                <button class="dropdown-toggle btn text-center" data-toggle="dropdown"
-                    style="color:white">diogo_fae_staff
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu text-center">
-                    <li><a href="http://127.0.0.1:3000/Staff/changePassword.html">Change Password</a></li>
+                <a class="dropdown-toggle" data-toggle="dropdown" style="color:white">Sujana
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a href="/Professional/changePassword.html">Change Password</a></li>
                 </ul>
             </li>
         </ul>
         <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:3000/SignUp/Login.html"
-                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+            <li class="nav-item"><a class="nav-link" href="#" style="color:white"><i class="fas fa-sign-in-alt"></i>
                     Logout</a></li>
         </ul>
     </nav>
@@ -63,74 +59,33 @@
     <!-- Bootstrap row -->
     <div class="row" id="body-row">
         <!-- Sidebar -->
-        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2"
-            style="background-color: #343a40!important; padding-right: 0%;">
+        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2" style="background-color: #343a40!important; padding-right: 0%;min-height: 800px">
             <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
-                <a href="http://127.0.0.1:3000/Staff/viewAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">View Account</span>
-                    </div>
-                </a>
-                <a href="http://127.0.0.1:3000/Staff/editAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Professional/editProfessionalDetails.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Edit Account</span>
                     </div>
                 </a>
-                <a href="http://127.0.0.1:3000/Staff/viewCreateRequestsEmployer.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Professional/browseJobs.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Review New Employer Accounts</span>
+                        <span class="menu-collapsed">Browse Job Descriptions</span>
                     </div>
                 </a>
-                <a href="http://127.0.0.1:3000/Staff/viewCreateRequestsProfessional.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="#" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%" data-toggle="modal" data-target="#initiateJobModal">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Review New Professional Accounts</span>
+                        <span class="menu-collapsed">Initiate Job Matchings</span>
                     </div>
                 </a>
-                <a href="http://127.0.0.1:3000/Staff/viewDeleteRequestsEmployer.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Professional/payment.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Review Employer Account Deletion Requests</span>
+                        <span class="menu-collapsed">Make Payment</span>
                     </div>
                 </a>
-                <a href="http://127.0.0.1:3000/Staff/viewDeleteRequestsProfessional.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Review Professional Account Deletion Requests</span>
-                    </div>
-                </a>
-                <a href="http://127.0.0.1:3000/Staff/browseEmployerAccounts.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Browse Employer Accounts</span>
-                    </div>
-                </a>
-                <a href="http://127.0.0.1:3000/Staff/browseProfessionalAccounts.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Browse Professional Accounts</span>
-                    </div>
-                </a>
-                <a href="http://127.0.0.1:3000/Staff/changePassword.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Change Password</span>
-                    </div>
-                </a>
-                <a href="http://127.0.0.1:3000/Staff/deleteAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Professional/deleteAccount.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Delete Account</span>
@@ -138,16 +93,15 @@
                 </a>
             </ul>
         </div>
-
+    
         <!-- MAIN -->
         <div class="col py-3">
             <form class="needs-validation" novalidate>
-                <!-- Top Buttons -->
-                <div class="container-fluid mt-0">
-                    <div class="col-md- order-md-1 d-flex justify-content-between">
-                        <a type="button" class="btn btn-danger"
-                            href="http://127.0.0.1:3000/Browse%20P%20accounts.html">Cancel</a>
-                        <button class="btn btn-success" type="button" onclick="validateAndShowModal()">Save</button>
+                <div class="row mt-3">
+                    <div class="col-md-10 order-md-1 mb-2">
+                    </div>
+                    <div class="col-md-1 order-md-2" style="text-align: right;">
+                        <button type="submit" class="btn btn-secondary">Edit</button>
                     </div>
                 </div>
                 <div class="row py-5">
@@ -177,16 +131,15 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="address" class="font-weight-bold">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="1234 Main St">
-                            <div class="invalid-feedback">
-                                Please enter your shipping address.
-                            </div>
+                        <label for="address" class="font-weight-bold">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
                         </div>
                         <div class="mb-3">
-                            <label for="address2" class="font-weight-bold">Address 2 <span
-                                    class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                        <label for="address2" class="font-weight-bold">Address 2 <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
                         </div>
                         <div class="row">
                             <div class="col-md-5 mb-3">
@@ -199,8 +152,8 @@
                             <div class="col-md-4 mb-3">
                                 <label for="state" class="font-weight-bold">State</label>
                                 <select class="custom-select d-block w-100" id="state">
-                                    <option value="">Choose...</option>
-                                    <option>Alabama</option>
+                                <option value="">Choose...</option>
+                                <option>Alabama</option>
                                     <option>Alaska</option>
                                     <option>Arizona</option>
                                     <option>Arkansas</option>
@@ -252,7 +205,7 @@
                                     <option>Wyoming</option>
                                 </select>
                                 <div class="invalid-feedback">
-                                    Please select a state.
+                                Please select a state.
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
@@ -266,8 +219,8 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="phone" class="font-weight-bold">Phone</label>
-                                <input type="text" class="form-control" id="phone" pplaceholder="123-456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="12"
-                                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number (e.g., 123-456-7890)">
+                                <input type="text" class="form-control" id="phone" placeholder="123-456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="12"
+                                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number (e.g., 123-456-7890)">
                                 <div class="invalid-feedback">
                                     Please enter a phone number.
                                 </div>
@@ -285,8 +238,7 @@
                         <div class="mb-3">
                             <label for="institution" class="font-weight-bold">Name of the institution</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="institution"
-                                    placeholder="Name of the institution">
+                                <input type="text" class="form-control" id="institution" placeholder="Name of the institution">
                                 <div class="invalid-feedback" style="width: 100%;">
                                     Please enter the name of the institution.
                                 </div>
@@ -307,10 +259,9 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="dc" class="font-weight-bold">Degree Completion</label>
-                                <div class="input-group date" data-provide="datepicker" id="datepickerDegree"
-                                    data-date-format="mm-yyyy">
-                                    <input type="text" class="form-control" readonly="readonly" name="date"
-                                        style="background-color: white;">
+                                <div class="input-group date" data-provide="datepicker" id="datepicker"
+                                data-date-format="mm-yyyy">
+                                    <input type="text" class="form-control" readonly="readonly" name="date" style="background-color: white;">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
                                     </div>
@@ -337,17 +288,16 @@
                                 <button type="button" class="btn btn-outline-primary" onclick="add()">Add</button>
                             </div>
                             <div class="col-md-3 mb-3" style="text-align: right;">
-                                <button type="button" class="btn btn-outline-danger"
-                                    onclick="deleteLastRow()">Delete</button>
+                                <button type="button" class="btn btn-outline-danger" onclick="deleteLastRow()">Delete</button>
                             </div>
                         </div>
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                             <table id="categorytable" class="table table-bordered">
                                 <thead>
-                                    <tr style="background-color: #3A98B9;">
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Skills</th>
-                                    </tr>
+                                <tr style="background-color: #3A98B9;">
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Skills</th>
+                                </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -365,11 +315,24 @@
                 </div>
             </form>
         </div>
-
-
+        <div class="modal fade" id="initiateJobModal" tabindex="-1" role="dialog" aria-labelledby="initiateJobModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-0">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center">
+                    Your Job matching has been initiated.
+                </div>
+                <div class="modal-footer border-0">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>   
     </div>
-    <!-- Main Col END -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -378,64 +341,86 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
 
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
 
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
             }, false);
-        })();
-    </script>
+          });
+        }, false);
 
-    <script>
-        // Fixes dropdown menu not showing when clicking the button
-        $('.dropdown').click(function () {
-            $('.dropdown-menu').toggleClass('show');
-        });
-        $(document).click(function (event) {
-            if (!$(event.target).closest('.dropdown').length) {
-                // If the click is outside the dropdown, hide the dropdown menu
-                $('.dropdown-menu').removeClass('show');
-            }
-        });
-
-        $("#datepickerDegree").datepicker({
+        $("#datepicker").datepicker( {
             format: "mm-yyyy",
-            startView: "months",
+            startView: "months", 
             minViewMode: "months"
         });
-    </script>
 
-    <script>
-        function validateAndShowModal() {
+      })();
+
+      var count = 1;
+
+function add() {
+    var category = document.getElementById("categoryname").value.trim();
+    var skills = document.getElementById("categoryskills").value.trim();
+
+    // Check if both categoryname and categoryskills are not empty
+    if (category !== "" && skills !== "") {
+        var table = document.getElementById("categorytable");
+
+        // Add a new row at the bottom of the table
+        var row = table.insertRow(-1);
+
+        var col1 = row.insertCell(0);
+        var col2 = row.insertCell(1);
+        col1.innerHTML = category;
+        col2.innerHTML = skills;
+
+        // Reset the category field and skills fields to be blank
+        document.getElementById("categoryname").value = "";
+        document.getElementById("categoryskills").value = "";
+
+        // Update the count to the new row count
+        count = table.rows.length;
+    }
+}
+
+function deleteLastRow() {
+    var table = document.getElementById("categorytable");
+    var rowCount = table.rows.length;
+
+    // Check if there is at least one row to delete
+    if (rowCount > 1) {
+        table.deleteRow(rowCount - 1);
+        count--; // Decrement the count to maintain accurate row count
+    }
+}
+
+function validateAndShowModal() {
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();
             var form = document.querySelector('.needs-validation');
             var categorytable = document.getElementById('categorytable');
 
-            if (inputsValid) {
+            if (inputsValid && categorytable.rows.length >= 3) {
                 // If all inputs are valid, show the modal
                 $('#exampleModal').modal('show');
             } else {
@@ -444,82 +429,6 @@
                 if (categorytable.rows.length < 3) {
                     document.getElementById('cat-table-invalid-feedback').style.display = 'block';
                 }
-                else {
-                    document.getElementById('cat-table-invalid-feedback').style.display = 'none';
-                }
-            }
-        }
-
-        function validateInputs() {
-            // Implement your input validation logic here
-            // Return true if all inputs are valid, false otherwise
-            // Example validation logic:
-            var inputs = document.querySelectorAll('.needs-validation input');
-            for (var i = 0; i < inputs.length; i++) {
-                if (!inputs[i].checkValidity()) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function saveChanges() {
-            // Implement the logic to save changes here
-            // This function is called when the "Save changes" button inside the modal is clicked
-            // Close the modal if needed: $('#exampleModal').modal('hide');
-        }
-    </script>
-
-    <script>
-        var count = 1;
-
-        function add() {
-            var category = document.getElementById("categoryname").value.trim();
-            var skills = document.getElementById("categoryskills").value.trim();
-
-            // Check if both categoryname and categoryskills are not empty
-            if (category !== "" && skills !== "") {
-                var table = document.getElementById("categorytable");
-
-                // Add a new row at the bottom of the table
-                var row = table.insertRow(-1);
-
-                var col1 = row.insertCell(0);
-                var col2 = row.insertCell(1);
-                col1.innerHTML = category;
-                col2.innerHTML = skills;
-
-                // Reset the category field and skills fields to be blank
-                document.getElementById("categoryname").value = "";
-                document.getElementById("categoryskills").value = "";
-
-                // Update the count to the new row count
-                count = table.rows.length;
-            }
-
-            if (table.rows.length < 3) {
-                document.getElementById('cat-table-invalid-feedback').style.display = 'block';
-            }
-            else {
-                document.getElementById('cat-table-invalid-feedback').style.display = 'none';
-            }
-        }
-
-        function deleteLastRow() {
-            var table = document.getElementById("categorytable");
-            var rowCount = table.rows.length;
-
-            // Check if there is at least one row to delete
-            if (rowCount > 1) {
-                table.deleteRow(rowCount - 1);
-                count--; // Decrement the count to maintain accurate row count
-            }
-
-            if (table.rows.length < 3) {
-                document.getElementById('cat-table-invalid-feedback').style.display = 'block';
-            }
-            else {
-                document.getElementById('cat-table-invalid-feedback').style.display = 'none';
             }
         }
 
@@ -545,8 +454,7 @@
             // Update the input value with the formatted phone number
             input.value = formattedPhoneNumber;
         }
+        
     </script>
-
-</body>
-
+  </body>
 </html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+    <style>
+        .my-custom-scrollbar {
+            position: relative;
+            height: 200px;
+            overflow: auto;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand bg-info navbar-dark bg-primary" style="background-color: #3A98B9!important;">
+        <a class="navbar-brand"><img src="/Images/Logo.png" style="margin-left: 10%;max-width: 90px;" alt="Logo" class="logo">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Browse Job Descriptions</a>
+        </div>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" style="color:white">Sujana
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item"><a href="/Professional/changePassword.html">Change Password</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#" style="color:white"><i class="fas fa-sign-in-alt"></i>
+                    Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2" style="background-color: #343a40!important; padding-right: 0%;">
+            <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
+                <a href="/Professional/editProfessionalDetails.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Edit Account</span>
+                    </div>
+                </a>
+                <a href="/Professional/browseJobs.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Browse Job Descriptions</span>
+                    </div>
+                </a>
+                <a href="#" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%" data-toggle="modal" data-target="#initiateJobModal">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Initiate Job Matchings</span>
+                    </div>
+                </a>
+                <a href="/Professional/payment.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Make Payment</span>
+                    </div>
+                </a>
+                <a href="/Professional/deleteAccount.html" class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%"  data-toggle="modal" data-target="#deleteAccountModal">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Delete Account</span>
+                    </div>
+                </a>
+            </ul>
+        </div>
+
+        <!-- Main Col -->
+        <div class="col py-3">
+
+            <!-- Set columns and top-margin -->
+            <div class="row py-5">
+                <!-- First Col -->
+                <div class="col-md-3 order-md-2">
+                    <!-- Posted Jobs Scrollable Box -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="text-center mb-4">Posted Jobs</h2>
+                                <div class="scrollable-box" style="max-height: 530px;overflow-y: auto;">
+                                    <div class="list-group" id="itemList">
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action clickable-job-item">123 -
+                                            Software Engineer</a>
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action clickable-job-item">456 -
+                                            Backend Developer</a>
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action clickable-job-item">789 -
+                                            Frontend Developer</a>
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action clickable-job-item">890 -
+                                            Full Stack Senior Developer</a>
+                                        <!-- Add more items as needed -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Second Col -->
+                <div class="col-md-3 order-md-2">
+                    <!-- Job ID -->
+                    <div class="mb-5">
+                        <label for="jobID" class="font-weight-bold">Job ID</label>
+                        <div class="input-group">
+                            <div>
+                                123
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Position Name -->
+                    <div class="mb-5">
+                        <label for="positionName" class="font-weight-bold">Position Name</label>
+                        <div class="input-group">
+                            <div>
+                                Software Engineer
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Supervisor Name -->
+                    <div class="mb-5">
+                        <label for="supervisorName" class="font-weight-bold">Supervisor Name</label>
+                        <div class="input-group">
+                            <div>
+                                Kasi Periyasamy
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Supervisor Email -->
+                    <div class="mb-5">
+                        <label for="supervisorEmail" class="font-weight-bold">Supervisor Email</label>
+                        <div class="input-group">
+                            <div>
+                                kperiyasamy@smu.edu
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Supervisor Phone Number -->
+                    <div class="mb-5">
+                        <label for="supervisorPhoneNumber" class="font-weight-bold">Supervisor Phone Number</label>
+                        <div class="input-group">
+                            <div>
+                                (469) 555-1268
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pay per Hour -->
+                    <div class="mb-5">
+                        <label for="payPerHour" class="font-weight-bold">Pay per Hour</label>
+                        <div class="input-group">
+                            <div>
+                                $45.00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Third Col -->
+                <div class="col-md-5 order-md-2">
+                    <!-- Dates -->
+                    <div class="row">
+                        <div class="col-md-4 mb-5">
+                            <label for="startDate" class="font-weight-bold">Start Date</label>
+                            <div>
+                                08/2024
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-5">
+                            <label for="endDate" class="font-weight-bold">End Date</label>
+                            <div>
+                                05/2025
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Times -->
+                    <div class="row">
+                        <div class="col-md-4 mb-5">
+                            <label for="startDate" class="font-weight-bold">Start Date</label>
+                            <div>
+                                09:00
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-5">
+                            <label for="endDate" class="font-weight-bold">End Date</label>
+                            <div>
+                                18:30
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Qualifications -->
+                    <div class="mb-5">
+                        <label for="requiredQualifications" class="font-weight-bold">Required Qualifications</label>
+                        <!-- Table -->
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 350px;">
+                            <table id="categorytable" class="table table-bordered">
+                                <thead>
+                                    <tr style="background-color: #3A98B9!important;">
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Skills</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Languages</td>
+                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Previous Employment</td>
+                                        <td>Full Stack Developer, Software Engineer, Software Development Engineer,
+                                            Software Development Engineer Intern</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Languages</td>
+                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Previous Employment</td>
+                                        <td>Full Stack Developer, Software Engineer, Software Development Engineer,
+                                            Software Development Engineer Intern</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Languages</td>
+                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Previous Employment</td>
+                                        <td>Full Stack Developer, Software Engineer, Software Development Engineer,
+                                            Software Development Engineer Intern</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Languages</td>
+                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Previous Employment</td>
+                                        <td>Full Stack Developer, Software Engineer, Software Development Engineer,
+                                            Software Development Engineer Intern</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="initiateJobModal" tabindex="-1" role="dialog" aria-labelledby="initiateJobModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-0">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center">
+                    Your Job matching has been initiated.
+                </div>
+                <div class="modal-footer border-0">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+        </div>   
+        <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteAccountModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-0">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center">
+                    Are you sure you want to delete your account?
+                </div>
+                <div class="modal-footer border-0">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+              </div>
+            </div>
+        </div>   
+    </div>
+    <!-- Main Col END -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <title>SMU Hiring</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+
+            $("#datepicker").datepicker({
+                format: "mm-yyyy",
+                startView: "months",
+                minViewMode: "months"
+            });
+
+            $(".clickable-job-item:first").addClass("active");
+
+            // Handle item click event
+            $(".clickable-job-item").on("click", function () {
+                $(".clickable-job-item").removeClass("active");
+                $(this).addClass("active");
+            });
+
+        })();
+
+        var count = 1;
+        function add() {
+            var category = document.getElementById("categoryname").value;
+            var skills = document.getElementById("categoryskills").value;
+            var table = document.getElementById("categorytable");
+            var row = table.insertRow(count++);
+            var col1 = row.insertCell(0);
+            var col2 = row.insertCell(1);
+            col1.innerHTML = category;
+            col2.innerHTML = skills;
+            document.getElementById("categoryname").value = "";
+            document.getElementById("categoryskills").value = "";
+        }
+
+        var prevempcount = 1;
+        function addPreviousEmploymentSkills() {
+            var companyname = document.getElementById("companyname").value;
+            var companyskills = document.getElementById("companyskills").value;
+            var prevemptable = document.getElementById("prevemptable");
+            var row = prevemptable.insertRow(prevempcount++);
+            var col1 = row.insertCell(0);
+            var col2 = row.insertCell(1);
+            col1.innerHTML = companyname;
+            col2.innerHTML = companyskills;
+            document.getElementById("companyname").value = "";
+            document.getElementById("companyskills").value = "";
+        }
+
+        $(document).ready(function () {
+            // Set the first item to be clicked when the page loads
+            $(".clickable-job-item:first").addClass("active");
+
+            // Handle item click event
+            $(".clickable-job-item").on("click", function () {
+                $(".clickable-job-item").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
