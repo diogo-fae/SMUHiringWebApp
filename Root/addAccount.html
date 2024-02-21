@@ -101,7 +101,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Your changes have been saved.
+                                The account has been created.
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -118,7 +118,8 @@
                         <div class="mb-5">
                             <label for="username" class="font-weight-bold">Username</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="userName" placeholder="" value="" required>
+                                <input type="text" class="form-control" id="userName" placeholder="" value=""
+                                    pattern="[a-zA-Z].{7,}" required>
                                 <div class="invalid-feedback">
                                     Please enter your user name.
                                 </div>
@@ -153,14 +154,14 @@
                         <!-- Phone -->
                         <div class="mb-5">
                             <label for="phoneNumber" class="font-weight-bold">Phone Number</label>
-                            <input type="number" class="form-control" id="phoneNumber" placeholder="+14695554516"
-                                value="" required>
+                            <input type="text" class="form-control" id="phoneNumber" placeholder="+14695554516" value=""
+                                pattern="^\d{10}$" required>
                             <div class="invalid-feedback">
                                 Please enter a valid phone number.
                             </div>
                         </div>
                         <div class="flex-d text-center">
-                            <button class="btn btn-danger center" type="button" onclick="validateAndShowModal()">Add
+                            <button class="btn btn-success center" type="button" onclick="validateAndShowModal()">Add
                                 Account</button>
                         </div>
                     </div>
