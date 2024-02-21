@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+    <style>
+        .my-custom-scrollbar {
+            position: relative;
+            height: 200px;
+            overflow: auto;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand bg-info navbar-dark bg-primary" style="background-color: #62849b!important;">
+        <a class="navbar-brand"><img src="../Images/Logo.png" style="margin-left: 2%;max-width: 90px;" alt="Logo"
+                class="logo">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+
+        <div class="navbar-header">
+            <div class="navbar-brand" href="#">Sign Up</div>
+        </div>
+
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        </ul>
+
+        <ul class="nav navbar-nav my-2 my-lg-0">
+            <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:3000/SignUp/Login.html"
+                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+                    Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:3000/SignUp/signUpInitial.html"
+                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+                    Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+        <!-- Main Col -->
+        <div class="col py-3">
+            <!-- Set columns and top-margin -->
+            <div class="row py-5">
+                <!-- Image Col -->
+                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                    <img src="../Images/Logo.png" alt="..." class="img-fluid">
+                </div>
+                <!-- Text Col -->
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <p>Welcome to our innovative hiring platform, where seamless recruitment meets top talent. Our
+                        website is designed to empower both employers and job seekers with cutting-edge features and a
+                        user-friendly interface. Employers can effortlessly post job openings, review candidate
+                        profiles, and streamline their hiring process. Job seekers benefit from personalized profiles,
+                        job matching algorithms, and a vast database of opportunities. Explore a platform that fosters
+                        efficient connections between employers and talented individuals, making the hiring journey a
+                        collaborative and successful experience for all.</p>
+                </div>
+                <!-- Form Col -->
+                <div class="col-md-5">
+                    <!-- Card -->
+                    <div class="card col-md-11 px-0 py-0">
+                        <h5 class="card-header">Sign Up Professional - 1</h5>
+                        <div class="card-body">
+                            <form class="needs-validation" novalidate>
+                                <!-- Address -->
+                                <div class="mb-5">
+                                    <label for="Address" class="font-weight-bold">Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                                        value="" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a address.
+                                    </div>
+                                </div>
+                                <!-- Address 2 -->
+                                <div class="mb-5">
+                                    <label for="address2" class="font-weight-bold">Address 2<span
+                                            class="text-muted">(Optional)</span></label>
+                                    <input type="text" class="form-control" id="address2"
+                                        placeholder="Apartment or suite">
+                                </div>
+                                <!-- Address 3 -->
+                                <div class="row">
+                                    <div class="col-md-4 mb-5">
+                                        <label for="city" class="font-weight-bold">City</label>
+                                        <input type="text" class="form-control" id="city" placeholder="City" value=""
+                                            required>
+                                    </div>
+                                    <div class="col-md-4 mb-5">
+                                        <label for="state" class="font-weight-bold">State</label>
+                                        <select class="custom-select d-block w-100" id="state" required>
+                                            <option value="">Choose...</option>
+                                            <option>Alabama</option>
+                                            <option>Alaska</option>
+                                            <option>Arizona</option>
+                                            <option>Arkansas</option>
+                                            <option>California</option>
+                                            <option>Colorado</option>
+                                            <option>Connecticut</option>
+                                            <option>Delaware</option>
+                                            <option>Florida</option>
+                                            <option>Georgia</option>
+                                            <option>Hawaii</option>
+                                            <option>Idaho</option>
+                                            <option>Illinois</option>
+                                            <option>Indiana</option>
+                                            <option>Iowa</option>
+                                            <option>Kansas</option>
+                                            <option>Kentucky</option>
+                                            <option>Louisiana</option>
+                                            <option>Maine</option>
+                                            <option>Maryland</option>
+                                            <option>Massachusetts</option>
+                                            <option>Michigan</option>
+                                            <option>Minnesota</option>
+                                            <option>Mississippi</option>
+                                            <option>Missouri</option>
+                                            <option>Montana</option>
+                                            <option>Nebraska</option>
+                                            <option>Nevada</option>
+                                            <option>New Hampshire</option>
+                                            <option>New Jersey</option>
+                                            <option>New Mexico</option>
+                                            <option>New York</option>
+                                            <option>North Carolina</option>
+                                            <option>North Dakota</option>
+                                            <option>Ohio</option>
+                                            <option>Oklahoma</option>
+                                            <option>Oregon</option>
+                                            <option>Pennsylvania</option>
+                                            <option>Rhode Island</option>
+                                            <option>South Carolina</option>
+                                            <option>South Dakota</option>
+                                            <option>Tennessee</option>
+                                            <option>Texas</option>
+                                            <option>Utah</option>
+                                            <option>Vermont</option>
+                                            <option>Virginia</option>
+                                            <option>Washington</option>
+                                            <option>West Virginia</option>
+                                            <option>Wisconsin</option>
+                                            <option>Wyoming</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-5">
+                                        <label for="zipCode" class="font-weight-bold">Zip Code</label>
+                                        <input type="number" class="form-control" id="zipCode" placeholder="Zip Code"
+                                            value="" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a zip code.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Degree -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-5">
+                                        <label for="degreeType" class="font-weight-bold">Highest Degree
+                                            Completed</label>
+                                        <select class="custom-select d-block w-100" id="country" required>
+                                            <option value="">Choose...</option>
+                                            <option>Under graduate</option>
+                                            <option>Graduate</option>
+                                            <option>PhD</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-5">
+                                        <label for="degreeDate" class="font-weight-bold">Degree Completion</label>
+                                        <div class="input-group date" data-provide="datepicker" id="datepickerDegree"
+                                            data-date-format="mm-yyyy">
+                                            <input type="text" class="form-control" id="startDate" value="" required
+                                                style="background-color: white;" placeholder="MM-YYYY">
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Institution Name -->
+                                <div class="mb-5">
+                                    <label for="institution" class="font-weight-bold">Institution Name</label>
+                                    <input type="text" class="form-control" id="institution" placeholder="" value=""
+                                        required>
+                                </div>
+                                <!-- Continue Buttons -->
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <button href="http://127.0.0.1:3000/SignUp/signUpProfessional2.html"
+                                            type="button" class="btn btn-success" id="continueBtnP"
+                                            onclick="validateAndContinue(this.getAttribute('href'))">Continue</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Main Col END -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <title>SMU Hiring</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+
+
+        })();
+    </script>
+
+    <script>
+        $("#datepickerStart").datepicker({
+            format: "mm-yyyy",
+            startView: "months",
+            minViewMode: "months"
+        });
+        $("#datepickerEnd").datepicker({
+            format: "mm-yyyy",
+            startView: "months",
+            minViewMode: "months"
+        });
+        $("#datepickerDegree").datepicker({
+            format: "mm-yyyy",
+            startView: "months",
+            minViewMode: "months"
+        });
+    </script>
+
+    <script>
+        // Fixes dropdown menu not showing when clicking the button
+        $('.dropdown').click(function () {
+            $('.dropdown-menu').toggleClass('show');
+        });
+        $(document).click(function (event) {
+            if (!$(event.target).closest('.dropdown').length) {
+                // If the click is outside the dropdown, hide the dropdown menu
+                $('.dropdown-menu').removeClass('show');
+            }
+        });
+    </script>
+
+    <script>
+        function validateAndShowModal() {
+            // Validate your inputs here, for example:
+            var inputsValid = validateInputs();
+            var form = document.querySelector('.needs-validation');
+
+            if (inputsValid) {
+                // If all inputs are valid, show the modal
+                $('#exampleModal').modal('show');
+            } else {
+                // If any input is not valid, handle the validation error (e.g., display an error message)
+                form.classList.add('was-validated');
+            }
+        }
+
+        function validateAndContinue(href) {
+            // Validate inputs here
+            var inputsValid = validateInputs();
+            var form = document.querySelector('.needs-validation');
+
+            if (inputsValid) {
+                // If all inputs are valid, navigate to the link specified in the button's href
+                window.location.href = href;
+            } else {
+                // If any input is not valid, handle the validation error (e.g., display an error message)
+                form.classList.add('was-validated');
+            }
+        }
+
+        function validateInputs() {
+            // Implement your input validation logic here
+            // Return true if all inputs are valid, false otherwise
+            // Example validation logic:
+            var inputs = document.querySelectorAll('.needs-validation input');
+            for (var i = 0; i < inputs.length; i++) {
+                if (!inputs[i].checkValidity()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function saveChanges() {
+            // Implement the logic to save changes here
+            // This function is called when the "Save changes" button inside the modal is clicked
+            // Close the modal if needed: $('#exampleModal').modal('hide');
+        }
+    </script>
+
+    <script>
+        var count = 1;
+
+        function add() {
+            var category = document.getElementById("categoryname").value.trim();
+            var skills = document.getElementById("categoryskills").value.trim();
+
+            // Check if both categoryname and categoryskills are not empty
+            if (category !== "" && skills !== "") {
+                var table = document.getElementById("categorytable");
+
+                // Add a new row at the bottom of the table
+                var row = table.insertRow(-1);
+
+                var col1 = row.insertCell(0);
+                var col2 = row.insertCell(1);
+                col1.innerHTML = category;
+                col2.innerHTML = skills;
+
+                // Reset the category field and skills fields to be blank
+                document.getElementById("categoryname").value = "";
+                document.getElementById("categoryskills").value = "";
+
+                // Update the count to the new row count
+                count = table.rows.length;
+            }
+        }
+
+        function deleteLastRow() {
+            var table = document.getElementById("categorytable");
+            var rowCount = table.rows.length;
+
+            // Check if there is at least one row to delete
+            if (rowCount > 1) {
+                table.deleteRow(rowCount - 1);
+                count--; // Decrement the count to maintain accurate row count
+            }
+        }
+    </script>
+
+</body>
+
+</html>
