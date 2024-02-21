@@ -37,21 +37,13 @@
         </ul>
 
         <div class="navbar-header">
-            <div class="navbar-brand" href="#">Review staff Account Deletion Requests</div>
+            <div class="navbar-brand" href="#">Browse Staff Accounts</div>
         </div>
 
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
 
-        <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="dropdown">
-                <button class="dropdown-toggle btn text-center" data-toggle="dropdown" style="color:white">diogo_fae
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu text-center">
-                    <li><a href="http://127.0.0.1:3000/Staff/changePassword.html">Change Password</a></li>
-                </ul>
-            </li>
-        </ul>
+        <text class="text btn text-center" style="color:white">root</span></text>
         <ul class="nav navbar-nav my-2 my-lg-0">
             <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:3000/SignUp/Login.html"
                     style="color:white"><i class="fas fa-sign-in-alt"></i>
@@ -66,23 +58,23 @@
             style="background-color: #343a40!important; padding-right: 0%;">
             <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
 
-                <a href="http://127.0.0.1:3000/Staff/editAccount.html"
+                <a href="http://127.0.0.1:3000/Root/addAccount.html"
                     class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Add Account</span>
+                        <span class="menu-collapsed">Add Staff Account</span>
                     </div>
                 </a>
 
 
-                <a href="http://127.0.0.1:3000/Staff/browseStaffAccounts.html"
+                <a href="http://127.0.0.1:3000/Root/browseStaffAccounts.html"
                     class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Manage Staff Accounts</span>
+                        <span class="menu-collapsed">Browse Staff Accounts</span>
                     </div>
                 </a>
-                <a href="http://127.0.0.1:3000/Staff/viewDeleteRequestsStaff.html"
+                <a href="http://127.0.0.1:3000/Root/viewDeleteRequestsStaff.html"
                     class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
@@ -92,127 +84,132 @@
             </ul>
         </div>
 
-
         <!-- Main Col -->
         <div class="col py-3">
-            <!-- Top Buttons -->
-            <div class="container-fluid mt-0">
-                <div class="col-md- order-md-1 d-flex justify-content-between">
-                    <button class="btn btn-danger" type="button" modal-name="deny"
-                        onclick="showCustomModal(this.getAttribute('modal-name'))">Deny</button>
-                    <div class="num-requests-container">
-                        <label class="font-weight-bold">Number of Requests: <span
-                                class="badge badge-secondary">4</span></label>
-                    </div>
-                    <button class="btn btn-success" type="button" modal-name="approve"
-                        onclick="showCustomModal(this.getAttribute('modal-name'))">Approve</button>
-                </div>
+            <!-- Top Button -->
 
-                <!-- Confirmation Modal -->
-                <div class="modal fade" id="deny" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                The staff account deletion request has been denied.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="approve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                The staff account has been deleted.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Set columns and top-margin -->
-                <div class="row py-5">
-                    <!-- Spacing Col -->
-                    <div class="col-md-1 order-md-1">
-                    </div>
-                    <!-- First Col -->
-                    <div class="col-md-5 order-md-2">
-                        <!-- Username -->
-                        <div class="mb-5">
-                            <label for="username" class="font-weight-bold">Username</label>
-                            <div class="input-group">
-                                <div>
-                                    diogo_fae
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Staff id -->
-                        <div class="mb-5">
-                            <label for="staffId" class="font-weight-bold">Staff id</label>
-                            <div class="input-group">
-                                <div>
-                                    123
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Name -->
-                        <div class="row">
-                            <div class="col-md-4 mb-5">
-                                <label for="firstName" class="font-weight-bold">First Name</label>
-                                <div>
-                                    Diogo
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-5">
-                                <label for="lastName" class="font-weight-bold">Last Name</label>
-                                <div>
-                                    Benetti Fae Rodrigues
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Email -->
-                        <div class="mb-5">
-                            <label for="email" class="font-weight-bold">Email</label>
-                            <div class="input-group">
-                                <div>
-                                    drodrigues@smu.edu
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Phone -->
-                        <div class="mb-5">
-                            <label for="phoneNumber" class="font-weight-bold">Phone Number</label>
-                            <div class="input-group">
-                                <div>
-                                    (469) 555-4516
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
+            <!-- Confirmation Modal -->
+            <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            The account has been deleted.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+            <!-- Set columns and top-margin -->
+            <div class="row py-5">
+                <!-- First Col -->
+                <div class="col-md-4 order-md-2">
+                    <!-- Posted Jobs Scrollable Box -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="text-center mb-4">Staff Accounts</h2>
+                                <div class="scrollable-box" style="max-height: 530px;overflow-y: auto;">
+                                    <div class="list-group" id="itemList">
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action clickable-job-item">123
+                                            - Diogo Benetti Fae Rodrigues</a>
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action clickable-job-item">456 -
+                                            Sujana Daniel Chirstopher</a>
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action clickable-job-item">789 -
+                                            Rishitha Cherukuri</a>
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action clickable-job-item">123
+                                            - Diogo Benetti Fae Rodrigues</a>
+                                        <a href="#"
+                                            class="list-group-item list-group-item-action clickable-job-item">123
+                                            - Diogo Benetti Fae Rodrigues</a>
+
+                                        <!-- Add more items as needed -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Second Col -->
+                <div class="col-md-4 order-md-2">
+                    <!-- Username -->
+                    <div class="mb-5">
+                        <label for="username" class="font-weight-bold">Username</label>
+                        <div class="input-group">
+                            <div>
+                                diogo_fae
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Staff id -->
+                    <div class="mb-5">
+                        <label for="staffId" class="font-weight-bold">Staff id</label>
+                        <div class="input-group">
+                            <div>
+                                123
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Name -->
+                    <div class="row">
+                        <div class="col-md-4 mb-5">
+                            <label for="firstName" class="font-weight-bold">First Name</label>
+                            <div>
+                                Diogo
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-5">
+                            <label for="lastName" class="font-weight-bold">Last Name</label>
+                            <div>
+                                Benetti Fae Rodrigues
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="mb-5">
+                        <label for="email" class="font-weight-bold">Email</label>
+                        <div class="input-group">
+                            <div>
+                                drodrigues@smu.edu
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Phone -->
+                    <div class="mb-5">
+                        <label for="phoneNumber" class="font-weight-bold">Phone Number</label>
+                        <div class="input-group">
+                            <div>
+                                (469) 555-4516
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="container-fluid mt-0">
+                <div class="col-md- order-md-1 d-flex justify-content-center">
+                    <button class="btn btn-success" type="button" modal-name="delete"
+                        onclick="showCustomModal(this.getAttribute('modal-name'))">Delete</button>
+                </div>
+            </div>
+
         </div>
-
-
     </div>
-    <!-- Main Col END -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -300,6 +297,7 @@
             if (inputsValid && categorytable.rows.length >= 3) {
                 // If all inputs are valid, show the modal
                 $('#exampleModal').modal('show');
+
             } else {
                 // If any input is not valid, handle the validation error (e.g., display an error message)
                 form.classList.add('was-validated');
@@ -308,6 +306,7 @@
                 }
             }
         }
+
 
         function showCustomModal(modal_id) {
             $(`#${modal_id}`).modal('show');
