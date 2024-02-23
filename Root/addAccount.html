@@ -161,10 +161,9 @@
                         <!-- Phone -->
                         <div class="mb-5">
                             <label for="phoneNumber" class="font-weight-bold">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" required placeholder="123-456-7890"
-                                value="" oninput="formatPhoneNumber(this)" maxlength="12"
-                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                title="Please enter a valid phone number (e.g., 123-456-7890)">
+                            <input type="text" class="form-control" id="phoneNumber" required placeholder="(123) 456-7890"
+                                value="" oninput="formatPhoneNumber(this)" maxlength="14"
+                                pattern="[(0-9)]{4}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number (e.g., (123) 456-7890)">
                             <div class="invalid-feedback">
                                 Please enter a valid phone number.
                             </div>
@@ -353,7 +352,7 @@
         function formatPhoneNumber(input) {
             // Remove all non-numeric characters
             var phoneNumber = input.value.replace(/\D/g, '');
-
+            
             // Check if the input value is empty or not a number
             if (!phoneNumber || isNaN(phoneNumber)) {
                 input.value = ''; // Clear the input field
@@ -363,7 +362,13 @@
             // Format the phone number with hyphens
             var formattedPhoneNumber = '';
             for (var i = 0; i < phoneNumber.length; i++) {
-                if (i === 3 || i === 6) {
+                if(i === 0){
+                    formattedPhoneNumber += '(';
+                }
+                if(i === 3){
+                    formattedPhoneNumber += ') ';
+                }
+                if (i === 6) {
                     formattedPhoneNumber += '-';
                 }
                 formattedPhoneNumber += phoneNumber[i];

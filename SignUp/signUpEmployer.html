@@ -86,7 +86,7 @@
                                     <input type="text" class="form-control" id="address" placeholder="1234 Main St"
                                         value="" required>
                                     <div class="invalid-feedback">
-                                        Please enter a address.
+                                        Please enter the address.
                                     </div>
                                 </div>
                                 <!-- Address 2 -->
@@ -102,6 +102,9 @@
                                         <label for="city" class="font-weight-bold">City</label>
                                         <input type="text" class="form-control" id="city" placeholder="City" value=""
                                             required>
+                                        <div class="invalid-feedback">
+                                            Please enter a city.
+                                        </div>
                                     </div>
                                     <div class="col-md-4 mb-5">
                                         <label for="state" class="font-weight-bold">State</label>
@@ -158,11 +161,14 @@
                                             <option>Wisconsin</option>
                                             <option>Wyoming</option>
                                         </select>
+                                        <div class="invalid-feedback">
+                                            Please select a state.
+                                        </div>
                                     </div>
                                     <div class="col-md-4 mb-5">
                                         <label for="zipCode" class="font-weight-bold">Zip Code</label>
-                                        <input type="number" class="form-control" id="zipCode" placeholder="Zip Code"
-                                            value="" required>
+                                        <input type="text" class="form-control" id="zipCode" placeholder="Zip Code"
+                                            value="" required maxlength="5" onkeypress="return blockNegative(event)">
                                         <div class="invalid-feedback">
                                             Please enter a zip code.
                                         </div>
@@ -173,6 +179,9 @@
                                     <label for="companyName" class="font-weight-bold">Company Name</label>
                                     <input type="text" class="form-control" id="companyName" placeholder="" value=""
                                         required>
+                                    <div class="invalid-feedback">
+                                        Please enter the company name.
+                                    </div>
                                 </div>
                                 <!-- Continue Buttons -->
                                 <div class="row">
@@ -188,7 +197,6 @@
                 </div>
             </div>
         </div>
-
 
     </div>
     <!-- Main Col END -->
@@ -232,22 +240,7 @@
 
 
         })();
-    </script>
-
-    <script>
-        $("#datepickerStart").datepicker({
-            format: "mm-yyyy",
-            startView: "months",
-            minViewMode: "months"
-        });
-        $("#datepickerEnd").datepicker({
-            format: "mm-yyyy",
-            startView: "months",
-            minViewMode: "months"
-        });
-    </script>
-
-    <script>
+        
         // Fixes dropdown menu not showing when clicking the button
         $('.dropdown').click(function () {
             $('.dropdown-menu').toggleClass('show');
@@ -258,22 +251,6 @@
                 $('.dropdown-menu').removeClass('show');
             }
         });
-    </script>
-
-    <script>
-        function validateAndShowModal() {
-            // Validate your inputs here, for example:
-            var inputsValid = validateInputs();
-            var form = document.querySelector('.needs-validation');
-
-            if (inputsValid) {
-                // If all inputs are valid, show the modal
-                $('#exampleModal').modal('show');
-            } else {
-                // If any input is not valid, handle the validation error (e.g., display an error message)
-                form.classList.add('was-validated');
-            }
-        }
 
         function validateAndContinue(href) {
             // Validate inputs here
@@ -307,46 +284,22 @@
             // This function is called when the "Save changes" button inside the modal is clicked
             // Close the modal if needed: $('#exampleModal').modal('hide');
         }
-    </script>
 
-    <script>
-        var count = 1;
-
-        function add() {
-            var category = document.getElementById("categoryname").value.trim();
-            var skills = document.getElementById("categoryskills").value.trim();
-
-            // Check if both categoryname and categoryskills are not empty
-            if (category !== "" && skills !== "") {
-                var table = document.getElementById("categorytable");
-
-                // Add a new row at the bottom of the table
-                var row = table.insertRow(-1);
-
-                var col1 = row.insertCell(0);
-                var col2 = row.insertCell(1);
-                col1.innerHTML = category;
-                col2.innerHTML = skills;
-
-                // Reset the category field and skills fields to be blank
-                document.getElementById("categoryname").value = "";
-                document.getElementById("categoryskills").value = "";
-
-                // Update the count to the new row count
-                count = table.rows.length;
+        function blockNegative(event) {
+        // Get the key code of the pressed key
+            var keyCode = event.which || event.keyCode;
+            
+            // Allow only digits (0-9) or the backspace key (8)
+            if ((keyCode >= 48 && keyCode <= 57) || keyCode === 8 || keyCode === 46){
+                return true; // Allow input
+            } else if (keyCode === 45) { // Check for the minus sign (-)
+                event.preventDefault(); // Prevent input of the minus sign
+                return false;
+            } else {
+                return false; // Block input of other characters
             }
         }
-
-        function deleteLastRow() {
-            var table = document.getElementById("categorytable");
-            var rowCount = table.rows.length;
-
-            // Check if there is at least one row to delete
-            if (rowCount > 1) {
-                table.deleteRow(rowCount - 1);
-                count--; // Decrement the count to maintain accurate row count
-            }
-        }
+        
     </script>
 
 </body>

@@ -210,7 +210,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="zip" class="font-weight-bold">Zip</label>
-                                <input type="text" class="form-control" id="zip" placeholder="">
+                                <input type="text" class="form-control" id="zip" placeholder="" maxlength="5" required onkeypress="return blockNegative(event)">
                                 <div class="invalid-feedback">
                                     Please enter the zip code.
                                 </div>
@@ -219,8 +219,8 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="phone" class="font-weight-bold">Phone</label>
-                                <input type="text" class="form-control" id="phone" placeholder="123-456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="12"
-                                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number (e.g., 123-456-7890)">
+                                <input type="text" class="form-control" id="phone" placeholder="(123) 456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="14"
+                                    pattern="[(0-9)]{4}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number (e.g., (123) 456-7890)">
                                 <div class="invalid-feedback">
                                     Please enter a phone number.
                                 </div>
@@ -349,72 +349,72 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
+        (function() {
+            'use strict';
 
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
+            window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
 
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+                }, false);
+            });
             }, false);
-          });
-        }, false);
 
-        $("#datepicker").datepicker( {
-            format: "mm-yyyy",
-            startView: "months", 
-            minViewMode: "months"
-        });
+            $("#datepicker").datepicker( {
+                format: "mm-yyyy",
+                startView: "months", 
+                minViewMode: "months"
+            });
 
-      })();
+        })();
 
-      var count = 1;
+        var count = 1;
 
-function add() {
-    var category = document.getElementById("categoryname").value.trim();
-    var skills = document.getElementById("categoryskills").value.trim();
+        function add() {
+            var category = document.getElementById("categoryname").value.trim();
+            var skills = document.getElementById("categoryskills").value.trim();
 
-    // Check if both categoryname and categoryskills are not empty
-    if (category !== "" && skills !== "") {
-        var table = document.getElementById("categorytable");
+            // Check if both categoryname and categoryskills are not empty
+            if (category !== "" && skills !== "") {
+                var table = document.getElementById("categorytable");
 
-        // Add a new row at the bottom of the table
-        var row = table.insertRow(-1);
+                // Add a new row at the bottom of the table
+                var row = table.insertRow(-1);
 
-        var col1 = row.insertCell(0);
-        var col2 = row.insertCell(1);
-        col1.innerHTML = category;
-        col2.innerHTML = skills;
+                var col1 = row.insertCell(0);
+                var col2 = row.insertCell(1);
+                col1.innerHTML = category;
+                col2.innerHTML = skills;
 
-        // Reset the category field and skills fields to be blank
-        document.getElementById("categoryname").value = "";
-        document.getElementById("categoryskills").value = "";
+                // Reset the category field and skills fields to be blank
+                document.getElementById("categoryname").value = "";
+                document.getElementById("categoryskills").value = "";
 
-        // Update the count to the new row count
-        count = table.rows.length;
-    }
-}
+                // Update the count to the new row count
+                count = table.rows.length;
+            }
+        }
 
-function deleteLastRow() {
-    var table = document.getElementById("categorytable");
-    var rowCount = table.rows.length;
+        function deleteLastRow() {
+            var table = document.getElementById("categorytable");
+            var rowCount = table.rows.length;
 
-    // Check if there is at least one row to delete
-    if (rowCount > 1) {
-        table.deleteRow(rowCount - 1);
-        count--; // Decrement the count to maintain accurate row count
-    }
-}
+            // Check if there is at least one row to delete
+            if (rowCount > 1) {
+                table.deleteRow(rowCount - 1);
+                count--; // Decrement the count to maintain accurate row count
+            }
+        }
 
-function validateAndShowModal() {
+        function validateAndShowModal() {
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();
             var form = document.querySelector('.needs-validation');
@@ -445,7 +445,13 @@ function validateAndShowModal() {
             // Format the phone number with hyphens
             var formattedPhoneNumber = '';
             for (var i = 0; i < phoneNumber.length; i++) {
-                if (i === 3 || i === 6) {
+                if(i === 0){
+                    formattedPhoneNumber += '(';
+                }
+                if(i === 3){
+                    formattedPhoneNumber += ') ';
+                }
+                if (i === 6) {
                     formattedPhoneNumber += '-';
                 }
                 formattedPhoneNumber += phoneNumber[i];
@@ -453,6 +459,21 @@ function validateAndShowModal() {
 
             // Update the input value with the formatted phone number
             input.value = formattedPhoneNumber;
+        }
+
+        function blockNegative(event) {
+        // Get the key code of the pressed key
+            var keyCode = event.which || event.keyCode;
+            
+            // Allow only digits (0-9) or the backspace key (8)
+            if ((keyCode >= 48 && keyCode <= 57) || keyCode === 8 || keyCode === 46){
+                return true; // Allow input
+            } else if (keyCode === 45) { // Check for the minus sign (-)
+                event.preventDefault(); // Prevent input of the minus sign
+                return false;
+            } else {
+                return false; // Block input of other characters
+            }
         }
         
     </script>
