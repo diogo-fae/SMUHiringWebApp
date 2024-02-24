@@ -396,19 +396,31 @@
                 });
             }, false);
 
+            $('#datepickerStart').datepicker({
+                format: 'mm-yyyy',
+                autoclose: true,
+            }).on('changeDate', function (selected) {
+                var minDate = new Date(selected.date.valueOf());
+                $('#datepickerEnd').datepicker('setStartDate', minDate);
+            });
+
+            $('#datepickerEnd').datepicker({
+                format: 'mm-yyyy',
+                autoclose: true,
+            });
+        
+            $("#datepickerStart").datepicker({
+                format: "mm-yyyy",
+                startView: "months",
+                minViewMode: "months"
+            });
+            $("#datepickerEnd").datepicker({
+                format: "mm-yyyy",
+                startView: "months",
+                minViewMode: "months"
+            });
 
         })();
-        
-        $("#datepickerStart").datepicker({
-            format: "mm-yyyy",
-            startView: "months",
-            minViewMode: "months"
-        });
-        $("#datepickerEnd").datepicker({
-            format: "mm-yyyy",
-            startView: "months",
-            minViewMode: "months"
-        });
         
         // Fixes dropdown menu not showing when clicking the button
         $('.dropdown').click(function () {
