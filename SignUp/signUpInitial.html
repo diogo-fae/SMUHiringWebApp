@@ -24,6 +24,11 @@
         .table-wrapper-scroll-y {
             display: block;
         }
+
+        .extra-text{
+            font-size: 10px;
+            margin-top: 5px;;
+        }
     </style>
 </head>
 
@@ -85,8 +90,8 @@
                                     <label for="username" class="font-weight-bold">Username</label>
                                     <input type="text" class="form-control" id="username" placeholder="" value=""
                                         required pattern="[a-zA-Z].{7,}">
-                                    <b-form-text id="input-live-help">Username must start with an alphabet and be at
-                                        least 8 characters long.</b-form-text>
+                                    <div id="input-live-help" class="extra-text">Username must start with an alphabet and be at
+                                        least 8 characters long.</div>
                                     <div class="invalid-feedback">
                                         If username already meets requirements, please enter a different username
                                         because it already exists.
@@ -99,7 +104,7 @@
                                         <input type="text" class="form-control" id="firstName" placeholder="" value=""
                                             required>
                                         <div class="invalid-feedback">
-                                            Please enter the contact person's last name.
+                                            Please enter the first name.
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-5">
@@ -107,7 +112,7 @@
                                         <input type="text" class="form-control" id="lastName" placeholder="" value=""
                                             required>
                                         <div class="invalid-feedback">
-                                            Please enter the contact person's last name.
+                                            Please enter the last name.
                                         </div>
                                     </div>
                                 </div>
@@ -194,22 +199,7 @@
 
 
         })();
-    </script>
-
-    <script>
-        $("#datepickerStart").datepicker({
-            format: "mm-yyyy",
-            startView: "months",
-            minViewMode: "months"
-        });
-        $("#datepickerEnd").datepicker({
-            format: "mm-yyyy",
-            startView: "months",
-            minViewMode: "months"
-        });
-    </script>
-
-    <script>
+        
         // Fixes dropdown menu not showing when clicking the button
         $('.dropdown').click(function () {
             $('.dropdown-menu').toggleClass('show');
@@ -220,9 +210,7 @@
                 $('.dropdown-menu').removeClass('show');
             }
         });
-    </script>
-
-    <script>
+        
         function validateAndShowModal() {
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();
@@ -268,47 +256,7 @@
             // Implement the logic to save changes here
             // This function is called when the "Save changes" button inside the modal is clicked
             // Close the modal if needed: $('#exampleModal').modal('hide');
-        }
-    </script>
-
-    <script>
-        var count = 1;
-
-        function add() {
-            var category = document.getElementById("categoryname").value.trim();
-            var skills = document.getElementById("categoryskills").value.trim();
-
-            // Check if both categoryname and categoryskills are not empty
-            if (category !== "" && skills !== "") {
-                var table = document.getElementById("categorytable");
-
-                // Add a new row at the bottom of the table
-                var row = table.insertRow(-1);
-
-                var col1 = row.insertCell(0);
-                var col2 = row.insertCell(1);
-                col1.innerHTML = category;
-                col2.innerHTML = skills;
-
-                // Reset the category field and skills fields to be blank
-                document.getElementById("categoryname").value = "";
-                document.getElementById("categoryskills").value = "";
-
-                // Update the count to the new row count
-                count = table.rows.length;
-            }
-        }
-
-        function deleteLastRow() {
-            var table = document.getElementById("categorytable");
-            var rowCount = table.rows.length;
-
-            // Check if there is at least one row to delete
-            if (rowCount > 1) {
-                table.deleteRow(rowCount - 1);
-                count--; // Decrement the count to maintain accurate row count
-            }
-        }
+        }        
 
         function formatPhoneNumber(input) {
             // Remove all non-numeric characters

@@ -361,35 +361,7 @@
             });
 
         })();
-
-        var count = 1;
-        function add() {
-            var category = document.getElementById("categoryname").value;
-            var skills = document.getElementById("categoryskills").value;
-            var table = document.getElementById("categorytable");
-            var row = table.insertRow(count++);
-            var col1 = row.insertCell(0);
-            var col2 = row.insertCell(1);
-            col1.innerHTML = category;
-            col2.innerHTML = skills;
-            document.getElementById("categoryname").value = "";
-            document.getElementById("categoryskills").value = "";
-        }
-
-        var prevempcount = 1;
-        function addPreviousEmploymentSkills() {
-            var companyname = document.getElementById("companyname").value;
-            var companyskills = document.getElementById("companyskills").value;
-            var prevemptable = document.getElementById("prevemptable");
-            var row = prevemptable.insertRow(prevempcount++);
-            var col1 = row.insertCell(0);
-            var col2 = row.insertCell(1);
-            col1.innerHTML = companyname;
-            col2.innerHTML = companyskills;
-            document.getElementById("companyname").value = "";
-            document.getElementById("companyskills").value = "";
-        }
-
+        
         $(document).ready(function () {
             // Set the first item to be clicked when the page loads
             $(".clickable-job-item:first").addClass("active");

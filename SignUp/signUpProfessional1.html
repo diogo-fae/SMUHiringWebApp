@@ -86,7 +86,7 @@
                                     <input type="text" class="form-control" id="address" placeholder="1234 Main St"
                                         value="" required>
                                     <div class="invalid-feedback">
-                                        Please enter a address.
+                                        Please enter the address.
                                     </div>
                                 </div>
                                 <!-- Address 2 -->
@@ -103,7 +103,7 @@
                                         <input type="text" class="form-control" id="city" placeholder="City" value=""
                                             required>
                                         <div class="invalid-feedback">
-                                            Please enter the city.
+                                            Please enter a valid city.
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-5">
@@ -185,6 +185,9 @@
                                             <option>Graduate</option>
                                             <option>PhD</option>
                                         </select>
+                                        <div class="invalid-feedback">
+                                            Please select the highest degree completed.
+                                        </div>
                                     </div>
                                     <div class="col-md-6 mb-5">
                                         <label for="degreeDate" class="font-weight-bold">Degree Completion</label>
@@ -203,6 +206,9 @@
                                     <label for="institution" class="font-weight-bold">Institution Name</label>
                                     <input type="text" class="form-control" id="institution" placeholder="" value=""
                                         required>
+                                    <div class="invalid-feedback">
+                                        Please enter the institution name.
+                                    </div>
                                 </div>
                                 <!-- Continue Buttons -->
                                 <div class="row">
@@ -262,9 +268,7 @@
 
 
         })();
-    </script>
-
-    <script>
+        
         $("#datepickerStart").datepicker({
             format: "mm-yyyy",
             startView: "months",
@@ -280,9 +284,7 @@
             startView: "months",
             minViewMode: "months"
         });
-    </script>
-
-    <script>
+        
         // Fixes dropdown menu not showing when clicking the button
         $('.dropdown').click(function () {
             $('.dropdown-menu').toggleClass('show');
@@ -293,9 +295,7 @@
                 $('.dropdown-menu').removeClass('show');
             }
         });
-    </script>
 
-    <script>
         function validateAndShowModal() {
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();
@@ -341,46 +341,6 @@
             // Implement the logic to save changes here
             // This function is called when the "Save changes" button inside the modal is clicked
             // Close the modal if needed: $('#exampleModal').modal('hide');
-        }
-    </script>
-
-    <script>
-        var count = 1;
-
-        function add() {
-            var category = document.getElementById("categoryname").value.trim();
-            var skills = document.getElementById("categoryskills").value.trim();
-
-            // Check if both categoryname and categoryskills are not empty
-            if (category !== "" && skills !== "") {
-                var table = document.getElementById("categorytable");
-
-                // Add a new row at the bottom of the table
-                var row = table.insertRow(-1);
-
-                var col1 = row.insertCell(0);
-                var col2 = row.insertCell(1);
-                col1.innerHTML = category;
-                col2.innerHTML = skills;
-
-                // Reset the category field and skills fields to be blank
-                document.getElementById("categoryname").value = "";
-                document.getElementById("categoryskills").value = "";
-
-                // Update the count to the new row count
-                count = table.rows.length;
-            }
-        }
-
-        function deleteLastRow() {
-            var table = document.getElementById("categorytable");
-            var rowCount = table.rows.length;
-
-            // Check if there is at least one row to delete
-            if (rowCount > 1) {
-                table.deleteRow(rowCount - 1);
-                count--; // Decrement the count to maintain accurate row count
-            }
         }
 
         function blockNegative(event) {

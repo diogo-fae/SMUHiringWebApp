@@ -238,7 +238,7 @@
                             <label for="Address" class="font-weight-bold">Address </label>
                             <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="">
                             <div class="invalid-feedback">
-                                Please enter a address.
+                                Please enter the address.
                             </div>
                         </div>
                         <!-- Address 2 -->
@@ -253,7 +253,7 @@
                                 <label for="city" class="font-weight-bold">City</label>
                                 <input type="text" class="form-control" id="city" placeholder="City" value="">
                                 <div class="invalid-feedback">
-                                    Please enter the city.
+                                    Please enter a valid city.
                                 </div>
                             </div>
                             <div class="col-md-4 mb-5">
@@ -369,9 +369,7 @@
                 });
             }, false);
         })();
-    </script>
-
-    <script>
+        
         // Fixes dropdown menu not showing when clicking the button
         $('.dropdown').click(function () {
             $('.dropdown-menu').toggleClass('show');
@@ -388,9 +386,7 @@
             startView: "months",
             minViewMode: "months"
         });
-    </script>
-
-    <script>
+        
         function validateAndShowModal() {
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();

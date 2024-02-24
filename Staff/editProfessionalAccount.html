@@ -197,7 +197,7 @@
                                 <label for="city" class="font-weight-bold">City</label>
                                 <input type="text" class="form-control" id="zip" placeholder="">
                                 <div class="invalid-feedback">
-                                    Please enter the city.
+                                    Please enter a valid city.
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
@@ -411,9 +411,7 @@
                 });
             }, false);
         })();
-    </script>
-
-    <script>
+        
         // Fixes dropdown menu not showing when clicking the button
         $('.dropdown').click(function () {
             $('.dropdown-menu').toggleClass('show');
@@ -430,9 +428,7 @@
             startView: "months",
             minViewMode: "months"
         });
-    </script>
-
-    <script>
+        
         function validateAndShowModal() {
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();
@@ -472,9 +468,7 @@
             // This function is called when the "Save changes" button inside the modal is clicked
             // Close the modal if needed: $('#exampleModal').modal('hide');
         }
-    </script>
-
-    <script>
+        
         var count = 1;
 
         function add() {
