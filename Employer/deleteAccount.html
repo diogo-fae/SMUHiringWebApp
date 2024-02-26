@@ -127,144 +127,30 @@
                 <!-- Set columns and top-margin -->
                 <div class="row py-5">
                     <!-- Spacing Col -->
-                    <div class="col-md-1 order-md-1">
+                    <div class="col-md-4 order-md-1">
                     </div>
                     <!-- First Col -->
-                    <div class="col-md-5 order-md-2">
-                        <!-- Name -->
-                        <div class="row">
-                            <div class="col-md-6 mb-5">
-                                <label for="firstName" class="font-weight-bold">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                                <div class="invalid-feedback">
-                                    Please enter the first name.
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-5">
-                                <label for="lastName" class="font-weight-bold">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Please enter the last name.
-                                </div>
+                    <div class="col-md-4 order-md-2">
+                        <!-- Username -->
+                        <div class="mb-5">
+                            <label for="username" class="font-weight-bold">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Please enter a registered username.
                             </div>
                         </div>
-                        <!-- Email -->
+                        <!-- Password -->
                         <div class="mb-5">
-                            <label for="email" class="font-weight-bold">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="you@example.com" value=""
-                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                            <label for="password" class="font-weight-bold">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="" value="" required>
                             <div class="invalid-feedback">
-                                Please enter a valid email.
-                            </div>
-                        </div>
-                        <!-- Phone -->
-                        <div class="mb-5">
-                            <label for="phoneNumber" class="font-weight-bold">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" value="" required
-                                placeholder="(123) 456-7890" oninput="formatPhoneNumber(this)" maxlength="14"
-                                pattern="^\(\d{3}\) \d{3}-\d{4}$"
-                                title="Please enter a valid phone number (e.g., (123) 456-7890)">
-                            <div class="invalid-feedback">
-                                Please enter a valid phone number.
+                                Please enter the correct password.
                             </div>
                         </div>
                     </div>
-                    <!-- Second Col -->
-                    <div class="col-md-5 order-md-2">
-                        <!-- Address -->
-                        <div class="mb-5">
-                            <label for="Address" class="font-weight-bold">Address </label>
-                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" value=""
-                                required>
-                            <div class="invalid-feedback">
-                                Please enter the address.
-                            </div>
-                        </div>
-                        <!-- Address 2 -->
-                        <div class="mb-5">
-                            <label for="address2" class="font-weight-bold">Address 2 <span
-                                    class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite"
-                                value="">
-                        </div>
-                        <!-- Address 3 -->
-                        <div class="row">
-                            <div class="col-md-4 mb-5">
-                                <label for="city" class="font-weight-bold">City</label>
-                                <input type="text" class="form-control" id="city" placeholder="City" value="" required>
-                                <div class="invalid-feedback">
-                                    Please enter a valid city.
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-5">
-                                <label for="state" class="font-weight-bold">State</label>
-                                <select class="custom-select d-block w-100" id="state" required>
-                                    <option value="">Choose...</option>
-                                    <option>Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>Arizona</option>
-                                    <option>Arkansas</option>
-                                    <option>California</option>
-                                    <option>Colorado</option>
-                                    <option>Connecticut</option>
-                                    <option>Delaware</option>
-                                    <option>Florida</option>
-                                    <option>Georgia</option>
-                                    <option>Hawaii</option>
-                                    <option>Idaho</option>
-                                    <option>Illinois</option>
-                                    <option>Indiana</option>
-                                    <option>Iowa</option>
-                                    <option>Kansas</option>
-                                    <option>Kentucky</option>
-                                    <option>Louisiana</option>
-                                    <option>Maine</option>
-                                    <option>Maryland</option>
-                                    <option>Massachusetts</option>
-                                    <option>Michigan</option>
-                                    <option>Minnesota</option>
-                                    <option>Mississippi</option>
-                                    <option>Missouri</option>
-                                    <option>Montana</option>
-                                    <option>Nebraska</option>
-                                    <option>Nevada</option>
-                                    <option>New Hampshire</option>
-                                    <option>New Jersey</option>
-                                    <option>New Mexico</option>
-                                    <option>New York</option>
-                                    <option>North Carolina</option>
-                                    <option>North Dakota</option>
-                                    <option>Ohio</option>
-                                    <option>Oklahoma</option>
-                                    <option>Oregon</option>
-                                    <option>Pennsylvania</option>
-                                    <option>Rhode Island</option>
-                                    <option>South Carolina</option>
-                                    <option>South Dakota</option>
-                                    <option>Tennessee</option>
-                                    <option>Texas</option>
-                                    <option>Utah</option>
-                                    <option>Vermont</option>
-                                    <option>Virginia</option>
-                                    <option>Washington</option>
-                                    <option>West Virginia</option>
-                                    <option>Wisconsin</option>
-                                    <option>Wyoming</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a state.
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-5">
-                                <label for="zipCode" class="font-weight-bold">Zip Code</label>
-                                <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" value=""
-                                    required maxlength="5" onkeypress="return blockNegative(event)" pattern="^\d{5}$">
-                                <div class="invalid-feedback">
-                                    Please enter a valid zip code.
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-4 order-md-3">
                     </div>
+
                 </div>
                 <!-- Request Button -->
                 <div class="container-fluid text-center">

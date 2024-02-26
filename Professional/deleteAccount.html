@@ -117,6 +117,10 @@
         <!-- Main Col -->
         <div class="col py-3">
             <form class="needs-validation" novalidate>
+                <!-- Instructions -->
+                <div class="container-fluid mt-0">
+                    <p class="text-center font-weight-bold">Fill in the correct details to request account deletion</p>
+                </div>
                 <!-- Set columns and top-margin -->
                 <div class="row py-5">
                     <!-- Spacing Col -->
@@ -124,23 +128,20 @@
                     </div>
                     <!-- First Col -->
                     <div class="col-md-4 order-md-2">
+                        <!-- Username -->
                         <div class="mb-5">
-                            <label for="email" class="font-weight-bold">Username</label>
-                            <input type="text" class="form-control" id="email" placeholder="you@example.com" value=""
-                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                            <label for="username" class="font-weight-bold">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="" value="" required>
                             <div class="invalid-feedback">
-                                Please enter a valid username.
+                                Please enter a registered username.
                             </div>
                         </div>
-                        <!-- Phone -->
+                        <!-- Password -->
                         <div class="mb-5">
-                            <label for="phoneNumber" class="font-weight-bold">Password</label>
-                            <input type="text" class="form-control" id="phoneNumber" required
-                                placeholder="(123) 456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="14"
-                                pattern="^\(\d{3}\) \d{3}-\d{4}$"
-                                title="Please enter a valid phone number (e.g., (123) 456-7890)">
+                            <label for="password" class="font-weight-bold">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="" value="" required>
                             <div class="invalid-feedback">
-                                Please enter the password.
+                                Please enter the correct password.
                             </div>
                         </div>
                     </div>
@@ -183,7 +184,7 @@
                                 </button>
                             </div>
                             <div class="modal-body text-center">
-                                Your Job matching has been initiated.
+                                Your Job matching has been requested.
                             </div>
                             <div class="modal-footer border-0">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

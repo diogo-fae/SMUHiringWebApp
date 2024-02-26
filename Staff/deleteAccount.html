@@ -153,67 +153,48 @@
                     </div>
                     <!-- First Col -->
                     <div class="col-md-4 order-md-2">
-                        <!-- Name -->
-                        <div class="row">
-                            <div class="col-md-6 mb-5">
-                                <label for="firstName" class="font-weight-bold">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                                <div class="invalid-feedback">
-                                    Please enter the contact person's last name.
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-5">
-                                <label for="lastName" class="font-weight-bold">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Please enter the contact person's last name.
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Email -->
+                        <!-- Username -->
                         <div class="mb-5">
-                            <label for="email" class="font-weight-bold">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="you@example.com" value=""
-                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                            <label for="username" class="font-weight-bold">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="" value="" required>
                             <div class="invalid-feedback">
-                                Please enter a valid email.
+                                Please enter a registered username.
                             </div>
                         </div>
-                        <!-- Phone -->
+                        <!-- Password -->
                         <div class="mb-5">
-                            <label for="phoneNumber" class="font-weight-bold">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" placeholder="(123) 456-7890"
-                                value="" oninput="formatPhoneNumber(this)" maxlength="14"
-                                pattern="^\(\d{3}\) \d{3}-\d{4}$"
-                                title="Please enter a valid phone number (e.g., (123) 456-7890)" required>
+                            <label for="password" class="font-weight-bold">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="" value="" required>
                             <div class="invalid-feedback">
-                                Please enter a valid phone number.
+                                Please enter the correct password.
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-4 order-md-3">
+                    </div>
 
-                        <div class="flex-d text-center">
-                            <button class="btn btn-danger center" type="button" onclick="validateAndShowModal()">Request
-                                Account Deletion</button>
-                        </div>
+                </div>
+                <!-- Request Button -->
+                <div class="container-fluid text-center">
+                    <button class="btn btn-danger center" type="button" onclick="validateAndShowModal()">Request
+                        Account Deletion</button>
+                </div>
 
-                        <!-- Confirmation Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        The account deletion request has been submitted.
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
+                <!-- Confirmation Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                The account deletion request has been submitted.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
