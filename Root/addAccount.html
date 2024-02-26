@@ -37,7 +37,7 @@
         </ul>
 
         <div class="navbar-header">
-            <div class="navbar-brand" href="#">Root Account</div>
+            <div class="navbar-brand" href="#">Add New Staff Account</div>
         </div>
 
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -53,8 +53,8 @@
             </li>
         </ul>
         <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html"
-                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html" style="color:white"><i
+                        class="fas fa-sign-in-alt"></i>
                     Logout</a></li>
         </ul>
     </nav>
@@ -66,8 +66,8 @@
             style="background-color: #343a40!important; padding-right: 0%;">
             <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
 
-                <a href="/Staff/editAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Staff/editAccount.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Add Account</span>
@@ -75,15 +75,15 @@
                 </a>
 
 
-                <a href="/Staff/browseStaffAccounts.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Staff/browseStaffAccounts.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Manage Staff Accounts</span>
                     </div>
                 </a>
-                <a href="/Staff/viewDeleteRequestsStaff.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Staff/viewDeleteRequestsStaff.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Review Staff Account Deletion Requests</span>
@@ -161,9 +161,10 @@
                         <!-- Phone -->
                         <div class="mb-5">
                             <label for="phoneNumber" class="font-weight-bold">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" required placeholder="(123) 456-7890"
-                                value="" oninput="formatPhoneNumber(this)" maxlength="14"
-                                pattern="[(0-9)]{4}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number (e.g., (123) 456-7890)">
+                            <input type="text" class="form-control" id="phoneNumber" required
+                                placeholder="(123) 456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="14"
+                                pattern="[(0-9)]{4}-[0-9]{3}-[0-9]{4}"
+                                title="Please enter a valid phone number (e.g., (123) 456-7890)">
                             <div class="invalid-feedback">
                                 Please enter a valid phone number.
                             </div>
@@ -233,7 +234,7 @@
             });
 
         })();
-        
+
         // Fixes dropdown menu not showing when clicking the button
         $('.dropdown').click(function () {
             $('.dropdown-menu').toggleClass('show');
@@ -244,7 +245,7 @@
                 $('.dropdown-menu').removeClass('show');
             }
         });
-        
+
         function validateAndShowModal() {
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();
@@ -295,7 +296,7 @@
         function formatPhoneNumber(input) {
             // Remove all non-numeric characters
             var phoneNumber = input.value.replace(/\D/g, '');
-            
+
             // Check if the input value is empty or not a number
             if (!phoneNumber || isNaN(phoneNumber)) {
                 input.value = ''; // Clear the input field
@@ -305,10 +306,10 @@
             // Format the phone number with hyphens
             var formattedPhoneNumber = '';
             for (var i = 0; i < phoneNumber.length; i++) {
-                if(i === 0){
+                if (i === 0) {
                     formattedPhoneNumber += '(';
                 }
-                if(i === 3){
+                if (i === 3) {
                     formattedPhoneNumber += ') ';
                 }
                 if (i === 6) {
