@@ -40,7 +40,7 @@
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Edit Professional Details</a>
+            <a class="navbar-brand" href="#">View Professional Account</a>
         </div>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
@@ -111,7 +111,8 @@
                     <div class="col-md-10 order-md-1 mb-2">
                     </div>
                     <div class="col-md-1 order-md-2" style="text-align: right;">
-                        <button type="submit" class="btn btn-secondary">Edit</button>
+                        <a type="button" class="btn btn-secondary"
+                            href="/Professional/editProfessionalDetails.html">Edit</a>
                     </div>
                 </div>
                 <div class="row py-5">
@@ -129,119 +130,48 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName" class="font-weight-bold">First name</label>
-                                <input type="text" class="form-control" id="address" placeholder="Sujana">
+                                <div>
+                                    Lorem
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="lastName" class="font-weight-bold">Last name</label>
-                                <input type="text" class="form-control" id="address" placeholder="Daniel">
+                                <div>
+                                    Ipsum
+                                </div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="address" class="font-weight-bold">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="1234 Main St">
-                            <div class="invalid-feedback">
-                                Please enter your shipping address.
-                            </div>
+                            <div>1234 Main St</div>
                         </div>
                         <div class="mb-3">
                             <label for="address2" class="font-weight-bold">Address 2 <span
                                     class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                            <div>N/A</div>
                         </div>
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="city" class="font-weight-bold">City</label>
-                                <input type="text" class="form-control" id="zip" placeholder="">
-                                <div class="invalid-feedback">
-                                    Please enter a valid city.
-                                </div>
+                                <div>Dallas</div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="state" class="font-weight-bold">State</label>
-                                <select class="custom-select d-block w-100" id="state">
-                                    <option value="">Choose...</option>
-                                    <option>Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>Arizona</option>
-                                    <option>Arkansas</option>
-                                    <option>California</option>
-                                    <option>Colorado</option>
-                                    <option>Connecticut</option>
-                                    <option>Delaware</option>
-                                    <option>Florida</option>
-                                    <option>Georgia</option>
-                                    <option>Hawaii</option>
-                                    <option>Idaho</option>
-                                    <option>Illinois</option>
-                                    <option>Indiana</option>
-                                    <option>Iowa</option>
-                                    <option>Kansas</option>
-                                    <option>Kentucky</option>
-                                    <option>Louisiana</option>
-                                    <option>Maine</option>
-                                    <option>Maryland</option>
-                                    <option>Massachusetts</option>
-                                    <option>Michigan</option>
-                                    <option>Minnesota</option>
-                                    <option>Mississippi</option>
-                                    <option>Missouri</option>
-                                    <option>Montana</option>
-                                    <option>Nebraska</option>
-                                    <option>Nevada</option>
-                                    <option>New Hampshire</option>
-                                    <option>New Jersey</option>
-                                    <option>New Mexico</option>
-                                    <option>New York</option>
-                                    <option>North Carolina</option>
-                                    <option>North Dakota</option>
-                                    <option>Ohio</option>
-                                    <option>Oklahoma</option>
-                                    <option>Oregon</option>
-                                    <option>Pennsylvania</option>
-                                    <option>Rhode Island</option>
-                                    <option>South Carolina</option>
-                                    <option>South Dakota</option>
-                                    <option>Tennessee</option>
-                                    <option>Texas</option>
-                                    <option>Utah</option>
-                                    <option>Vermont</option>
-                                    <option>Virginia</option>
-                                    <option>Washington</option>
-                                    <option>West Virginia</option>
-                                    <option>Wisconsin</option>
-                                    <option>Wyoming</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a state.
-                                </div>
+                                <div>TX</div>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="zip" class="font-weight-bold">Zip</label>
-                                <input type="text" class="form-control" id="zip" placeholder="" maxlength="5" required
-                                    onkeypress="return blockNegative(event)">
-                                <div class="invalid-feedback">
-                                    Please enter the zip code.
-                                </div>
+                                <div>75205</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="phone" class="font-weight-bold">Phone</label>
-                                <input type="text" class="form-control" id="phone" placeholder="(123) 456-7890" value=""
-                                    oninput="formatPhoneNumber(this)" maxlength="14"
-                                    pattern="[(0-9)]{4}-[0-9]{3}-[0-9]{4}"
-                                    title="Please enter a valid phone number (e.g., (123) 456-7890)">
-                                <div class="invalid-feedback">
-                                    Please enter a phone number.
-                                </div>
+                                <div>214-123-4567</div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="email" class="font-weight-bold">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com"
-                                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
-                                <div class="invalid-feedback">
-                                    Please enter an email address.
-                                </div>
+                                <div>example1@gmail.com</div>
                             </div>
                         </div>
                     </div>
@@ -249,61 +179,21 @@
                         <div class="mb-3">
                             <label for="institution" class="font-weight-bold">Name of the institution</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="institution"
-                                    placeholder="Name of the institution">
-                                <div class="invalid-feedback" style="width: 100%;">
-                                    Please enter the name of the institution.
-                                </div>
+                                <div>Southern Methodist University</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="hdc" class="font-weight-bold">Highest Degree Completed</label>
-                                <select class="custom-select d-block w-100" id="country">
-                                    <option value="">Choose...</option>
-                                    <option>Under graduate</option>
-                                    <option>Graduate</option>
-                                    <option>PhD</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please enter the Qualification.
-                                </div>
+                                <div>Under graduate</div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="dc" class="font-weight-bold">Degree Completion</label>
-                                <div class="input-group date" data-provide="datepicker" id="datepicker"
-                                    data-date-format="mm-yyyy">
-                                    <input type="text" class="form-control" readonly="readonly" name="date"
-                                        style="background-color: white;">
-                                    <div class="input-group-addon">
-                                        <span class="glyphicon glyphicon-th"></span>
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please enter the month and year of completion.
-                                </div>
+                                <div>05-2023</div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="qualifications" class="font-weight-bold">Qualifications</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="categoryname" placeholder="Category Name">
-                            </div>
-                            <div class="input-group" style="margin-top: 4%;">
-                                <input type="text" class="form-control" id="categoryskills" placeholder="Skills">
-                            </div>
-                            <div id="input-live-help" class="extra-text">Enter skills separated by a comma.</div>
-                            <div class="invalid-feedback" id="cat-table-invalid-feedback">Please enter at least 2
-                                categories.</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-9 mb-3">
-                                <button type="button" class="btn btn-outline-primary" onclick="add()">Add</button>
-                            </div>
-                            <div class="col-md-3 mb-3" style="text-align: right;">
-                                <button type="button" class="btn btn-outline-danger"
-                                    onclick="deleteLastRow()">Delete</button>
-                            </div>
                         </div>
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                             <table id="categorytable" class="table table-bordered">
