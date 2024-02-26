@@ -123,7 +123,7 @@
                             <label for="phoneNumber" class="font-weight-bold">Password</label>
                             <input type="text" class="form-control" id="phoneNumber" required
                                 placeholder="(123) 456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="14"
-                                pattern="[(0-9)]{4}-[0-9]{3}-[0-9]{4}"
+                                pattern="^\(\d{3}\) \d{3}-\d{4}$"
                                 title="Please enter a valid phone number (e.g., (123) 456-7890)">
                             <div class="invalid-feedback">
                                 Please enter the password.

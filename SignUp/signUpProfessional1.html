@@ -44,11 +44,11 @@
         </ul>
 
         <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html"
-                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html" style="color:white"><i
+                        class="fas fa-sign-in-alt"></i>
                     Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="/SignUp/signUpInitial.html"
-                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+            <li class="nav-item"><a class="nav-link" href="/SignUp/signUpInitial.html" style="color:white"><i
+                        class="fas fa-sign-in-alt"></i>
                     Sign Up</a></li>
         </ul>
     </nav>
@@ -168,9 +168,10 @@
                                     <div class="col-md-4 mb-5">
                                         <label for="zipCode" class="font-weight-bold">Zip Code</label>
                                         <input type="text" class="form-control" id="zipCode" placeholder="Zip Code"
-                                            value="" required maxlength="5" onkeypress="return blockNegative(event)">
+                                            value="" required maxlength="5" onkeypress="return blockNegative(event)"
+                                            pattern="^\d{5}$">
                                         <div class="invalid-feedback">
-                                            Please enter a zip code.
+                                            Please enter a valid zip code.
                                         </div>
                                     </div>
                                 </div>
@@ -213,8 +214,8 @@
                                 <!-- Continue Buttons -->
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <button href="/SignUp/signUpProfessional2.html"
-                                            type="button" class="btn btn-success" id="continueBtnP"
+                                        <button href="/SignUp/signUpProfessional2.html" type="button"
+                                            class="btn btn-success" id="continueBtnP"
                                             onclick="validateAndContinue(this.getAttribute('href'))">Continue</button>
                                     </div>
                                 </div>
@@ -268,7 +269,7 @@
 
 
         })();
-        
+
         $("#datepickerStart").datepicker({
             format: "mm-yyyy",
             startView: "months",
@@ -284,7 +285,7 @@
             startView: "months",
             minViewMode: "months"
         });
-        
+
         // Fixes dropdown menu not showing when clicking the button
         $('.dropdown').click(function () {
             $('.dropdown-menu').toggleClass('show');
@@ -344,11 +345,11 @@
         }
 
         function blockNegative(event) {
-        // Get the key code of the pressed key
+            // Get the key code of the pressed key
             var keyCode = event.which || event.keyCode;
-            
+
             // Allow only digits (0-9) or the backspace key (8)
-            if ((keyCode >= 48 && keyCode <= 57) || keyCode === 8 || keyCode === 46){
+            if ((keyCode >= 48 && keyCode <= 57) || keyCode === 8 || keyCode === 46) {
                 return true; // Allow input
             } else if (keyCode === 45) { // Check for the minus sign (-)
                 event.preventDefault(); // Prevent input of the minus sign

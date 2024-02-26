@@ -24,7 +24,8 @@
         .table-wrapper-scroll-y {
             display: block;
         }
-        .extra-text{
+
+        .extra-text {
             font-size: 10px;
             margin-top: 5px;
         }
@@ -57,8 +58,8 @@
             </li>
         </ul>
         <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html"
-                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html" style="color:white"><i
+                        class="fas fa-sign-in-alt"></i>
                     Logout</a></li>
         </ul>
     </nav>
@@ -69,50 +70,50 @@
         <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2"
             style="background-color: #343a40!important; padding-right: 0%;">
             <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
-                <a href="/Employer/viewAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Employer/viewAccount.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">View Account</span>
                     </div>
                 </a>
-                <a href="/Employer/editAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Employer/editAccount.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Edit Account</span>
                     </div>
                 </a>
-                <a href="/Employer/browseJobs.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Employer/browseJobs.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Browse Job Descriptions</span>
                     </div>
                 </a>
-                <a href="/Employer/postJob.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Employer/postJob.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Post New Job Description</span>
                     </div>
                 </a>
-                <a href="/Employer/payment.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Employer/payment.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Make Payment</span>
                     </div>
                 </a>
-                <a href="/Employer/changePassword.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Employer/changePassword.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Change Password</span>
                     </div>
                 </a>
-                <a href="/Employer/deleteAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a href="/Employer/deleteAccount.html" class="bg-dark list-group-item list-group-item-action"
+                    style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Delete Account</span>
@@ -192,7 +193,7 @@
                         <div class="mb-5">
                             <label for="supervisorEmail" class="font-weight-bold">Supervisor Email</label>
                             <input type="text" class="form-control" id="supervisorEmail" placeholder="you@example.com"
-                                value="" required  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                                value="" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
                             <div class="invalid-feedback">
                                 Please enter a valid email.
                             </div>
@@ -200,8 +201,10 @@
                         <!-- Supervisor Phone Number -->
                         <div class="mb-5">
                             <label for="supervisorPhoneNumber" class="font-weight-bold">Supervisor Phone Number</label>
-                            <input type="text" class="form-control" id="supervisorPhoneNumber" placeholder="(123) 456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="14"
-                                pattern="[(0-9)]{4}-[0-9]{3}-[0-9]{4}" title="Please enter a valid phone number (e.g., (123) 456-7890)" required>
+                            <input type="text" class="form-control" id="supervisorPhoneNumber"
+                                placeholder="(123) 456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="14"
+                                pattern="^\(\d{3}\) \d{3}-\d{4}$"
+                                title="Please enter a valid phone number (e.g., (123) 456-7890)" required>
                             <div class="invalid-feedback">
                                 Please enter a valid phone number.
                             </div>
@@ -209,7 +212,8 @@
                         <!-- Pay per Hour -->
                         <div class="mb-5">
                             <label for="payPerHour" class="font-weight-bold">Pay per Hour</label>
-                            <input type="text" class="form-control" id="payPerHour" placeholder="" value="" required onkeypress="return blockNegative(event)" pattern="^\d+(\.\d{0,2})?$">
+                            <input type="text" class="form-control" id="payPerHour" placeholder="" value="" required
+                                onkeypress="return blockNegative(event)" pattern="^\d+(\.\d{0,2})?$">
                             <div class="invalid-feedback">
                                 Please enter a valid value.
                             </div>
