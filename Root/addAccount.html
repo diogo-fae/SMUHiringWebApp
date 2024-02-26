@@ -126,7 +126,8 @@
                         <div class="mb-5">
                             <label for="username" class="font-weight-bold">Username</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="userName" placeholder="" value="" required>
+                                <input type="text" class="form-control" id="userName" placeholder="" value="" required
+                                    pattern="[a-zA-Z].{7,}">
                                 <div class="invalid-feedback">
                                     Please enter your user name.
                                 </div>
@@ -152,7 +153,7 @@
                         <!-- Email -->
                         <div class="mb-5">
                             <label for="email" class="font-weight-bold">Email</label>
-                            <input type="text" class="form-control" id="email" placeholder="you@example.com" value=""
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com" value=""
                                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email.
