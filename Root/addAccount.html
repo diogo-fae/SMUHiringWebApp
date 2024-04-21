@@ -7,13 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
+    <link rel="canonical" class="page-redirect" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link class="page-redirect" href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
+    <link class="page-redirect" href="form-validation.css" rel="stylesheet">
     <style>
         .my-custom-scrollbar {
             position: relative;
@@ -37,21 +37,13 @@
         </ul>
 
         <div class="navbar-header">
-            <div class="navbar-brand" href="#">Add New Staff Account</div>
+            <div class="navbar-brand" class="page-redirect" href="#">Add New Staff Account</div>
         </div>
 
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
 
-        <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="dropdown">
-                <button class="dropdown-toggle btn text-center" data-toggle="dropdown" style="color:white">diogo_fae
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu text-center">
-                    <li><a href="/Staff/changePassword.html">Change Password</a></li>
-                </ul>
-            </li>
-        </ul>
+        <div class="navbar-header" style="color:white" id="headerUsername">root</div>
         <ul class="nav navbar-nav my-2 my-lg-0">
             <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html" style="color:white"><i
                         class="fas fa-sign-in-alt"></i>
@@ -66,27 +58,11 @@
             style="background-color: #343a40!important; padding-right: 0%;">
             <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
 
-                <a href="/Root/addAccount.html" class="bg-dark list-group-item list-group-item-action"
-                    style="color:white; padding: 8% 8%">
+                <a class="page-redirect" href="/Root/addAccount.html"
+                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Add Staff Account</span>
-                    </div>
-                </a>
-
-
-                <a href="/Root/browseStaffAccounts.html" class="bg-dark list-group-item list-group-item-action"
-                    style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Browse Staff Accounts</span>
-                    </div>
-                </a>
-                <a href="/Root/viewDeleteRequestsStaff.html" class="bg-dark list-group-item list-group-item-action"
-                    style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Review Staff Account Deletion Requests</span>
                     </div>
                 </a>
             </ul>
@@ -99,7 +75,7 @@
 
 
                 <!-- Confirmation Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                <div class="modal fade" id="newStaffCreatedModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -109,7 +85,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Your changes have been saved.
+                                The new staff account has been created.
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -126,7 +102,7 @@
                         <div class="mb-5">
                             <label for="username" class="font-weight-bold">Username</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="userName" placeholder="" value="" required
+                                <input type="text" class="form-control" id="username" placeholder="" value="" required
                                     pattern="[a-zA-Z].{7,}">
                                 <div class="invalid-feedback">
                                     Please enter your user name.
@@ -170,11 +146,9 @@
                                 Please enter a valid phone number.
                             </div>
                         </div>
-                        <div class="container-fluid mt-0">
-                            <div class="col-md- order-md-1 d-flex justify-content-between">
-                                <button class="btn btn-success" type="button" onclick="validateAndShowModal()">Add
-                                    Account</button>
-                            </div>
+                        <div class="flex-d text-center">
+                            <button class="btn btn-success center" type="button" onclick="validateAndShowModal()">Add
+                                Account</button>
                         </div>
                     </div>
                 </div>
@@ -192,16 +166,22 @@
     <title>SMU Hiring</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet"
+    <link rel="stylesheet" class="page-redirect"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" class="page-redirect"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" class="page-redirect"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script>
+        // Dictionary with all user information necessary to request to create an account
+        // Will be populated dynamically according to the user's input
+        let newStaffInfo = {};
+
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function () {
             'use strict';
@@ -236,39 +216,36 @@
 
         })();
 
-        // Fixes dropdown menu not showing when clicking the button
-        $('.dropdown').click(function () {
-            $('.dropdown-menu').toggleClass('show');
-        });
-        $(document).click(function (event) {
-            if (!$(event.target).closest('.dropdown').length) {
-                // If the click is outside the dropdown, hide the dropdown menu
-                $('.dropdown-menu').removeClass('show');
-            }
-        });
-
         function validateAndShowModal() {
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();
             var form = document.querySelector('.needs-validation');
 
             if (inputsValid) {
+                newStaffInfo = {
+                    username: document.getElementById('username').value,
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phoneNumber: document.getElementById('phoneNumber').value
+                };
+
+                for (var key in newStaffInfo) {
+                    // Check if the key is a property of the object itself (not inherited)
+                    if (newStaffInfo.hasOwnProperty(key)) {
+                        // Get the value corresponding to the key
+                        var value = newStaffInfo[key];
+                        // Alert the key and value
+                        alert("Key: " + key + ", Value: " + value);
+                    }
+                }
                 // If all inputs are valid, show the modal
-                $('#exampleModal').modal('show');
-            } else {
-                // If any input is not valid, handle the validation error (e.g., display an error message)
-                form.classList.add('was-validated');
-            }
-        }
+                $('#newStaffCreatedModal').modal('show');
 
-        function validateAndContinue(href) {
-            // Validate inputs here
-            var inputsValid = validateInputs();
-            var form = document.querySelector('.needs-validation');
+                // Clear the form after showing the modal
+                form.reset();
 
-            if (inputsValid) {
-                // If all inputs are valid, navigate to the link specified in the button's href
-                window.location.href = href;
+                // TODO: Call the endpoint to create a new account with the newStaffInfo object
             } else {
                 // If any input is not valid, handle the validation error (e.g., display an error message)
                 form.classList.add('was-validated');
@@ -286,12 +263,6 @@
                 }
             }
             return true;
-        }
-
-        function saveChanges() {
-            // Implement the logic to save changes here
-            // This function is called when the "Save changes" button inside the modal is clicked
-            // Close the modal if needed: $('#exampleModal').modal('hide');
         }
 
         function formatPhoneNumber(input) {

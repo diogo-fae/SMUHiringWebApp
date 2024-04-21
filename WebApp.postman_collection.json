@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "78be8734-ed77-408a-b644-3aba33e3114e",
+		"name": "WebApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34143903"
+	},
+	"item": [
+		{
+			"name": "Register Professional",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"sujanad\",\n    \"firstName\": \"Sujana\",\n    \"lastName\": \"Daniel\",\n    \"email\": \"suj@dan.com\",\n    \"phoneNumber\": \"1234567890\",\n    \"address1\": \"Test address1\",\n    \"address2\": \"Test address2\",\n    \"city\": \"city\",\n    \"state\": \"CA\",\n    \"zipCode\": \"12345\",\n    \"university\": \"SMU\",\n    \"graduationDate\": \"2025-12\",\n    \"degreeType\": \"Grad\",\n    \"professionalQualificationRequest\": [\n        {\n            \"userId\": \"sujanad\",\n            \"category\": \"Skills\",\n            \"keyword\": \"Java\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/registerProfessional",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"registerProfessional"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Employer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"sujanae\",\n    \"firstName\": \"Sujana\",\n    \"lastName\": \"D\",\n    \"email\": \"dan@suj.com\",\n    \"phoneNumber\": \"0987654321\",\n    \"address1\": \"Test address1\",\n    \"address2\": \"Test address2\",\n    \"city\": \"city\",\n    \"state\": \"MI\",\n    \"zipCode\": \"09876\",\n    \"company\": \"SMU\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/registerEmployer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"registerEmployer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

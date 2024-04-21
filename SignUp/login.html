@@ -7,13 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
+    <link rel="canonical" class="page-redirect" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link class="page-redirect" href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
+    <link class="page-redirect" href="form-validation.css" rel="stylesheet">
     <style>
         .my-custom-scrollbar {
             position: relative;
@@ -37,17 +37,17 @@
         </ul>
 
         <div class="navbar-header">
-            <div class="navbar-brand" href="#">Log In</div>
+            <div class="navbar-brand" class="page-redirect" href="#">Log In</div>
         </div>
 
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
 
         <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html"
-                    style="color:white"><i class="fas fa-sign-in-alt"></i>
+            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html" style="color:white"><i
+                        class="fas fa-sign-in-alt"></i>
                     Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="/SignUp/signUpInitial.html"
+            <li class="nav-item"><a class="nav-link" class="page-redirect" href="/SignUp/signUpInitial.html"
                     style="color:white"><i class="fas fa-sign-in-alt"></i>
                     Sign Up</a></li>
         </ul>
@@ -98,8 +98,8 @@
                                         Please enter the correct password.
                                     </div>
                                 </div>
-                                <button href="#" type="button" class="btn btn-success" id="loginBtn"
-                                    onclick="validateAndContinue()">Login</button>
+                                <button class="page-redirect" href="#" type="button" class="btn btn-success"
+                                    id="loginBtn" onclick="validateAndContinue()">Login</button>
                             </form>
                         </div>
                     </div>
@@ -118,13 +118,15 @@
     <title>SMU Hiring</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet"
+    <link rel="stylesheet" class="page-redirect"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" class="page-redirect"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" class="page-redirect"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script>
@@ -150,7 +152,7 @@
 
 
         })();
-        
+
         // Fixes dropdown menu not showing when clicking the button
         $('.dropdown').click(function () {
             $('.dropdown-menu').toggleClass('show');
@@ -161,7 +163,7 @@
                 $('.dropdown-menu').removeClass('show');
             }
         });
-        
+
         function validateAndShowModal() {
             // Validate your inputs here, for example:
             var inputsValid = validateInputs();

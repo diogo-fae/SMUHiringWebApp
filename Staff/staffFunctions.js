@@ -1,0 +1,507 @@
+// API Calls ------------------------------------------------------------------------------------
+function showHeaderUsername(username) {
+    // TODO: Delete this
+    alert();
+    const usernameToIdMapping = {
+        "Bret": 1,
+        "Antonette": 2,
+        "Samantha": 3,
+        "Karianne": 4,
+        "Kamren": 5,
+        "Leopoldo_Corkery": 6,
+        "Elwyn.Skiles": 7,
+        "Maxime_Nienow": 8,
+        "Delphine": 9,
+        "Moriah.Stanton": 10
+    };
+    // TODO: Delete this
+    // username = usernameToIdMapping[username];
+    // alert(username);
+    document.getElementById('headerUsername').innerHTML = usernameToIdMapping[username];
+}
+function showStaffInfo(username) {
+    // Fetch data from the API using username
+    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            staffInfo = data;
+
+            // Fill in the staff information
+            // document.getElementById('headerUsername').innerHTML = data.username;
+            document.getElementById('usernameDisplay').innerHTML = data.username;
+            document.getElementById('firstNameDisplay').innerHTML = data.name.split(' ')[0];
+            document.getElementById('lastNameDisplay').innerHTML = data.name.split(' ')[1];
+            document.getElementById('emailDisplay').innerHTML = data.email;
+            document.getElementById('phoneNumberDisplay').innerHTML = data.phone;
+        });
+}
+function showEmployerInfo(employerUsername) {
+    // Fetch data from the API using username
+    fetch(`https://jsonplaceholder.typicode.com/users/${employerUsername}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            employerInfo = data;
+            // alert(employerInfo.username);
+            document.getElementById('usernameDisplay').innerHTML = employerInfo.username;
+            document.getElementById('companyNameDisplay').innerHTML = employerInfo.company.name;
+            document.getElementById('firstNameDisplay').innerHTML = employerInfo.name.split(' ')[0];
+            document.getElementById('lastNameDisplay').innerHTML = employerInfo.name.split(' ')[1];
+            document.getElementById('emailDisplay').innerHTML = employerInfo.email;
+            document.getElementById('phoneNumberDisplay').innerHTML = employerInfo.phoneNumber;
+            document.getElementById('address1Display').innerHTML = employerInfo.address.street;
+            document.getElementById('address2Display').innerHTML = employerInfo.address.suite;
+            document.getElementById('cityDisplay').innerHTML = employerInfo.address.city;
+            document.getElementById('stateDisplay').innerHTML = employerInfo.state;
+            document.getElementById('zipCodeDisplay').innerHTML = employerInfo.address.zipcode;
+        });
+}
+function showProfessionalInfo(professionalUsername) {
+    // Fetch data from the API using username
+    fetch(`https://jsonplaceholder.typicode.com/users/${professionalUsername}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            professionalInfo = data;
+            document.getElementById('usernameDisplay').innerHTML = professionalInfo.username;
+            document.getElementById('firstNameDisplay').innerHTML = professionalInfo.name.split(' ')[0];
+            document.getElementById('lastNameDisplay').innerHTML = professionalInfo.name.split(' ')[1];
+            document.getElementById('emailDisplay').innerHTML = professionalInfo.email;
+            document.getElementById('phoneNumberDisplay').innerHTML = professionalInfo.phoneNumber;
+            document.getElementById('address1Display').innerHTML = professionalInfo.address.street;
+            document.getElementById('address2Display').innerHTML = professionalInfo.address.suite;
+            document.getElementById('cityDisplay').innerHTML = professionalInfo.address.city;
+            document.getElementById('stateDisplay').innerHTML = professionalInfo.state;
+            document.getElementById('zipCodeDisplay').innerHTML = professionalInfo.address.zipcode;
+            document.getElementById('startDateDegreeDisplay').innerHTML = professionalInfo.startDateDegree;
+            document.getElementById('institutionDisplay').innerHTML = professionalInfo.company.name;
+            document.getElementById('degreeTypeDisplay').innerHTML = professionalInfo.company.bs;
+            // Sample list of Skills bc the sample API does not have a list
+            const skills = [
+                { category: 'Languages', skill: 'Python' },
+                { category: 'Languages', skill: 'C++' },
+                { category: 'Languages', skill: 'C#' },
+                { category: 'Languages', skill: 'Java' },
+                { category: 'Languages', skill: 'Ruby' },
+                { category: 'Languages', skill: 'PHP' },
+                { category: 'Previous Employment', skill: 'Software Engineer' }
+            ];
+            // Fill in the professional qualifications in the categorytable
+            const categoryTable = document.getElementById('categorytable');
+            skills.forEach(skill => {
+                const row = categoryTable.insertRow(-1);
+                const categoryCell = row.insertCell(0);
+                const skillCell = row.insertCell(1);
+                categoryCell.innerHTML = skill.category;
+                skillCell.innerHTML = skill.skill;
+            });
+        });
+}
+function showHeaderUsername(username) {
+    document.getElementById('headerUsername').innerHTML = username;
+}
+function fillEditForm(username) {
+    // Fetch data from the API using username
+    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            staffInfo = data;
+
+            // Fill in the staff information
+            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
+            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
+            document.getElementById('emailInput').placeholder = data.email;
+            document.getElementById('phoneNumberInput').placeholder = data.phone;
+        });
+}
+function fillEmployerEditForm(username) {
+    // Fetch data from the API using username
+    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            employerInfo = data;
+
+            // Fill in the staff information
+            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
+            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
+            document.getElementById('emailInput').placeholder = data.email;
+            document.getElementById('phoneNumberInput').placeholder = data.phone;
+            document.getElementById('address1Input').placeholder = data.address.street;
+            document.getElementById('address2Input').placeholder = data.address.suite;
+            document.getElementById('cityInput').placeholder = data.address.city;
+            document.getElementById('stateInput').placeholder = data.address.state;
+            document.getElementById('zipCodeInput').placeholder = data.address.zipcode;
+            document.getElementById('companyNameInput').placeholder = data.companyName;
+        });
+}
+function fillProfessionalEditForm(username) {
+    // Fetch data from the API using username
+    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            professionalInfo = data;
+
+            // Fill in the staff information
+            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
+            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
+            document.getElementById('emailInput').placeholder = data.email;
+            document.getElementById('phoneNumberInput').placeholder = data.phone;
+            document.getElementById('address1Input').placeholder = data.address.street;
+            document.getElementById('address2Input').placeholder = data.address.suite;
+            document.getElementById('cityInput').placeholder = data.address.city;
+            document.getElementById('stateInput').placeholder = data.address.state;
+            document.getElementById('zipCodeInput').placeholder = data.address.zipcode;
+            document.getElementById('institutionInput').placeholder = data.company.name;
+            document.getElementById('degreeTypeInput').placeholder = data.company.bs;
+            document.getElementById('startDateDegreeInput').placeholder = data.id;
+        });
+}
+function getRequests(requestQueue) {
+    // TODO: Add requestQueue to the API - should specify create or delete request and
+    // if it belongs to an Employer or a Professional
+    // Fetch data from the API
+    return fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => response.json());
+    // .then(alert());
+}
+function getEmployers() {
+    // TODO: Implement API call to get all employers
+    return fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json());
+}
+function reviewRequest(requesterUsername, requestType, userType, decision) {
+    // TODO: Implement API call to update request status AND send decision
+    if (requestType === 'create') {
+        // TODO: Fix this API with real one
+        // if (userType === 'employer') {
+        //     fetch('https://jsonplaceholder.typicode.com/posts', {
+        //         method: 'POST',
+        //         body: JSON.stringify({
+        //             title: 'foo',
+        //             body: 'bar',
+        //             userId: 1
+        //         }),
+        //         headers: {
+        //             'Content-type': 'application/json; charset=UTF-8',
+        //         },
+        //     })
+        //         .then((response) => response.json())
+        //         .then((json) => console.log(json));
+        // } else if (userType === 'professional') {
+        //     fetch('https://jsonplaceholder.typicode.com/posts', {
+        //         method: 'POST',
+        //         body: JSON.stringify({
+        //             title: 'foo',
+        //             body: 'bar',
+        //             userId: 1
+        //         }),
+        //         headers: {
+        //             'Content-type': 'application/json; charset=UTF-8',
+        //         },
+        //     })
+        //         .then((response) => response.json())
+        //         .then((json) => console.log(json));
+        // }
+    } else if (requestType === 'delete') {
+
+    }
+}
+function updatePassword(apiLink, username, newPassword) {
+    // TODO: Implement API to update password
+    // fetch(apiLink, {
+    //     method: 'PUT',
+    //     body: JSON.stringify({
+    //         userInfo
+    //     }),
+    //     headers: {
+    //         'Content-type': 'application/json; charset=UTF-8',
+    //     },
+    // })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         alert(data)
+    //     });
+    // alert(`Password changed to ${newPassword}`);
+    return true;
+}
+function updateUser(apiLink, userInfo) {
+    // Get new values from the form
+    var firstNameInputValue = document.getElementById('firstNameInput').value;
+    if (firstNameInputValue) {
+        userInfo.firstName = firstNameInputValue;
+    }
+    // lastName, email, phoneNumber
+    var lastNameInputValue = document.getElementById('lastNameInput').value;
+    if (lastNameInputValue) {
+        userInfo.lastName = lastNameInputValue;
+    }
+    var emailInputValue = document.getElementById('emailInput').value;
+    if (emailInputValue) {
+        userInfo.email = emailInputValue;
+    }
+    var phoneNumberInputValue = document.getElementById('phoneNumberInput').value;
+    if (phoneNumberInputValue) {
+        userInfo.phoneNumber = phoneNumberInputValue;
+    }
+    try {
+        var address1InputValue = document.getElementById('address1Input').value;
+        if (address1InputValue) {
+            userInfo.address1 = address1InputValue;
+        }
+        var address2InputValue = document.getElementById('address2Input').value;
+        if (address2InputValue) {
+            userInfo.address2 = address2InputValue;
+        }
+        var cityInputValue = document.getElementById('cityInput').value;
+        if (cityInputValue) {
+            userInfo.city = cityInputValue;
+        }
+        var stateInputValue = document.getElementById('stateInput').value;
+        if (stateInputValue) {
+            userInfo.state = stateInputValue;
+        }
+        var zipCodeInputValue = document.getElementById('zipCodeInput').value;
+        if (zipCodeInputValue) {
+            userInfo.zipCode = zipCodeInputValue;
+        }
+    } catch (error) {
+        // alert("Error in fields for Employer/Professional") 
+    }
+    try {
+        var institutionInputValue = document.getElementById('institutionInput').value;
+        if (institutionInputValue) {
+            userInfo.institution = institutionInputValue;
+        }
+        var startDateDegreeInputValue = document.getElementById('startDateDegreeInput').value;
+        if (startDateDegreeInputValue) {
+            userInfo.startDateDegree = startDateDegreeInputValue;
+        }
+        var degreeTypeInputValue = document.getElementById('degreeTypeInput').value;
+        if (degreeTypeInputValue) {
+            userInfo.degreeType = degreeTypeInputValue;
+        }
+        var categoryTable = document.getElementById('categorytable');
+        if (categoryTable.rows.length > 0) {
+            var qualifications = [];
+            // Iterate over the rows of the table starting from the second row (index 1)
+            for (var i = 1; i < categoryTable.rows.length; i++) {
+                var row = categoryTable.rows[i];
+                var rowData = {};
+
+                // Get the cells of the current row
+                var cells = row.cells;
+
+                // Get the value of the first and second column of the current row
+                var key = cells[0].textContent.trim(); // Assuming the first column contains text
+                var value = cells[1].textContent.trim(); // Assuming the second column contains text
+
+                // Add the key-value pair to the rowData dictionary
+                rowData[key] = value;
+
+                // Add the rowData dictionary to the rowsList
+                qualifications.push(rowData);
+            }
+            userInfo.qualifications = qualifications;
+        }
+        // TODO: Delete this line
+        // userInfo.qualifications.forEach(qualification => {
+        //     printDict(qualification)
+        // });
+    } catch (error) {
+        // alert("Error in fields for Professional")
+    }
+    try {
+        var companyNameInputValue = document.getElementById('companyNameInput').value;
+        if (companyNameInputValue) {
+            userInfo.companyName = companyNameInputValue;
+        }
+    } catch (error) {
+        // alert("Error in fields for Employer")
+    }
+
+    // printDict(userInfo);
+
+    // TODO: Implement API call to update user
+    // fetch(apiLink, {
+    //     method: 'PUT',
+    //     body: JSON.stringify({
+    //         userInfo
+    //     }),
+    //     headers: {
+    //         'Content-type': 'application/json; charset=UTF-8',
+    //     },
+    // })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         alert(data)
+    //     });
+}
+// API Calls ------------------------------------------------------------------------------------
+
+
+// Formatting -----------------------------------------------------------------------------------
+function setPasswordPattern() {
+    // Makes sure that the retyped password is exactly like the password first typed
+    var password = document.getElementById('passwordInput');
+    var passwordRetyped = document.getElementById('passwordRetypedInput');
+
+    // Set the pattern attribute of passwordRetyped dynamically
+    passwordRetyped.pattern = password.value;
+}
+function formatPhoneNumber(input) {
+    // Remove all non-numeric characters
+    var phoneNumber = input.value.replace(/\D/g, '');
+
+    // Check if the input value is empty or not a number
+    if (!phoneNumber || isNaN(phoneNumber)) {
+        input.value = ''; // Clear the input field
+        return;
+    }
+
+    // Format the phone number with hyphens
+    var formattedPhoneNumber = '';
+    for (var i = 0; i < phoneNumber.length; i++) {
+        if (i === 0) {
+            formattedPhoneNumber += '(';
+        }
+        if (i === 3) {
+            formattedPhoneNumber += ') ';
+        }
+        if (i === 6) {
+            formattedPhoneNumber += '-';
+        }
+        formattedPhoneNumber += phoneNumber[i];
+    }
+
+    // Update the input value with the formatted phone number
+    input.value = formattedPhoneNumber;
+}
+// Adds rows to the table
+function add() {
+    var category = document.getElementById("categoryname").value.trim();
+    var skills = document.getElementById("categoryskills").value.trim();
+
+    // Check if both categoryname and categoryskills are not empty
+    if (category !== "" && skills !== "") {
+        var table = document.getElementById("categorytable");
+
+        // Add a new row at the bottom of the table
+        var row = table.insertRow(-1);
+
+        var col1 = row.insertCell(0);
+        var col2 = row.insertCell(1);
+        col1.innerHTML = category;
+        col2.innerHTML = skills;
+
+        // Reset the category field and skills fields to be blank
+        document.getElementById("categoryname").value = "";
+        document.getElementById("categoryskills").value = "";
+
+        // Update the count to the new row count
+        count = table.rows.length;
+    }
+
+    if (table.rows.length < 3) {
+        document.getElementById('cat-table-invalid-feedback').style.display = 'block';
+    }
+    else {
+        document.getElementById('cat-table-invalid-feedback').style.display = 'none';
+    }
+}
+
+// Deletes the last row in the table
+function deleteLastRow() {
+    var table = document.getElementById("categorytable");
+    var rowCount = table.rows.length;
+
+    // Check if there is at least one row to delete
+    if (rowCount > 1) {
+        table.deleteRow(rowCount - 1);
+        count--; // Decrement the count to maintain accurate row count
+    }
+
+    if (table.rows.length < 3) {
+        document.getElementById('cat-table-invalid-feedback').style.display = 'block';
+    }
+    else {
+        document.getElementById('cat-table-invalid-feedback').style.display = 'none';
+    }
+}
+// Formatting -----------------------------------------------------------------------------------
+
+
+// Functions related to updating links and redirecting ------------------------------------------
+function addUsernameToLinks() {
+    // Get the username_var from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const usernameVar = urlParams.get('username');
+
+    // Find all div elements with the class "page-redirect"
+    const pageRedirectDivs = document.querySelectorAll('.page-redirect');
+
+    // Loop through each div and update its href attribute
+    pageRedirectDivs.forEach(div => {
+        // const link = div.querySelector('a'); // Find the anchor tag inside the div
+        // alert(link)
+        if (div) {
+            // Append the username_var to the href attribute of the anchor tag
+            div.href += `?username=${usernameVar}`;
+        }
+    });
+}
+function showModalAndRedirect(modal, link) {
+    // Show the modal
+    $(modal).modal('show');
+
+    // Redirect to the link after the modal is closed
+    $(modal).on('hidden.bs.modal', function () {
+        window.location.href = link;
+    });
+}
+// Functions related to updating links and redirecting ------------------------------------------
+
+
+// Helper Functions -----------------------------------------------------------------------------
+function validateInputs() {
+    // Implement your input validation logic here
+    // Return true if all inputs are valid, false otherwise
+    // Example validation logic:
+    var inputs = document.querySelectorAll('.needs-validation');
+    for (var i = 0; i < inputs.length; i++) {
+        if (!inputs[i].checkValidity()) {
+            var form = document.querySelector('.needs-validation');
+            form.classList.add('was-validated');
+            return false;
+        }
+    }
+    return true;
+}
+function validatePasswordInputs() {
+    // Implement your password validation logic here
+    // Return true if the passwords match, false otherwise
+    // Example validation logic:
+    var password = document.getElementById('passwordInput').value;
+    var passwordRetyped = document.getElementById('passwordRetypedInput').value;
+    if (password !== passwordRetyped) {
+        var form = document.querySelector('.needs-validation');
+        form.classList.add('was-validated');
+        return false;
+    }
+    return true;
+}
+function printDict(dict) {
+    for (var key in dict) {
+        // Check if the key is a property of the object itself (not inherited)
+        if (dict.hasOwnProperty(key)) {
+            // Get the value corresponding to the key
+            var value = dict[key];
+            // Alert the key and value
+            alert("Key: " + key + ", Value: " + value);
+        }
+    }
+}
+// Helper Functions -----------------------------------------------------------------------------
