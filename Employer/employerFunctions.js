@@ -3,6 +3,7 @@ function showHeaderUsername(username) {
     document.getElementById('headerUsername').innerHTML = username;
 }
 function deleteJob(jobID) {
+    // APITODO: /deleteJob
     // Send a DELETE request to the API
     // fetch(`https://jsonplaceholder.typicode.com/posts/${jobID}`, {
     //     method: 'DELETE',
@@ -10,6 +11,8 @@ function deleteJob(jobID) {
     return true;
 }
 function showEmployerInfo(employerUsername) {
+    // APITODO: /getEmployerInfo
+
     // Fetch data from the API using username
     fetch(`https://jsonplaceholder.typicode.com/users/${employerUsername}`)
         .then(response => response.json())
@@ -31,6 +34,8 @@ function showEmployerInfo(employerUsername) {
         });
 }
 function showJobInfo(jobID) {
+    // APITODO: /getJobInfo
+
     // Fetch data from the API using jobID
     fetch(`https://jsonplaceholder.typicode.com/users/${jobID}`)
         .then(response => response.json())
@@ -52,6 +57,8 @@ function showJobInfo(jobID) {
         });
 }
 function showJobInfoAndEdit(jobID) {
+    // APITODO: /getJobInfo
+
     // Fetch data from the API using jobID
     fetch(`https://jsonplaceholder.typicode.com/users/${jobID}`)
         .then(response => response.json())
@@ -93,6 +100,8 @@ function showJobInfoAndEdit(jobID) {
         });
 }
 function fillEmployerEditForm(username) {
+    // APITODO: /getEmployerInfo
+
     // Fetch data from the API using username
     fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
         .then(response => response.json())
@@ -114,7 +123,8 @@ function fillEmployerEditForm(username) {
         });
 }
 function updatePassword(apiLink, username, newPassword) {
-    // TODO: Implement API to update password
+    // APITODO: /changePassword
+
     // fetch(apiLink, {
     //     method: 'PUT',
     //     body: JSON.stringify({
@@ -132,6 +142,8 @@ function updatePassword(apiLink, username, newPassword) {
     return true;
 }
 function postJob(apiLink, jobInfo) {
+    // APITODO: /postJob
+
     var jobID = document.getElementById('jobIDInput').value;
     var positionName = document.getElementById('positionNameInput').value;
     var supervisorFirstName = document.getElementById('supervisorFirstNameInput').value;
@@ -185,6 +197,8 @@ function postJob(apiLink, jobInfo) {
     return true;
 }
 function updateJob(apiLink, jobInfo) {
+    // APITODO: /updateJob
+
     var jobID = document.getElementById('jobIDDisplay').innerHTML;
     jobInfo.jobID = jobID;
     var positionName = document.getElementById('positionNameDisplay').innerHTML;
@@ -271,6 +285,8 @@ function updateJob(apiLink, jobInfo) {
     //     });
 }
 function updateUser(apiLink, userInfo) {
+    // APITODO: /updateEmployer
+
     // Get new values from the form
     var firstNameInputValue = document.getElementById('firstNameInput').value;
     if (firstNameInputValue) {
@@ -338,6 +354,141 @@ function updateUser(apiLink, userInfo) {
     //     .then((data) => {
     //         alert(data)
     //     });
+}
+// Function to update the card body with the initial content
+function updateJobsList() {
+    var accountsList = document.getElementById('jobsList');
+    var scrollableBox = document.querySelector('.scrollable-box');
+
+    // APITODO: /getAllJobs
+
+    // Fetch data from the API for the Scrollable Box
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(data => {
+            // Update the list with the data
+            data.forEach(item => {
+                var listItem = document.createElement('a');
+                listItem.className = 'list-group-item list-group-item-action clickable-job-item';
+                listItem.href = '#';
+                listItem.textContent = `${item.id} - ${item.name}`;
+
+                // Add click event listener to the scrollable box
+                scrollableBox.addEventListener('click', function (event) {
+                    var clickedItem = event.target;
+                    if (clickedItem.tagName === 'A') {
+                        // Reset background color of all items
+                        var listItems = accountsList.querySelectorAll('.list-group-item');
+                        listItems.forEach(item => {
+                            item.style.backgroundColor = '';
+                        });
+                        // Change background color of clicked item
+                        clickedItem.style.backgroundColor = 'lightblue';
+                        // Add id and name to the item's attributes
+                        clickedItem.id = item.id;
+                        clickedItem.name = item.name;
+                        // clickedItem.username = item.username;
+                    }
+                });
+
+                // Add click event listener to each listItem to show account details
+                listItem.addEventListener('click', function () {
+                    // Call showAccountDetails with the clicked item's id and name
+                    showJobDetails(item.username);
+                });
+
+                accountsList.appendChild(listItem);
+
+                // Click the first item when the page loads
+                if (accountsList.children.length === 1) {
+                    listItem.click();
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data updateJobsList():', error);
+        });
+}
+
+
+function showJobDetails(clickedItem) {
+    // Extract the id from the clickedItem's textContent
+    var username = clickedItem;
+
+    // APITODO: /getJobInfo
+    // TODO: Delete this
+    const usernameToIdMapping = {
+        "Bret": 1,
+        "Antonette": 2,
+        "Samantha": 3,
+        "Karianne": 4,
+        "Kamren": 5,
+        "Leopoldo_Corkery": 6,
+        "Elwyn.Skiles": 7,
+        "Maxime_Nienow": 8,
+        "Delphine": 9,
+        "Moriah.Stanton": 10
+    };
+    // TODO: Delete this
+    username = usernameToIdMapping[username];
+
+    // Fetch data from the API
+    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+        .then(response => response.json())
+        .then(data => {
+            // Extract the attributes from the data
+            var attributes = data;
+            var jobId = attributes.id;
+
+            // Update the display with the details
+            // document.getElementById('usernameDisplay').textContent = attributes.username || 'N/A';
+            // jobIDDisplay, positionNameDisplay, supervisorNameDisplay, supervisorEmailDisplay, supervisorPhoneNumberDisplay, payPerHourDisplay, startDateDisplay, endDateDisplay, startDateDisplay, endDateDisplay
+            document.getElementById('jobIDDisplay').textContent = attributes.id || 'N/A';
+            document.getElementById('positionNameDisplay').textContent = attributes.name || 'N/A';
+            document.getElementById('supervisorNameDisplay').textContent = attributes.username || 'N/A';
+            document.getElementById('supervisorEmailDisplay').textContent = attributes.email || 'N/A';
+            document.getElementById('supervisorPhoneNumberDisplay').textContent = attributes.phone || 'N/A';
+            document.getElementById('payPerHourDisplay').textContent = attributes.website || 'N/A';
+            document.getElementById('startDateDisplay').textContent = attributes.address.street || 'N/A';
+            document.getElementById('endDateDisplay').textContent = attributes.address.suite || 'N/A';
+            document.getElementById('startTimeDisplay').textContent = attributes.address.city || 'N/A';
+            document.getElementById('endTimeDisplay').textContent = attributes.address.zipcode || 'N/A';
+
+            // Sample list of Skills bc the sample API does not have a list
+            const skills = [
+                { category: 'Languages', skill: 'Python' },
+                { category: 'Languages', skill: 'C++' },
+                { category: 'Languages', skill: 'C#' },
+                { category: 'Languages', skill: 'Java' },
+                { category: 'Languages', skill: 'Ruby' },
+                { category: 'Languages', skill: 'PHP' },
+                { category: 'Previous Employment', skill: 'Software Engineer' }
+            ];
+            // Fill in the professional qualifications in the categorytable
+            const categoryTable = document.getElementById('categorytable');
+            skills.forEach(skill => {
+                const row = categoryTable.insertRow(-1);
+                const categoryCell = row.insertCell(0);
+                const skillCell = row.insertCell(1);
+                categoryCell.innerHTML = skill.category;
+                skillCell.innerHTML = skill.skill;
+            });
+
+            // Update the href attribute of the edit button
+            // Check if jobId is already part of the href attribute
+            var editBt = document.getElementById('editBt');
+            if (editBt.href.includes('jobId')) {
+                // If it is, update the value of username
+                editBt.href = editBt.href.replace(/jobId=[^&]+/, `jobId=${jobId}`);
+            } else {
+                // If it's not, append both username and jobId
+                editBt.href += `&jobId=${jobId}`;
+            }
+            // editBt.href += `&employerUsername=${username}`;
+        })
+        .catch(error => {
+            // alert('Error fetching data showJobDetails():', error);
+        });
 }
 // API Calls ------------------------------------------------------------------------------------
 
@@ -482,6 +633,8 @@ function deleteUser(apiLink, employerId) {
     alert(`User with ID ${employerId} has been deleted`);
 }
 function validateContactInfoAndDelete(employerUsername) {
+    // APITODO: /getEmployerInfo
+
     // Fetch data from the API using username
     fetch(`https://jsonplaceholder.typicode.com/users/${employerUsername}`)
         .then(response => response.json())

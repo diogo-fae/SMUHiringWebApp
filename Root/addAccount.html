@@ -230,15 +230,17 @@
                     phoneNumber: document.getElementById('phoneNumber').value
                 };
 
-                for (var key in newStaffInfo) {
-                    // Check if the key is a property of the object itself (not inherited)
-                    if (newStaffInfo.hasOwnProperty(key)) {
-                        // Get the value corresponding to the key
-                        var value = newStaffInfo[key];
-                        // Alert the key and value
-                        alert("Key: " + key + ", Value: " + value);
-                    }
-                }
+                // APITODO: /createStaff
+
+                // for (var key in newStaffInfo) {
+                //     // Check if the key is a property of the object itself (not inherited)
+                //     if (newStaffInfo.hasOwnProperty(key)) {
+                //         // Get the value corresponding to the key
+                //         var value = newStaffInfo[key];
+                //         // Alert the key and value
+                //         alert("Key: " + key + ", Value: " + value);
+                //     }
+                // }
                 // If all inputs are valid, show the modal
                 $('#newStaffCreatedModal').modal('show');
 
