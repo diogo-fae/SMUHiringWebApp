@@ -230,71 +230,79 @@
                     phoneNumber: document.getElementById('phoneNumber').value
                 };
 
-                // APITODO: /createStaff
+                // DONE APITODO: /createStaff
+                alert(`Creating Staff ${newStaffInfo.username}`);
+                fetch("http://localhost:8080/createStaff", {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        newStaffInfo
+                    }),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                    // for (var key in newStaffInfo) {
+                    //     // Check if the key is a property of the object itself (not inherited)
+                    //     if (newStaffInfo.hasOwnProperty(key)) {
+                    //         // Get the value corresponding to the key
+                    //         var value = newStaffInfo[key];
+                    //         // Alert the key and value
+                    //         alert("Key: " + key + ", Value: " + value);
+                    //     }
+                    // }
+                    // If all inputs are valid, show the modal
+                    $('#newStaffCreatedModal').modal('show');
 
-                // for (var key in newStaffInfo) {
-                //     // Check if the key is a property of the object itself (not inherited)
-                //     if (newStaffInfo.hasOwnProperty(key)) {
-                //         // Get the value corresponding to the key
-                //         var value = newStaffInfo[key];
-                //         // Alert the key and value
-                //         alert("Key: " + key + ", Value: " + value);
-                //     }
-                // }
-                // If all inputs are valid, show the modal
-                $('#newStaffCreatedModal').modal('show');
+                    // Clear the form after showing the modal
+                    form.reset();
 
-                // Clear the form after showing the modal
-                form.reset();
-
-                // TODO: Call the endpoint to create a new account with the newStaffInfo object
-            } else {
-                // If any input is not valid, handle the validation error (e.g., display an error message)
-                form.classList.add('was-validated');
-            }
+                    // TODO: Call the endpoint to create a new account with the newStaffInfo object
+                } else {
+                    // If any input is not valid, handle the validation error (e.g., display an error message)
+                    form.classList.add('was-validated');
+                }
         }
 
-        function validateInputs() {
-            // Implement your input validation logic here
-            // Return true if all inputs are valid, false otherwise
-            // Example validation logic:
-            var inputs = document.querySelectorAll('.needs-validation input');
-            for (var i = 0; i < inputs.length; i++) {
-                if (!inputs[i].checkValidity()) {
-                    return false;
+            function validateInputs() {
+                // Implement your input validation logic here
+                // Return true if all inputs are valid, false otherwise
+                // Example validation logic:
+                var inputs = document.querySelectorAll('.needs-validation input');
+                for (var i = 0; i < inputs.length; i++) {
+                    if (!inputs[i].checkValidity()) {
+                        return false;
+                    }
                 }
-            }
-            return true;
-        }
-
-        function formatPhoneNumber(input) {
-            // Remove all non-numeric characters
-            var phoneNumber = input.value.replace(/\D/g, '');
-
-            // Check if the input value is empty or not a number
-            if (!phoneNumber || isNaN(phoneNumber)) {
-                input.value = ''; // Clear the input field
-                return;
+                return true;
             }
 
-            // Format the phone number with hyphens
-            var formattedPhoneNumber = '';
-            for (var i = 0; i < phoneNumber.length; i++) {
-                if (i === 0) {
-                    formattedPhoneNumber += '(';
-                }
-                if (i === 3) {
-                    formattedPhoneNumber += ') ';
-                }
-                if (i === 6) {
-                    formattedPhoneNumber += '-';
-                }
-                formattedPhoneNumber += phoneNumber[i];
-            }
+            function formatPhoneNumber(input) {
+                // Remove all non-numeric characters
+                var phoneNumber = input.value.replace(/\D/g, '');
 
-            // Update the input value with the formatted phone number
-            input.value = formattedPhoneNumber;
-        }
+                // Check if the input value is empty or not a number
+                if (!phoneNumber || isNaN(phoneNumber)) {
+                    input.value = ''; // Clear the input field
+                    return;
+                }
+
+                // Format the phone number with hyphens
+                var formattedPhoneNumber = '';
+                for (var i = 0; i < phoneNumber.length; i++) {
+                    if (i === 0) {
+                        formattedPhoneNumber += '(';
+                    }
+                    if (i === 3) {
+                        formattedPhoneNumber += ') ';
+                    }
+                    if (i === 6) {
+                        formattedPhoneNumber += '-';
+                    }
+                    formattedPhoneNumber += phoneNumber[i];
+                }
+
+                // Update the input value with the formatted phone number
+                input.value = formattedPhoneNumber;
+            }
     </script>
 
 </body>

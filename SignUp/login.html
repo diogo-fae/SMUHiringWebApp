@@ -84,7 +84,7 @@
                                 <div class="mb-5">
                                     <label for="username" class="font-weight-bold">Username</label>
                                     <input type="text" class="form-control" id="username" placeholder="" value=""
-                                        required oninput="checkLogin()">
+                                        required>
                                     <div class="invalid-feedback">
                                         Please enter a registered username.
                                     </div>
@@ -93,7 +93,7 @@
                                 <div class="mb-5">
                                     <label for="password" class="font-weight-bold">Password</label>
                                     <input type="password" class="form-control" id="password" placeholder="" value=""
-                                        required oninput="checkLogin()">
+                                        required>
                                     <div class="invalid-feedback">
                                         Please enter the correct password.
                                     </div>
@@ -177,18 +177,47 @@
         }
 
         function validateAndContinue() {
-            // Validate inputs here
-            var inputsValid = validateInputs();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var passwordInfo = { "username": username, "password": password };
             var form = document.querySelector('.needs-validation');
-            var loginBtn = document.getElementById('loginBtn');
 
-            if (inputsValid) {
-                // If all inputs are valid, navigate to the link specified in the button's href
-                window.location.href = loginBtn.href;
-            } else {
-                // If any input is not valid, handle the validation error (e.g., display an error message)
-                form.classList.add('was-validated');
-            }
+            alert(`User ${username} logging in.`);
+            // DONE APITODO: /login
+            fetch("https://api.sampleapis.com/avatar/info", {
+                method: 'GET',
+                body: JSON.stringify({
+                    passwordInfo
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(data)
+                    // Update cookies
+                    document.cookie = `username=${username}; path=/`;
+                    document.cookie = `userType=${data.userType}; path=/`;
+                    if (data.userType === 'P') {
+                        window.location.href = '/Professional/viewAccount.html' + `?username=${username}`;
+                    } else if (data.userType === 'E') {
+                        window.location.href = '/Employer/viewAccount.html' + `?username=${username}`;
+                    } else if (data.userType === 'R') {
+                        window.location.href = '/Root/addAccount.html' + `?username=${username}`;
+                    } else if (data.userType === 'S') {
+                        window.location.href = '/Staff/viewAccount.html' + `?username=${username}`;
+                    }
+                    else {
+                        alert("Invalid username or password");
+                        form.classList.add('was-validated');
+                        return;
+                    }
+                }).catch((error) => {
+                    alert("Invalid username or password");
+                    form.classList.add('was-validated');
+                    return;
+                });
         }
 
         function validateInputs() {
@@ -211,52 +240,41 @@
         }
 
         function checkLogin() {
-            // APITODO: /login      - You can remove the next 3 functions if the backend already does that
-            checkUsername();
-            checkPassword();
-            updateUserType();
-        }
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var passwordInfo = { "username": username, "password": password };
 
-        function updateUserType() {
-            // Update the link to the correct pages according to the user type from the usernames
-            var usernames_usertypes = {
-                'sujana_d': '/Professional/editProfessionalDetails.html',
-                'diogo_fae_staff': '/Staff/viewAccount.html',
-                'diogo_fae': '/Employer/viewAccount.html',
-                'root': '/Root/addAccount.html'
-            }
-
-            var loginBtn = document.getElementById('loginBtn');
-            var username = document.getElementById('username');
-            loginBtn.href = usernames_usertypes[username.value];
-        }
-
-        function checkUsername() {
-            // Make sure the username exists
-            var existingUsernames = ['sujana_d', 'diogo_fae_staff', 'root', 'diogo_fae'];
-            var username = document.getElementById('username');
-
-            // Create a regular expression pattern based on the existing usernames
-            var pattern = "^(" + existingUsernames.join('|') + ")$";
-
-            // Set the pattern attribute of password dynamically
-            username.pattern = pattern;
-        }
-
-        function checkPassword() {
-            var usernames_passwords = {
-                'sujana_d': '1234567.d',
-                'diogo_fae_staff': '1234567.s',
-                'diogo_fae': '1234567.f',
-                'root': '1234567.r'
-            };
-
-            // Makes sure that the password belongs to the correct user
-            var username = document.getElementById('username');
-            var password = document.getElementById('password');
-
-            // Set the pattern attribute of password dynamically
-            password.pattern = usernames_passwords[username.value];
+            alert(`User ${username} logging in.`);
+            // DONE APITODO: /login
+            fetch("http://localhost:8080/login", {
+                method: 'GET',
+                body: JSON.stringify({
+                    passwordInfo
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(data)
+                    // Update cookies
+                    document.cookie = `username=${username}; path=/`;
+                    document.cookie = `userType=${data.userType}; path=/`;
+                    if (data.userType === 'P') {
+                        window.location.href = '/Professional/viewAccount.html' + `?username=${username}`;
+                    } else if (data.userType === 'E') {
+                        window.location.href = '/Employer/viewAccount.html' + `?username=${username}`;
+                    } else if (data.userType === 'R') {
+                        window.location.href = '/Root/addAccount.html' + `?username=${username}`;
+                    } else if (data.userType === 'S') {
+                        window.location.href = '/Staff/viewAccount.html' + `?username=${username}`;
+                    }
+                    else {
+                        alert("Invalid username or password");
+                        return;
+                    }
+                });
         }
     </script>
 

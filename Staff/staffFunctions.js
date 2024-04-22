@@ -1,28 +1,12 @@
 // API Calls ------------------------------------------------------------------------------------
 function showHeaderUsername(username) {
-    // TODO: Delete this
-    const usernameToIdMapping = {
-        "Bret": 1,
-        "Antonette": 2,
-        "Samantha": 3,
-        "Karianne": 4,
-        "Kamren": 5,
-        "Leopoldo_Corkery": 6,
-        "Elwyn.Skiles": 7,
-        "Maxime_Nienow": 8,
-        "Delphine": 9,
-        "Moriah.Stanton": 10
-    };
-    // TODO: Delete this
-    // username = usernameToIdMapping[username];
-    // alert(username);
     document.getElementById('headerUsername').innerHTML = usernameToIdMapping[username];
 }
 function showStaffInfo(username) {
-    // APITODO: /getStaffInfo
-
+    // DONE APITODO: /getStaffInfo
+    alert(`Getting staff info for ${username} from the API`)
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+    fetch(`http://localhost:8080/getStaffInfo/${username}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
@@ -38,10 +22,10 @@ function showStaffInfo(username) {
         });
 }
 function showEmployerInfo(employerUsername) {
-    // APITODO: /getEmployerInfo
-
+    // DONE APITODO: /getEmployerInfo
+    alert(`Getting employer info for ${employerUsername} from the API to show`)
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${employerUsername}`)
+    fetch(`http://localhost:8080/getEmployerInfo/${employerUsername}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
@@ -61,10 +45,10 @@ function showEmployerInfo(employerUsername) {
         });
 }
 function showProfessionalInfo(professionalUsername) {
-    // APITODO: /getProfessionalInfo
-
+    // DONE APITODO: /getProfessionalInfo
+    alert(`Getting professional info for ${professionalUsername} from the API to show`)
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${professionalUsername}`)
+    fetch(`http://localhost:8080/getProfessionalInfo${professionalUsername}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
@@ -107,10 +91,10 @@ function showHeaderUsername(username) {
     document.getElementById('headerUsername').innerHTML = username;
 }
 function fillEditForm(username) {
-    // APITODO: /getStaffInfo
-
+    // DONE APITODO: /getStaffInfo
+    alert(`Getting staff info for ${username} from the API to fill in the form`)
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+    fetch(`http://localhost:8080/getStaffInfo/${username}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
@@ -124,10 +108,10 @@ function fillEditForm(username) {
         });
 }
 function fillEmployerEditForm(username) {
-    // APITODO: /getEmployerInfo
-
+    // DONE APITODO: /getEmployerInfo
+    alert(`Getting employer info for ${username} from the API to fill in the form`)
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+    fetch(`http://localhost:8080/getEmployerInfo/${username}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
@@ -147,10 +131,10 @@ function fillEmployerEditForm(username) {
         });
 }
 function fillProfessionalEditForm(username) {
-    // APITODO: /getProfessionalInfo
-
+    // DONE APITODO: /getProfessionalInfo
+    alert(`Getting professional info for ${username} from the API to fill in the form`)
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/professional/${username}`)
+    fetch(`http://localhost:8080/getProfessionalInfo/${username}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
@@ -172,27 +156,29 @@ function fillProfessionalEditForm(username) {
         });
 }
 function getRequests(requestQueue) {
+    alert(`Getting ${requestQueue} requests from the API`)
     if (requestQueue === 'createEmployer') {
-        // APITODO: /getCreateEmployerRequests
+        // DONE APITODO: /getCreateEmployerRequests
+        return fetch('http://localhost:8080/getCreateEmployerRequests')
+            .then(response => response.json());
     } else if (requestQueue === 'deleteEmployer') {
-        // APITODO: /getDeleteEmployerRequests
+        // DONE APITODO: /getDeleteEmployerRequests
+        return fetch('http://localhost:8080/getDeleteEmployerRequests')
+            .then(response => response.json());
     } else if (requestQueue === 'createProfessional') {
-        // APITODO: /getCreateProfessionalRequests
+        // DONE APITODO: /getCreateProfessionalRequests
+        return fetch('http://localhost:8080/getCreateProfessionalRequests')
+            .then(response => response.json());
     } else if (requestQueue === 'deleteProfessional') {
-        // APITODO: /getDeleteProfessionalRequests
+        // DONE APITODO: /getDeleteProfessionalRequests
+        return fetch('http://localhost:8080/getDeleteProfessionalRequests')
+            .then(response => response.json());
     }
-
-    // TODO: Add requestQueue to the API - should specify create or delete request and
-    // if it belongs to an Employer or a Professional
-    // Fetch data from the API
-    return fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json());
-    // .then(alert());
 }
 function getEmployers() {
-    // APITODO: /getAllEmployers
-    // TODO: Implement API call to get all employers
-    return fetch('https://jsonplaceholder.typicode.com/users')
+    // DONE APITODO: /getAllEmployers
+    alert('Getting all employers from the API')
+    return fetch('http://localhost:8080/getAllEmployers')
         .then(response => response.json());
 }
 function reviewRequest(requesterUsername, requestType, userType, decision) {
@@ -200,15 +186,30 @@ function reviewRequest(requesterUsername, requestType, userType, decision) {
     if (requestType === 'create') {
         if (userType === 'Employer') {
             if (decision === 'approve') {
-                // APITO: /approveCreateEmployerRequest
+                // DONE APITODO: /approveCreateEmployerRequest
+                return fetch(`http://localhost:8080/approveCreateEmployerRequest/${requesterUsername}`, {
+                    method: 'POST',
+                })
+                    .then(response => response.json());
             } else if (decision === 'deny') {
-                // APITO: /denyCreateEmployerRequest
+                // DONE APITODO: /denyCreateEmployerRequest
+                return fetch(`http://localhost:8080/denyCreateEmployerRequest/${requesterUsername}`, {
+                    method: 'POST',
+                })
+                    .then(response => response.json());
             }
         } else if (userType === 'Professional') {
             if (decision === 'approve') {
-                // APITO: /approveCreateProfessionalRequest
+                // DONE APITODO: /approveCreateProfessionalRequest
+                return fetch(`http://localhost:8080/approveCreateProfessionalRequest/${requesterUsername}`, {
+                    method: 'POST',
+                })
+                    .then(response => response.json());
             } else if (decision === 'deny') {
-                // APITO: /denyCreateProfessionalRequest
+                // DONE APITODO: /denyCreateProfessionalRequest
+                return fetch(`http://localhost:8080/denyCreateProfessionalRequest/${requesterUsername}`, {
+                    method: 'POST',
+                })
             }
         }
     } else if (requestType === 'delete') {
@@ -228,23 +229,23 @@ function reviewRequest(requesterUsername, requestType, userType, decision) {
     }
 }
 function updatePassword(apiLink, username, newPassword) {
-    // APITODO: /changePassword
+    // DONE APITODO: /changePassword
+    var passwordInfo = { "username": username, "password": newPassword }
 
-    // TODO: Implement API to update password
-    // fetch(apiLink, {
-    //     method: 'PUT',
-    //     body: JSON.stringify({
-    //         userInfo
-    //     }),
-    //     headers: {
-    //         'Content-type': 'application/json; charset=UTF-8',
-    //     },
-    // })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         alert(data)
-    //     });
-    // alert(`Password changed to ${newPassword}`);
+    alert(`Changing password to ${newPassword}`);
+    fetch("http://localhost:8080/changePassword", {
+        method: 'PUT',
+        body: JSON.stringify({
+            passwordInfo
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            alert(data)
+        });
     return true;
 }
 function updateUser(apiLink, userInfo) {
@@ -326,12 +327,23 @@ function updateUser(apiLink, userInfo) {
             }
             userInfo.qualifications = qualifications;
         }
-        // APITODO: /updateProfessional
-        // TODO: Delete this line
-        // userInfo.qualifications.forEach(qualification => {
-        //     printDict(qualification)
-        // });
-        return;
+        alert(`Updating user info to ${userInfo.id}`);
+        // DONE APITODO: /updateProfessional
+        return fetch('http://localhost:8080/updateProfessional', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Specify the content type
+            },
+            body: JSON.stringify(userInfo)
+        }).then(response => response.json())
+            .then(data => {
+                // Handle the response data here
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle any errors that occur during the fetch
+                console.error('Error:', error);
+            });
     } catch (error) {
         // alert("Error in fields for Professional")
     }
@@ -340,39 +352,51 @@ function updateUser(apiLink, userInfo) {
         if (companyNameInputValue) {
             userInfo.companyName = companyNameInputValue;
         }
-        // APITODO: /updateEmployer
-        return;
+        alert(`Updating Employer with ID: ${userInfo.username}`)
+        // DONE APITODO: /updateEmployer
+        return fetch("http://localhost:8080/updateEmployer", {
+            method: 'PUT',
+            body: JSON.stringify({
+                userInfo
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                alert(data)
+            });
     } catch (error) {
         // alert("Error in fields for Employer")
     }
-    // APITODO: /updateStaff
-    return;
 
     // printDict(userInfo);
 
-    // TODO: Implement API call to update user
-    // fetch(apiLink, {
-    //     method: 'PUT',
-    //     body: JSON.stringify({
-    //         userInfo
-    //     }),
-    //     headers: {
-    //         'Content-type': 'application/json; charset=UTF-8',
-    //     },
-    // })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         alert(data)
-    //     });
+    alert(`Updating Staff with ID: ${userInfo.username}`)
+    // DONE APITODO: /updateStaff
+    return fetch("http://localhost:8080/updateStaff", {
+        method: 'PUT',
+        body: JSON.stringify({
+            userInfo
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            alert(data)
+        });
 }
 // Function to update the card body with the initial content
 function updateEmployerAccountsList() {
     var accountsList = document.getElementById('employerAccountsList');
     var scrollableBox = document.querySelector('.scrollable-box');
 
-    // APITODO: /getAllEmployers
+    // DONE APITODO: /getAllEmployers
     // Fetch data from the API for the Scrollable Box
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('http://localhost:8080/getAllEmployers')
         .then(response => response.json())
         .then(data => {
             // Update the list with the data
@@ -421,26 +445,10 @@ function updateEmployerAccountsList() {
 function showEmployerAccountDetails(clickedItem) {
     // Extract the id from the clickedItem's textContent
     var username = clickedItem;
-    // TODO: Delete this
-    const usernameToIdMapping = {
-        "Bret": 1,
-        "Antonette": 2,
-        "Samantha": 3,
-        "Karianne": 4,
-        "Kamren": 5,
-        "Leopoldo_Corkery": 6,
-        "Elwyn.Skiles": 7,
-        "Maxime_Nienow": 8,
-        "Delphine": 9,
-        "Moriah.Stanton": 10
-    };
-    // TODO: Delete this
-    username = usernameToIdMapping[username];
 
-
-    // APITODO: /getEmployerInfo
+    // DONE APITODO: /getEmployerInfo
     // Fetch data from the API
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+    fetch(`http://localhost:8080/getEmployerInfo/${username}`)
         .then(response => response.json())
         .then(data => {
             // Extract the attributes from the data
@@ -481,18 +489,18 @@ function updateProfessionalAccountsList() {
     var accountsList = document.getElementById('professionalAccountsList');
     var scrollableBox = document.querySelector('.scrollable-box');
 
-    // APITODO: /getJobMatchingRequests
+    // DONE APITODO: /getJobMatchingRequests
     // Fetch number of Job Matching requests from the API
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('http://localhost:8080/getJobMatchingRequests')
         .then(response => response.json())
         .then(data => {
             // Update the card body with the number of requests
             document.getElementById("numRequestsBadge").innerHTML = data.length;
         });
 
-    // APITODO: /getAllProfessionals
+    // DONE APITODO: /getAllProfessionals
     // Fetch data from the API for the Scrollable Box
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('http://localhost:8080/getAllProfessionals')
         .then(response => response.json())
         .then(data => {
             // Update the list with the data
@@ -540,31 +548,13 @@ function updateProfessionalAccountsList() {
             console.error('Error fetching data updateStaffAccountsList():', error);
         });
 }
-
-
 function showProfessionalAccountDetails(clickedItem) {
     // Extract the id from the clickedItem's textContent
     var username = clickedItem;
-    // TODO: Delete this
-    const usernameToIdMapping = {
-        "Bret": 1,
-        "Antonette": 2,
-        "Samantha": 3,
-        "Karianne": 4,
-        "Kamren": 5,
-        "Leopoldo_Corkery": 6,
-        "Elwyn.Skiles": 7,
-        "Maxime_Nienow": 8,
-        "Delphine": 9,
-        "Moriah.Stanton": 10
-    };
-    // TODO: Delete this
-    username = usernameToIdMapping[username];
 
-
-    // APITODO: /getProfessionalInfo
+    // DONE APITODO: /getProfessionalInfo
     // Fetch data from the API
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+    fetch(`http://localhost:8080/getProfessionalInfo/${username}`)
         .then(response => response.json())
         .then(data => {
             // Extract the attributes from the data
@@ -791,3 +781,28 @@ function printDict(dict) {
     }
 }
 // Helper Functions -----------------------------------------------------------------------------
+
+function checkLogin() {
+    // Compare cookie's username with the username in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlUsername = urlParams.get('username');
+    var cookieUsername = "";
+    alert(`Checking if ${urlUsername} is logged in.`);
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'username') {
+            // Return the value of the "username" cookie
+            cookieUsername = value;
+        }
+    }
+    if (cookieUsername !== urlUsername) {
+        alert(`User ${urlUsername} is not logged in.`);
+        window.location.href = '/SignUp/Login.html';
+    }
+}
+function logout() {
+    document.cookie = `username=; path=/`;
+    document.cookie = `userType=; path=/`;
+    window.location.href = '/SignUp/Login.html';
+}

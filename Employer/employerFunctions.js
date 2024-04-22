@@ -3,12 +3,8 @@ function showHeaderUsername(username) {
     document.getElementById('headerUsername').innerHTML = username;
 }
 function deleteJob(jobID) {
-    // APITODO: /deleteJob
-    // Send a DELETE request to the API
-    // fetch(`https://jsonplaceholder.typicode.com/posts/${jobID}`, {
-    //     method: 'DELETE',
-    // })
-
+    // DONE APITODO: /requestEmployerDelete
+    alert(`Deleting job with ID: ${jobID}`);
     fetch(`http://localhost:8080/deleteJob/${jobID}`, {
         method: 'DELETE'
     }).then(response => {
@@ -21,8 +17,8 @@ function deleteJob(jobID) {
     return true;
 }
 function showEmployerInfo(employerUsername) {
-    // APITODO: /getEmployerInfo
-
+    // DONE APITODO: /getEmployerInfo
+    alert(`Getting employer info for ${employerUsername}`)
     // Fetch data from the API using username
     fetch(`http://localhost:8080/getEmployerInfo/${employerUsername}`)
         .then(response => response.json())
@@ -44,8 +40,8 @@ function showEmployerInfo(employerUsername) {
         });
 }
 function showJobInfo(jobID) {
-    // APITODO: /getJobInfo
-
+    // DONE APITODO: /getJobInfo
+    alert(`Getting job info for job with ID: ${jobID}`)
     // Fetch data from the API using jobID
     fetch(`http://localhost:8080/getJobInfo/${jobID}`)
         .then(response => response.json())
@@ -67,8 +63,8 @@ function showJobInfo(jobID) {
         });
 }
 function showJobInfoAndEdit(jobID) {
-    // APITODO: /getJobInfo
-
+    // DONE APITODO: /getJobInfo
+    alert(`Getting job info for job with ID: ${jobID} for updating`)
     // Fetch data from the API using jobID
     fetch(`http://localhost:8080/getJobInfo/${jobID}`)
         .then(response => response.json())
@@ -110,8 +106,8 @@ function showJobInfoAndEdit(jobID) {
         });
 }
 function fillEmployerEditForm(username) {
-    // APITODO: /getEmployerInfo
-
+    // DONE APITODO: /getEmployerInfo
+    alert(`Getting employer info for ${username} for updating`)
     // Fetch data from the API using username
     fetch(`http://localhost:8080/getEmployerInfo/${username}`)
         .then(response => response.json())
@@ -133,27 +129,26 @@ function fillEmployerEditForm(username) {
         });
 }
 function updatePassword(apiLink, username, newPassword) {
-    // APITODO: /changePassword
+    // DONE APITODO: /changePassword
+    var passwordInfo = { "username": username, "password": newPassword }
 
-    // fetch("http://localhost:8080/changePassword", {
-    //     method: 'PUT',
-    //     body: JSON.stringify({
-    //         userInfo
-    //     }),
-    //     headers: {
-    //         'Content-type': 'application/json; charset=UTF-8',
-    //     },
-    // })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         alert(data)
-    //     });
-    // alert(`Password changed to ${newPassword}`);
+    alert(`Changing password to ${newPassword}`);
+    fetch("http://localhost:8080/changePassword", {
+        method: 'PUT',
+        body: JSON.stringify({
+            passwordInfo
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            alert(data)
+        });
     return true;
 }
 function postJob(apiLink, jobInfo) {
-    // APITODO: /postJob
-
     var jobID = document.getElementById('jobIDInput').value;
     var positionName = document.getElementById('positionNameInput').value;
     var supervisorFirstName = document.getElementById('supervisorFirstNameInput').value;
@@ -202,9 +197,9 @@ function postJob(apiLink, jobInfo) {
     // jobInfo.qualifications.forEach(qualification => {
     //     printDict(qualification)
     // });
-
-    // TODO: Implement API to post job
-    fetch('http://locahost:8080/postJob', {
+    alert(`Posting job with jobID: ${jobInfo.jobID} and companyName: ${jobInfo.companyName}`)
+    // DONE APITODO: /postJob
+    fetch('http://localhost:8080/postJob', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json' // Specify the content type
@@ -222,8 +217,6 @@ function postJob(apiLink, jobInfo) {
     return true;
 }
 function updateJob(apiLink, jobInfo) {
-    // APITODO: /updateJob
-
     var jobID = document.getElementById('jobIDDisplay').innerHTML;
     jobInfo.jobID = jobID;
     var positionName = document.getElementById('positionNameDisplay').innerHTML;
@@ -293,25 +286,23 @@ function updateJob(apiLink, jobInfo) {
     //     printDict(qualification)
     // });
     // printDict(jobInfo);
-
-    // TODO: Implement API call to update user
-    // fetch("http://localhost:8080/updateJob", {
-    //     method: 'PUT',
-    //     body: JSON.stringify({
-    //         userInfo
-    //     }),
-    //     headers: {
-    //         'Content-type': 'application/json; charset=UTF-8',
-    //     },
-    // })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         alert(data)
-    //     });
+    alert(`Updating job with ID: ${jobInfo.jobID}, companyName: ${jobInfo.companyName}, positionName: ${jobInfo.positionName}`)
+    // DONE APITODO: /updateJob
+    fetch("http://localhost:8080/updateJob", {
+        method: 'PUT',
+        body: JSON.stringify({
+            jobInfo
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            alert(data)
+        });
 }
 function updateUser(apiLink, userInfo) {
-    // APITODO: /updateEmployer
-
     // Get new values from the form
     var firstNameInputValue = document.getElementById('firstNameInput').value;
     if (firstNameInputValue) {
@@ -364,29 +355,28 @@ function updateUser(apiLink, userInfo) {
     }
 
     // printDict(userInfo);
-
-    // TODO: Implement API call to update user
-    // fetch("http://localhost:8080/updateEmployer", {
-    //     method: 'PUT',
-    //     body: JSON.stringify({
-    //         userInfo
-    //     }),
-    //     headers: {
-    //         'Content-type': 'application/json; charset=UTF-8',
-    //     },
-    // })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         alert(data)
-    //     });
+    alert(`Updating Employer with ID: ${userInfo.username}`)
+    // DONE APITODO: /updateEmployer
+    fetch("http://localhost:8080/updateEmployer", {
+        method: 'PUT',
+        body: JSON.stringify({
+            userInfo
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            alert(data)
+        });
 }
 // Function to update the card body with the initial content
 function updateJobsList() {
     var accountsList = document.getElementById('jobsList');
     var scrollableBox = document.querySelector('.scrollable-box');
-
-    // APITODO: /getAllJobs
-
+    alert("Getting all Jobs List")
+    // DONE APITODO: /getAllJobs
     // Fetch data from the API for the Scrollable Box
     fetch('http://localhost:8080/getAllJobs')
         .then(response => response.json())
@@ -434,31 +424,13 @@ function updateJobsList() {
             console.error('Error fetching data updateJobsList():', error);
         });
 }
-
-
 function showJobDetails(clickedItem) {
     // Extract the id from the clickedItem's textContent
-    var username = clickedItem;
-
-    // APITODO: /getJobInfo
-    // TODO: Delete this
-    const usernameToIdMapping = {
-        "Bret": 1,
-        "Antonette": 2,
-        "Samantha": 3,
-        "Karianne": 4,
-        "Kamren": 5,
-        "Leopoldo_Corkery": 6,
-        "Elwyn.Skiles": 7,
-        "Maxime_Nienow": 8,
-        "Delphine": 9,
-        "Moriah.Stanton": 10
-    };
-    // TODO: Delete this
-    username = usernameToIdMapping[username];
-
+    var jobID = clickedItem;
+    alert(`Getting job details for ${jobID}`)
     // Fetch data from the API
-    fetch(`http://localhost:8080/getJobInfo/${username}`)
+    // DONE APITODO: /getJobInfo
+    fetch(`http://localhost:8080/getJobInfo/${jobID}`)
         .then(response => response.json())
         .then(data => {
             // Extract the attributes from the data
@@ -654,12 +626,22 @@ function validateInputs() {
     return true;
 }
 function deleteUser(apiLink, employerId) {
-    // TODO: Implement API call to delete user
-    alert(`User with ID ${employerId} has been deleted`);
+    // DONE APITODO: Implement API call to delete user
+    alert(`User with ID ${employerId} has been requested to be deleted`);
+    fetch(`http://localhost:8080/requestEmployerDelete/${employerId}`, {
+        method: 'DELETE'
+    }).then(response => {
+        return true;
+    }).catch(error => {
+        // Handle errors
+        console.error('There was a problem deleting the user:', error);
+        return false;
+    });
+    return true;
 }
 function validateContactInfoAndDelete(employerUsername) {
-    // APITODO: /getEmployerInfo
-
+    // DONE APITODO: /getEmployerInfo
+    alert(`Validating contact info for ${employerUsername}`)
     // Fetch data from the API using username
     fetch(`http://localhost:8080/getEmployerInfo/${employerUsername}`)
         .then(response => response.json())

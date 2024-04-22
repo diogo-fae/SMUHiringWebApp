@@ -235,9 +235,8 @@
                     }
 
                     // Call endpoint to request Professional creation
-                    // TODO: Get the endpoint URL
-                    // APITODO: /registerProfessional
-
+                    alert(`Creating Professional account with the following information: ${userInfo.username}`);
+                    // DONE APITODO: /registerProfessional
                     fetch('http://locahost:8080/registerProfessional', {
                         method: 'POST',
                         headers: {
@@ -278,9 +277,8 @@
                     // }
 
                     // Call endpoint to request Employer creation
-                    // TODO: Get the endpoint URL
-                    // APITODO: /registerEmployer
-
+                    // DONE APITODO: /registerEmployer
+                    alert(`Creating Employer account with the following information: ${userInfo.username}`);
                     fetch('http://locahost:8080/registerEmployer', {
                         method: 'POST',
                         headers: {
