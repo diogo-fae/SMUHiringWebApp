@@ -1,40 +1,13 @@
 // API Calls ------------------------------------------------------------------------------------
 function showHeaderUsername(username) {
-    // TODO: Delete this
-    alert();
-    const usernameToIdMapping = {
-        "Bret": 1,
-        "Antonette": 2,
-        "Samantha": 3,
-        "Karianne": 4,
-        "Kamren": 5,
-        "Leopoldo_Corkery": 6,
-        "Elwyn.Skiles": 7,
-        "Maxime_Nienow": 8,
-        "Delphine": 9,
-        "Moriah.Stanton": 10
-    };
-    // TODO: Delete this
-    // username = usernameToIdMapping[username];
-    // alert(username);
-    document.getElementById('headerUsername').innerHTML = usernameToIdMapping[username];
+    document.getElementById('headerUsername').innerHTML = username;
 }
-function showStaffInfo(username) {
-    // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
-        .then(response => response.json())
-        .then(data => {
-            // Store the staff information
-            staffInfo = data;
-
-            // Fill in the staff information
-            // document.getElementById('headerUsername').innerHTML = data.username;
-            document.getElementById('usernameDisplay').innerHTML = data.username;
-            document.getElementById('firstNameDisplay').innerHTML = data.name.split(' ')[0];
-            document.getElementById('lastNameDisplay').innerHTML = data.name.split(' ')[1];
-            document.getElementById('emailDisplay').innerHTML = data.email;
-            document.getElementById('phoneNumberDisplay').innerHTML = data.phone;
-        });
+function deleteJob(jobID) {
+    // Send a DELETE request to the API
+    // fetch(`https://jsonplaceholder.typicode.com/posts/${jobID}`, {
+    //     method: 'DELETE',
+    // })
+    return true;
 }
 function showEmployerInfo(employerUsername) {
     // Fetch data from the API using username
@@ -57,26 +30,47 @@ function showEmployerInfo(employerUsername) {
             document.getElementById('zipCodeDisplay').innerHTML = employerInfo.address.zipcode;
         });
 }
-function showProfessionalInfo(professionalUsername) {
-    // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${professionalUsername}`)
+function showJobInfo(jobID) {
+    // Fetch data from the API using jobID
+    fetch(`https://jsonplaceholder.typicode.com/users/${jobID}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
-            professionalInfo = data;
-            document.getElementById('usernameDisplay').innerHTML = professionalInfo.username;
-            document.getElementById('firstNameDisplay').innerHTML = professionalInfo.name.split(' ')[0];
-            document.getElementById('lastNameDisplay').innerHTML = professionalInfo.name.split(' ')[1];
-            document.getElementById('emailDisplay').innerHTML = professionalInfo.email;
-            document.getElementById('phoneNumberDisplay').innerHTML = professionalInfo.phoneNumber;
-            document.getElementById('address1Display').innerHTML = professionalInfo.address.street;
-            document.getElementById('address2Display').innerHTML = professionalInfo.address.suite;
-            document.getElementById('cityDisplay').innerHTML = professionalInfo.address.city;
-            document.getElementById('stateDisplay').innerHTML = professionalInfo.state;
-            document.getElementById('zipCodeDisplay').innerHTML = professionalInfo.address.zipcode;
-            document.getElementById('startDateDegreeDisplay').innerHTML = professionalInfo.startDateDegree;
-            document.getElementById('institutionDisplay').innerHTML = professionalInfo.company.name;
-            document.getElementById('degreeTypeDisplay').innerHTML = professionalInfo.company.bs;
+            jobInfo = data;
+            // alert(jobInfo.username);
+            document.getElementById('jobIDDisplay').innerHTML = jobInfo.jobID;
+            document.getElementById('positionNameDisplay').innerHTML = jobInfo.positionName;
+            document.getElementById('supervisorFirstNameDisplay').innerHTML = jobInfo.supervisorFirstName;
+            document.getElementById('supervisorLastNameDisplay').innerHTML = jobInfo.supervisorLastName;
+            document.getElementById('supervisorEmailDisplay').innerHTML = jobInfo.supervisorEmail;
+            document.getElementById('supervisorPhoneNumberDisplay').innerHTML = jobInfo.supervisorPhoneNumber;
+            document.getElementById('startDateDisplay').innerHTML = jobInfo.startDate;
+            document.getElementById('endDateDisplay').innerHTML = jobInfo.endDate;
+            document.getElementById('payPerHourDisplay').innerHTML = jobInfo.payRate;
+            document.getElementById('startTimeDisplay').innerHTML = jobInfo.startTime;
+            document.getElementById('endTimeDisplay').innerHTML = jobInfo.endTime;
+        });
+}
+function showJobInfoAndEdit(jobID) {
+    // Fetch data from the API using jobID
+    fetch(`https://jsonplaceholder.typicode.com/users/${jobID}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            jobInfo = data;
+            // alert(jobInfo.username);
+            document.getElementById('jobIDDisplay').innerHTML = jobInfo.id;
+            document.getElementById('positionNameDisplay').innerHTML = jobInfo.name;
+            document.getElementById('supervisorFirstNameInput').placeholder = jobInfo.name.split(' ')[0];
+            document.getElementById('supervisorLastNameInput').placeholder = jobInfo.name.split(' ')[1];
+            document.getElementById('supervisorEmailInput').placeholder = jobInfo.email;
+            document.getElementById('supervisorPhoneNumberInput').placeholder = jobInfo.phone;
+            document.getElementById('startDateInput').placeholder = jobInfo.address.geo.lng;
+            document.getElementById('endDateInput').placeholder = jobInfo.address.geo.lat;
+            document.getElementById('payPerHourInput').placeholder = jobInfo.address.zipcode;
+            document.getElementById('startTimeInput').placeholder = jobInfo.address.geo.lng;
+            document.getElementById('endTimeInput').placeholder = jobInfo.address.geo.lat;
+
             // Sample list of Skills bc the sample API does not have a list
             const skills = [
                 { category: 'Languages', skill: 'Python' },
@@ -96,24 +90,6 @@ function showProfessionalInfo(professionalUsername) {
                 categoryCell.innerHTML = skill.category;
                 skillCell.innerHTML = skill.skill;
             });
-        });
-}
-function showHeaderUsername(username) {
-    document.getElementById('headerUsername').innerHTML = username;
-}
-function fillEditForm(username) {
-    // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
-        .then(response => response.json())
-        .then(data => {
-            // Store the staff information
-            staffInfo = data;
-
-            // Fill in the staff information
-            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
-            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
-            document.getElementById('emailInput').placeholder = data.email;
-            document.getElementById('phoneNumberInput').placeholder = data.phone;
         });
 }
 function fillEmployerEditForm(username) {
@@ -137,79 +113,6 @@ function fillEmployerEditForm(username) {
             document.getElementById('companyNameInput').placeholder = data.companyName;
         });
 }
-function fillProfessionalEditForm(username) {
-    // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
-        .then(response => response.json())
-        .then(data => {
-            // Store the staff information
-            professionalInfo = data;
-
-            // Fill in the staff information
-            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
-            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
-            document.getElementById('emailInput').placeholder = data.email;
-            document.getElementById('phoneNumberInput').placeholder = data.phone;
-            document.getElementById('address1Input').placeholder = data.address.street;
-            document.getElementById('address2Input').placeholder = data.address.suite;
-            document.getElementById('cityInput').placeholder = data.address.city;
-            document.getElementById('stateInput').placeholder = data.address.state;
-            document.getElementById('zipCodeInput').placeholder = data.address.zipcode;
-            document.getElementById('institutionInput').placeholder = data.company.name;
-            document.getElementById('degreeTypeInput').placeholder = data.company.bs;
-            document.getElementById('startDateDegreeInput').placeholder = data.id;
-        });
-}
-function getRequests(requestQueue) {
-    // TODO: Add requestQueue to the API - should specify create or delete request and
-    // if it belongs to an Employer or a Professional
-    // Fetch data from the API
-    return fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json());
-    // .then(alert());
-}
-function getEmployers() {
-    // TODO: Implement API call to get all employers
-    return fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json());
-}
-function reviewRequest(requesterUsername, requestType, userType, decision) {
-    // TODO: Implement API call to update request status AND send decision
-    if (requestType === 'create') {
-        // TODO: Fix this API with real one
-        // if (userType === 'employer') {
-        //     fetch('https://jsonplaceholder.typicode.com/posts', {
-        //         method: 'POST',
-        //         body: JSON.stringify({
-        //             title: 'foo',
-        //             body: 'bar',
-        //             userId: 1
-        //         }),
-        //         headers: {
-        //             'Content-type': 'application/json; charset=UTF-8',
-        //         },
-        //     })
-        //         .then((response) => response.json())
-        //         .then((json) => console.log(json));
-        // } else if (userType === 'professional') {
-        //     fetch('https://jsonplaceholder.typicode.com/posts', {
-        //         method: 'POST',
-        //         body: JSON.stringify({
-        //             title: 'foo',
-        //             body: 'bar',
-        //             userId: 1
-        //         }),
-        //         headers: {
-        //             'Content-type': 'application/json; charset=UTF-8',
-        //         },
-        //     })
-        //         .then((response) => response.json())
-        //         .then((json) => console.log(json));
-        // }
-    } else if (requestType === 'delete') {
-
-    }
-}
 function updatePassword(apiLink, username, newPassword) {
     // TODO: Implement API to update password
     // fetch(apiLink, {
@@ -227,6 +130,145 @@ function updatePassword(apiLink, username, newPassword) {
     //     });
     // alert(`Password changed to ${newPassword}`);
     return true;
+}
+function postJob(apiLink, jobInfo) {
+    var jobID = document.getElementById('jobIDInput').value;
+    var positionName = document.getElementById('positionNameInput').value;
+    var supervisorFirstName = document.getElementById('supervisorFirstNameInput').value;
+    var supervisorLastName = document.getElementById('supervisorLastNameInput').value;
+    var supervisorEmail = document.getElementById('supervisorEmailInput').value;
+    var supervisorPhoneNumber = document.getElementById('supervisorPhoneNumberInput').value;
+    var startDate = document.getElementById('startDateInput').value;
+    var endDate = document.getElementById('endDateInput').value;
+    var payPerHour = document.getElementById('payPerHourInput').value;
+    var startTime = document.getElementById('startTimeInput').value;
+    var endTime = document.getElementById('endTimeInput').value;
+    jobInfo.jobID = jobID;
+    jobInfo.positionName = positionName;
+    jobInfo.supervisorFirstName = supervisorFirstName;
+    jobInfo.supervisorLastName = supervisorLastName;
+    jobInfo.supervisorEmail = supervisorEmail;
+    jobInfo.supervisorPhoneNumber = supervisorPhoneNumber;
+    jobInfo.startDate = startDate;
+    jobInfo.endDate = endDate;
+    jobInfo.payPerHour = payPerHour;
+    jobInfo.startTime = startTime;
+    jobInfo.endTime = endTime;
+    var categoryTable = document.getElementById('categorytable');
+    var qualifications = [];
+    // Iterate over the rows of the table starting from the second row (index 1)
+    for (var i = 1; i < categoryTable.rows.length; i++) {
+        var row = categoryTable.rows[i];
+        var rowData = {};
+
+        // Get the cells of the current row
+        var cells = row.cells;
+
+        // Get the value of the first and second column of the current row
+        var key = cells[0].textContent.trim(); // Assuming the first column contains text
+        var value = cells[1].textContent.trim(); // Assuming the second column contains text
+
+        // Add the key-value pair to the rowData dictionary
+        rowData[key] = value;
+
+        // Add the rowData dictionary to the rowsList
+        qualifications.push(rowData);
+    }
+    jobInfo.qualifications = qualifications;
+
+    // printDict(jobInfo);
+    // jobInfo.qualifications.forEach(qualification => {
+    //     printDict(qualification)
+    // });
+
+    // TODO: Implement API to post job
+    return true;
+}
+function updateJob(apiLink, jobInfo) {
+    var jobID = document.getElementById('jobIDDisplay').innerHTML;
+    jobInfo.jobID = jobID;
+    var positionName = document.getElementById('positionNameDisplay').innerHTML;
+    jobInfo.positionName = positionName;
+    // supervisorFirstNameInput, supervisorLastNameInput, supervisorEmailInput, supervisorPhoneNumberInput, payPerHourInput, startDateInput, endDateInput, startTimeInput, endTimeInput
+    var supervisorFirstNameInputValue = document.getElementById('supervisorFirstNameInput').value;
+    if (supervisorFirstNameInputValue) {
+        jobInfo.supervisorFirstName = supervisorFirstNameInputValue;
+    }
+    var supervisorLastNameInputValue = document.getElementById('supervisorLastNameInput').value;
+    if (supervisorLastNameInputValue) {
+        jobInfo.supervisorLastName = supervisorLastNameInputValue;
+    }
+    var supervisorEmailInputValue = document.getElementById('supervisorEmailInput').value;
+    if (supervisorEmailInputValue) {
+        jobInfo.supervisorEmail = supervisorEmailInputValue;
+    }
+    var supervisorPhoneNumberInputValue = document.getElementById('supervisorPhoneNumberInput').value;
+    if (supervisorPhoneNumberInputValue) {
+        jobInfo.supervisorPhoneNumber = supervisorPhoneNumberInputValue;
+    }
+    var payPerHourInputValue = document.getElementById('payPerHourInput').value;
+    if (payPerHourInputValue) {
+        jobInfo.payPerHour = payPerHourInputValue;
+    }
+    var startDateInputValue = document.getElementById('startDateInput').value;
+    if (startDateInputValue) {
+        jobInfo.startDate = startDateInputValue;
+    }
+    var endDateInputValue = document.getElementById('endDateInput').value;
+    if (endDateInputValue) {
+        jobInfo.endDate = endDateInputValue;
+    }
+    var startTimeInputValue = document.getElementById('startTimeInput').value;
+    if (startTimeInputValue) {
+        jobInfo.startTime = startTimeInputValue;
+    }
+    var endTimeInputValue = document.getElementById('endTimeInput').value;
+    if (endTimeInputValue) {
+        jobInfo.endTime = endTimeInputValue;
+    }
+    var categoryTable = document.getElementById('categorytable');
+    if (categoryTable.rows.length > 0) {
+        var qualifications = [];
+        // Iterate over the rows of the table starting from the second row (index 1)
+        for (var i = 1; i < categoryTable.rows.length; i++) {
+            var row = categoryTable.rows[i];
+            var rowData = {};
+
+            // Get the cells of the current row
+            var cells = row.cells;
+
+            // Get the value of the first and second column of the current row
+            var key = cells[0].textContent.trim(); // Assuming the first column contains text
+            var value = cells[1].textContent.trim(); // Assuming the second column contains text
+
+            // Add the key-value pair to the rowData dictionary
+            rowData[key] = value;
+
+            // Add the rowData dictionary to the rowsList
+            qualifications.push(rowData);
+        }
+        jobInfo.qualifications = qualifications;
+    }
+    // TODO: Delete this line
+    // jobInfo.qualifications.forEach(qualification => {
+    //     printDict(qualification)
+    // });
+    // printDict(jobInfo);
+
+    // TODO: Implement API call to update user
+    // fetch(apiLink, {
+    //     method: 'PUT',
+    //     body: JSON.stringify({
+    //         userInfo
+    //     }),
+    //     headers: {
+    //         'Content-type': 'application/json; charset=UTF-8',
+    //     },
+    // })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         alert(data)
+    //     });
 }
 function updateUser(apiLink, userInfo) {
     // Get new values from the form
@@ -272,49 +314,6 @@ function updateUser(apiLink, userInfo) {
         // alert("Error in fields for Employer/Professional") 
     }
     try {
-        var institutionInputValue = document.getElementById('institutionInput').value;
-        if (institutionInputValue) {
-            userInfo.institution = institutionInputValue;
-        }
-        var startDateDegreeInputValue = document.getElementById('startDateDegreeInput').value;
-        if (startDateDegreeInputValue) {
-            userInfo.startDateDegree = startDateDegreeInputValue;
-        }
-        var degreeTypeInputValue = document.getElementById('degreeTypeInput').value;
-        if (degreeTypeInputValue) {
-            userInfo.degreeType = degreeTypeInputValue;
-        }
-        var categoryTable = document.getElementById('categorytable');
-        if (categoryTable.rows.length > 0) {
-            var qualifications = [];
-            // Iterate over the rows of the table starting from the second row (index 1)
-            for (var i = 1; i < categoryTable.rows.length; i++) {
-                var row = categoryTable.rows[i];
-                var rowData = {};
-
-                // Get the cells of the current row
-                var cells = row.cells;
-
-                // Get the value of the first and second column of the current row
-                var key = cells[0].textContent.trim(); // Assuming the first column contains text
-                var value = cells[1].textContent.trim(); // Assuming the second column contains text
-
-                // Add the key-value pair to the rowData dictionary
-                rowData[key] = value;
-
-                // Add the rowData dictionary to the rowsList
-                qualifications.push(rowData);
-            }
-            userInfo.qualifications = qualifications;
-        }
-        // TODO: Delete this line
-        // userInfo.qualifications.forEach(qualification => {
-        //     printDict(qualification)
-        // });
-    } catch (error) {
-        // alert("Error in fields for Professional")
-    }
-    try {
         var companyNameInputValue = document.getElementById('companyNameInput').value;
         if (companyNameInputValue) {
             userInfo.companyName = companyNameInputValue;
@@ -341,7 +340,6 @@ function updateUser(apiLink, userInfo) {
     //     });
 }
 // API Calls ------------------------------------------------------------------------------------
-
 
 // Formatting -----------------------------------------------------------------------------------
 function setPasswordPattern() {
@@ -469,7 +467,6 @@ function showModalAndRedirect(modal, link) {
 function validateInputs() {
     // Implement your input validation logic here
     // Return true if all inputs are valid, false otherwise
-    // Example validation logic:
     var inputs = document.querySelectorAll('.needs-validation');
     for (var i = 0; i < inputs.length; i++) {
         if (!inputs[i].checkValidity()) {
@@ -479,6 +476,42 @@ function validateInputs() {
         }
     }
     return true;
+}
+function deleteUser(apiLink, employerId) {
+    // TODO: Implement API call to delete user
+    alert(`User with ID ${employerId} has been deleted`);
+}
+function validateContactInfoAndDelete(employerUsername) {
+    // Fetch data from the API using username
+    fetch(`https://jsonplaceholder.typicode.com/users/${employerUsername}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            employerInfo = data;
+
+            var firstName = document.getElementById('firstNameInput').value;
+            var lastName = document.getElementById('lastNameInput').value;
+            var email = document.getElementById('emailInput').value;
+            var phoneNumber = document.getElementById('phoneNumberInput').value;
+            if (firstName === employerInfo.name.split(' ')[0] && lastName === employerInfo.name.split(' ')[1] && email === employerInfo.email && phoneNumber === employerInfo.phone) {
+                // Chelsey Dietrich Lucio_Hettinger@annie.ca 2549541289
+                // TODO: Implement API to create Delete Request
+                // alert("Contact Information Updated Successfully!")
+                deleteUser(apiLink, employerUsername);
+                showModalAndRedirect(deleteModal, '/Employer/viewAccount.html?username=' + employerUsername);
+                return true;
+            }
+            else {
+                // alert("Contact Information does not match the employer's information. Please try again.")
+                var form = document.querySelector('.needs-validation');
+                form.classList.add('was-validated');
+                document.getElementById('firstNameInput').pattern = employerInfo.name.split(' ')[0];
+                document.getElementById('lastNameInput').pattern = employerInfo.name.split(' ')[1];
+                document.getElementById('emailInput').pattern = employerInfo.email;
+                document.getElementById('phoneNumberInput').pattern = employerInfo.phone;
+                return false;
+            }
+        });
 }
 function validatePasswordInputs() {
     if (!validateInputs()) {

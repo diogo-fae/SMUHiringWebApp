@@ -51,7 +51,7 @@
         <ul class="nav navbar-nav my-2 my-lg-0">
             <li class="dropdown">
                 <button class="dropdown-toggle btn text-center" data-toggle="dropdown" id="headerUsername"
-                    style="color:white">diogo_fae_staff
+                    style="color:white">
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu text-center">
                     <li><a class="page-redirect" href="/Staff/changePassword.html">Change Password</a></li>
@@ -435,6 +435,10 @@
                 // Save the changes
                 updateUser(apiLink, professionalInfo);
                 showModalAndRedirect(saveModal, '/Staff/browseProfessionalAccounts.html?username=' + staffUsername);
+            }
+            else if (categoryTable.rows.length <= 2) {
+                var form = document.getElementById('cat-table-invalid-feedback');
+                form.classList.add('d-block');
             }
         });
 

@@ -1,61 +1,6 @@
 // API Calls ------------------------------------------------------------------------------------
 function showHeaderUsername(username) {
-    // TODO: Delete this
-    alert();
-    const usernameToIdMapping = {
-        "Bret": 1,
-        "Antonette": 2,
-        "Samantha": 3,
-        "Karianne": 4,
-        "Kamren": 5,
-        "Leopoldo_Corkery": 6,
-        "Elwyn.Skiles": 7,
-        "Maxime_Nienow": 8,
-        "Delphine": 9,
-        "Moriah.Stanton": 10
-    };
-    // TODO: Delete this
-    // username = usernameToIdMapping[username];
-    // alert(username);
-    document.getElementById('headerUsername').innerHTML = usernameToIdMapping[username];
-}
-function showStaffInfo(username) {
-    // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
-        .then(response => response.json())
-        .then(data => {
-            // Store the staff information
-            staffInfo = data;
-
-            // Fill in the staff information
-            // document.getElementById('headerUsername').innerHTML = data.username;
-            document.getElementById('usernameDisplay').innerHTML = data.username;
-            document.getElementById('firstNameDisplay').innerHTML = data.name.split(' ')[0];
-            document.getElementById('lastNameDisplay').innerHTML = data.name.split(' ')[1];
-            document.getElementById('emailDisplay').innerHTML = data.email;
-            document.getElementById('phoneNumberDisplay').innerHTML = data.phone;
-        });
-}
-function showEmployerInfo(employerUsername) {
-    // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${employerUsername}`)
-        .then(response => response.json())
-        .then(data => {
-            // Store the staff information
-            employerInfo = data;
-            // alert(employerInfo.username);
-            document.getElementById('usernameDisplay').innerHTML = employerInfo.username;
-            document.getElementById('companyNameDisplay').innerHTML = employerInfo.company.name;
-            document.getElementById('firstNameDisplay').innerHTML = employerInfo.name.split(' ')[0];
-            document.getElementById('lastNameDisplay').innerHTML = employerInfo.name.split(' ')[1];
-            document.getElementById('emailDisplay').innerHTML = employerInfo.email;
-            document.getElementById('phoneNumberDisplay').innerHTML = employerInfo.phoneNumber;
-            document.getElementById('address1Display').innerHTML = employerInfo.address.street;
-            document.getElementById('address2Display').innerHTML = employerInfo.address.suite;
-            document.getElementById('cityDisplay').innerHTML = employerInfo.address.city;
-            document.getElementById('stateDisplay').innerHTML = employerInfo.state;
-            document.getElementById('zipCodeDisplay').innerHTML = employerInfo.address.zipcode;
-        });
+    document.getElementById('headerUsername').innerHTML = username;
 }
 function showProfessionalInfo(professionalUsername) {
     // Fetch data from the API using username
@@ -98,43 +43,25 @@ function showProfessionalInfo(professionalUsername) {
             });
         });
 }
-function showHeaderUsername(username) {
-    document.getElementById('headerUsername').innerHTML = username;
-}
-function fillEditForm(username) {
-    // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+function showJobInfo(jobID) {
+    // Fetch data from the API using jobID
+    fetch(`https://jsonplaceholder.typicode.com/users/${jobID}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
-            staffInfo = data;
-
-            // Fill in the staff information
-            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
-            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
-            document.getElementById('emailInput').placeholder = data.email;
-            document.getElementById('phoneNumberInput').placeholder = data.phone;
-        });
-}
-function fillEmployerEditForm(username) {
-    // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
-        .then(response => response.json())
-        .then(data => {
-            // Store the staff information
-            employerInfo = data;
-
-            // Fill in the staff information
-            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
-            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
-            document.getElementById('emailInput').placeholder = data.email;
-            document.getElementById('phoneNumberInput').placeholder = data.phone;
-            document.getElementById('address1Input').placeholder = data.address.street;
-            document.getElementById('address2Input').placeholder = data.address.suite;
-            document.getElementById('cityInput').placeholder = data.address.city;
-            document.getElementById('stateInput').placeholder = data.address.state;
-            document.getElementById('zipCodeInput').placeholder = data.address.zipcode;
-            document.getElementById('companyNameInput').placeholder = data.companyName;
+            jobInfo = data;
+            // alert(jobInfo.username);
+            document.getElementById('jobIDDisplay').innerHTML = jobInfo.jobID;
+            document.getElementById('positionNameDisplay').innerHTML = jobInfo.positionName;
+            document.getElementById('supervisorFirstNameDisplay').innerHTML = jobInfo.supervisorFirstName;
+            document.getElementById('supervisorLastNameDisplay').innerHTML = jobInfo.supervisorLastName;
+            document.getElementById('supervisorEmailDisplay').innerHTML = jobInfo.supervisorEmail;
+            document.getElementById('supervisorPhoneNumberDisplay').innerHTML = jobInfo.supervisorPhoneNumber;
+            document.getElementById('startDateDisplay').innerHTML = jobInfo.startDate;
+            document.getElementById('endDateDisplay').innerHTML = jobInfo.endDate;
+            document.getElementById('payPerHourDisplay').innerHTML = jobInfo.payRate;
+            document.getElementById('startTimeDisplay').innerHTML = jobInfo.startTime;
+            document.getElementById('endTimeDisplay').innerHTML = jobInfo.endTime;
         });
 }
 function fillProfessionalEditForm(username) {
@@ -159,56 +86,6 @@ function fillProfessionalEditForm(username) {
             document.getElementById('degreeTypeInput').placeholder = data.company.bs;
             document.getElementById('startDateDegreeInput').placeholder = data.id;
         });
-}
-function getRequests(requestQueue) {
-    // TODO: Add requestQueue to the API - should specify create or delete request and
-    // if it belongs to an Employer or a Professional
-    // Fetch data from the API
-    return fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json());
-    // .then(alert());
-}
-function getEmployers() {
-    // TODO: Implement API call to get all employers
-    return fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json());
-}
-function reviewRequest(requesterUsername, requestType, userType, decision) {
-    // TODO: Implement API call to update request status AND send decision
-    if (requestType === 'create') {
-        // TODO: Fix this API with real one
-        // if (userType === 'employer') {
-        //     fetch('https://jsonplaceholder.typicode.com/posts', {
-        //         method: 'POST',
-        //         body: JSON.stringify({
-        //             title: 'foo',
-        //             body: 'bar',
-        //             userId: 1
-        //         }),
-        //         headers: {
-        //             'Content-type': 'application/json; charset=UTF-8',
-        //         },
-        //     })
-        //         .then((response) => response.json())
-        //         .then((json) => console.log(json));
-        // } else if (userType === 'professional') {
-        //     fetch('https://jsonplaceholder.typicode.com/posts', {
-        //         method: 'POST',
-        //         body: JSON.stringify({
-        //             title: 'foo',
-        //             body: 'bar',
-        //             userId: 1
-        //         }),
-        //         headers: {
-        //             'Content-type': 'application/json; charset=UTF-8',
-        //         },
-        //     })
-        //         .then((response) => response.json())
-        //         .then((json) => console.log(json));
-        // }
-    } else if (requestType === 'delete') {
-
-    }
 }
 function updatePassword(apiLink, username, newPassword) {
     // TODO: Implement API to update password
@@ -314,14 +191,6 @@ function updateUser(apiLink, userInfo) {
     } catch (error) {
         // alert("Error in fields for Professional")
     }
-    try {
-        var companyNameInputValue = document.getElementById('companyNameInput').value;
-        if (companyNameInputValue) {
-            userInfo.companyName = companyNameInputValue;
-        }
-    } catch (error) {
-        // alert("Error in fields for Employer")
-    }
 
     // printDict(userInfo);
 
@@ -341,7 +210,6 @@ function updateUser(apiLink, userInfo) {
     //     });
 }
 // API Calls ------------------------------------------------------------------------------------
-
 
 // Formatting -----------------------------------------------------------------------------------
 function setPasswordPattern() {

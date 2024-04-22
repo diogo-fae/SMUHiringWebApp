@@ -51,7 +51,7 @@
         <ul class="nav navbar-nav my-2 my-lg-0">
             <li class="dropdown">
                 <button class="dropdown-toggle btn text-center" data-toggle="dropdown" id="headerUsername"
-                    style="color:white">diogo_fae
+                    style="color:white">
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu text-center">
                     <li><a class="page-redirect" href="/Employer/changePassword.html">Change Password</a></li>
@@ -129,26 +129,27 @@
                 <!-- Top Buttons -->
                 <div class="container-fluid mt-0">
                     <div class="col-md- order-md-1 d-flex justify-content-between">
-                        <a type="button" class="btn btn-danger" class="page-redirect"
+                        <a type="button" class="btn btn-danger page-redirect"
                             href="/Employer/browseJobs.html">Cancel</a>
-                        <button class="btn btn-success" type="button" onclick="validateAndShowModal()">Save</button>
+                        <button class="btn btn-success" type="button" id="saveBt"
+                            onclick="validateAndShowModal()">Save</button>
                     </div>
                 </div>
 
                 <!-- Confirmation Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="saveModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close-modal-bt" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
                                 Your changes have been saved.
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer close-modal-bt">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -165,26 +166,18 @@
                         <!-- Job ID -->
                         <div class="mb-5">
                             <label for="jobID" class="font-weight-bold">Job ID</label>
-                            <div class="input-group">
-                                <div>
-                                    123
-                                </div>
-                            </div>
+                            <div id="jobIDDisplay"></div>
                         </div>
                         <!-- Position Name -->
                         <div class="mb-5">
                             <label for="positionName" class="font-weight-bold">Position Name</label>
-                            <div class="input-group">
-                                <div>
-                                    Software Engineer
-                                </div>
-                            </div>
+                            <div id="positionNameDisplay"></div>
                         </div>
                         <!-- Supervisor Name -->
                         <div class="row">
                             <div class="col-md-6 mb-5">
                                 <label for="supervisorFirstName" class="font-weight-bold">Supervisor First Name</label>
-                                <input type="text" class="form-control" id="supervisorFirstName" placeholder=""
+                                <input type="text" class="form-control" id="supervisorFirstNameInput" placeholder=""
                                     value="">
                                 <div class="invalid-feedback">
                                     Please enter the contact person's last name.
@@ -192,7 +185,7 @@
                             </div>
                             <div class="col-md-6 mb-5">
                                 <label for="supervisorLastName" class="font-weight-bold">Supervisor Last Name</label>
-                                <input type="text" class="form-control" id="supervisorLastName" placeholder="">
+                                <input type="text" class="form-control" id="supervisorLastNameInput" placeholder="">
                                 <div class="invalid-feedback">
                                     Please enter the contact person's last name.
                                 </div>
@@ -201,8 +194,9 @@
                         <!-- Supervisor Email -->
                         <div class="mb-5">
                             <label for="supervisorEmail" class="font-weight-bold">Supervisor Email</label>
-                            <input type="email" class="form-control" id="supervisorEmail" placeholder="you@example.com"
-                                value="" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                            <input type="email" class="form-control" id="supervisorEmailInput"
+                                placeholder="you@example.com" value=""
+                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
                             <div class="invalid-feedback">
                                 Please enter a valid email.
                             </div>
@@ -210,7 +204,7 @@
                         <!-- Supervisor Phone Number -->
                         <div class="mb-5">
                             <label for="supervisorPhoneNumber" class="font-weight-bold">Supervisor Phone Number</label>
-                            <input type="text" class="form-control" id="supervisorPhoneNumber"
+                            <input type="text" class="form-control" id="supervisorPhoneNumberInput"
                                 placeholder="(123) 456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="14"
                                 pattern="^\(\d{3}\) \d{3}-\d{4}$"
                                 title="Please enter a valid phone number (e.g., (123) 456-7890)">
@@ -221,8 +215,8 @@
                         <!-- Pay per Hour -->
                         <div class="mb-5">
                             <label for="payPerHour" class="font-weight-bold">Pay per Hour</label>
-                            <input type="text" class="form-control" id="payPerHour" placeholder="" value=""
-                                onkeypress="return blockNegative(event)" pattern="^\d+(\.\d{0,2})?$">
+                            <input type="number" step="0.01" class="form-control" id="payPerHourInput" placeholder=""
+                                value="" onkeypress="return blockNegative(event)" pattern="^\d+(\.\d{0,2})?$">
                             <div class="invalid-feedback">
                                 Please enter a valid value.
                             </div>
@@ -236,7 +230,7 @@
                                 <label for="startDate" class="font-weight-bold">Start Date</label>
                                 <div class="input-group date" data-provide="datepicker" id="datepickerStart"
                                     data-date-format="mm-yyyy">
-                                    <input type="text" class="form-control" id="startDate" value=""
+                                    <input type="text" class="form-control" id="startDateInput" value=""
                                         style="background-color: white;" placeholder="MM-YYYY">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
@@ -250,7 +244,7 @@
                                 <label for="endDate" class="font-weight-bold">End Date</label>
                                 <div class="input-group date" data-provide="datepicker" id="datepickerEnd"
                                     data-date-format="mm-yyyy">
-                                    <input type="text" class="form-control" id="endDate" value=""
+                                    <input type="text" class="form-control" id="endDateInput" value=""
                                         style="background-color: white;" placeholder="MM-YYYY">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
@@ -265,14 +259,16 @@
                         <div class="row">
                             <div class="col-md-4 mb-5">
                                 <label for="startTime" class="font-weight-bold">Start Time</label>
-                                <input type="text" class="form-control" id="payPerHour" placeholder="08:00" value="">
+                                <input type="text" class="form-control" id="startTimeInput" placeholder="08:00" value=""
+                                    pattern="^(0[0-9]|1[0-9]|2[0-2]):[0-5][0-9]$">
                                 <div class="invalid-feedback">
                                     Please enter a valid value.
                                 </div>
                             </div>
                             <div class="col-md-4 mb-5">
                                 <label for="endTime" class="font-weight-bold">End Time</label>
-                                <input type="text" class="form-control" id="payPerHour" placeholder="18:30" value="">
+                                <input type="text" class="form-control" id="endTimeInput" placeholder="18:30" value=""
+                                    pattern="^(0[0-9]|1[0-9]|2[0-2]):[0-5][0-9]$">
                                 <div class="invalid-feedback">
                                     Please enter a valid value.
                                 </div>
@@ -305,54 +301,23 @@
                                 </div>
                             </div>
 
-                            <!-- Table -->
-                            <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 350px;">
-                                <table id="categorytable" class="table table-bordered">
-                                    <thead>
-                                        <tr style="background-color: #62849b;color: white;">
-                                            <th scope="col">Category</th>
-                                            <th scope="col">Skills</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Languages</td>
-                                            <td>Python, C++, C#, Java, Ruby, PHP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Previous Employment</td>
-                                            <td>Full Stack Developer, Software Engineer, Software Development Engineer,
-                                                Software Development Engineer Intern</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Languages</td>
-                                            <td>Python, C++, C#, Java, Ruby, PHP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Previous Employment</td>
-                                            <td>Full Stack Developer, Software Engineer, Software Development Engineer,
-                                                Software Development Engineer Intern</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Languages</td>
-                                            <td>Python, C++, C#, Java, Ruby, PHP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Previous Employment</td>
-                                            <td>Full Stack Developer, Software Engineer, Software Development Engineer,
-                                                Software Development Engineer Intern</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Languages</td>
-                                            <td>Python, C++, C#, Java, Ruby, PHP</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Previous Employment</td>
-                                            <td>Full Stack Developer, Software Engineer, Software Development Engineer,
-                                                Software Development Engineer Intern</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <!-- Qualifications -->
+                            <div class="mb-5">
+                                <label for="requiredQualifications" class="font-weight-bold">Required
+                                    Qualifications</label>
+                                <!-- Table -->
+                                <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 350px;">
+                                    <table id="categorytable" class="table table-bordered">
+                                        <thead>
+                                            <tr style="background-color: #62849b;color: white;">
+                                                <th scope="col">Category</th>
+                                                <th scope="col">Skills</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -382,213 +347,44 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="employerFunctions.js"></script>
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
+        // Dictionary with employer information
+        let jobInfo = {};
 
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
+        var saveModal = document.getElementById('saveModal');
 
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
+        // Get the employer username from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const employerUsername = urlParams.get('username');
+        const jobID = urlParams.get('jobId');
 
-            $('#datepickerStart').datepicker({
-                format: 'mm-yyyy',
-                autoclose: true,
-            }).on('changeDate', function (selected) {
-                var minDate = new Date(selected.date.valueOf());
-                $('#datepickerEnd').datepicker('setStartDate', minDate);
-            });
+        // Update links
+        addUsernameToLinks();
 
-            $('#datepickerEnd').datepicker({
-                format: 'mm-yyyy',
-                autoclose: true,
-            });
+        // Fill in the employer information
+        showHeaderUsername(employerUsername);
 
-            $("#datepickerStart").datepicker({
-                format: "mm-yyyy",
-                startView: "months",
-                minViewMode: "months"
-            });
-            $("#datepickerEnd").datepicker({
-                format: "mm-yyyy",
-                startView: "months",
-                minViewMode: "months"
-            });
+        // Show Job Info
+        showJobInfoAndEdit(jobID);
 
-        })();
-
-        // Fixes dropdown menu not showing when clicking the button
-        $('.dropdown').click(function () {
-            $('.dropdown-menu').toggleClass('show');
-        });
-        $(document).click(function (event) {
-            if (!$(event.target).closest('.dropdown').length) {
-                // If the click is outside the dropdown, hide the dropdown menu
-                $('.dropdown-menu').removeClass('show');
+        // Save button
+        var saveButton = document.getElementById('saveBt');
+        const apiLink = 'https://api.restful-api.dev/objects';
+        var categoryTable = document.getElementById('categorytable');
+        saveButton.addEventListener('click', function () {
+            // Table must have more than 2 rows bc the first row is the header
+            if (validateInputs() && categoryTable.rows.length > 2) {
+                // Save the changes
+                updateJob(apiLink, jobInfo);
+                showModalAndRedirect(saveModal, '/Employer/browseJobs.html?username=' + employerUsername);
+            }
+            else if (categoryTable.rows.length <= 2) {
+                var form = document.getElementById('cat-table-invalid-feedback');
+                form.classList.add('d-block');
             }
         });
-
-        function validateAndShowModal() {
-            // Validate your inputs here, for example:
-            var inputsValid = validateInputs();
-            var form = document.querySelector('.needs-validation');
-            var categorytable = document.getElementById('categorytable');
-
-            if (inputsValid && categorytable.rows.length >= 3) {
-                // If all inputs are valid, show the modal
-                $('#exampleModal').modal('show');
-            } else {
-                // If any input is not valid, handle the validation error (e.g., display an error message)
-                form.classList.add('was-validated');
-                if (categorytable.rows.length < 3) {
-                    document.getElementById('cat-table-invalid-feedback').style.display = 'block';
-                }
-                else {
-                    document.getElementById('cat-table-invalid-feedback').style.display = 'none';
-                }
-            }
-        }
-
-        function validateAndContinue(href) {
-            // Validate inputs here
-            var inputsValid = validateInputs();
-            var form = document.querySelector('.needs-validation');
-
-            if (inputsValid) {
-                // If all inputs are valid, navigate to the link specified in the button's href
-                window.location.href = href;
-            } else {
-                // If any input is not valid, handle the validation error (e.g., display an error message)
-                form.classList.add('was-validated');
-            }
-        }
-
-        function validateInputs() {
-            // Implement your input validation logic here
-            // Return true if all inputs are valid, false otherwise
-            // Example validation logic:
-            var inputs = document.querySelectorAll('.needs-validation input');
-            for (var i = 0; i < inputs.length; i++) {
-                if (!inputs[i].checkValidity()) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        function saveChanges() {
-            // Implement the logic to save changes here
-            // This function is called when the "Save changes" button inside the modal is clicked
-            // Close the modal if needed: $('#exampleModal').modal('hide');
-        }
-
-        var count = 1;
-
-        function add() {
-            var category = document.getElementById("categoryname").value.trim();
-            var skills = document.getElementById("categoryskills").value.trim();
-
-            // Check if both categoryname and categoryskills are not empty
-            if (category !== "" && skills !== "") {
-                var table = document.getElementById("categorytable");
-
-                // Add a new row at the bottom of the table
-                var row = table.insertRow(-1);
-
-                var col1 = row.insertCell(0);
-                var col2 = row.insertCell(1);
-                col1.innerHTML = category;
-                col2.innerHTML = skills;
-
-                // Reset the category field and skills fields to be blank
-                document.getElementById("categoryname").value = "";
-                document.getElementById("categoryskills").value = "";
-
-                // Update the count to the new row count
-                count = table.rows.length;
-            }
-
-            if (table.rows.length < 3) {
-                document.getElementById('cat-table-invalid-feedback').style.display = 'block';
-            }
-            else {
-                document.getElementById('cat-table-invalid-feedback').style.display = 'none';
-            }
-        }
-
-        function deleteLastRow() {
-            var table = document.getElementById("categorytable");
-            var rowCount = table.rows.length;
-
-            // Check if there is at least one row to delete
-            if (rowCount > 1) {
-                table.deleteRow(rowCount - 1);
-                count--; // Decrement the count to maintain accurate row count
-            }
-
-            if (table.rows.length < 3) {
-                document.getElementById('cat-table-invalid-feedback').style.display = 'block';
-            }
-            else {
-                document.getElementById('cat-table-invalid-feedback').style.display = 'none';
-            }
-        }
-
-        function formatPhoneNumber(input) {
-            // Remove all non-numeric characters
-            var phoneNumber = input.value.replace(/\D/g, '');
-
-            // Check if the input value is empty or not a number
-            if (!phoneNumber || isNaN(phoneNumber)) {
-                input.value = ''; // Clear the input field
-                return;
-            }
-
-            // Format the phone number with hyphens
-            var formattedPhoneNumber = '';
-            for (var i = 0; i < phoneNumber.length; i++) {
-                if (i === 0) {
-                    formattedPhoneNumber += '(';
-                }
-                if (i === 3) {
-                    formattedPhoneNumber += ') ';
-                }
-                if (i === 6) {
-                    formattedPhoneNumber += '-';
-                }
-                formattedPhoneNumber += phoneNumber[i];
-            }
-
-            // Update the input value with the formatted phone number
-            input.value = formattedPhoneNumber;
-        }
-
-        function blockNegative(event) {
-            // Get the key code of the pressed key
-            var keyCode = event.which || event.keyCode;
-
-            // Allow only digits (0-9) or the backspace key (8)
-            if ((keyCode >= 48 && keyCode <= 57) || keyCode === 8 || keyCode === 46) {
-                return true; // Allow input
-            } else if (keyCode === 45) { // Check for the minus sign (-)
-                event.preventDefault(); // Prevent input of the minus sign
-                return false;
-            } else {
-                return false; // Block input of other characters
-            }
-        }
     </script>
 
 </body>
