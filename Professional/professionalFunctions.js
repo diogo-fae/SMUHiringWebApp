@@ -3,6 +3,8 @@ function showHeaderUsername(username) {
     document.getElementById('headerUsername').innerHTML = username;
 }
 function showProfessionalInfo(professionalUsername) {
+    // APITODO: /getProfessionalInfo
+
     // Fetch data from the API using username
     fetch(`https://jsonplaceholder.typicode.com/users/${professionalUsername}`)
         .then(response => response.json())
@@ -44,6 +46,8 @@ function showProfessionalInfo(professionalUsername) {
         });
 }
 function showJobInfo(jobID) {
+    // APITODO: /getJobInfo
+
     // Fetch data from the API using jobID
     fetch(`https://jsonplaceholder.typicode.com/users/${jobID}`)
         .then(response => response.json())
@@ -65,6 +69,8 @@ function showJobInfo(jobID) {
         });
 }
 function fillProfessionalEditForm(username) {
+    // APITODO: /getProfessionalInfo
+
     // Fetch data from the API using username
     fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
         .then(response => response.json())
@@ -107,6 +113,8 @@ function fillProfessionalEditForm(username) {
         });
 }
 function updatePassword(apiLink, username, newPassword) {
+    // APITODO: /changePassword
+
     // TODO: Implement API to update password
     // fetch(apiLink, {
     //     method: 'PUT',
@@ -204,33 +212,145 @@ function updateUser(apiLink, userInfo) {
             userInfo.qualifications = qualifications;
         }
         // TODO: Delete this line
-        // userInfo.qualifications.forEach(qualification => {
-        //     printDict(qualification)
-        // });
     } catch (error) {
         // alert("Error in fields for Professional")
     }
 
-    // printDict(userInfo);
-
-    // TODO: Implement API call to update user
-    // fetch(apiLink, {
-    //     method: 'PUT',
-    //     body: JSON.stringify({
-    //         userInfo
-    //     }),
-    //     headers: {
-    //         'Content-type': 'application/json; charset=UTF-8',
-    //     },
-    // })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         alert(data)
-    //     });
+    // APITODO: /updateProfessional
 }
-function requestJobMatching(apiLink, professionalUsername) {
-    // TODO: Implement API call to request job matching
-    return true;
+// Function to update the card body with the initial content
+function updateJobsList() {
+    var accountsList = document.getElementById('jobsList');
+    var scrollableBox = document.querySelector('.scrollable-box');
+
+    // APITODO: /getAllJobs
+    // Fetch data from the API for the Scrollable Box
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(data => {
+            // Update the list with the data
+            data.forEach(item => {
+                var listItem = document.createElement('a');
+                listItem.className = 'list-group-item list-group-item-action clickable-job-item';
+                listItem.href = '#';
+                listItem.textContent = `${item.id} - ${item.name}`;
+
+                // Add click event listener to the scrollable box
+                scrollableBox.addEventListener('click', function (event) {
+                    var clickedItem = event.target;
+                    if (clickedItem.tagName === 'A') {
+                        // Reset background color of all items
+                        var listItems = accountsList.querySelectorAll('.list-group-item');
+                        listItems.forEach(item => {
+                            item.style.backgroundColor = '';
+                        });
+                        // Change background color of clicked item
+                        clickedItem.style.backgroundColor = 'lightblue';
+                        // Add id and name to the item's attributes
+                        clickedItem.id = item.id;
+                        clickedItem.name = item.name;
+                        // clickedItem.username = item.username;
+                    }
+                });
+
+                // Add click event listener to each listItem to show account details
+                listItem.addEventListener('click', function () {
+                    // Call showAccountDetails with the clicked item's id and name
+                    showJobDetails(item.username);
+                });
+
+                accountsList.appendChild(listItem);
+
+                // Click the first item when the page loads
+                if (accountsList.children.length === 1) {
+                    listItem.click();
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data updateJobsList():', error);
+        });
+}
+
+
+function showJobDetails(clickedItem) {
+    // Extract the id from the clickedItem's textContent
+    var username = clickedItem;
+
+    // APITODO: /getJobInfo
+    // TODO: Delete this
+    const usernameToIdMapping = {
+        "Bret": 1,
+        "Antonette": 2,
+        "Samantha": 3,
+        "Karianne": 4,
+        "Kamren": 5,
+        "Leopoldo_Corkery": 6,
+        "Elwyn.Skiles": 7,
+        "Maxime_Nienow": 8,
+        "Delphine": 9,
+        "Moriah.Stanton": 10
+    };
+    // TODO: Delete this
+    username = usernameToIdMapping[username];
+
+    // Fetch data from the API
+    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+        .then(response => response.json())
+        .then(data => {
+            // Extract the attributes from the data
+            var attributes = data;
+            var jobId = attributes.id;
+
+            // Update the display with the details
+            // document.getElementById('usernameDisplay').textContent = attributes.username || 'N/A';
+            // jobIDDisplay, positionNameDisplay, supervisorNameDisplay, supervisorEmailDisplay, supervisorPhoneNumberDisplay, payPerHourDisplay, startDateDisplay, endDateDisplay, startDateDisplay, endDateDisplay
+            document.getElementById('jobIDDisplay').textContent = attributes.id || 'N/A';
+            document.getElementById('positionNameDisplay').textContent = attributes.name || 'N/A';
+            document.getElementById('supervisorNameDisplay').textContent = attributes.username || 'N/A';
+            document.getElementById('supervisorEmailDisplay').textContent = attributes.email || 'N/A';
+            document.getElementById('supervisorPhoneNumberDisplay').textContent = attributes.phone || 'N/A';
+            document.getElementById('payPerHourDisplay').textContent = attributes.website || 'N/A';
+            document.getElementById('startDateDisplay').textContent = attributes.address.street || 'N/A';
+            document.getElementById('endDateDisplay').textContent = attributes.address.suite || 'N/A';
+            document.getElementById('startTimeDisplay').textContent = attributes.address.city || 'N/A';
+            document.getElementById('endTimeDisplay').textContent = attributes.address.zipcode || 'N/A';
+
+            // Sample list of Skills bc the sample API does not have a list
+            const skills = [
+                { category: 'Languages', skill: 'Python' },
+                { category: 'Languages', skill: 'C++' },
+                { category: 'Languages', skill: 'C#' },
+                { category: 'Languages', skill: 'Java' },
+                { category: 'Languages', skill: 'Ruby' },
+                { category: 'Languages', skill: 'PHP' },
+                { category: 'Previous Employment', skill: 'Software Engineer' }
+            ];
+            // Fill in the professional qualifications in the categorytable
+            const categoryTable = document.getElementById('categorytable');
+            skills.forEach(skill => {
+                const row = categoryTable.insertRow(-1);
+                const categoryCell = row.insertCell(0);
+                const skillCell = row.insertCell(1);
+                categoryCell.innerHTML = skill.category;
+                skillCell.innerHTML = skill.skill;
+            });
+
+            // Update the href attribute of the edit button
+            // Check if jobId is already part of the href attribute
+            var editBt = document.getElementById('editBt');
+            if (editBt.href.includes('jobId')) {
+                // If it is, update the value of username
+                editBt.href = editBt.href.replace(/jobId=[^&]+/, `jobId=${jobId}`);
+            } else {
+                // If it's not, append both username and jobId
+                editBt.href += `&jobId=${jobId}`;
+            }
+            // editBt.href += `&professionalUsername=${username}`;
+        })
+        .catch(error => {
+            // alert('Error fetching data showJobDetails():', error);
+        });
 }
 // API Calls ------------------------------------------------------------------------------------
 
@@ -359,7 +479,7 @@ function addJobMatchingRequestFunctionality(professionalUsername) {
     var jobMatchingButton = document.getElementById('requestJMBt');
     var modal = document.getElementById('jobMatchingModal');
     jobMatchingButton.addEventListener('click', function () {
-        requestJobMatching(apiLink, professionalUsername);
+        // APITODO: /requestJobMatching
         $(modal).modal('show');
     });
 }
@@ -369,7 +489,7 @@ function addDeleteRequestFunctionality(professionalUsername) {
     var jobMatchingButton = document.getElementById('requestDeleteBt');
     var modal = document.getElementById('deleteModal');
     jobMatchingButton.addEventListener('click', function () {
-        requestJobMatching(apiLink, professionalUsername);
+        // APITODO: /deleteAccount
         $(modal).modal('show');
     });
 }

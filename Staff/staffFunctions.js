@@ -139,7 +139,7 @@ function fillEmployerEditForm(username) {
 }
 function fillProfessionalEditForm(username) {
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+    fetch(`https://jsonplaceholder.typicode.com/professional/${username}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
