@@ -47,7 +47,7 @@ function showJobInfo(jobID) {
     // APITODO: /getJobInfo
 
     // Fetch data from the API using jobID
-    fetch(`https://jsonplaceholder.typicode.com/users/${jobID}`)
+    fetch(`http://localhost:8080/getJobInfo/${jobID}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
@@ -70,7 +70,7 @@ function showJobInfoAndEdit(jobID) {
     // APITODO: /getJobInfo
 
     // Fetch data from the API using jobID
-    fetch(`https://jsonplaceholder.typicode.com/users/${jobID}`)
+    fetch(`http://localhost:8080/getJobInfo/${jobID}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
@@ -113,7 +113,7 @@ function fillEmployerEditForm(username) {
     // APITODO: /getEmployerInfo
 
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+    fetch(`http://localhost:8080/getEmployerInfo/${username}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
@@ -135,7 +135,7 @@ function fillEmployerEditForm(username) {
 function updatePassword(apiLink, username, newPassword) {
     // APITODO: /changePassword
 
-    // fetch(apiLink, {
+    // fetch("http://localhost:8080/changePassword", {
     //     method: 'PUT',
     //     body: JSON.stringify({
     //         userInfo
@@ -204,6 +204,21 @@ function postJob(apiLink, jobInfo) {
     // });
 
     // TODO: Implement API to post job
+    fetch('http://locahost:8080/postJob', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // Specify the content type
+        },
+        body: JSON.stringify(jobInfo)
+    }).then(response => response.json())
+        .then(data => {
+            // Handle the response data here
+            console.log(data);
+        })
+        .catch(error => {
+            // Handle any errors that occur during the fetch
+            console.error('Error:', error);
+        });
     return true;
 }
 function updateJob(apiLink, jobInfo) {
@@ -280,7 +295,7 @@ function updateJob(apiLink, jobInfo) {
     // printDict(jobInfo);
 
     // TODO: Implement API call to update user
-    // fetch(apiLink, {
+    // fetch("http://localhost:8080/updateJob", {
     //     method: 'PUT',
     //     body: JSON.stringify({
     //         userInfo
@@ -351,7 +366,7 @@ function updateUser(apiLink, userInfo) {
     // printDict(userInfo);
 
     // TODO: Implement API call to update user
-    // fetch(apiLink, {
+    // fetch("http://localhost:8080/updateEmployer", {
     //     method: 'PUT',
     //     body: JSON.stringify({
     //         userInfo
@@ -373,7 +388,7 @@ function updateJobsList() {
     // APITODO: /getAllJobs
 
     // Fetch data from the API for the Scrollable Box
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('http://localhost:8080/getAllJobs')
         .then(response => response.json())
         .then(data => {
             // Update the list with the data
@@ -443,7 +458,7 @@ function showJobDetails(clickedItem) {
     username = usernameToIdMapping[username];
 
     // Fetch data from the API
-    fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+    fetch(`http://localhost:8080/getJobInfo/${username}`)
         .then(response => response.json())
         .then(data => {
             // Extract the attributes from the data
@@ -646,7 +661,7 @@ function validateContactInfoAndDelete(employerUsername) {
     // APITODO: /getEmployerInfo
 
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${employerUsername}`)
+    fetch(`http://localhost:8080/getEmployerInfo/${employerUsername}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
