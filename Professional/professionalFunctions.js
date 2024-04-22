@@ -85,6 +85,25 @@ function fillProfessionalEditForm(username) {
             document.getElementById('institutionInput').placeholder = data.company.name;
             document.getElementById('degreeTypeInput').placeholder = data.company.bs;
             document.getElementById('startDateDegreeInput').placeholder = data.id;
+            // Sample list of Skills bc the sample API does not have a list
+            const skills = [
+                { category: 'Languages', skill: 'Python' },
+                { category: 'Languages', skill: 'C++' },
+                { category: 'Languages', skill: 'C#' },
+                { category: 'Languages', skill: 'Java' },
+                { category: 'Languages', skill: 'Ruby' },
+                { category: 'Languages', skill: 'PHP' },
+                { category: 'Previous Employment', skill: 'Software Engineer' }
+            ];
+            // Fill in the professional qualifications in the categorytable
+            const categoryTable = document.getElementById('categorytable');
+            skills.forEach(skill => {
+                const row = categoryTable.insertRow(-1);
+                const categoryCell = row.insertCell(0);
+                const skillCell = row.insertCell(1);
+                categoryCell.innerHTML = skill.category;
+                skillCell.innerHTML = skill.skill;
+            });
         });
 }
 function updatePassword(apiLink, username, newPassword) {
@@ -209,6 +228,10 @@ function updateUser(apiLink, userInfo) {
     //         alert(data)
     //     });
 }
+function requestJobMatching(apiLink, professionalUsername) {
+    // TODO: Implement API call to request job matching
+    return true;
+}
 // API Calls ------------------------------------------------------------------------------------
 
 // Formatting -----------------------------------------------------------------------------------
@@ -328,6 +351,26 @@ function showModalAndRedirect(modal, link) {
     // Redirect to the link after the modal is closed
     $(modal).on('hidden.bs.modal', function () {
         window.location.href = link;
+    });
+}
+function addJobMatchingRequestFunctionality(professionalUsername) {
+    const apiLink = 'https://api.restful-api.dev/objects';
+    // Request Job Matching
+    var jobMatchingButton = document.getElementById('requestJMBt');
+    var modal = document.getElementById('jobMatchingModal');
+    jobMatchingButton.addEventListener('click', function () {
+        requestJobMatching(apiLink, professionalUsername);
+        $(modal).modal('show');
+    });
+}
+function addDeleteRequestFunctionality(professionalUsername) {
+    const apiLink = 'https://api.restful-api.dev/objects';
+    // Request Job Matching
+    var jobMatchingButton = document.getElementById('requestDeleteBt');
+    var modal = document.getElementById('deleteModal');
+    jobMatchingButton.addEventListener('click', function () {
+        requestJobMatching(apiLink, professionalUsername);
+        $(modal).modal('show');
     });
 }
 // Functions related to updating links and redirecting ------------------------------------------

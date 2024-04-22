@@ -89,7 +89,8 @@
                     </div>
                 </a>
                 <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action"
-                    style="color:white; padding: 8% 8%" data-toggle="modal" data-target="#initiateJobModal">
+                    id="requestJMBt" style="color:white; padding: 8% 8%" data-toggle="modal"
+                    data-target="#initiateJobModal">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Initiate Job Matchings</span>
@@ -109,8 +110,9 @@
                         <span class="menu-collapsed">Change Password</span>
                     </div>
                 </a>
-                <a class="page-redirect" href="/Professional/deleteAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action"
+                    id="requestDeleteBt" style="color:white; padding: 8% 8%" data-toggle="modal"
+                    data-target="#initiateJobModal">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Delete Account</span>
@@ -125,15 +127,16 @@
                 <!-- Top Buttons -->
                 <div class="container-fluid mt-0">
                     <div class="col-md- order-md-1 d-flex justify-content-between">
-                        <a type="button" class="btn btn-danger" class="page-redirect"
+                        <a type="button" class="btn btn-danger page-redirect"
                             href="/Professional/viewAccount.html">Cancel</a>
-                        <button class="btn btn-success" type="button" onclick="validateAndShowModal()">Save</button>
+                        <button class="btn btn-success" type="button" id="saveBt"
+                            onclick="validateAndShowModal()">Save</button>
                     </div>
                 </div>
 
                 <!-- Confirmation Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -151,51 +154,56 @@
                     </div>
                 </div>
 
+                <!-- First Column -->
                 <div class="row py-5">
                     <div class="col-md-1 order-md-1 mb-2">
                     </div>
                     <div class="col-md-5 order-md-2">
-                        <div class="mb-3">
+                        <!-- Username -->
+                        <div class="mb-5">
                             <label for="username" class="font-weight-bold">Username</label>
-                            <div class="input-group">
-                                <div>
-                                    lorem_ipsum
+                            <div id="usernameDisplay"></div>
+                        </div>
+                        <!-- Name -->
+                        <div class="row">
+                            <div class="col-md-6 mb-5">
+                                <label for="firstName" class="font-weight-bold">First Name</label>
+                                <input type="text" class="form-control" id="firstNameInput" value="">
+                                <div class="invalid-feedback">
+                                    Please enter the contact person's last name.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-5">
+                                <label for="lastName" class="font-weight-bold">Last Name</label>
+                                <input type="text" class="form-control" id="lastNameInput" value="">
+                                <div class="invalid-feedback">
+                                    Please enter the contact person's last name.
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="firstName" class="font-weight-bold">First name</label>
-                                <input type="text" class="form-control" id="address" placeholder="Sujana">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="lastName" class="font-weight-bold">Last name</label>
-                                <input type="text" class="form-control" id="address" placeholder="Daniel">
-                            </div>
-                        </div>
                         <div class="mb-3">
-                            <label for="address" class="font-weight-bold">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+                            <label for="address1" class="font-weight-bold">Address</label>
+                            <input type="text" class="form-control" id="address1Input">
                             <div class="invalid-feedback">
-                                Please enter your shipping address.
+                                Please enter the address.
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="address2" class="font-weight-bold">Address 2 <span
                                     class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                            <input type="text" class="form-control" id="address2Input">
                         </div>
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="city" class="font-weight-bold">City</label>
-                                <input type="text" class="form-control" id="zip" placeholder="">
+                                <input type="text" class="form-control" id="cityInput">
                                 <div class="invalid-feedback">
                                     Please enter a valid city.
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="state" class="font-weight-bold">State</label>
-                                <select class="custom-select d-block w-100" id="state">
+                                <select class="custom-select d-block w-100" id="stateInput">
                                     <option value="">Choose...</option>
                                     <option>Alabama</option>
                                     <option>Alaska</option>
@@ -253,18 +261,18 @@
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="zip" class="font-weight-bold">Zip</label>
-                                <input type="text" class="form-control" id="zip" placeholder="" maxlength="5"
-                                    onkeypress="return blockNegative(event)" pattern="^\d{5}$">
+                                <label for="zip" class="font-weight-bold">Zip code</label>
+                                <input type="text" class="form-control" id="zipCodeInput" maxlength="5"
+                                    onkeypress="return blockNegative(event)">
                                 <div class="invalid-feedback">
-                                    Please enter a valid zip code.
+                                    Please enter the zip code.
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="phone" class="font-weight-bold">Phone</label>
-                                <input type="text" class="form-control" id="phone" placeholder="(123) 456-7890" value=""
+                                <input type="text" class="form-control" id="phoneNumberInput" value=""
                                     oninput="formatPhoneNumber(this)" maxlength="14" pattern="^\(\d{3}\) \d{3}-\d{4}$"
                                     title="Please enter a valid phone number (e.g., (123) 456-7890)">
                                 <div class="invalid-feedback">
@@ -273,10 +281,10 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="email" class="font-weight-bold">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com"
+                                <input type="email" class="form-control" id="emailInput" ou@example.com"
                                     pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
                                 <div class="invalid-feedback">
-                                    Please enter a valid email address.
+                                    Please enter an email address.
                                 </div>
                             </div>
                         </div>
@@ -285,8 +293,7 @@
                         <div class="mb-3">
                             <label for="institution" class="font-weight-bold">Name of the institution</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="institution"
-                                    placeholder="Name of the institution">
+                                <input type="text" class="form-control" id="institutionInput">
                                 <div class="invalid-feedback" style="width: 100%;">
                                     Please enter the name of the institution.
                                 </div>
@@ -295,7 +302,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="hdc" class="font-weight-bold">Highest Degree Completed</label>
-                                <select class="custom-select d-block w-100" id="country">
+                                <select class="custom-select d-block w-100" id="degreeTypeInput">
                                     <option value="">Choose...</option>
                                     <option>Under graduate</option>
                                     <option>Graduate</option>
@@ -307,10 +314,10 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="dc" class="font-weight-bold">Degree Completion</label>
-                                <div class="input-group date" data-provide="datepicker" id="datepicker"
+                                <div class="input-group date" data-provide="datepicker" id="datepickerDegree"
                                     data-date-format="mm-yyyy">
                                     <input type="text" class="form-control" readonly="readonly" name="date"
-                                        style="background-color: white;">
+                                        id="startDateDegreeInput" Input style="background-color: white;">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
                                     </div>
@@ -323,10 +330,10 @@
                         <div class="mb-3">
                             <label for="qualifications" class="font-weight-bold">Qualifications</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="categoryname" placeholder="Category Name">
+                                <input type="text" class="form-control" id="categoryname">
                             </div>
                             <div class="input-group" style="margin-top: 4%;">
-                                <input type="text" class="form-control" id="categoryskills" placeholder="Skills">
+                                <input type="text" class="form-control" id="categoryskills">
                             </div>
                             <div id="input-live-help" class="extra-text">Enter skills separated by a comma.</div>
                             <div class="invalid-feedback" id="cat-table-invalid-feedback">Please enter at least 2
@@ -350,14 +357,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Languages</td>
-                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Previous Employment</td>
-                                        <td>Software Engineer</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -365,19 +364,38 @@
                 </div>
             </form>
         </div>
-        <div class="modal fade" id="initiateJobModal" tabindex="-1" role="dialog"
-            aria-labelledby="initiateJobModalLabel" aria-hidden="true">
+        <!-- Modals -->
+        <div class="modal fade" id="jobMatchingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header border-0">
+                    <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body text-center">
-                        Your Job matching has been requested.
+                    <div class="modal-body">
+                        Your Job Matching has been requested.
                     </div>
-                    <div class="modal-footer border-0">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        You have requested to delete your account.
+                    </div>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -402,168 +420,49 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="professionalFunctions.js"></script>
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
+        // Dictionary with professional information
+        let professionalInfo = {};
 
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
+        var saveModal = document.getElementById('saveModal');
 
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
+        // Get the professional username from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const professionalUsername = urlParams.get('username');
 
-            $("#datepicker").datepicker({
-                format: "mm-yyyy",
-                startView: "months",
-                minViewMode: "months"
-            });
+        // Update links
+        addUsernameToLinks();
 
-        })();
-
-        // Fixes dropdown menu not showing when clicking the button
-        $('.dropdown').click(function () {
-            $('.dropdown-menu').toggleClass('show');
-        });
-        $(document).click(function (event) {
-            if (!$(event.target).closest('.dropdown').length) {
-                // If the click is outside the dropdown, hide the dropdown menu
-                $('.dropdown-menu').removeClass('show');
+        // Save button
+        var saveButton = document.getElementById('saveBt');
+        const apiLink = 'https://api.restful-api.dev/objects';
+        var categoryTable = document.getElementById('categorytable');
+        saveButton.addEventListener('click', function () {
+            // Table must have more than 2 rows bc the first row is the header
+            if (validateInputs() && categoryTable.rows.length > 2) {
+                // Save the changes
+                updateUser(apiLink, professionalInfo);
+                showModalAndRedirect(saveModal, '/Professional/viewAccount.html?username=' + professionalUsername);
+            }
+            else if (categoryTable.rows.length <= 2) {
+                var form = document.getElementById('cat-table-invalid-feedback');
+                form.classList.add('d-block');
             }
         });
 
-        var count = 1;
+        // Fill in the professional information
+        showProfessionalInfo(professionalUsername);
 
-        function add() {
-            var category = document.getElementById("categoryname").value.trim();
-            var skills = document.getElementById("categoryskills").value.trim();
+        // Fill in the placeholders with the professional information
+        fillProfessionalEditForm(professionalUsername);
 
-            // Check if both categoryname and categoryskills are not empty
-            if (category !== "" && skills !== "") {
-                var table = document.getElementById("categorytable");
+        // Fill in the professional information
+        showHeaderUsername(professionalUsername);
 
-                // Add a new row at the bottom of the table
-                var row = table.insertRow(-1);
-
-                var col1 = row.insertCell(0);
-                var col2 = row.insertCell(1);
-                col1.innerHTML = category;
-                col2.innerHTML = skills;
-
-                // Reset the category field and skills fields to be blank
-                document.getElementById("categoryname").value = "";
-                document.getElementById("categoryskills").value = "";
-
-                // Update the count to the new row count
-                count = table.rows.length;
-            }
-        }
-
-        function deleteLastRow() {
-            var table = document.getElementById("categorytable");
-            var rowCount = table.rows.length;
-
-            // Check if there is at least one row to delete
-            if (rowCount > 1) {
-                table.deleteRow(rowCount - 1);
-                count--; // Decrement the count to maintain accurate row count
-            }
-        }
-
-        function validateAndShowModal() {
-            // Validate your inputs here, for example:
-            var inputsValid = validateInputs();
-            var form = document.querySelector('.needs-validation');
-            var categorytable = document.getElementById('categorytable');
-
-            if (inputsValid && categorytable.rows.length >= 3) {
-                // If all inputs are valid, show the modal
-                $('#exampleModal').modal('show');
-            } else {
-                // If any input is not valid, handle the validation error (e.g., display an error message)
-                form.classList.add('was-validated');
-                if (categorytable.rows.length < 3) {
-                    document.getElementById('cat-table-invalid-feedback').style.display = 'block';
-                }
-            }
-        }
-
-        function validateInputs() {
-            // Implement your input validation logic here
-            // Return true if all inputs are valid, false otherwise
-            // Example validation logic:
-            var inputs = document.querySelectorAll('.needs-validation input');
-            for (var i = 0; i < inputs.length; i++) {
-                if (!inputs[i].checkValidity()) {
-                    return false;
-                }
-            }
-
-
-
-            return true;
-        }
-
-        function saveChanges() {
-            // Implement the logic to save changes here
-            // This function is called when the "Save changes" button inside the modal is clicked
-            // Close the modal if needed: $('#exampleModal').modal('hide');
-        }
-
-        function formatPhoneNumber(input) {
-            // Remove all non-numeric characters
-            var phoneNumber = input.value.replace(/\D/g, '');
-
-            // Check if the input value is empty or not a number
-            if (!phoneNumber || isNaN(phoneNumber)) {
-                input.value = ''; // Clear the input field
-                return;
-            }
-
-            // Format the phone number with hyphens
-            var formattedPhoneNumber = '';
-            for (var i = 0; i < phoneNumber.length; i++) {
-                if (i === 0) {
-                    formattedPhoneNumber += '(';
-                }
-                if (i === 3) {
-                    formattedPhoneNumber += ') ';
-                }
-                if (i === 6) {
-                    formattedPhoneNumber += '-';
-                }
-                formattedPhoneNumber += phoneNumber[i];
-            }
-
-            // Update the input value with the formatted phone number
-            input.value = formattedPhoneNumber;
-        }
-
-        function blockNegative(event) {
-            // Get the key code of the pressed key
-            var keyCode = event.which || event.keyCode;
-
-            // Allow only digits (0-9) or the backspace key (8)
-            if ((keyCode >= 48 && keyCode <= 57) || keyCode === 8 || keyCode === 46) {
-                return true; // Allow input
-            } else if (keyCode === 45) { // Check for the minus sign (-)
-                event.preventDefault(); // Prevent input of the minus sign
-                return false;
-            } else {
-                return false; // Block input of other characters
-            }
-        }
-
+        addJobMatchingRequestFunctionality(professionalUsername);
+        addDeleteRequestFunctionality(professionalUsername);
     </script>
 </body>
 

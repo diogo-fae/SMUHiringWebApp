@@ -89,7 +89,8 @@
                     </div>
                 </a>
                 <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action"
-                    style="color:white; padding: 8% 8%" data-toggle="modal" data-target="#initiateJobModal">
+                    id="requestJMBt" style="color:white; padding: 8% 8%" data-toggle="modal"
+                    data-target="#initiateJobModal">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Initiate Job Matchings</span>
@@ -109,8 +110,9 @@
                         <span class="menu-collapsed">Change Password</span>
                     </div>
                 </a>
-                <a class="page-redirect" href="/Professional/deleteAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action"
+                    id="requestDeleteBt" style="color:white; padding: 8% 8%" data-toggle="modal"
+                    data-target="#initiateJobModal">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Delete Account</span>
@@ -127,7 +129,7 @@
                     <div class="col-md-10 order-md-1 mb-2">
                     </div>
                     <div class="col-md-1 order-md-2" style="text-align: right;">
-                        <a type="button" class="btn btn-secondary" class="page-redirect"
+                        <a type="button" class="btn btn-secondary page-redirect"
                             href="/Professional/editProfessionalDetails.html">Edit</a>
                     </div>
                 </div>
@@ -224,19 +226,38 @@
                 </div>
             </form>
         </div>
-        <div class="modal fade" id="initiateJobModal" tabindex="-1" role="dialog"
-            aria-labelledby="initiateJobModalLabel" aria-hidden="true">
+        <!-- Modals -->
+        <div class="modal fade" id="jobMatchingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header border-0">
+                    <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body text-center">
-                        Your Job matching has been requested.
+                    <div class="modal-body">
+                        Your Job Matching has been requested.
                     </div>
-                    <div class="modal-footer border-0">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        You have requested to delete your account.
+                    </div>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -261,9 +282,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="professionalFunctions.js"></script>
     <script>
         // Dictionary with staff information
         let professionalInfo = {};
+
+        // Add username to the links
+        addUsernameToLinks();
 
         // Function to fill in the professional information
         function showProfessionalInfo(username) {
@@ -319,6 +345,12 @@
 
             // Fill in the professional information
             showProfessionalInfo(professionalUsername);
+
+            // Add the professional username to the header
+            showHeaderUsername(professionalUsername);
+
+            addJobMatchingRequestFunctionality(professionalUsername);
+            addDeleteRequestFunctionality(professionalUsername);
         });
 
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -460,7 +492,6 @@
                 return false; // Block input of other characters
             }
         }
-
     </script>
 </body>
 

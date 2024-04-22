@@ -43,7 +43,7 @@
         <ul class="nav navbar-nav my-2 my-lg-0">
             <li class="dropdown">
                 <button class="dropdown-toggle btn text-center" data-toggle="dropdown" id="headerUsername"
-                    style="color:white">sujana_d
+                    style="color:white">
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu text-center">
                     <li><a class="page-redirect" href="/Professional/changePassword.html">Change Password</a></li>
@@ -85,7 +85,8 @@
                     </div>
                 </a>
                 <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action"
-                    style="color:white; padding: 8% 8%" data-toggle="modal" data-target="#initiateJobModal">
+                    id="requestJMBt" style="color:white; padding: 8% 8%" data-toggle="modal"
+                    data-target="#initiateJobModal">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Initiate Job Matchings</span>
@@ -105,8 +106,9 @@
                         <span class="menu-collapsed">Change Password</span>
                     </div>
                 </a>
-                <a class="page-redirect" href="/Professional/deleteAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
+                <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action"
+                    id="requestDeleteBt" style="color:white; padding: 8% 8%" data-toggle="modal"
+                    data-target="#initiateJobModal">
                     <div class="d-flex w-100 justify-content-start align-items-center">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Delete Account</span>
@@ -124,24 +126,12 @@
                 <div class="col-md-3 order-md-2">
                     <!-- Posted Jobs Scrollable Box -->
                     <div class="container">
-                        <div class="row">
+                        <div class="row" id="jobsBox">
                             <div class="col">
-                                <h2 class="text-center mb-4">Posted Jobs</h2>
+                                <h2 class="text-center mb-4">Job Postings</h2>
                                 <div class="scrollable-box" style="max-height: 530px;overflow-y: auto;">
-                                    <div class="list-group" id="itemList">
-                                        <a class="page-redirect" href="#"
-                                            class="list-group-item list-group-item-action clickable-job-item">123 -
-                                            Software Engineer</a>
-                                        <a class="page-redirect" href="#"
-                                            class="list-group-item list-group-item-action clickable-job-item">456 -
-                                            Backend Developer</a>
-                                        <a class="page-redirect" href="#"
-                                            class="list-group-item list-group-item-action clickable-job-item">789 -
-                                            Frontend Developer</a>
-                                        <a class="page-redirect" href="#"
-                                            class="list-group-item list-group-item-action clickable-job-item">890 -
-                                            Full Stack Senior Developer</a>
-                                        <!-- Add more items as needed -->
+                                    <div class="list-group" id="jobsList">
+                                        <!-- Add items from DB -->
                                     </div>
                                 </div>
                             </div>
@@ -153,56 +143,32 @@
                     <!-- Job ID -->
                     <div class="mb-5">
                         <label for="jobID" class="font-weight-bold">Job ID</label>
-                        <div class="input-group">
-                            <div>
-                                123
-                            </div>
-                        </div>
+                        <div id="jobIDDisplay"></div>
                     </div>
                     <!-- Position Name -->
                     <div class="mb-5">
                         <label for="positionName" class="font-weight-bold">Position Name</label>
-                        <div class="input-group">
-                            <div>
-                                Software Engineer
-                            </div>
-                        </div>
+                        <div id="positionNameDisplay"></div>
                     </div>
                     <!-- Supervisor Name -->
                     <div class="mb-5">
                         <label for="supervisorName" class="font-weight-bold">Supervisor Name</label>
-                        <div class="input-group">
-                            <div>
-                                Kasi Periyasamy
-                            </div>
-                        </div>
+                        <div id="supervisorNameDisplay"></div>
                     </div>
                     <!-- Supervisor Email -->
                     <div class="mb-5">
                         <label for="supervisorEmail" class="font-weight-bold">Supervisor Email</label>
-                        <div class="input-group">
-                            <div>
-                                kperiyasamy@smu.edu
-                            </div>
-                        </div>
+                        <div id="supervisorEmailDisplay"></div>
                     </div>
                     <!-- Supervisor Phone Number -->
                     <div class="mb-5">
                         <label for="supervisorPhoneNumber" class="font-weight-bold">Supervisor Phone Number</label>
-                        <div class="input-group">
-                            <div>
-                                (469) 555-1268
-                            </div>
-                        </div>
+                        <div id="supervisorPhoneNumberDisplay"></div>
                     </div>
                     <!-- Pay per Hour -->
                     <div class="mb-5">
                         <label for="payPerHour" class="font-weight-bold">Pay per Hour</label>
-                        <div class="input-group">
-                            <div>
-                                $45.00
-                            </div>
-                        </div>
+                        <div id="payPerHourDisplay"></div>
                     </div>
                 </div>
                 <!-- Third Col -->
@@ -211,30 +177,22 @@
                     <div class="row">
                         <div class="col-md-4 mb-5">
                             <label for="startDate" class="font-weight-bold">Start Date</label>
-                            <div>
-                                08/2024
-                            </div>
+                            <div id="startDateDisplay"></div>
                         </div>
                         <div class="col-md-4 mb-5">
                             <label for="endDate" class="font-weight-bold">End Date</label>
-                            <div>
-                                05/2025
-                            </div>
+                            <div id="endDateDisplay"></div>
                         </div>
                     </div>
                     <!-- Times -->
                     <div class="row">
                         <div class="col-md-4 mb-5">
-                            <label for="startDate" class="font-weight-bold">Start Date</label>
-                            <div>
-                                09:00
-                            </div>
+                            <label for="startTime" class="font-weight-bold">Start Time</label>
+                            <div id="startTimeDisplay"></div>
                         </div>
                         <div class="col-md-4 mb-5">
-                            <label for="endDate" class="font-weight-bold">End Date</label>
-                            <div>
-                                18:30
-                            </div>
+                            <label for="endTime" class="font-weight-bold">End Time</label>
+                            <div id="endTimeDisplay"></div>
                         </div>
                     </div>
                     <!-- Qualifications -->
@@ -244,48 +202,12 @@
                         <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 350px;">
                             <table id="categorytable" class="table table-bordered">
                                 <thead>
-                                    <tr style="background-color: #3A98B9!important;">
+                                    <tr style="background-color: #62849b;color: white;">
                                         <th scope="col">Category</th>
                                         <th scope="col">Skills</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Languages</td>
-                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Previous Employment</td>
-                                        <td>Full Stack Developer, Software Engineer, Software Development Engineer,
-                                            Software Development Engineer Intern</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Languages</td>
-                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Previous Employment</td>
-                                        <td>Full Stack Developer, Software Engineer, Software Development Engineer,
-                                            Software Development Engineer Intern</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Languages</td>
-                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Previous Employment</td>
-                                        <td>Full Stack Developer, Software Engineer, Software Development Engineer,
-                                            Software Development Engineer Intern</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Languages</td>
-                                        <td>Python, C++, C#, Java, Ruby, PHP</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Previous Employment</td>
-                                        <td>Full Stack Developer, Software Engineer, Software Development Engineer,
-                                            Software Development Engineer Intern</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -295,39 +217,39 @@
 
         </div>
 
-        <div class="modal fade" id="initiateJobModal" tabindex="-1" role="dialog"
-            aria-labelledby="initiateJobModalLabel" aria-hidden="true">
+        <!-- Modals -->
+        <div class="modal fade" id="jobMatchingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header border-0">
+                    <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body text-center">
-                        Your Job matching has been requested.
+                    <div class="modal-body">
+                        Your Job Matching has been requested.
                     </div>
-                    <div class="modal-footer border-0">
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteAccountModal"
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header border-0">
+                    <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body text-center">
-                        Are you sure you want to delete your account?
+                    <div class="modal-body">
+                        You have requested to delete your account.
                     </div>
-                    <div class="modal-footer border-0">
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </div>
@@ -353,65 +275,161 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="professionalFunctions.js"></script>
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
+        // Dictionary with professional information
+        let professionalInfo = {};
 
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
+        var saveModal = document.getElementById('saveModal');
 
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
+        // Get the professional username from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const professionalUsername = urlParams.get('username');
+
+        // Update links
+        addUsernameToLinks();
+
+        // Function to update the card body with the initial content
+        function updateJobsList() {
+            var accountsList = document.getElementById('jobsList');
+            var scrollableBox = document.querySelector('.scrollable-box');
+
+            // Fetch data from the API for the Scrollable Box
+            fetch('https://jsonplaceholder.typicode.com/users')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the list with the data
+                    data.forEach(item => {
+                        var listItem = document.createElement('a');
+                        listItem.className = 'list-group-item list-group-item-action clickable-job-item';
+                        listItem.href = '#';
+                        listItem.textContent = `${item.id} - ${item.name}`;
+
+                        // Add click event listener to the scrollable box
+                        scrollableBox.addEventListener('click', function (event) {
+                            var clickedItem = event.target;
+                            if (clickedItem.tagName === 'A') {
+                                // Reset background color of all items
+                                var listItems = accountsList.querySelectorAll('.list-group-item');
+                                listItems.forEach(item => {
+                                    item.style.backgroundColor = '';
+                                });
+                                // Change background color of clicked item
+                                clickedItem.style.backgroundColor = 'lightblue';
+                                // Add id and name to the item's attributes
+                                clickedItem.id = item.id;
+                                clickedItem.name = item.name;
+                                // clickedItem.username = item.username;
+                            }
+                        });
+
+                        // Add click event listener to each listItem to show account details
+                        listItem.addEventListener('click', function () {
+                            // Call showAccountDetails with the clicked item's id and name
+                            showJobDetails(item.username);
+                        });
+
+                        accountsList.appendChild(listItem);
+
+                        // Click the first item when the page loads
+                        if (accountsList.children.length === 1) {
+                            listItem.click();
                         }
-                        form.classList.add('was-validated');
-                    }, false);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data updateJobsList():', error);
                 });
-            }, false);
+        }
 
-            $("#datepicker").datepicker({
-                format: "mm-yyyy",
-                startView: "months",
-                minViewMode: "months"
-            });
 
-            $(".clickable-job-item:first").addClass("active");
+        function showJobDetails(clickedItem) {
+            // Extract the id from the clickedItem's textContent
+            var username = clickedItem;
+            // TODO: Delete this
+            const usernameToIdMapping = {
+                "Bret": 1,
+                "Antonette": 2,
+                "Samantha": 3,
+                "Karianne": 4,
+                "Kamren": 5,
+                "Leopoldo_Corkery": 6,
+                "Elwyn.Skiles": 7,
+                "Maxime_Nienow": 8,
+                "Delphine": 9,
+                "Moriah.Stanton": 10
+            };
+            // TODO: Delete this
+            username = usernameToIdMapping[username];
 
-            // Handle item click event
-            $(".clickable-job-item").on("click", function () {
-                $(".clickable-job-item").removeClass("active");
-                $(this).addClass("active");
-            });
+            // Fetch data from the API
+            fetch(`https://jsonplaceholder.typicode.com/users/${username}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Extract the attributes from the data
+                    var attributes = data;
+                    var jobId = attributes.id;
 
-            // Fixes dropdown menu not showing when clicking the button
-            $('.dropdown').click(function () {
-                $('.dropdown-menu').toggleClass('show');
-            });
-            $(document).click(function (event) {
-                if (!$(event.target).closest('.dropdown').length) {
-                    // If the click is outside the dropdown, hide the dropdown menu
-                    $('.dropdown-menu').removeClass('show');
-                }
-            });
+                    // Update the display with the details
+                    // document.getElementById('usernameDisplay').textContent = attributes.username || 'N/A';
+                    // jobIDDisplay, positionNameDisplay, supervisorNameDisplay, supervisorEmailDisplay, supervisorPhoneNumberDisplay, payPerHourDisplay, startDateDisplay, endDateDisplay, startDateDisplay, endDateDisplay
+                    document.getElementById('jobIDDisplay').textContent = attributes.id || 'N/A';
+                    document.getElementById('positionNameDisplay').textContent = attributes.name || 'N/A';
+                    document.getElementById('supervisorNameDisplay').textContent = attributes.username || 'N/A';
+                    document.getElementById('supervisorEmailDisplay').textContent = attributes.email || 'N/A';
+                    document.getElementById('supervisorPhoneNumberDisplay').textContent = attributes.phone || 'N/A';
+                    document.getElementById('payPerHourDisplay').textContent = attributes.website || 'N/A';
+                    document.getElementById('startDateDisplay').textContent = attributes.address.street || 'N/A';
+                    document.getElementById('endDateDisplay').textContent = attributes.address.suite || 'N/A';
+                    document.getElementById('startTimeDisplay').textContent = attributes.address.city || 'N/A';
+                    document.getElementById('endTimeDisplay').textContent = attributes.address.zipcode || 'N/A';
 
-        })();
+                    // Sample list of Skills bc the sample API does not have a list
+                    const skills = [
+                        { category: 'Languages', skill: 'Python' },
+                        { category: 'Languages', skill: 'C++' },
+                        { category: 'Languages', skill: 'C#' },
+                        { category: 'Languages', skill: 'Java' },
+                        { category: 'Languages', skill: 'Ruby' },
+                        { category: 'Languages', skill: 'PHP' },
+                        { category: 'Previous Employment', skill: 'Software Engineer' }
+                    ];
+                    // Fill in the professional qualifications in the categorytable
+                    const categoryTable = document.getElementById('categorytable');
+                    skills.forEach(skill => {
+                        const row = categoryTable.insertRow(-1);
+                        const categoryCell = row.insertCell(0);
+                        const skillCell = row.insertCell(1);
+                        categoryCell.innerHTML = skill.category;
+                        skillCell.innerHTML = skill.skill;
+                    });
 
-        $(document).ready(function () {
-            // Set the first item to be clicked when the page loads
-            $(".clickable-job-item:first").addClass("active");
+                    // Update the href attribute of the edit button
+                    // Check if jobId is already part of the href attribute
+                    var editBt = document.getElementById('editBt');
+                    if (editBt.href.includes('jobId')) {
+                        // If it is, update the value of username
+                        editBt.href = editBt.href.replace(/jobId=[^&]+/, `jobId=${jobId}`);
+                    } else {
+                        // If it's not, append both username and jobId
+                        editBt.href += `&jobId=${jobId}`;
+                    }
+                    // editBt.href += `&professionalUsername=${username}`;
+                })
+                .catch(error => {
+                    // alert('Error fetching data showJobDetails():', error);
+                });
+        }
 
-            // Handle item click event
-            $(".clickable-job-item").on("click", function () {
-                $(".clickable-job-item").removeClass("active");
-                $(this).addClass("active");
-            });
-        });
+        // Fill in the professional information
+        showHeaderUsername(professionalUsername);
 
+        // Execute the function to update the card body when the page is first loaded
+        window.addEventListener('DOMContentLoaded', updateJobsList);
+
+        addJobMatchingRequestFunctionality(professionalUsername);
+        addDeleteRequestFunctionality(professionalUsername);
     </script>
 
 </body>
