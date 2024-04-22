@@ -8,13 +8,23 @@ function deleteJob(jobID) {
     // fetch(`https://jsonplaceholder.typicode.com/posts/${jobID}`, {
     //     method: 'DELETE',
     // })
+
+    fetch(`http://localhost:8080/deleteJob/${jobID}`, {
+        method: 'DELETE'
+    }).then(response => {
+        return true;
+    }).catch(error => {
+        // Handle errors
+        console.error('There was a problem deleting the job:', error);
+        return false;
+    });
     return true;
 }
 function showEmployerInfo(employerUsername) {
     // APITODO: /getEmployerInfo
 
     // Fetch data from the API using username
-    fetch(`https://jsonplaceholder.typicode.com/users/${employerUsername}`)
+    fetch(`http://localhost:8080/getEmployerInfo/${employerUsername}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information

@@ -238,6 +238,22 @@
                     // TODO: Get the endpoint URL
                     // APITODO: /registerProfessional
 
+                    fetch('http://locahost:8080/registerProfessional', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json' // Specify the content type
+                        },
+                        body: JSON.stringify(userInfo)
+                    }).then(response => response.json())
+                        .then(data => {
+                            // Handle the response data here
+                            console.log(data);
+                        })
+                        .catch(error => {
+                            // Handle any errors that occur during the fetch
+                            console.error('Error:', error);
+                        });
+
                     // Redirect to login page
                     window.location.href = "Login.html";
                 }
@@ -264,6 +280,22 @@
                     // Call endpoint to request Employer creation
                     // TODO: Get the endpoint URL
                     // APITODO: /registerEmployer
+
+                    fetch('http://locahost:8080/registerEmployer', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json' // Specify the content type
+                        },
+                        body: JSON.stringify(userInfo)
+                    }).then(response => response.json())
+                        .then(data => {
+                            // Handle the response data here
+                            console.log(data);
+                        })
+                        .catch(error => {
+                            // Handle any errors that occur during the fetch
+                            console.error('Error:', error);
+                        });
 
                     // Redirect to login page
                     window.location.href = "Login.html";
