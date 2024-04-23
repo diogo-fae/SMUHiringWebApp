@@ -184,7 +184,7 @@
 
             alert(`User ${username} logging in.`);
             // DONE APITODO: /login
-            fetch("https://api.sampleapis.com/avatar/info", {
+            fetch("http://localhost:8080/login", {
                 method: 'GET',
                 body: JSON.stringify({
                     passwordInfo
@@ -214,7 +214,7 @@
                         return;
                     }
                 }).catch((error) => {
-                    alert("Invalid username or password");
+                    alert("Error logging in.");
                     form.classList.add('was-validated');
                     return;
                 });

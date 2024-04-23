@@ -4,45 +4,38 @@ function showHeaderUsername(username) {
 }
 function showProfessionalInfo(professionalUsername) {
     // DONE APITODO: /getProfessionalInfo
-    alert(`Getting Professional Info for ${professionalUsername}`)
+    // alert(`Getting Professional Info for ${professionalUsername}`)
     // Fetch data from the API using username
     fetch(`http://localhost:8080/getProfessionalInfo/${professionalUsername}`)
         .then(response => response.json())
         .then(data => {
             // Store the staff information
             professionalInfo = data;
-            document.getElementById('usernameDisplay').innerHTML = professionalInfo.username;
-            document.getElementById('firstNameDisplay').innerHTML = professionalInfo.name.split(' ')[0];
-            document.getElementById('lastNameDisplay').innerHTML = professionalInfo.name.split(' ')[1];
+            document.getElementById('usernameDisplay').innerHTML = professionalInfo.userId;
+            document.getElementById('firstNameDisplay').innerHTML = professionalInfo.firstName;
+            document.getElementById('lastNameDisplay').innerHTML = professionalInfo.lastName;
             document.getElementById('emailDisplay').innerHTML = professionalInfo.email;
             document.getElementById('phoneNumberDisplay').innerHTML = professionalInfo.phoneNumber;
-            document.getElementById('address1Display').innerHTML = professionalInfo.address.street;
-            document.getElementById('address2Display').innerHTML = professionalInfo.address.suite;
-            document.getElementById('cityDisplay').innerHTML = professionalInfo.address.city;
+            document.getElementById('address1Display').innerHTML = professionalInfo.address1;
+            document.getElementById('address2Display').innerHTML = professionalInfo.address2 || 'N/A';
+            document.getElementById('cityDisplay').innerHTML = professionalInfo.city;
             document.getElementById('stateDisplay').innerHTML = professionalInfo.state;
-            document.getElementById('zipCodeDisplay').innerHTML = professionalInfo.address.zipcode;
-            document.getElementById('startDateDegreeDisplay').innerHTML = professionalInfo.startDateDegree;
-            document.getElementById('institutionDisplay').innerHTML = professionalInfo.company.name;
-            document.getElementById('degreeTypeDisplay').innerHTML = professionalInfo.company.bs;
-            // Sample list of Skills bc the sample API does not have a list
-            const skills = [
-                { category: 'Languages', skill: 'Python' },
-                { category: 'Languages', skill: 'C++' },
-                { category: 'Languages', skill: 'C#' },
-                { category: 'Languages', skill: 'Java' },
-                { category: 'Languages', skill: 'Ruby' },
-                { category: 'Languages', skill: 'PHP' },
-                { category: 'Previous Employment', skill: 'Software Engineer' }
-            ];
+            document.getElementById('zipCodeDisplay').innerHTML = professionalInfo.zipCode;
+            document.getElementById('startDateDegreeDisplay').innerHTML = professionalInfo.graduationDate;
+            document.getElementById('institutionDisplay').innerHTML = professionalInfo.university;
+            document.getElementById('degreeTypeDisplay').innerHTML = professionalInfo.degreeType;
+            var qualifications = professionalInfo.professionalQualificationsList;
             // Fill in the professional qualifications in the categorytable
             const categoryTable = document.getElementById('categorytable');
-            skills.forEach(skill => {
-                const row = categoryTable.insertRow(-1);
-                const categoryCell = row.insertCell(0);
-                const skillCell = row.insertCell(1);
-                categoryCell.innerHTML = skill.category;
-                skillCell.innerHTML = skill.skill;
-            });
+            for (let category in qualifications) {
+                qualifications[category].forEach(skill => {
+                    const row = categoryTable.insertRow(-1);
+                    const categoryCell = row.insertCell(0);
+                    const skillCell = row.insertCell(1);
+                    categoryCell.innerHTML = category;
+                    skillCell.innerHTML = skill;
+                });
+            }
         });
 }
 function showJobInfo(jobID) {
@@ -66,6 +59,18 @@ function showJobInfo(jobID) {
             document.getElementById('payPerHourDisplay').innerHTML = jobInfo.payRate;
             document.getElementById('startTimeDisplay').innerHTML = jobInfo.startTime;
             document.getElementById('endTimeDisplay').innerHTML = jobInfo.endTime;
+            var qualifications = jobInfo.professionalQualificationsList;
+            // Fill in the professional qualifications in the categorytable
+            const categoryTable = document.getElementById('categorytable');
+            for (let category in qualifications) {
+                qualifications[category].forEach(skill => {
+                    const row = categoryTable.insertRow(-1);
+                    const categoryCell = row.insertCell(0);
+                    const skillCell = row.insertCell(1);
+                    categoryCell.innerHTML = category;
+                    skillCell.innerHTML = skill;
+                });
+            }
         });
 }
 function fillProfessionalEditForm(username) {
@@ -79,55 +84,48 @@ function fillProfessionalEditForm(username) {
             professionalInfo = data;
 
             // Fill in the staff information
-            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
-            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
+            document.getElementById('firstNameInput').placeholder = data.firstName;
+            document.getElementById('lastNameInput').placeholder = data.lastName;
             document.getElementById('emailInput').placeholder = data.email;
-            document.getElementById('phoneNumberInput').placeholder = data.phone;
-            document.getElementById('address1Input').placeholder = data.address.street;
-            document.getElementById('address2Input').placeholder = data.address.suite;
-            document.getElementById('cityInput').placeholder = data.address.city;
-            document.getElementById('stateInput').placeholder = data.address.state;
-            document.getElementById('zipCodeInput').placeholder = data.address.zipcode;
-            document.getElementById('institutionInput').placeholder = data.company.name;
-            document.getElementById('degreeTypeInput').placeholder = data.company.bs;
-            document.getElementById('startDateDegreeInput').placeholder = data.id;
-            // Sample list of Skills bc the sample API does not have a list
-            const skills = [
-                { category: 'Languages', skill: 'Python' },
-                { category: 'Languages', skill: 'C++' },
-                { category: 'Languages', skill: 'C#' },
-                { category: 'Languages', skill: 'Java' },
-                { category: 'Languages', skill: 'Ruby' },
-                { category: 'Languages', skill: 'PHP' },
-                { category: 'Previous Employment', skill: 'Software Engineer' }
-            ];
+            document.getElementById('phoneNumberInput').placeholder = data.phoneNumber;
+            document.getElementById('address1Input').placeholder = data.address1;
+            document.getElementById('address2Input').placeholder = data.address2;
+            document.getElementById('cityInput').placeholder = data.city;
+            document.getElementById('stateInput').placeholder = data.state;
+            document.getElementById('zipCodeInput').placeholder = data.zipCode;
+            document.getElementById('institutionInput').placeholder = data.university;
+            document.getElementById('degreeTypeInput').placeholder = data.degreeType;
+            document.getElementById('startDateDegreeInput').placeholder = data.graduationDate;
+            var qualifications = data.professionalQualificationsList;
             // Fill in the professional qualifications in the categorytable
             const categoryTable = document.getElementById('categorytable');
-            skills.forEach(skill => {
-                const row = categoryTable.insertRow(-1);
-                const categoryCell = row.insertCell(0);
-                const skillCell = row.insertCell(1);
-                categoryCell.innerHTML = skill.category;
-                skillCell.innerHTML = skill.skill;
-            });
+            for (let category in qualifications) {
+                qualifications[category].forEach(skill => {
+                    const row = categoryTable.insertRow(-1);
+                    const categoryCell = row.insertCell(0);
+                    const skillCell = row.insertCell(1);
+                    categoryCell.innerHTML = category;
+                    skillCell.innerHTML = skill;
+                });
+            }
         });
 }
 function updatePassword(apiLink, username, newPassword) {
     // DONE APITODO: /changePassword
-    var passwordInfo = { "username": username, "password": newPassword }
+    var passwordInfo = { "userId": username, "pwd": newPassword }
 
-    alert(`Changing password to ${newPassword}`);
+    alert(passwordInfo.userId)
+    alert(`Changing password to ${passwordInfo.pwd}`);
     fetch("http://localhost:8080/changePassword", {
-        method: 'PUT',
-        body: JSON.stringify({
-            passwordInfo
-        }),
+        method: 'POST',
+        body: JSON.stringify(passwordInfo),
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
+            'Content-Type': 'application/json'
         },
     })
         .then((response) => response.json())
         .then((data) => {
+            alert('Password changed successfully')
             alert(data)
         });
     return true;
@@ -138,6 +136,7 @@ function updateUser(apiLink, userInfo) {
     if (firstNameInputValue) {
         userInfo.firstName = firstNameInputValue;
     }
+    // else {firstNameInputValue = document.getElementById('firstNameInput').placeholder;}
     // lastName, email, phoneNumber
     var lastNameInputValue = document.getElementById('lastNameInput').value;
     if (lastNameInputValue) {
@@ -147,9 +146,9 @@ function updateUser(apiLink, userInfo) {
     if (emailInputValue) {
         userInfo.email = emailInputValue;
     }
-    var phoneNumberInputValue = document.getElementById('phoneNumberInput').value;
+    var phoneNumberInputValue = document.getElementById('phoneNumberInput').value.replaceAll(/[^0-9]/g, '');
     if (phoneNumberInputValue) {
-        userInfo.phoneNumber = phoneNumberInputValue;
+        userInfo.phoneNumber = phoneNumberInputValue.replaceAll(/[^0-9]/g, '');
     }
     try {
         var address1InputValue = document.getElementById('address1Input').value;
@@ -178,7 +177,7 @@ function updateUser(apiLink, userInfo) {
     try {
         var institutionInputValue = document.getElementById('institutionInput').value;
         if (institutionInputValue) {
-            userInfo.institution = institutionInputValue;
+            userInfo.university = institutionInputValue;
         }
         var startDateDegreeInputValue = document.getElementById('startDateDegreeInput').value;
         if (startDateDegreeInputValue) {
@@ -190,7 +189,7 @@ function updateUser(apiLink, userInfo) {
         }
         var categoryTable = document.getElementById('categorytable');
         if (categoryTable.rows.length > 0) {
-            var qualifications = [];
+            var qualifications = {};
             // Iterate over the rows of the table starting from the second row (index 1)
             for (var i = 1; i < categoryTable.rows.length; i++) {
                 var row = categoryTable.rows[i];
@@ -203,20 +202,27 @@ function updateUser(apiLink, userInfo) {
                 var key = cells[0].textContent.trim(); // Assuming the first column contains text
                 var value = cells[1].textContent.trim(); // Assuming the second column contains text
 
-                // Add the key-value pair to the rowData dictionary
-                rowData[key] = value;
-
                 // Add the rowData dictionary to the rowsList
-                qualifications.push(rowData);
+                if (!(key in qualifications)) {
+                    qualifications[key] = [];
+                }
+                qualifications[key].push(value);
             }
-            userInfo.qualifications = qualifications;
+            userInfo.professionalQualificationsList = qualifications;
         }
         // TODO: Delete this line
     } catch (error) {
         // alert("Error in fields for Professional")
     }
-
-    alert(`Updating user info to ${userInfo.id}`);
+    // for (let k in userInfo.qualifications) {
+    //     alert(k); // Print each key
+    //     for (let i = 0; i < userInfo.qualifications[k].length; i++) {
+    //         alert(userInfo.qualifications[k][i]); // Print each item
+    //     }
+    // }
+    alert(JSON.stringify(userInfo))
+    alert(`Updating user info to ${userInfo.userId}`);
+    // printDict(userInfo);
     // DONE APITODO: /updateProfessional
     fetch('http://localhost:8080/updateProfessional', {
         method: 'POST',
@@ -225,10 +231,6 @@ function updateUser(apiLink, userInfo) {
         },
         body: JSON.stringify(userInfo)
     }).then(response => response.json())
-        .then(data => {
-            // Handle the response data here
-            console.log(data);
-        })
         .catch(error => {
             // Handle any errors that occur during the fetch
             console.error('Error:', error);
@@ -239,7 +241,7 @@ function updateJobsList() {
     var accountsList = document.getElementById('jobsList');
     var scrollableBox = document.querySelector('.scrollable-box');
 
-    alert("Getting all Jobs List")
+    // alert("Getting all Jobs List")
     // DONE APITODO: /getAllJobs
     // Fetch data from the API for the Scrollable Box
     fetch('http://localhost:8080/getAllJobs')
@@ -250,7 +252,7 @@ function updateJobsList() {
                 var listItem = document.createElement('a');
                 listItem.className = 'list-group-item list-group-item-action clickable-job-item';
                 listItem.href = '#';
-                listItem.textContent = `${item.id} - ${item.name}`;
+                listItem.textContent = `${item.jobId} - ${item.positionName}`;
 
                 // Add click event listener to the scrollable box
                 scrollableBox.addEventListener('click', function (event) {
@@ -264,16 +266,16 @@ function updateJobsList() {
                         // Change background color of clicked item
                         clickedItem.style.backgroundColor = 'lightblue';
                         // Add id and name to the item's attributes
-                        clickedItem.id = item.id;
-                        clickedItem.name = item.name;
-                        // clickedItem.username = item.username;
+                        clickedItem.jobId = item.jobId;
+                        clickedItem.company = item.company;
+                        // clickedItem.username = item.userId;
                     }
                 });
 
                 // Add click event listener to each listItem to show account details
                 listItem.addEventListener('click', function () {
                     // Call showAccountDetails with the clicked item's id and name
-                    showJobDetails(item.username);
+                    showJobDetails(item.jobId, item.company);
                 });
 
                 accountsList.appendChild(listItem);
@@ -290,60 +292,58 @@ function updateJobsList() {
 }
 
 
-function showJobDetails(clickedItem) {
-    // Extract the id from the clickedItem's textContent
-    var jobID = clickedItem;
-
-    alert(`Getting job details for ${jobID}`)
+function showJobDetails(jobId, company) {
+    // alert(`Getting job details for ${jobId} ${company}`)
     // Fetch data from the API
     // DONE APITODO: /getJobInfo
-    fetch(`http://localhost:8080/getJobInfo/${jobID}`)
-        .then(response => response.json())
+    fetch(`http://localhost:8080/getJobInfo?jobId=${jobId}&company=${company}`, {
+    })
+        .then((response) => response.json())
         .then(data => {
             // Extract the attributes from the data
             var attributes = data;
             var jobId = attributes.id;
 
             // Update the display with the details
-            // document.getElementById('usernameDisplay').textContent = attributes.username || 'N/A';
+            // document.getElementById('usernameDisplay').textContent = attributes.userId;
             // jobIDDisplay, positionNameDisplay, supervisorNameDisplay, supervisorEmailDisplay, supervisorPhoneNumberDisplay, payPerHourDisplay, startDateDisplay, endDateDisplay, startDateDisplay, endDateDisplay
-            document.getElementById('jobIDDisplay').textContent = attributes.id || 'N/A';
-            document.getElementById('positionNameDisplay').textContent = attributes.name || 'N/A';
-            document.getElementById('supervisorNameDisplay').textContent = attributes.username || 'N/A';
-            document.getElementById('supervisorEmailDisplay').textContent = attributes.email || 'N/A';
-            document.getElementById('supervisorPhoneNumberDisplay').textContent = attributes.phone || 'N/A';
-            document.getElementById('payPerHourDisplay').textContent = attributes.website || 'N/A';
-            document.getElementById('startDateDisplay').textContent = attributes.address.street || 'N/A';
-            document.getElementById('endDateDisplay').textContent = attributes.address.suite || 'N/A';
-            document.getElementById('startTimeDisplay').textContent = attributes.address.city || 'N/A';
-            document.getElementById('endTimeDisplay').textContent = attributes.address.zipcode || 'N/A';
+            document.getElementById('jobIDDisplay').textContent = attributes.jobId;
+            document.getElementById('positionNameDisplay').textContent = attributes.positionName;
+            // TODO: Supervisor name has first and last name
+            document.getElementById('supervisorNameDisplay').textContent = attributes.supervisorName;
+            document.getElementById('supervisorEmailDisplay').textContent = attributes.supervisorEmail;
+            document.getElementById('supervisorPhoneNumberDisplay').textContent = attributes.supervisorEmail;
+            document.getElementById('payPerHourDisplay').textContent = attributes.payPerHour;
+            document.getElementById('startDateDisplay').textContent = attributes.startDate;
+            document.getElementById('endDateDisplay').textContent = attributes.endDate;
+            document.getElementById('startTimeDisplay').textContent = attributes.startTime;
+            document.getElementById('endTimeDisplay').textContent = attributes.endTime;
 
-            // Sample list of Skills bc the sample API does not have a list
-            const skills = [
-                { category: 'Languages', skill: 'Python' },
-                { category: 'Languages', skill: 'C++' },
-                { category: 'Languages', skill: 'C#' },
-                { category: 'Languages', skill: 'Java' },
-                { category: 'Languages', skill: 'Ruby' },
-                { category: 'Languages', skill: 'PHP' },
-                { category: 'Previous Employment', skill: 'Software Engineer' }
-            ];
+            var qualifications = attributes.jobQualificationsList;
             // Fill in the professional qualifications in the categorytable
             const categoryTable = document.getElementById('categorytable');
-            skills.forEach(skill => {
-                const row = categoryTable.insertRow(-1);
-                const categoryCell = row.insertCell(0);
-                const skillCell = row.insertCell(1);
-                categoryCell.innerHTML = skill.category;
-                skillCell.innerHTML = skill.skill;
-            });
+            // Remove existing rows
+            for (let i = categoryTable.rows.length - 1; i > 0; i--) {
+                // Remove each row
+                categoryTable.deleteRow(i);
+            }
+            for (let category in qualifications) {
+                qualifications[category].forEach(skill => {
+                    const row = categoryTable.insertRow(-1);
+                    const categoryCell = row.insertCell(0);
+                    const skillCell = row.insertCell(1);
+                    categoryCell.innerHTML = category;
+                    skillCell.innerHTML = skill;
+                });
+            }
+
 
             // Update the href attribute of the edit button
             // Check if jobId is already part of the href attribute
             var editBt = document.getElementById('editBt');
             if (editBt.href.includes('jobId')) {
                 // If it is, update the value of username
-                editBt.href = editBt.href.replace(/jobId=[^&]+/, `jobId=${jobId}`);
+                editBt.href = editBt.href.replaceAll(/jobId=[^&]+/, `jobId=${jobId}`);
             } else {
                 // If it's not, append both username and jobId
                 editBt.href += `&jobId=${jobId}`;
@@ -367,7 +367,7 @@ function setPasswordPattern() {
 }
 function formatPhoneNumber(input) {
     // Remove all non-numeric characters
-    var phoneNumber = input.value.replace(/\D/g, '');
+    var phoneNumber = input.value.replaceAll(/[^0-9]/g, '');
 
     // Check if the input value is empty or not a number
     if (!phoneNumber || isNaN(phoneNumber)) {
@@ -475,15 +475,13 @@ function showModalAndRedirect(modal, link) {
         window.location.href = link;
     });
 }
-function addJobMatchingRequestFunctionality(professionalUsername) {
+function addJobMatchingRequestFunctionality() {
+    // Get the professional username from the header
+    var professionalUsername = document.getElementById('headerUsername').innerHTML;
     alert(`Requesting job matching for: ${professionalUsername}`)
     // DONE APITODO: /requestJobMatching
     fetch(`http://localhost:8080/requestJobMatching/${professionalUsername}`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' // Specify the content type
-        },
-        body: JSON.stringify(professionalUsername)
     }).then(response => response.json())
         .then(data => {
             // Handle the response data here
@@ -500,18 +498,21 @@ function addJobMatchingRequestFunctionality(professionalUsername) {
         $(modal).modal('show');
     });
 }
-function addDeleteRequestFunctionality(professionalUsername) {
+function addDeleteRequestFunctionality() {
+    var professionalUsername = document.getElementById('headerUsername').innerHTML;
     // DONE APITODO: /requestProfessionalDelete
     alert(`User with ID ${professionalUsername} has been requested to be deleted`);
     fetch(`http://localhost:8080/requestProfessionalDelete/${professionalUsername}`, {
-        method: 'DELETE'
-    }).then(response => {
-        return true;
-    }).catch(error => {
-        // Handle errors
-        console.error('There was a problem deleting the user:', error);
-        return false;
-    });
+        method: 'POST',
+    }).then(response => response.json())
+        .then(data => {
+            // Handle the response data here
+            console.log(data);
+        })
+        .catch(error => {
+            // Handle any errors that occur during the fetch
+            console.error('Error:', error);
+        });
     // Request Job Matching
     var jobMatchingButton = document.getElementById('requestDeleteBt');
     var modal = document.getElementById('deleteModal');

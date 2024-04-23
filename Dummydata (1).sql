@@ -1,3 +1,22 @@
+SHOW TABLES;
+
+SELECT * FROM JobPosting;
+
+DROP TABLE AccountDeleteRequest;
+DROP TABLE Credentials;
+DROP TABLE Payment;
+DROP TABLE EmployerAccountRequest;
+DROP TABLE JobMatching;
+DROP TABLE ProfessionalAccountRequest;
+DROP TABLE ProfessionalQualification;
+DROP TABLE ProfessionalQualificationRequest;
+DROP TABLE JobMatchingRequest;
+DROP TABLE JobQualification;
+DROP TABLE JobPosting;
+DROP TABLE Professional;
+DROP TABLE Employer;
+DROP TABLE User;
+
 
 -- Create User table
 CREATE TABLE User (
@@ -66,8 +85,10 @@ CREATE TABLE JobPosting (
                             jobId INT,
                             company VARCHAR(255),
                             positionName VARCHAR(255) NOT NULL,
-                            supervisorName VARCHAR(255) NOT NULL,
+                            supervisorFirstName VARCHAR(255) NOT NULL,
+                            supervisorLastName VARCHAR(255) NOT NULL,
                             supervisorEmail VARCHAR(255) NOT NULL,
+                            supervisorPhoneNumber BIGINT NOT NULL,
                             startDate DATE NOT NULL,
                             endDate DATE NOT NULL,
                             startTime TIME NOT NULL,
@@ -208,12 +229,12 @@ VALUES
     ('profX', 'Levy', 'Johnson', 'levy.j@gmail.com', 1234567890, 'P', '123 Main St', 'Apt 4B', 'New York', 'NY', 10001, 'ABC University', '2021-05-15', 'Bachelor');
 
 
-INSERT INTO `JobPosting` (jobId, company, positionName, supervisorName, supervisorEmail, startDate, endDate, startTime, endTime, payPerHour)
+INSERT INTO `JobPosting` (jobId, company, positionName, supervisorFirstName, supervisorLastName, supervisorEmail, supervisorPhoneNumber, startDate, endDate, startTime, endTime, payPerHour)
 VALUES
-    (1, 'ABC Company', 'Software Engineer', 'John Doe', 'john.doe@example.com', '2022-01-01', '2022-01-31', '09:00:00', '17:00:00', 50.00),
-    (1, 'XYZ Corporation', 'Marketing Specialist', 'Jane Smith', 'jane.smith@example.com', '2022-02-01', '2022-10-28', '08:30:00', '16:30:00', 90.00),
-    (2, 'XYZ Corporation', 'Marketing Intern', 'Jane Smith', 'jane.smith@example.com', '2022-03-05', '2022-10-28', '08:30:00', '16:30:00', 45.00),
-    (1, 'Acme Industries', 'Project Manager', 'Michael Johnson', 'michael.johnson@example.com', '2022-03-01', '2022-03-31', '09:30:00', '17:30:00', 60.00);
+    (1, 'ABC Company', 'Software Engineer', 'John', 'Doe', 'john.doe@example.com', 4696744444, '2022-01-01', '2022-01-31', '09:00:00', '17:00:00', 50.00),
+    (1, 'XYZ Corporation', 'Marketing Specialist', 'Jane', 'Smith', 'jane.smith@example.com', 4696744444, '2022-02-01', '2022-10-28', '08:30:00', '16:30:00', 90.00),
+    (2, 'XYZ Corporation', 'Marketing Intern', 'Jane', 'Smith', 'jane.smith@example.com', 4696744444, '2022-03-05', '2022-10-28', '08:30:00', '16:30:00', 45.00),
+    (1, 'Acme Industries', 'Project Manager', 'Michael', 'Johnson', 'michael.johnson@example.com', 4696744444, '2022-03-01', '2022-03-31', '09:30:00', '17:30:00', 60.00);
 INSERT INTO `JobQualification` (jobId, company, category, keyword)
 VALUES
     (1, 'ABC Company', 'Software Development', 'Java'),
@@ -229,11 +250,11 @@ VALUES
     ('prof2', 'Marketing', 'Digital Marketing'),
     ('prof3', 'Project Management', 'Agile Methodology');
 
-# INSERT INTO `JobMatching` (userId, jobId, company)
-# VALUES
-#     ('prof1', 1, 'ABC Company'),
-#     ('prof2', 2, 'XYZ Corporation'),
-#     ('prof3', 1, 'Acme Industries');
+INSERT INTO `JobMatching` (userId, jobId, company)
+VALUES
+    ('prof1', 1, 'ABC Company'),
+    ('prof2', 2, 'XYZ Corporation'),
+    ('prof3', 1, 'Acme Industries');
 
 INSERT INTO `AccountDeleteRequest` (userId)
 VALUES

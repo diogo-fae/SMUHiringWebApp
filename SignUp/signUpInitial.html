@@ -165,7 +165,7 @@
                     userInfo["firstName"] = document.getElementById('firstName').value;
                     userInfo["lastName"] = document.getElementById('lastName').value;
                     userInfo["email"] = document.getElementById('email').value;
-                    userInfo["phoneNumber"] = document.getElementById('phoneNumber').value;
+                    userInfo["phoneNumber"] = document.getElementById('phoneNumber').value.replaceAll(/^\D+/g, '');
 
                     // Update card body with new content for Employer
                     cardBody.innerHTML = getEmployerCard1();
@@ -176,7 +176,7 @@
                     userInfo["firstName"] = document.getElementById('firstName').value;
                     userInfo["lastName"] = document.getElementById('lastName').value;
                     userInfo["email"] = document.getElementById('email').value;
-                    userInfo["phoneNumber"] = document.getElementById('phoneNumber').value;
+                    userInfo["phoneNumber"] = document.getElementById('phoneNumber').value.replaceAll(/^\D+/g, '');
 
                     // Update card body with new content for Professional
                     cardBody.innerHTML = getProfessionalCard1();
@@ -289,6 +289,7 @@
                         .then(data => {
                             // Handle the response data here
                             console.log(data);
+                            alert("Account created successfully!")
                         })
                         .catch(error => {
                             // Handle any errors that occur during the fetch
@@ -321,7 +322,7 @@
 
         function formatPhoneNumber(input) {
             // Remove all non-numeric characters
-            var phoneNumber = input.value.replace(/\D/g, '');
+            var phoneNumber = input.value.replaceAll(/[^0-9]/g, '');
 
             // Check if the input value is empty or not a number
             if (!phoneNumber || isNaN(phoneNumber)) {

@@ -43,6 +43,7 @@
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         </ul>
 
+        <div id="headerCompany" style="color:white"></div>
         <ul class="nav navbar-nav my-2 my-lg-0">
             <li class="dropdown">
                 <button class="dropdown-toggle btn text-center" data-toggle="dropdown" id="headerUsername"
@@ -287,9 +288,11 @@
         var deleteButton = document.getElementById('deleteBt');
         var modal = document.getElementById('deleteModal');
         deleteButton.addEventListener('click', function () {
-            var jobId = document.getElementById('jobIDDisplay').textContent;
+            var jobId = document.getElementById('jobIDDisplay').innerHTML;
+            // TODO: Delete
+            var company = document.getElementById('headerCompany').innerHTML;
             // delete the changes
-            if (deleteJob(jobId)) {
+            if (deleteJob(jobId, company)) {
                 // Show the modal
                 $(modal).modal('show');
             }

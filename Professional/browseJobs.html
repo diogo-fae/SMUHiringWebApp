@@ -87,7 +87,8 @@
                 <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action"
                     id="requestJMBt" style="color:white; padding: 8% 8%" data-toggle="modal"
                     data-target="#initiateJobModal">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
+                    <div class="d-flex w-100 justify-content-start align-items-center"
+                        onclick="addJobMatchingRequestFunctionality()">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Initiate Job Matchings</span>
                     </div>
@@ -109,7 +110,8 @@
                 <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action"
                     id="requestDeleteBt" style="color:white; padding: 8% 8%" data-toggle="modal"
                     data-target="#initiateJobModal">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
+                    <div class="d-flex w-100 justify-content-start align-items-center"
+                        onclick="addDeleteRequestFunctionality()">
                         <span class="fa fa-tasks fa-fw mr-3"></span>
                         <span class="menu-collapsed">Delete Account</span>
                     </div>
@@ -295,9 +297,6 @@
 
         // Execute the function to update the card body when the page is first loaded
         window.addEventListener('DOMContentLoaded', updateJobsList);
-
-        addJobMatchingRequestFunctionality(professionalUsername);
-        addDeleteRequestFunctionality(professionalUsername);
     </script>
 
 </body>

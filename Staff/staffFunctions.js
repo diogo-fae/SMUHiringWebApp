@@ -15,10 +15,10 @@ function showStaffInfo(username) {
             // Fill in the staff information
             // document.getElementById('headerUsername').innerHTML = data.username;
             document.getElementById('usernameDisplay').innerHTML = data.username;
-            document.getElementById('firstNameDisplay').innerHTML = data.name.split(' ')[0];
-            document.getElementById('lastNameDisplay').innerHTML = data.name.split(' ')[1];
+            document.getElementById('firstNameDisplay').innerHTML = data.firstName;
+            document.getElementById('lastNameDisplay').innerHTML = data.lastName;
             document.getElementById('emailDisplay').innerHTML = data.email;
-            document.getElementById('phoneNumberDisplay').innerHTML = data.phone;
+            document.getElementById('phoneNumberDisplay').innerHTML = data.phoneNumber;
         });
 }
 function showEmployerInfo(employerUsername) {
@@ -32,16 +32,16 @@ function showEmployerInfo(employerUsername) {
             employerInfo = data;
             // alert(employerInfo.username);
             document.getElementById('usernameDisplay').innerHTML = employerInfo.username;
-            document.getElementById('companyNameDisplay').innerHTML = employerInfo.company.name;
-            document.getElementById('firstNameDisplay').innerHTML = employerInfo.name.split(' ')[0];
-            document.getElementById('lastNameDisplay').innerHTML = employerInfo.name.split(' ')[1];
+            document.getElementById('companyNameDisplay').innerHTML = employerInfo.company;
+            document.getElementById('firstNameDisplay').innerHTML = employerInfo.firstName;
+            document.getElementById('lastNameDisplay').innerHTML = employerInfo.lastName;
             document.getElementById('emailDisplay').innerHTML = employerInfo.email;
             document.getElementById('phoneNumberDisplay').innerHTML = employerInfo.phoneNumber;
-            document.getElementById('address1Display').innerHTML = employerInfo.address.street;
-            document.getElementById('address2Display').innerHTML = employerInfo.address.suite;
-            document.getElementById('cityDisplay').innerHTML = employerInfo.address.city;
+            document.getElementById('address1Display').innerHTML = employerInfo.address1;
+            document.getElementById('address2Display').innerHTML = employerInfo.address2;
+            document.getElementById('cityDisplay').innerHTML = employerInfo.city;
             document.getElementById('stateDisplay').innerHTML = employerInfo.state;
-            document.getElementById('zipCodeDisplay').innerHTML = employerInfo.address.zipcode;
+            document.getElementById('zipCodeDisplay').innerHTML = employerInfo.zipCode;
         });
 }
 function showProfessionalInfo(professionalUsername) {
@@ -54,17 +54,17 @@ function showProfessionalInfo(professionalUsername) {
             // Store the staff information
             professionalInfo = data;
             document.getElementById('usernameDisplay').innerHTML = professionalInfo.username;
-            document.getElementById('firstNameDisplay').innerHTML = professionalInfo.name.split(' ')[0];
-            document.getElementById('lastNameDisplay').innerHTML = professionalInfo.name.split(' ')[1];
+            document.getElementById('firstNameDisplay').innerHTML = professionalInfo.firstName;
+            document.getElementById('lastNameDisplay').innerHTML = professionalInfo.lastName;
             document.getElementById('emailDisplay').innerHTML = professionalInfo.email;
             document.getElementById('phoneNumberDisplay').innerHTML = professionalInfo.phoneNumber;
-            document.getElementById('address1Display').innerHTML = professionalInfo.address.street;
-            document.getElementById('address2Display').innerHTML = professionalInfo.address.suite;
-            document.getElementById('cityDisplay').innerHTML = professionalInfo.address.city;
+            document.getElementById('address1Display').innerHTML = professionalInfo.address1;
+            document.getElementById('address2Display').innerHTML = professionalInfo.address2;
+            document.getElementById('cityDisplay').innerHTML = professionalInfo.city;
             document.getElementById('stateDisplay').innerHTML = professionalInfo.state;
-            document.getElementById('zipCodeDisplay').innerHTML = professionalInfo.address.zipcode;
+            document.getElementById('zipCodeDisplay').innerHTML = professionalInfo.zipCode;
             document.getElementById('startDateDegreeDisplay').innerHTML = professionalInfo.startDateDegree;
-            document.getElementById('institutionDisplay').innerHTML = professionalInfo.company.name;
+            document.getElementById('institutionDisplay').innerHTML = professionalInfo.company;
             document.getElementById('degreeTypeDisplay').innerHTML = professionalInfo.company.bs;
             // Sample list of Skills bc the sample API does not have a list
             const skills = [
@@ -101,10 +101,10 @@ function fillEditForm(username) {
             staffInfo = data;
 
             // Fill in the staff information
-            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
-            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
+            document.getElementById('firstNameInput').placeholder = data.firstName;
+            document.getElementById('lastNameInput').placeholder = data.lastName;
             document.getElementById('emailInput').placeholder = data.email;
-            document.getElementById('phoneNumberInput').placeholder = data.phone;
+            document.getElementById('phoneNumberInput').placeholder = data.phoneNumber;
         });
 }
 function fillEmployerEditForm(username) {
@@ -118,15 +118,15 @@ function fillEmployerEditForm(username) {
             employerInfo = data;
 
             // Fill in the staff information
-            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
-            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
+            document.getElementById('firstNameInput').placeholder = data.firstName;
+            document.getElementById('lastNameInput').placeholder = data.lastName;
             document.getElementById('emailInput').placeholder = data.email;
-            document.getElementById('phoneNumberInput').placeholder = data.phone;
-            document.getElementById('address1Input').placeholder = data.address.street;
-            document.getElementById('address2Input').placeholder = data.address.suite;
-            document.getElementById('cityInput').placeholder = data.address.city;
-            document.getElementById('stateInput').placeholder = data.address.state;
-            document.getElementById('zipCodeInput').placeholder = data.address.zipcode;
+            document.getElementById('phoneNumberInput').placeholder = data.phoneNumber;
+            document.getElementById('address1Input').placeholder = data.address1;
+            document.getElementById('address2Input').placeholder = data.address2;
+            document.getElementById('cityInput').placeholder = data.city;
+            document.getElementById('stateInput').placeholder = data.state;
+            document.getElementById('zipCodeInput').placeholder = data.zipCode;
             document.getElementById('companyNameInput').placeholder = data.companyName;
         });
 }
@@ -141,16 +141,16 @@ function fillProfessionalEditForm(username) {
             professionalInfo = data;
 
             // Fill in the staff information
-            document.getElementById('firstNameInput').placeholder = data.name.split(' ')[0];
-            document.getElementById('lastNameInput').placeholder = data.name.split(' ')[1];
+            document.getElementById('firstNameInput').placeholder = data.firstName;
+            document.getElementById('lastNameInput').placeholder = data.lastName;
             document.getElementById('emailInput').placeholder = data.email;
-            document.getElementById('phoneNumberInput').placeholder = data.phone;
-            document.getElementById('address1Input').placeholder = data.address.street;
-            document.getElementById('address2Input').placeholder = data.address.suite;
-            document.getElementById('cityInput').placeholder = data.address.city;
-            document.getElementById('stateInput').placeholder = data.address.state;
-            document.getElementById('zipCodeInput').placeholder = data.address.zipcode;
-            document.getElementById('institutionInput').placeholder = data.company.name;
+            document.getElementById('phoneNumberInput').placeholder = data.phoneNumber;
+            document.getElementById('address1Input').placeholder = data.address1;
+            document.getElementById('address2Input').placeholder = data.address2;
+            document.getElementById('cityInput').placeholder = data.city;
+            document.getElementById('stateInput').placeholder = data.state;
+            document.getElementById('zipCodeInput').placeholder = data.zipCode;
+            document.getElementById('institutionInput').placeholder = data.company;
             document.getElementById('degreeTypeInput').placeholder = data.company.bs;
             document.getElementById('startDateDegreeInput').placeholder = data.id;
         });
@@ -230,20 +230,20 @@ function reviewRequest(requesterUsername, requestType, userType, decision) {
 }
 function updatePassword(apiLink, username, newPassword) {
     // DONE APITODO: /changePassword
-    var passwordInfo = { "username": username, "password": newPassword }
+    var passwordInfo = { "userId": username, "pwd": newPassword }
 
-    alert(`Changing password to ${newPassword}`);
+    alert(passwordInfo.userId)
+    alert(`Changing password to ${passwordInfo.pwd}`);
     fetch("http://localhost:8080/changePassword", {
-        method: 'PUT',
-        body: JSON.stringify({
-            passwordInfo
-        }),
+        method: 'POST',
+        body: JSON.stringify(passwordInfo),
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
+            'Content-Type': 'application/json'
         },
     })
         .then((response) => response.json())
         .then((data) => {
+            alert('Password changed successfully')
             alert(data)
         });
     return true;
@@ -265,7 +265,7 @@ function updateUser(apiLink, userInfo) {
     }
     var phoneNumberInputValue = document.getElementById('phoneNumberInput').value;
     if (phoneNumberInputValue) {
-        userInfo.phoneNumber = phoneNumberInputValue;
+        userInfo.phoneNumber = phoneNumberInputValue.replaceAll(/^\D+/g, '');
     }
     try {
         var address1InputValue = document.getElementById('address1Input').value;
@@ -404,7 +404,7 @@ function updateEmployerAccountsList() {
                 var listItem = document.createElement('a');
                 listItem.className = 'list-group-item list-group-item-action clickable-job-item';
                 listItem.href = '#';
-                listItem.textContent = `${item.id} - ${item.name}`;
+                listItem.textContent = `${item.userId} - ${item.firstName} ${item.lastName}`;
 
                 // Add click event listener to the scrollable box
                 scrollableBox.addEventListener('click', function (event) {
@@ -418,8 +418,9 @@ function updateEmployerAccountsList() {
                         // Change background color of clicked item
                         clickedItem.style.backgroundColor = 'lightblue';
                         // Add id and name to the item's attributes
-                        clickedItem.id = item.id;
-                        clickedItem.name = item.name;
+                        clickedItem.userId = item.userId;
+                        clickedItem.firstName = item.firstName;
+                        clickedItem.lastName = item.lastName;
                         // clickedItem.username = item.username;
                     }
                 });
@@ -427,7 +428,7 @@ function updateEmployerAccountsList() {
                 // Add click event listener to each listItem to show account details
                 listItem.addEventListener('click', function () {
                     // Call showAccountDetails with the clicked item's id and name
-                    showEmployerAccountDetails(item.username);
+                    showEmployerAccountDetails(username);
                 });
 
                 accountsList.appendChild(listItem);
@@ -442,9 +443,9 @@ function updateEmployerAccountsList() {
             console.error('Error fetching data updateStaffAccountsList():', error);
         });
 }
-function showEmployerAccountDetails(clickedItem) {
+function showEmployerAccountDetails(username) {
     // Extract the id from the clickedItem's textContent
-    var username = clickedItem;
+    // var username = clickedItem;
 
     // DONE APITODO: /getEmployerInfo
     // Fetch data from the API
@@ -455,25 +456,25 @@ function showEmployerAccountDetails(clickedItem) {
             var attributes = data;
 
             // Update the display with the details
-            document.getElementById('usernameDisplay').textContent = attributes.username || 'N/A';
-            document.getElementById('firstNameDisplay').textContent = attributes.name.split(' ')[0] || 'N/A';
-            document.getElementById('lastNameDisplay').textContent = attributes.name.split(' ')[1] || 'N/A';
-            document.getElementById('emailDisplay').textContent = attributes.email || 'N/A';
-            document.getElementById('phoneNumberDisplay').textContent = attributes.phone || 'N/A';
+            document.getElementById('usernameDisplay').textContent = attributes.userId;
+            document.getElementById('firstNameDisplay').textContent = attributes.firstName;
+            document.getElementById('lastNameDisplay').textContent = attributes.lastName;
+            document.getElementById('emailDisplay').textContent = attributes.email;
+            document.getElementById('phoneNumberDisplay').textContent = attributes.phoneNumber;
             // companyNameDisplay, address1Display, address2Display, cityDisplay, stateDisplay, zipCodeDisplay
-            document.getElementById('companyNameDisplay').textContent = attributes.company.name || 'N/A';
-            document.getElementById('address1Display').textContent = attributes.address.street || 'N/A';
-            document.getElementById('address2Display').textContent = attributes.address.suite || 'N/A';
-            document.getElementById('cityDisplay').textContent = attributes.address.city || 'N/A';
-            document.getElementById('stateDisplay').textContent = attributes.address.state || 'N/A';
-            document.getElementById('zipCodeDisplay').textContent = attributes.address.zipcode || 'N/A';
+            document.getElementById('companyNameDisplay').textContent = attributes.company;
+            document.getElementById('address1Display').textContent = attributes.address1;
+            document.getElementById('address2Display').textContent = attributes.address2 || 'N/A';
+            document.getElementById('cityDisplay').textContent = attributes.city;
+            document.getElementById('stateDisplay').textContent = attributes.state;
+            document.getElementById('zipCodeDisplay').textContent = attributes.zipCode;
             var editBt = document.getElementById('editBt');
 
             // Update the href attribute of the edit button
             // Check if employerUsername is already part of the href attribute
             if (editBt.href.includes('employerUsername')) {
                 // If it is, update the value of username
-                editBt.href = editBt.href.replace(/employerUsername=[^&]+/, `employerUsername=${username}`);
+                editBt.href = editBt.href.replaceAll(/employerUsername=[^&]+/, `employerUsername=${username}`);
             } else {
                 // If it's not, append both username and employerUsername
                 editBt.href += `&employerUsername=${username}`;
@@ -561,21 +562,21 @@ function showProfessionalAccountDetails(clickedItem) {
             var attributes = data;
 
             // Update the display with the details
-            document.getElementById('usernameDisplay').textContent = attributes.username || 'N/A';
-            document.getElementById('firstNameDisplay').textContent = attributes.name.split(' ')[0] || 'N/A';
-            document.getElementById('lastNameDisplay').textContent = attributes.name.split(' ')[1] || 'N/A';
-            document.getElementById('emailDisplay').textContent = attributes.email || 'N/A';
-            document.getElementById('phoneNumberDisplay').textContent = attributes.phone || 'N/A';
+            document.getElementById('usernameDisplay').textContent = attributes.userId;
+            document.getElementById('firstNameDisplay').textContent = attributes.firstName;
+            document.getElementById('lastNameDisplay').textContent = attributes.lastName;
+            document.getElementById('emailDisplay').textContent = attributes.email;
+            document.getElementById('phoneNumberDisplay').textContent = attributes.phoneNumber;
             // companyNameDisplay, address1Display, address2Display, cityDisplay, stateDisplay, zipCodeDisplay
-            document.getElementById('address1Display').textContent = attributes.address.street || 'N/A';
-            document.getElementById('address2Display').textContent = attributes.address.suite || 'N/A';
-            document.getElementById('cityDisplay').textContent = attributes.address.city || 'N/A';
-            document.getElementById('stateDisplay').textContent = attributes.address.state || 'N/A';
-            document.getElementById('zipCodeDisplay').textContent = attributes.address.zipcode || 'N/A';
+            document.getElementById('address1Display').textContent = attributes.address1;
+            document.getElementById('address2Display').textContent = attributes.address2 || 'N/A';
+            document.getElementById('cityDisplay').textContent = attributes.city;
+            document.getElementById('stateDisplay').textContent = attributes.state;
+            document.getElementById('zipCodeDisplay').textContent = attributes.zipCode;
             // institutionDisplay, degreeTypeDisplay, startDateDegreeDisplay
-            document.getElementById('institutionDisplay').textContent = attributes.company.name || 'N/A';
-            document.getElementById('degreeTypeDisplay').textContent = attributes.company.bs || 'N/A';
-            document.getElementById('startDateDegreeDisplay').textContent = attributes.company.bs || 'N/A';
+            document.getElementById('institutionDisplay').textContent = attributes.company;
+            document.getElementById('degreeTypeDisplay').textContent = attributes.company.bs;
+            document.getElementById('startDateDegreeDisplay').textContent = attributes.company.bs;
             // Sample list of Skills bc the sample API does not have a list
             const skills = [
                 { category: 'Languages', skill: 'Python' },
@@ -602,7 +603,7 @@ function showProfessionalAccountDetails(clickedItem) {
             // Check if professionalUsername is already part of the href attribute
             if (editBt.href.includes('professionalUsername')) {
                 // If it is, update the value of username
-                editBt.href = editBt.href.replace(/professionalUsername=[^&]+/, `professionalUsername=${username}`);
+                editBt.href = editBt.href.replaceAll(/professionalUsername=[^&]+/, `professionalUsername=${username}`);
             } else {
                 // If it's not, append both username and professionalUsername
                 editBt.href += `&professionalUsername=${username}`;
@@ -627,7 +628,7 @@ function setPasswordPattern() {
 }
 function formatPhoneNumber(input) {
     // Remove all non-numeric characters
-    var phoneNumber = input.value.replace(/\D/g, '');
+    var phoneNumber = input.value.replaceAll(/[^0-9]/g, '');
 
     // Check if the input value is empty or not a number
     if (!phoneNumber || isNaN(phoneNumber)) {

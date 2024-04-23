@@ -54,8 +54,8 @@
             </li>
         </ul>
         <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html" style="color:white"><i
-                        class="fas fa-sign-in-alt"></i>
+            <li class="nav-item"><a type="button" href="/Staff/editAccount.html" class="btn btn-secondary page-redirect"
+                    onclick="logout()" type="button" style="color:white"><i class="fas fa-sign-in-alt"></i>
                     Logout</a></li>
         </ul>
     </nav>
@@ -209,6 +209,7 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script src="staffFunctions.js"></script>
     <script>
+        // checkLogin();
         // Get the staff username from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const staffUsername = urlParams.get('username');
