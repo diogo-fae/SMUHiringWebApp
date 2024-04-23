@@ -378,7 +378,7 @@
             // Table must have more than 2 rows bc the first row is the header
             if (validateInputs() && categoryTable.rows.length > 2) {
                 // Save the changes
-                updateJob(apiLink, jobInfo);
+                updateJob(jobInfo);
                 showModalAndRedirect(saveModal, '/Employer/browseJobs.html?username=' + employerUsername);
             }
             else if (categoryTable.rows.length <= 2) {

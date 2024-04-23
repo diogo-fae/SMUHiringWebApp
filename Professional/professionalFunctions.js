@@ -21,7 +21,9 @@ function showProfessionalInfo(professionalUsername) {
             document.getElementById('cityDisplay').innerHTML = professionalInfo.city;
             document.getElementById('stateDisplay').innerHTML = professionalInfo.state;
             document.getElementById('zipCodeDisplay').innerHTML = professionalInfo.zipCode;
-            document.getElementById('startDateDegreeDisplay').innerHTML = professionalInfo.graduationDate;
+            var graduationDateComponents = professionalInfo.graduationDate.split('-');
+            var graduationDateFormatted = graduationDateComponents[1] + '-' + graduationDateComponents[0];
+            document.getElementById('startDateDegreeDisplay').innerHTML = graduationDateFormatted;
             document.getElementById('institutionDisplay').innerHTML = professionalInfo.university;
             document.getElementById('degreeTypeDisplay').innerHTML = professionalInfo.degreeType;
             var qualifications = professionalInfo.professionalQualificationsList;
@@ -54,11 +56,15 @@ function showJobInfo(jobID) {
             document.getElementById('supervisorLastNameDisplay').innerHTML = jobInfo.supervisorLastName;
             document.getElementById('supervisorEmailDisplay').innerHTML = jobInfo.supervisorEmail;
             document.getElementById('supervisorPhoneNumberDisplay').innerHTML = jobInfo.supervisorPhoneNumber;
-            document.getElementById('startDateDisplay').innerHTML = jobInfo.startDate;
-            document.getElementById('endDateDisplay').innerHTML = jobInfo.endDate;
+            var startDateComponents = jobInfo.startDate.split('-');
+            var startDateFormatted = startDateComponents[1] + '-' + startDateComponents[0];
+            var endDateComponents = jobInfo.endDate.split('-');
+            var endDateFormatted = endDateComponents[1] + '-' + endDateComponents[0];
+            document.getElementById('startDateDisplay').innerHTML = startDateFormatted;
+            document.getElementById('endDateDisplay').innerHTML = endDateFormatted;
             document.getElementById('payPerHourDisplay').innerHTML = jobInfo.payRate;
-            document.getElementById('startTimeDisplay').innerHTML = jobInfo.startTime;
-            document.getElementById('endTimeDisplay').innerHTML = jobInfo.endTime;
+            document.getElementById('startTimeDisplay').innerHTML = jobInfo.startTime.slice(0, -3);
+            document.getElementById('endTimeDisplay').innerHTML = jobInfo.endTime.slice(0, -3);
             var qualifications = jobInfo.professionalQualificationsList;
             // Fill in the professional qualifications in the categorytable
             const categoryTable = document.getElementById('categorytable');
@@ -95,7 +101,9 @@ function fillProfessionalEditForm(username) {
             document.getElementById('zipCodeInput').placeholder = data.zipCode;
             document.getElementById('institutionInput').placeholder = data.university;
             document.getElementById('degreeTypeInput').placeholder = data.degreeType;
-            document.getElementById('startDateDegreeInput').placeholder = data.graduationDate;
+            var graduationDateComponents = data.graduationDate.split('-');
+            var graduationDateFormatted = graduationDateComponents[1] + '-' + graduationDateComponents[0];
+            document.getElementById('startDateDegreeInput').placeholder = graduationDateFormatted;
             var qualifications = data.professionalQualificationsList;
             // Fill in the professional qualifications in the categorytable
             const categoryTable = document.getElementById('categorytable');
@@ -181,7 +189,9 @@ function updateUser(apiLink, userInfo) {
         }
         var startDateDegreeInputValue = document.getElementById('startDateDegreeInput').value;
         if (startDateDegreeInputValue) {
-            userInfo.startDateDegree = startDateDegreeInputValue;
+            var startDateComponents = startDateDegreeInputValue.split('-');
+            var startDateFormatted = startDateComponents[1] + '-' + startDateComponents[0] + '-01';
+            userInfo.graduationDate = startDateFormatted;
         }
         var degreeTypeInputValue = document.getElementById('degreeTypeInput').value;
         if (degreeTypeInputValue) {
@@ -310,14 +320,18 @@ function showJobDetails(jobId, company) {
             document.getElementById('jobIDDisplay').textContent = attributes.jobId;
             document.getElementById('positionNameDisplay').textContent = attributes.positionName;
             // TODO: Supervisor name has first and last name
-            document.getElementById('supervisorNameDisplay').textContent = attributes.supervisorName;
+            document.getElementById('supervisorNameDisplay').textContent = attributes.supervisorFirstName + ' ' + attributes.supervisorLastName
             document.getElementById('supervisorEmailDisplay').textContent = attributes.supervisorEmail;
             document.getElementById('supervisorPhoneNumberDisplay').textContent = attributes.supervisorEmail;
             document.getElementById('payPerHourDisplay').textContent = attributes.payPerHour;
-            document.getElementById('startDateDisplay').textContent = attributes.startDate;
-            document.getElementById('endDateDisplay').textContent = attributes.endDate;
-            document.getElementById('startTimeDisplay').textContent = attributes.startTime;
-            document.getElementById('endTimeDisplay').textContent = attributes.endTime;
+            var startDateComponents = attributes.startDate.split('-');
+            var startDateFormatted = startDateComponents[1] + '-' + startDateComponents[0];
+            var endDateComponents = attributes.endDate.split('-');
+            var endDateFormatted = endDateComponents[1] + '-' + endDateComponents[0];
+            document.getElementById('startDateDisplay').textContent = startDateFormatted;
+            document.getElementById('endDateDisplay').textContent = endDateFormatted;
+            document.getElementById('startTimeDisplay').textContent = attributes.startTime.slice(0, -3);
+            document.getElementById('endTimeDisplay').textContent = attributes.endTime.slice(0, -3);
 
             var qualifications = attributes.jobQualificationsList;
             // Fill in the professional qualifications in the categorytable

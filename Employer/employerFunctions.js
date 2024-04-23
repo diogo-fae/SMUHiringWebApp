@@ -6,6 +6,20 @@ function showHeaderUsername(username) {
         .then(data => {
             company = data.company;
             document.getElementById('headerCompany').innerHTML = company;
+            updateJobsList(company);
+            // Get jobId from URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var jobId = urlParams.get('jobId');
+            showJobInfoAndEdit(jobId, company);
+        });
+}
+function showHeaderUsernamePostJob(username) {
+    document.getElementById('headerUsername').innerHTML = username;
+    fetch(`http://localhost:8080/getEmployerInfo/${username}`)
+        .then(response => response.json())
+        .then(data => {
+            company = data.company;
+            document.getElementById('headerCompany').innerHTML = company;
         });
 }
 function deleteJob(jobID, company) {
@@ -49,70 +63,93 @@ function showEmployerInfo(employerUsername) {
             document.getElementById('zipCodeDisplay').innerHTML = employerInfo.zipCode;
         });
 }
-function showJobInfo(jobID) {
+function showJobInfo(jobId) {
     // DONE APITODO: /getJobInfo
-    alert(`Getting job info for job with ID: ${jobID}`)
-    // Fetch data from the API using jobID
-    fetch(`http://localhost:8080/getJobInfo/${jobID}`)
-        .then(response => response.json())
-        .then(data => {
-            // Store the staff information
-            jobInfo = data;
-            // alert(jobInfo.username);
-            document.getElementById('jobIDDisplay').innerHTML = jobInfo.jobID;
-            document.getElementById('positionNameDisplay').innerHTML = jobInfo.positionName;
-            document.getElementById('supervisorFirstNameDisplay').innerHTML = jobInfo.supervisorFirstName;
-            document.getElementById('supervisorLastNameDisplay').innerHTML = jobInfo.supervisorLastName;
-            document.getElementById('supervisorEmailDisplay').innerHTML = jobInfo.supervisorEmail;
-            document.getElementById('supervisorPhoneNumberDisplay').innerHTML = jobInfo.supervisorPhoneNumber;
-            document.getElementById('startDateDisplay').innerHTML = jobInfo.startDate;
-            document.getElementById('endDateDisplay').innerHTML = jobInfo.endDate;
-            document.getElementById('payPerHourDisplay').innerHTML = jobInfo.payRate;
-            document.getElementById('startTimeDisplay').innerHTML = jobInfo.startTime;
-            document.getElementById('endTimeDisplay').innerHTML = jobInfo.endTime;
-        });
-}
-function showJobInfoAndEdit(jobID) {
-    // DONE APITODO: /getJobInfo
-    alert(`Getting job info for job with ID: ${jobID} for updating`)
-    // Fetch data from the API using jobID
-    fetch(`http://localhost:8080/getJobInfo/${jobID}`)
-        .then(response => response.json())
-        .then(data => {
-            // Store the staff information
-            jobInfo = data;
-            // alert(jobInfo.username);
-            document.getElementById('jobIDDisplay').innerHTML = jobInfo.id;
-            document.getElementById('positionNameDisplay').innerHTML = jobInfo.name;
-            document.getElementById('supervisorFirstNameInput').placeholder = jobInfo.name.split(' ')[0];
-            document.getElementById('supervisorLastNameInput').placeholder = jobInfo.name.split(' ')[1];
-            document.getElementById('supervisorEmailInput').placeholder = jobInfo.email;
-            document.getElementById('supervisorPhoneNumberInput').placeholder = jobInfo.phone;
-            document.getElementById('startDateInput').placeholder = jobInfo.geo.lng;
-            document.getElementById('endDateInput').placeholder = jobInfo.geo.lat;
-            document.getElementById('payPerHourInput').placeholder = jobInfo.zipCode;
-            document.getElementById('startTimeInput').placeholder = jobInfo.geo.lng;
-            document.getElementById('endTimeInput').placeholder = jobInfo.geo.lat;
+    var company = document.getElementById('headerCompany').innerHTML;
 
-            // Sample list of Skills bc the sample API does not have a list
-            const skills = [
-                { category: 'Languages', skill: 'Python' },
-                { category: 'Languages', skill: 'C++' },
-                { category: 'Languages', skill: 'C#' },
-                { category: 'Languages', skill: 'Java' },
-                { category: 'Languages', skill: 'Ruby' },
-                { category: 'Languages', skill: 'PHP' },
-                { category: 'Previous Employment', skill: 'Software Engineer' }
-            ];
+    // Fetch data from the API using jobID
+    fetch(`http://localhost:8080/getJobInfo?jobId=${jobId}&company=${company}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            jobInfo = data;
+            // alert(jobInfo.username);
+            document.getElementById('jobIDDisplay').innerHTML = jobInfo.jobId;
+            document.getElementById('positionNameDisplay').innerHTML = jobInfo.positionName;
+            document.getElementById('supervisorNameDisplay').innerHTML = jobInfo.supervisorFirstName + ' ' + jobInfo.supervisorLastName;
+            document.getElementById('supervisorEmailDisplay').innerHTML = jobInfo.supervisorEmail;
+            document.getElementById('supervisorPhoneNumberDisplay').innerHTML = formatPhoneNumber(jobInfo.supervisorPhoneNumber);
+            var startDateComponents = jobInfo.startDate.split('-');
+            var startDateFormatted = startDateComponents[1] + '-' + startDateComponents[0];
+            document.getElementById('startDateDisplay').innerHTML = startDateFormatted;
+            var endDateComponents = jobInfo.endDate.split('-');
+            var endDateFormatted = endDateComponents[1] + '-' + endDateComponents[0];
+            document.getElementById('endDateDisplay').innerHTML = endDateFormatted;
+            document.getElementById('payPerHourDisplay').innerHTML = jobInfo.payRate;
+            document.getElementById('startTimeDisplay').innerHTML = jobInfo.startTime.slice(0, -3);;
+            document.getElementById('endTimeDisplay').innerHTML = jobInfo.endTime.slice(0, -3);;
+            var qualifications = jobInfo.jobQualificationsList;
             // Fill in the professional qualifications in the categorytable
             const categoryTable = document.getElementById('categorytable');
-            skills.forEach(skill => {
-                const row = categoryTable.insertRow(-1);
-                const categoryCell = row.insertCell(0);
-                const skillCell = row.insertCell(1);
-                categoryCell.innerHTML = skill.category;
-                skillCell.innerHTML = skill.skill;
-            });
+            // Remove existing rows
+            for (let i = categoryTable.rows.length - 1; i > 0; i--) {
+                // Remove each row
+                categoryTable.deleteRow(i);
+            }
+            for (let category in qualifications) {
+                qualifications[category].forEach(skill => {
+                    const row = categoryTable.insertRow(-1);
+                    const categoryCell = row.insertCell(0);
+                    const skillCell = row.insertCell(1);
+                    categoryCell.innerHTML = category;
+                    skillCell.innerHTML = skill;
+                });
+            }
+        });
+}
+function showJobInfoAndEdit(jobId, company) {
+    // DONE APITODO: /getJobInfo
+    var company = document.getElementById('headerCompany').innerHTML;
+
+    // Fetch data from the API using jobID
+    fetch(`http://localhost:8080/getJobInfo?jobId=${jobId}&company=${company}`)
+        .then(response => response.json())
+        .then(data => {
+            // Store the staff information
+            jobInfo = data;
+            // alert(jobInfo.username);
+            document.getElementById('jobIDDisplay').innerHTML = jobInfo.jobId;
+            document.getElementById('positionNameDisplay').innerHTML = jobInfo.positionName;
+            document.getElementById('supervisorFirstNameInput').placeholder = jobInfo.supervisorFirstName;
+            document.getElementById('supervisorLastNameInput').placeholder = jobInfo.supervisorLastName;
+            document.getElementById('supervisorEmailInput').placeholder = jobInfo.supervisorEmail;
+            document.getElementById('supervisorPhoneNumberInput').placeholder = formatPhoneNumber(jobInfo.supervisorPhoneNumber);
+            var startDateComponents = jobInfo.startDate.split('-');
+            var startDateFormatted = startDateComponents[1] + '-' + startDateComponents[0];
+            document.getElementById('startDateInput').placeholder = startDateFormatted;
+            var endDateComponents = jobInfo.endDate.split('-');
+            var endDateFormatted = endDateComponents[1] + '-' + endDateComponents[0];
+            document.getElementById('endDateInput').placeholder = endDateFormatted;
+            document.getElementById('payPerHourInput').placeholder = jobInfo.payPerHour;
+            document.getElementById('startTimeInput').placeholder = jobInfo.startTime.slice(0, -3);
+            document.getElementById('endTimeInput').placeholder = jobInfo.endTime.slice(0, -3);
+            var qualifications = jobInfo.jobQualificationsList;
+            // Fill in the professional qualifications in the categorytable
+            const categoryTable = document.getElementById('categorytable');
+            // Remove existing rows
+            for (let i = categoryTable.rows.length - 1; i > 0; i--) {
+                // Remove each row
+                categoryTable.deleteRow(i);
+            }
+            for (let category in qualifications) {
+                qualifications[category].forEach(skill => {
+                    const row = categoryTable.insertRow(-1);
+                    const categoryCell = row.insertCell(0);
+                    const skillCell = row.insertCell(1);
+                    categoryCell.innerHTML = category;
+                    skillCell.innerHTML = skill;
+                });
+            }
         });
 }
 function fillEmployerEditForm(username) {
@@ -157,27 +194,39 @@ function updatePassword(apiLink, username, newPassword) {
         });
     return true;
 }
-function postJob(apiLink, jobInfo) {
-    var jobID = document.getElementById('jobIDInput').value;
+function postJob(jobInfo) {
+    // alert()
+    var jobID = document.getElementById('jobIdInput').value;
     var positionName = document.getElementById('positionNameInput').value;
+    // alert(positionName)
     var supervisorFirstName = document.getElementById('supervisorFirstNameInput').value;
+    // alert(supervisorFirstName)
     var supervisorLastName = document.getElementById('supervisorLastNameInput').value;
+    // alert(supervisorLastName)
     var supervisorEmail = document.getElementById('supervisorEmailInput').value;
-    var supervisorPhoneNumber = document.getElementById('supervisorPhoneNumberInput').value;
+    // alert(supervisorEmail)
+    var supervisorPhoneNumber = document.getElementById('supervisorPhoneNumberInput').value.replaceAll(/[^0-9]/g, '');
+    // alert(supervisorPhoneNumber)
     var startDate = document.getElementById('startDateInput').value;
+    startDateComponents = startDate.split('-');
+    startDate = startDateComponents[1] + '-' + startDateComponents[0] + '-01';
+    // alert(startDate)
     var endDate = document.getElementById('endDateInput').value;
+    endDateComponents = endDate.split('-');
+    endDate = endDateComponents[1] + '-' + endDateComponents[0] + '-01';
     var payPerHour = document.getElementById('payPerHourInput').value;
-    var startTime = document.getElementById('startTimeInput').value;
-    var endTime = document.getElementById('endTimeInput').value;
+    // alert(payPerHour)
+    var startTime = document.getElementById('startTimeInput').value + ':00';
+    // alert(startTime)
+    var endTime = document.getElementById('endTimeInput').value + ':00';
+    // alert(endTime)
     jobInfo.jobId = jobID;
     jobInfo.company = document.getElementById('headerCompany').innerHTML;
     jobInfo.positionName = positionName;
-    // TODO: Uncomment the following lines when the API is updated
-    // jobInfo.supervisorFirstName = supervisorFirstName;
-    // jobInfo.supervisorLastName = supervisorLastName;
-    jobInfo.supervisorName = `${supervisorFirstName} ${supervisorLastName}`;
+    jobInfo.supervisorFirstName = supervisorFirstName;
+    jobInfo.supervisorLastName = supervisorLastName;
     jobInfo.supervisorEmail = supervisorEmail;
-    // jobInfo.supervisorPhoneNumber = supervisorPhoneNumber;
+    jobInfo.supervisorPhoneNumber = supervisorPhoneNumber;
     jobInfo.startDate = startDate;
     jobInfo.endDate = endDate;
     jobInfo.payPerHour = payPerHour;
@@ -185,30 +234,40 @@ function postJob(apiLink, jobInfo) {
     jobInfo.endTime = endTime;
     var categoryTable = document.getElementById('categorytable');
     var qualifications = [];
-    // Iterate over the rows of the table starting from the second row (index 1)
-    for (var i = 1; i < categoryTable.rows.length; i++) {
-        var row = categoryTable.rows[i];
-        var rowData = {};
+    var categoryTable = document.getElementById('categorytable');
+    if (categoryTable.rows.length > 0) {
+        var qualifications = {};
+        // Iterate over the rows of the table starting from the second row (index 1)
+        for (var i = 1; i < categoryTable.rows.length; i++) {
+            var row = categoryTable.rows[i];
+            var rowData = {};
 
-        // Get the cells of the current row
-        var cells = row.cells;
+            // Get the cells of the current row
+            var cells = row.cells;
 
-        // Get the value of the first and second column of the current row
-        var key = cells[0].textContent.trim(); // Assuming the first column contains text
-        var value = cells[1].textContent.trim(); // Assuming the second column contains text
+            // Get the value of the first and second column of the current row
+            var key = cells[0].textContent.trim(); // Assuming the first column contains text
+            var value = cells[1].textContent.trim(); // Assuming the second column contains text
 
-        // Add the key-value pair to the rowData dictionary
-        rowData[key] = value;
-
-        // Add the rowData dictionary to the rowsList
-        qualifications.push(rowData);
+            // Add the rowData dictionary to the rowsList
+            if (!(key in qualifications)) {
+                qualifications[key] = [];
+            }
+            qualifications[key].push(value);
+        }
+        jobInfo.jobQualificationsList = qualifications;
     }
-    jobInfo.jobQualificationsList = qualifications;
+    // for (let k in jobInfo.jobQualificationsList) {
+    //     alert(k); // Print each key
+    //     for (let i = 0; i < jobInfo.jobQualificationsList[k].length; i++) {
+    //         alert(jobInfo.jobQualificationsList[k][i]); // Print each item
+    //     }
+    // }
 
-    printDict(jobInfo);
-    jobInfo.jobQualificationsList.forEach(qualification => {
-        printDict(qualification)
-    });
+    // printDict(jobInfo);
+    // jobInfo.jobQualificationsList.forEach(qualification => {
+    //     printDict(qualification)
+    // });
     alert(`Posting job with jobID: ${jobInfo.jobId} and companyName: ${jobInfo.company}`)
     // DONE APITODO: /postJob
     fetch('http://localhost:8080/postJob', {
@@ -228,7 +287,7 @@ function postJob(apiLink, jobInfo) {
         });
     return true;
 }
-function updateJob(apiLink, jobInfo) {
+function updateJob(jobInfo) {
     var jobID = document.getElementById('jobIDDisplay').innerHTML;
     jobInfo.jobId = jobID;
     jobInfo.company = document.getElementById('headerCompany').innerHTML;
@@ -248,7 +307,7 @@ function updateJob(apiLink, jobInfo) {
     }
     var supervisorPhoneNumberInputValue = document.getElementById('supervisorPhoneNumberInput').value;
     if (supervisorPhoneNumberInputValue) {
-        jobInfo.supervisorPhoneNumber = supervisorPhoneNumberInputValue.replaceAll(/^\D+/g, '');;
+        jobInfo.supervisorPhoneNumber = supervisorPhoneNumberInputValue.replaceAll(/[^0-9]/g, '');
     }
     var payPerHourInputValue = document.getElementById('payPerHourInput').value;
     if (payPerHourInputValue) {
@@ -256,23 +315,27 @@ function updateJob(apiLink, jobInfo) {
     }
     var startDateInputValue = document.getElementById('startDateInput').value;
     if (startDateInputValue) {
-        jobInfo.startDate = startDateInputValue;
+        var startDateComponents = startDateInputValue.split('-');
+        var startDateFormatted = startDateComponents[1] + '-' + startDateComponents[0] + '-01';
+        jobInfo.startDate = startDateFormatted;
     }
     var endDateInputValue = document.getElementById('endDateInput').value;
     if (endDateInputValue) {
-        jobInfo.endDate = endDateInputValue;
+        var endDateComponents = endDateInputValue.split('-');
+        var endDateFormatted = endDateComponents[1] + '-' + endDateComponents[0] + '-01';
+        jobInfo.endDate = endDateFormatted;
     }
     var startTimeInputValue = document.getElementById('startTimeInput').value;
     if (startTimeInputValue) {
-        jobInfo.startTime = startTimeInputValue;
+        jobInfo.startTime = startTimeInputValue + ':00';
     }
     var endTimeInputValue = document.getElementById('endTimeInput').value;
     if (endTimeInputValue) {
-        jobInfo.endTime = endTimeInputValue;
+        jobInfo.endTime = endTimeInputValue + ':00';
     }
     var categoryTable = document.getElementById('categorytable');
     if (categoryTable.rows.length > 0) {
-        var qualifications = [];
+        var qualifications = {};
         // Iterate over the rows of the table starting from the second row (index 1)
         for (var i = 1; i < categoryTable.rows.length; i++) {
             var row = categoryTable.rows[i];
@@ -285,33 +348,37 @@ function updateJob(apiLink, jobInfo) {
             var key = cells[0].textContent.trim(); // Assuming the first column contains text
             var value = cells[1].textContent.trim(); // Assuming the second column contains text
 
-            // Add the key-value pair to the rowData dictionary
-            rowData[key] = value;
-
             // Add the rowData dictionary to the rowsList
-            qualifications.push(rowData);
+            if (!(key in qualifications)) {
+                qualifications[key] = [];
+            }
+            qualifications[key].push(value);
         }
-        jobInfo.qualifications = qualifications;
+        jobInfo.jobQualificationsList = qualifications;
     }
+    // for (let k in jobInfo.jobQualificationsList) {
+    //     alert(k); // Print each key
+    //     for (let i = 0; i < jobInfo.jobQualificationsList[k].length; i++) {
+    //         alert(jobInfo.jobQualificationsList[k][i]); // Print each item
+    //     }
+    // }
     // TODO: Delete this line
     // jobInfo.qualifications.forEach(qualification => {
     //     printDict(qualification)
     // });
     // printDict(jobInfo);
-    alert(`Updating job with ID: ${jobInfo.jobId}, companyName: ${jobInfo.company}, positionName: ${jobInfo.positionName}`)
+    alert(`Updating job with ID: ${jobInfo.jobId}, companyName: ${jobInfo.company}`)
     // DONE APITODO: /updateJob
     fetch("http://localhost:8080/updateJob", {
         method: 'POST',
-        body: JSON.stringify({
-            jobInfo
-        }),
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
+            'Content-Type': 'application/json' // Specify the content type
         },
+        body: JSON.stringify(jobInfo)
     })
         .then((response) => response.json())
         .then((data) => {
-            alert(data)
+            // alert(data)
         });
 }
 function updateUser(apiLink, userInfo) {
@@ -333,7 +400,7 @@ function updateUser(apiLink, userInfo) {
     }
     var phoneNumberInputValue = document.getElementById('phoneNumberInput').value;
     if (phoneNumberInputValue) {
-        userInfo.phoneNumber = phoneNumberInputValue;
+        userInfo.phoneNumber = phoneNumberInputValue.replaceAll(/[^0-9]/g, '');
     }
     var address1InputValue = document.getElementById('address1Input').value;
     if (address1InputValue) {
@@ -362,12 +429,10 @@ function updateUser(apiLink, userInfo) {
     // DONE APITODO: /updateEmployer
     fetch("http://localhost:8080/updateEmployer", {
         method: 'POST',
-        body: JSON.stringify({
-            userInfo
-        }),
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
+            'Content-Type': 'application/json' // Specify the content type
         },
+        body: JSON.stringify(userInfo)
     })
         .then((response) => response.json())
         .then((data) => {
@@ -375,12 +440,13 @@ function updateUser(apiLink, userInfo) {
         });
 }
 // Function to update the card body with the initial content
-function updateJobsList() {
+function updateJobsList(company) {
     var accountsList = document.getElementById('jobsList');
     var scrollableBox = document.querySelector('.scrollable-box');
+    // var company = document.getElementById('headerCompany').innerHTML;
     // DONE APITODO: /getAllJobs
     // Fetch data from the API for the Scrollable Box
-    fetch('http://localhost:8080/getAllJobs')
+    fetch(`http://localhost:8080/getAllJobs/${company}`)
         .then(response => response.json())
         .then(data => {
             // Update the list with the data
@@ -404,14 +470,23 @@ function updateJobsList() {
                         // Add id and name to the item's attributes
                         clickedItem.jobId = item.jobId;
                         clickedItem.company = item.company;
-                        // clickedItem.username = item.username;
                     }
                 });
 
                 // Add click event listener to each listItem to show account details
                 listItem.addEventListener('click', function () {
                     // Call showAccountDetails with the clicked item's id and name
-                    showJobDetails(item.jobId, item.company);
+                    showJobInfo(item.jobId);
+                    // Update the href attribute of the edit button
+                    // Check if jobId is already part of the href attribute
+                    var editBt = document.getElementById('editBt');
+                    if (editBt.href.includes('jobId')) {
+                        // If it is, update the value of the jobId
+                        editBt.href = editBt.href.replace(/jobId=[^&]+/, `jobId=${item.jobId}`);
+                    } else {
+                        // If it's not, append both username and jobId
+                        editBt.href += `&jobId=${item.jobId}`;
+                    }
                 });
 
                 accountsList.appendChild(listItem);
@@ -424,69 +499,6 @@ function updateJobsList() {
         })
         .catch(error => {
             console.error('Error fetching data updateJobsList():', error);
-        });
-}
-function showJobDetails(jobId, company) {
-    // Extract the id from the clickedItem's textContent
-    alert(`Getting job details for ${jobID}, ${company}`)
-    // Fetch data from the API
-    // DONE APITODO: /getJobInfo
-    fetch(`http://localhost:8080/getJobInfo/${jobID}`)
-        .then(response => response.json())
-        .then(data => {
-            // Extract the attributes from the data
-            var attributes = data;
-            var jobId = attributes.id;
-
-            // Update the display with the details
-            // document.getElementById('usernameDisplay').textContent = attributes.username;
-            // jobIDDisplay, positionNameDisplay, supervisorNameDisplay, supervisorEmailDisplay, supervisorPhoneNumberDisplay, payPerHourDisplay, startDateDisplay, endDateDisplay, startDateDisplay, endDateDisplay
-            document.getElementById('jobIDDisplay').textContent = attributes.jobId;
-            document.getElementById('positionNameDisplay').textContent = attributes.positionName;
-            // TODO: Supervisor name has first and last name
-            document.getElementById('supervisorNameDisplay').textContent = attributes.supervisorName;
-            document.getElementById('supervisorEmailDisplay').textContent = attributes.supervisorEmail;
-            document.getElementById('supervisorPhoneNumberDisplay').textContent = attributes.supervisorEmail;
-            document.getElementById('payPerHourDisplay').textContent = attributes.payPerHour;
-            document.getElementById('startDateDisplay').textContent = attributes.startDate;
-            document.getElementById('endDateDisplay').textContent = attributes.endDate;
-            document.getElementById('startTimeDisplay').textContent = attributes.startTime;
-            document.getElementById('endTimeDisplay').textContent = attributes.endTime;
-
-            // Sample list of Skills bc the sample API does not have a list
-            const skills = [
-                { category: 'Languages', skill: 'Python' },
-                { category: 'Languages', skill: 'C++' },
-                { category: 'Languages', skill: 'C#' },
-                { category: 'Languages', skill: 'Java' },
-                { category: 'Languages', skill: 'Ruby' },
-                { category: 'Languages', skill: 'PHP' },
-                { category: 'Previous Employment', skill: 'Software Engineer' }
-            ];
-            // Fill in the professional qualifications in the categorytable
-            const categoryTable = document.getElementById('categorytable');
-            skills.forEach(skill => {
-                const row = categoryTable.insertRow(-1);
-                const categoryCell = row.insertCell(0);
-                const skillCell = row.insertCell(1);
-                categoryCell.innerHTML = skill.category;
-                skillCell.innerHTML = skill.skill;
-            });
-
-            // Update the href attribute of the edit button
-            // Check if jobId is already part of the href attribute
-            var editBt = document.getElementById('editBt');
-            if (editBt.href.includes('jobId')) {
-                // If it is, update the value of username
-                editBt.href = editBt.href.replaceAll(/jobId=[^&]+/, `jobId=${jobId}`);
-            } else {
-                // If it's not, append both username and jobId
-                editBt.href += `&jobId=${jobId}`;
-            }
-            // editBt.href += `&employerUsername=${username}`;
-        })
-        .catch(error => {
-            // alert('Error fetching data showJobDetails():', error);
         });
 }
 // API Calls ------------------------------------------------------------------------------------
@@ -629,16 +641,19 @@ function validateInputs() {
 }
 function deleteUser(apiLink, employerId) {
     // DONE APITODO: Implement API call to delete user
-    alert(`User with ID ${employerId} has been requested to be deleted`);
-    fetch(`http://localhost:8080/requestEmployerDelete/${employerId}`, {
-        method: 'DELETE'
-    }).then(response => {
-        return true;
-    }).catch(error => {
-        // Handle errors
-        console.error('There was a problem deleting the user:', error);
-        return false;
-    });
+    alert(`User with ID ${employerId} has requested to be deleted`);
+    fetch(`http://localhost:8080/requestProfessionalDelete/${employerId}`, {
+        method: 'POST',
+    }).then(response => response.json())
+        .then(data => {
+            // Handle the response data here
+            console.log(data);
+        })
+        .catch(error => {
+            // Handle any errors that occur during the fetch
+            console.error('Error:', error);
+            return false;
+        });
     return true;
 }
 function validateContactInfoAndDelete(employerUsername) {
@@ -653,23 +668,21 @@ function validateContactInfoAndDelete(employerUsername) {
             var firstName = document.getElementById('firstNameInput').value;
             var lastName = document.getElementById('lastNameInput').value;
             var email = document.getElementById('emailInput').value;
-            var phoneNumber = document.getElementById('phoneNumberInput').value;
-            if (firstName === employerInfo.firstName && lastName === employerInfo.lastName && email === employerInfo.email && phoneNumber === employerInfo.phoneNumber) {
-                // Chelsey Dietrich Lucio_Hettinger@annie.ca 2549541289
-                // TODO: Implement API to create Delete Request
-                // alert("Contact Information Updated Successfully!")
+            var phoneNumber = document.getElementById('phoneNumberInput').value.replaceAll(/[^0-9]/g, '');
+            if (firstName === employerInfo.firstName && lastName === employerInfo.lastName && email === employerInfo.email && phoneNumber === employerInfo.phoneNumber.toString()) {
                 deleteUser(apiLink, employerUsername);
-                showModalAndRedirect(deleteModal, '/Employer/viewAccount.html?username=' + employerUsername);
+                var deleteModal = document.getElementById('deleteModal');
+                $(deleteModal).modal('show');
                 return true;
             }
             else {
                 // alert("Contact Information does not match the employer's information. Please try again.")
                 var form = document.querySelector('.needs-validation');
                 form.classList.add('was-validated');
-                document.getElementById('firstNameInput').pattern = employerInfo.name.split(' ')[0];
-                document.getElementById('lastNameInput').pattern = employerInfo.name.split(' ')[1];
+                document.getElementById('firstNameInput').pattern = employerInfo.firstName;
+                document.getElementById('lastNameInput').pattern = employerInfo.lastName;
                 document.getElementById('emailInput').pattern = employerInfo.email;
-                document.getElementById('phoneNumberInput').pattern = employerInfo.phone;
+                document.getElementById('phoneNumberInput').pattern = formatPhoneNumber(employerInfo.phoneNumber);
                 return false;
             }
         });

@@ -232,8 +232,6 @@
         // Dictionary with employer information
         let employerInfo = {};
 
-        var deleteModal = document.getElementById('deleteModal');
-
         // Get the employer username from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const employerUsername = urlParams.get('username');
@@ -245,7 +243,6 @@
         var deleteButton = document.getElementById('deleteBt');
         const apiLink = 'https://api.restful-api.dev/objects';
         deleteButton.addEventListener('click', function () {
-            // alert("HEre")
             validateContactInfoAndDelete(employerUsername);
         });
 

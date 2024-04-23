@@ -167,7 +167,7 @@
                         <div class="mb-5">
                             <label for="jobID" class="font-weight-bold">Job ID</label>
                             <div id="jobIDDisplay"></div>
-                            <input type="number" class="form-control" id="jobIDInput" required placeholder=""></input>
+                            <input type="number" class="form-control" id="jobIdInput" required placeholder=""></input>
                         </div>
                         <!-- Position Name -->
                         <div class="mb-5">
@@ -369,17 +369,16 @@
         addUsernameToLinks();
 
         // Fill in the staff information
-        showHeaderUsername(employerUsername);
+        showHeaderUsernamePostJob(employerUsername);
 
         // Save button
         var saveButton = document.getElementById('saveBt');
-        const apiLink = 'https://api.restful-api.dev/objects';
         var categoryTable = document.getElementById('categorytable');
         saveButton.addEventListener('click', function () {
             // Table must have more than 2 rows bc the first row is the header
             if (validateInputs() && categoryTable.rows.length > 2) {
                 // Save the changes
-                postJob(apiLink, jobInfo);
+                postJob(jobInfo);
                 showModalAndRedirect(saveModal, '/Employer/browseJobs.html?username=' + employerUsername);
             }
             else if (categoryTable.rows.length <= 2) {

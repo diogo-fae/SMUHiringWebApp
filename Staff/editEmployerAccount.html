@@ -312,7 +312,8 @@
                             </div>
                             <div class="col-md-4 mb-5">
                                 <label for="zipCode" class="font-weight-bold">Zip Code</label>
-                                <input type="text" class="form-control" id="zipCodeInput" value=""></input>
+                                <input type="text" class="form-control" id="zipCodeInput" maxlength="5"
+                                    pattern="^{5\d}$" value=""></input>
                                 <div class="invalid-feedback" maxlength="5" onkeypress="return blockNegative(event)"
                                     pattern="^{5\d}$">
                                     Please enter a valid zip code.
