@@ -85,7 +85,7 @@ function showJobInfo(jobId) {
             var endDateComponents = jobInfo.endDate.split('-');
             var endDateFormatted = endDateComponents[1] + '-' + endDateComponents[0];
             document.getElementById('endDateDisplay').innerHTML = endDateFormatted;
-            document.getElementById('payPerHourDisplay').innerHTML = jobInfo.payRate;
+            document.getElementById('payPerHourDisplay').innerHTML = jobInfo.payPerHour;
             document.getElementById('startTimeDisplay').innerHTML = jobInfo.startTime.slice(0, -3);;
             document.getElementById('endTimeDisplay').innerHTML = jobInfo.endTime.slice(0, -3);;
             var qualifications = jobInfo.jobQualificationsList;
@@ -108,6 +108,7 @@ function showJobInfo(jobId) {
         });
 }
 function showJobInfoAndEdit(jobId, company) {
+
     // DONE APITODO: /getJobInfo
     var company = document.getElementById('headerCompany').innerHTML;
 
@@ -131,6 +132,7 @@ function showJobInfoAndEdit(jobId, company) {
             var endDateFormatted = endDateComponents[1] + '-' + endDateComponents[0];
             document.getElementById('endDateInput').placeholder = endDateFormatted;
             document.getElementById('payPerHourInput').placeholder = jobInfo.payPerHour;
+            alert()
             document.getElementById('startTimeInput').placeholder = jobInfo.startTime.slice(0, -3);
             document.getElementById('endTimeInput').placeholder = jobInfo.endTime.slice(0, -3);
             var qualifications = jobInfo.jobQualificationsList;
