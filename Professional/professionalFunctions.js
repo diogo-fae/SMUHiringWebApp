@@ -580,3 +580,21 @@ function printDict(dict) {
     }
 }
 // Helper Functions -----------------------------------------------------------------------------
+function logout() {
+    document.cookie = `username=; path=/`;
+    document.cookie = `userType=; path=/`;
+    window.location.href = '/SignUp/Login.html';
+}
+function checkUserLoggedIn(username) {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'username') {
+            // If username in URL is different from the one in the cookie, redirect to the login page
+            if (value !== username) {
+                alert(`User ${username} is not logged in.`)
+                window.location.href = '/SignUp/Login.html';
+            }
+        }
+    }
+}

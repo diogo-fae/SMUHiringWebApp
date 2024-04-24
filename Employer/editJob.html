@@ -60,8 +60,8 @@
             </li>
         </ul>
         <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="nav-item"><a class="nav-link" href="/SignUp/Login.html" style="color:white"><i
-                        class="fas fa-sign-in-alt"></i>
+            <li class="nav-item"><a type="button" class="btn page-redirect" onclick="logout()" type="button"
+                    style="color:white;background-color: none;"><i class="fas fa-sign-in-alt"></i>
                     Logout</a></li>
         </ul>
     </nav>
@@ -360,6 +360,8 @@
         const urlParams = new URLSearchParams(window.location.search);
         const employerUsername = urlParams.get('username');
         const jobID = urlParams.get('jobId');
+        checkUserLoggedIn(employerUsername);
+
 
         // Update links
         addUsernameToLinks();

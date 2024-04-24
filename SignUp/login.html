@@ -196,18 +196,18 @@
                 .then((data) => {
                     // TODO: Handle response correctly
                     // alert(JSON.stringify(data));
-                    userType = 'E';
+                    var user = data;
                     // Update cookies
-                    document.cookie = `username=${username}; path=/`;
-                    document.cookie = `userType=${userType}; path=/`;
-                    if (userType === 'P') {
-                        window.location.href = '/Professional/viewAccount.html' + `?username=${username}`;
-                    } else if (userType === 'E') {
-                        window.location.href = '/Employer/viewAccount.html' + `?username=${username}`;
-                    } else if (userType === 'R') {
-                        window.location.href = '/Root/addAccount.html' + `?username=${username}`;
-                    } else if (userType === 'S') {
-                        window.location.href = '/Staff/viewAccount.html' + `?username=${username}`;
+                    document.cookie = `username=${user.userId}; path=/`;
+                    document.cookie = `userType=${user.userType}; path=/`;
+                    if (user.userType === 'P') {
+                        window.location.href = '/Professional/viewAccount.html' + `?username=${user.userId}`;
+                    } else if (user.userType === 'E') {
+                        window.location.href = '/Employer/viewAccount.html' + `?username=${user.userId}`;
+                    } else if (user.userType === 'R') {
+                        window.location.href = '/Root/addAccount.html' + `?username=${user.userId}`;
+                    } else if (user.userType === 'S') {
+                        window.location.href = '/Staff/viewAccount.html' + `?username=${user.userId}`;
                     }
                     else {
                         alert("Invalid username or password");
@@ -245,7 +245,7 @@
             var password = document.getElementById('password').value;
             var passwordInfo = { "username": username, "password": password };
 
-            alert(`User ${username} logging in.`);
+            // alert(`User ${username} logging in.`);
             // DONE APITODO: /login
             fetch("http://localhost:8080/login", {
                 method: 'GET',
@@ -258,7 +258,7 @@
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    alert(data)
+                    // alert(data)
                     // Update cookies
                     document.cookie = `username=${username}; path=/`;
                     document.cookie = `userType=${data.userType}; path=/`;

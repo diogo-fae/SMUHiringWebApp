@@ -993,28 +993,21 @@ function printDict(dict) {
     }
 }
 // Helper Functions -----------------------------------------------------------------------------
-
-function checkLogin() {
-    // Compare cookie's username with the username in the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlUsername = urlParams.get('username');
-    var cookieUsername = "";
-    alert(`Checking if ${urlUsername} is logged in.`);
-    const cookies = document.cookie.split(';');
-    for (let cookie of cookies) {
-        const [name, value] = cookie.trim().split('=');
-        if (name === 'username') {
-            // Return the value of the "username" cookie
-            cookieUsername = value;
-        }
-    }
-    if (cookieUsername !== urlUsername) {
-        alert(`User ${urlUsername} is not logged in.`);
-        window.location.href = '/SignUp/Login.html';
-    }
-}
 function logout() {
     document.cookie = `username=; path=/`;
     document.cookie = `userType=; path=/`;
     window.location.href = '/SignUp/Login.html';
+}
+function checkUserLoggedIn(username) {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'username') {
+            // If username in URL is different from the one in the cookie, redirect to the login page
+            if (value !== username) {
+                alert(`User ${username} is not logged in.`)
+                window.location.href = '/SignUp/Login.html';
+            }
+        }
+    }
 }

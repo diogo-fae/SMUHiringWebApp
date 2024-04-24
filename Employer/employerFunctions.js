@@ -717,6 +717,11 @@ function printDict(dict) {
     }
 }
 // Helper Functions -----------------------------------------------------------------------------
+function logout() {
+    document.cookie = `username=; path=/`;
+    document.cookie = `userType=; path=/`;
+    window.location.href = '/SignUp/Login.html';
+}
 function checkUserLoggedIn(username) {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
