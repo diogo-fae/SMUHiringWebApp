@@ -690,4 +690,4 @@ SELECT * FROM JobQualification;
 
 SELECT * FROM JobPosting WHERE (company = 'Sanderson Company' AND jobId = 'SC-SE-01-2024');
 
-SELECT * FROM Credentials WHERE userId = 'root';
+SELECT * FROM User WHERE userType = 'E';

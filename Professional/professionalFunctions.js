@@ -297,7 +297,7 @@ function updateJobsList() {
             });
         })
         .catch(error => {
-            console.error('Error fetching data updateJobsList():', error);
+            // alert('Error fetching data updateJobsList():', error);
         });
 }
 
