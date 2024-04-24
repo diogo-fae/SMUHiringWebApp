@@ -25,7 +25,7 @@ function showHeaderUsernamePostJob(username) {
 function deleteJob(jobID, company) {
     var jobInfo = { "jobId": jobID, "company": company };
     // DONE APITODO: /deleteJob
-    alert(`Deleting job with ID: ${jobInfo.jobId} and ${jobInfo.company}`);
+    // alert(`Deleting job with ID: ${jobInfo.jobId} and ${jobInfo.company}`);
     fetch(`http://localhost:8080/deleteJob`, {
         method: 'POST',
         body: JSON.stringify(jobInfo),

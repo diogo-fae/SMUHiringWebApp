@@ -295,6 +295,9 @@
             if (deleteJob(jobId, company)) {
                 // Show the modal
                 $(modal).modal('show');
+                $(modal).on('hidden.bs.modal', function (e) {
+                    location.reload();
+                });
             }
         });
 
