@@ -24,7 +24,7 @@ function createStaff() {
         userInfo.phoneNumber = phoneNumberInputValue.replaceAll(/[^0-9]/g, '');
     }
 
-    alert(JSON.stringify(userInfo))
+    // alert(JSON.stringify(userInfo))
     // alert(`Creating Staff info to ${userInfo.userId}`);
     // DONE APITODO: /updateProfessional
     fetch('http://localhost:8080/createStaff', {

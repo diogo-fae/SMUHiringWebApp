@@ -50,14 +50,6 @@ function showEmployerInfo(employerInfo) {
     document.getElementById('companyNameDisplay').innerHTML = employerInfo.company;
 }
 function showProfessionalInfo(professionalInfo) {
-    // DONE APITODO: /getProfessionalInfo
-    // alert(`Getting professional info for ${professionalInfo.userId} from the API to show`)
-    // // Fetch data from the API using username
-    // fetch(`http://localhost:8080/getProfessionalInfo${professionalUsername}`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         // Store the staff information
-    //         professionalInfo = data;
     document.getElementById('usernameDisplay').innerHTML = professionalInfo.userId;
     document.getElementById('firstNameDisplay').innerHTML = professionalInfo.firstName;
     document.getElementById('lastNameDisplay').innerHTML = professionalInfo.lastName;
