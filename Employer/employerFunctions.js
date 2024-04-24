@@ -368,7 +368,8 @@ function updateJob(jobInfo) {
     //     printDict(qualification)
     // });
     // printDict(jobInfo);
-    alert(`Updating job with ID: ${jobInfo.jobId}, companyName: ${jobInfo.company}`)
+    // alert(`Updating job with ID: ${jobInfo.jobId}, companyName: ${jobInfo.company}`)
+    // alert(JSON.stringify(jobInfo));
     // DONE APITODO: /updateJob
     fetch("http://localhost:8080/updateJob", {
         method: 'POST',
@@ -425,8 +426,8 @@ function updateUser(apiLink, userInfo) {
     }
 
     // printDict(userInfo);
-    alert(`Updating Employer with ID: ${userInfo.userId}`)
-    printDict(userInfo);
+    // alert(`Updating Employer with ID: ${userInfo.userId}`)
+    // printDict(userInfo);
     // DONE APITODO: /updateEmployer
     fetch("http://localhost:8080/updateEmployer", {
         method: 'POST',

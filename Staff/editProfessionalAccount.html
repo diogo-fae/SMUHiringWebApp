@@ -134,13 +134,6 @@
                         <span class="menu-collapsed">Change Password</span>
                     </div>
                 </a>
-                <a class="page-redirect" href="/Staff/deleteAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Delete Account</span>
-                    </div>
-                </a>
             </ul>
         </div>
 
@@ -427,13 +420,13 @@
 
         // Save button
         var saveButton = document.getElementById('saveBt');
-        const apiLink = 'https://api.restful-api.dev/objects';
         var categoryTable = document.getElementById('categorytable');
         saveButton.addEventListener('click', function () {
             // Table must have more than 2 rows bc the first row is the header
             if (validateInputs() && categoryTable.rows.length > 2) {
                 // Save the changes
-                updateUser(apiLink, professionalInfo);
+                professionalInfo.userId = professionalUsername;
+                updateProfessional(professionalInfo);
                 showModalAndRedirect(saveModal, '/Staff/browseProfessionalAccounts.html?username=' + staffUsername);
             }
             else if (categoryTable.rows.length <= 2) {
@@ -442,8 +435,8 @@
             }
         });
 
-        // Fill in the professional information
-        showProfessionalInfo(professionalUsername);
+        // // Fill in the professional information
+        // showProfessionalInfo(professionalUsername);
 
         // Fill in the placeholders with the professional information
         fillProfessionalEditForm(professionalUsername);

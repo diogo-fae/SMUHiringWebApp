@@ -129,13 +129,6 @@
                         <span class="menu-collapsed">Change Password</span>
                     </div>
                 </a>
-                <a class="page-redirect" href="/Staff/deleteAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Delete Account</span>
-                    </div>
-                </a>
             </ul>
         </div>
 
@@ -317,7 +310,8 @@
                     document.getElementById("numRequestsBadge").innerHTML = numRequests;
 
                     // Show the first request's info
-                    showEmployerInfo(requests[0].id);
+                    // alert(JSON.stringify(requests[0]));
+                    showEmployerInfo(requests[0]);
                 });
 
             // Decisions
@@ -326,7 +320,7 @@
             var approveModal = document.getElementById('approveModal');
             approveButton.addEventListener('click', function () {
                 // Save the changes
-                reviewRequest(requests[0].id, "create", "Employer", "approve")
+                reviewRequest(requests[0].userId, "create", "Employer", "approve")
                 showModalAndRedirect(approveModal, '/Staff/viewCreateRequestsEmployer.html?username=' + staffUsername);
             });
             // Deny
@@ -334,7 +328,7 @@
             var denyModal = document.getElementById('denyModal');
             denyButton.addEventListener('click', function () {
                 // Save the changes
-                reviewRequest(requests[0].id, "create", "Employer", "deny")
+                reviewRequest(requests[0].userId, "create", "Employer", "deny")
                 showModalAndRedirect(denyModal, '/Staff/viewCreateRequestsEmployer.html?username=' + staffUsername);
             });
         </script>

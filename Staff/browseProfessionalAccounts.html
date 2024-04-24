@@ -129,13 +129,6 @@
                         <span class="menu-collapsed">Change Password</span>
                     </div>
                 </a>
-                <a class="page-redirect" href="/Staff/deleteAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Delete Account</span>
-                    </div>
-                </a>
             </ul>
         </div>
 
@@ -307,7 +300,6 @@
 
         // Initiate Job Matching button
         var initiateJMBt = document.getElementById('initiateJMBt');
-        const apiLink = 'https://api.restful-api.dev/objects';
         initiateJMBt.addEventListener('click', function () {
             // Save the changes
             var professionalUsername = document.getElementById('usernameDisplay').textContent;

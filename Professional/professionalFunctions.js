@@ -230,8 +230,8 @@ function updateUser(apiLink, userInfo) {
     //         alert(userInfo.qualifications[k][i]); // Print each item
     //     }
     // }
-    alert(JSON.stringify(userInfo))
-    alert(`Updating user info to ${userInfo.userId}`);
+    // alert(JSON.stringify(userInfo))
+    // alert(`Updating user info to ${userInfo.userId}`);
     // printDict(userInfo);
     // DONE APITODO: /updateProfessional
     fetch('http://localhost:8080/updateProfessional', {
