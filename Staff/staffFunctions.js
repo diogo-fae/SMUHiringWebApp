@@ -170,19 +170,15 @@ function fillProfessionalEditForm(username) {
 function getRequests(requestQueue) {
     // alert(`Getting ${requestQueue} requests from the API`)
     if (requestQueue === 'createEmployer') {
-        // DONE APITODO: /getCreateEmployerRequests
         return fetch('http://localhost:8080/getCreateEmployerRequests')
             .then(response => response.json());
     } else if (requestQueue === 'deleteEmployer') {
-        // DONE APITODO: /getDeleteEmployerRequests
         return fetch('http://localhost:8080/getDeleteEmployerRequests')
             .then(response => response.json());
     } else if (requestQueue === 'createProfessional') {
-        // DONE APITODO: /getCreateProfessionalRequests
         return fetch('http://localhost:8080/getCreateProfessionalRequests')
             .then(response => response.json());
     } else if (requestQueue === 'deleteProfessional') {
-        // DONE APITODO: /getDeleteProfessionalRequests
         return fetch('http://localhost:8080/getDeleteProfessionalRequests')
             .then(response => response.json());
     }
@@ -224,30 +220,41 @@ function reviewRequest(requesterUsername, requestType, userType, decision) {
             }
         }
     } else if (requestType === 'delete') {
-        if (userType === 'Employer') {
-            if (decision === 'approve') {
-                return fetch(`http://localhost:8080/approveDeleteEmployerRequest/${requesterUsername}`, {
-                    method: 'POST',
-                })
-                    .then(response => response.json());
-            } else if (decision === 'deny') {
-                return fetch(`http://localhost:8080/denyDeleteEmployerRequest/${requesterUsername}`, {
-                    method: 'POST',
-                })
-                    .then(response => response.json());
-            }
-        } else if (userType === 'Professional') {
-            if (decision === 'approve') {
-                return fetch(`http://localhost:8080/approveDeleteProfessionalRequest/${requesterUsername}`, {
-                    method: 'POST',
-                })
-                    .then(response => response.json());
-            } else if (decision === 'deny') {
-                return fetch(`http://localhost:8080/denyDeleteProfessionalRequest/${requesterUsername}`, {
-                    method: 'POST',
-                })
-            }
+        if (decision === 'approve') {
+            return fetch(`http://localhost:8080/approveAccountDeletion/${requesterUsername}`, {
+                method: 'POST',
+            })
+                .then(response => response.json());
+        } else if (decision === 'deny') {
+            return fetch(`http://localhost:8080/denyDeleteRequest/${requesterUsername}`, {
+                method: 'POST',
+            })
+                .then(response => response.json());
         }
+        // if (userType === 'Employer') {
+        //     if (decision === 'approve') {
+        //         return fetch(`http://localhost:8080/approveAccountDeletion/${requesterUsername}`, {
+        //             method: 'POST',
+        //         })
+        //             .then(response => response.json());
+        //     } else if (decision === 'deny') {
+        //         return fetch(`http://localhost:8080/denyDeleteEmployerRequest/${requesterUsername}`, {
+        //             method: 'POST',
+        //         })
+        //             .then(response => response.json());
+        //     }
+        // } else if (userType === 'Professional') {
+        //     if (decision === 'approve') {
+        //         return fetch(`http://localhost:8080/approveAccountDeletion/${requesterUsername}`, {
+        //             method: 'POST',
+        //         })
+        //             .then(response => response.json());
+        //     } else if (decision === 'deny') {
+        //         return fetch(`http://localhost:8080/denyDeleteProfessionalRequest/${requesterUsername}`, {
+        //             method: 'POST',
+        //         })
+        //     }
+        // }
     }
 }
 function updatePassword(apiLink, username, newPassword) {

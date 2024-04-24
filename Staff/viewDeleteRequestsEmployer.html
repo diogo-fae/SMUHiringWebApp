@@ -320,7 +320,7 @@
             var approveModal = document.getElementById('approveModal');
             approveButton.addEventListener('click', function () {
                 // Save the changes
-                reviewRequest(requests[0].id, "delete", "Employer", "deny")
+                reviewRequest(requests[0].userId, "delete", "Employer", "approve")
                 showModalAndRedirect(approveModal, '/Staff/viewDeleteRequestsEmployer.html?username=' + staffUsername);
             });
             // Deny
@@ -328,7 +328,7 @@
             var denyModal = document.getElementById('denyModal');
             denyButton.addEventListener('click', function () {
                 // Save the changes
-                reviewRequest(requests[0].id, "delete", "Employer", "deny")
+                reviewRequest(requests[0].userId, "delete", "Employer", "deny")
                 showModalAndRedirect(denyModal, '/Staff/viewDeleteRequestsEmployer.html?username=' + staffUsername);
             });
         </script>

@@ -190,12 +190,9 @@
             if (validateInputs()) {
                 // Create staff
                 createStaff();
-
-                alert()
-                $(saveModal).saveModal('show');
-
+                $(saveModal).modal('show');
                 // Redirect to the link after the modal is closed
-                $(modal).on('hidden.bs.modal', function () {
+                $(saveModal).on('hidden.bs.modal', function () {
                     location.reload();
                 });
             }

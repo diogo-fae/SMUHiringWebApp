@@ -333,7 +333,7 @@
             var approveModal = document.getElementById('approveModal');
             approveButton.addEventListener('click', function () {
                 // Save the changes
-                reviewRequest(requests[0].id, "delete", "Professional", "approve")
+                reviewRequest(requests[0].userId, "delete", "Professional", "approve")
                 showModalAndRedirect(approveModal, '/Staff/viewDeleteRequestsProfessional.html?username=' + staffUsername);
             });
             // Deny
@@ -341,7 +341,7 @@
             var denyModal = document.getElementById('denyModal');
             denyButton.addEventListener('click', function () {
                 // Save the changes
-                reviewRequest(requests[0].id, "delete", "Professional", "deny")
+                reviewRequest(requests[0].userId, "delete", "Professional", "deny")
                 showModalAndRedirect(denyModal, '/Staff/viewDeleteRequestsProfessional.html?username=' + staffUsername);
             });
         </script>
