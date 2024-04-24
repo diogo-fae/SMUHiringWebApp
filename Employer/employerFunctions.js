@@ -124,7 +124,7 @@ function showJobInfoAndEdit(jobId, company) {
             document.getElementById('supervisorFirstNameInput').placeholder = jobInfo.supervisorFirstName;
             document.getElementById('supervisorLastNameInput').placeholder = jobInfo.supervisorLastName;
             document.getElementById('supervisorEmailInput').placeholder = jobInfo.supervisorEmail;
-            document.getElementById('supervisorPhoneNumberInput').placeholder = formatPhoneNumber(jobInfo.supervisorPhoneNumber);
+            document.getElementById('supervisorPhoneNumberInput').placeholder = jobInfo.supervisorPhoneNumber;
             var startDateComponents = jobInfo.startDate.split('-');
             var startDateFormatted = startDateComponents[1] + '-' + startDateComponents[0];
             document.getElementById('startDateInput').placeholder = startDateFormatted;
@@ -132,7 +132,6 @@ function showJobInfoAndEdit(jobId, company) {
             var endDateFormatted = endDateComponents[1] + '-' + endDateComponents[0];
             document.getElementById('endDateInput').placeholder = endDateFormatted;
             document.getElementById('payPerHourInput').placeholder = jobInfo.payPerHour;
-            alert()
             document.getElementById('startTimeInput').placeholder = jobInfo.startTime.slice(0, -3);
             document.getElementById('endTimeInput').placeholder = jobInfo.endTime.slice(0, -3);
             var qualifications = jobInfo.jobQualificationsList;
