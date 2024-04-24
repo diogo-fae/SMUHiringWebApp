@@ -73,7 +73,6 @@
             <form class="needs-validation" novalidate>
                 <!-- Top Buttons -->
 
-
                 <!-- Confirmation Modal -->
                 <div class="modal fade" id="newStaffCreatedModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -102,8 +101,8 @@
                         <div class="mb-5">
                             <label for="username" class="font-weight-bold">Username</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="username" placeholder="" value="" required
-                                    pattern="[a-zA-Z].{7,}">
+                                <input type="text" class="form-control" id="usernameInput" placeholder="" value=""
+                                    required pattern="[a-zA-Z].{7,}">
                                 <div class="invalid-feedback">
                                     Please enter your user name.
                                 </div>
@@ -113,14 +112,16 @@
                         <div class="row">
                             <div class="col-md-6 mb-5">
                                 <label for="firstName" class="font-weight-bold">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                <input type="text" class="form-control" id="firstNameInput" placeholder="" value=""
+                                    required>
                                 <div class="invalid-feedback">
                                     Please enter your first name.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-5">
                                 <label for="lastName" class="font-weight-bold">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                <input type="text" class="form-control" id="lastNameInput" placeholder="" value=""
+                                    required>
                                 <div class="invalid-feedback">
                                     Please enter your last name.
                                 </div>
@@ -129,8 +130,8 @@
                         <!-- Email -->
                         <div class="mb-5">
                             <label for="email" class="font-weight-bold">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="you@example.com" value=""
-                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                            <input type="email" class="form-control" id="emailInput" placeholder="you@example.com"
+                                value="" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email.
                             </div>
@@ -138,7 +139,7 @@
                         <!-- Phone -->
                         <div class="mb-5">
                             <label for="phoneNumber" class="font-weight-bold">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" required
+                            <input type="text" class="form-control" id="phoneNumberInput" required
                                 placeholder="(123) 456-7890" value="" oninput="formatPhoneNumber(this)" maxlength="14"
                                 pattern="^\(\d{3}\) \d{3}-\d{4}$"
                                 title="Please enter a valid phone number (e.g., (123) 456-7890)">
@@ -147,7 +148,8 @@
                             </div>
                         </div>
                         <div class="flex-d text-center">
-                            <button class="btn btn-success center" type="button" onclick="validateAndShowModal()">Add
+                            <button class="btn btn-success center" id="saveBt" type="button"
+                                onclick="validateAndShowModal()">Add
                                 Account</button>
                         </div>
                     </div>
@@ -177,7 +179,30 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="rootFunctions.js"></script>
     <script>
+        checkUserLoggedIn("root");
+
+        // Save button
+        var saveButton = document.getElementById('saveBt');
+        var saveModal = document.getElementById('newStaffCreatedModal');
+        saveButton.addEventListener('click', function () {
+            if (validateInputs()) {
+                // Create staff
+                createStaff();
+
+                alert()
+                $(saveModal).saveModal('show');
+
+                // Redirect to the link after the modal is closed
+                $(modal).on('hidden.bs.modal', function () {
+                    location.reload();
+                });
+            }
+        });
+
+    </script>
+    <!-- <script>
         // Dictionary with all user information necessary to request to create an account
         // Will be populated dynamically according to the user's input
         let newStaffInfo = {};
@@ -303,7 +328,7 @@
                 // Update the input value with the formatted phone number
                 input.value = formattedPhoneNumber;
             }
-    </script>
+    </script> -->
 
 </body>
 
