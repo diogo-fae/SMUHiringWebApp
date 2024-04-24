@@ -78,7 +78,7 @@ function showJobInfo(jobId) {
             document.getElementById('positionNameDisplay').innerHTML = jobInfo.positionName;
             document.getElementById('supervisorNameDisplay').innerHTML = jobInfo.supervisorFirstName + ' ' + jobInfo.supervisorLastName;
             document.getElementById('supervisorEmailDisplay').innerHTML = jobInfo.supervisorEmail;
-            document.getElementById('supervisorPhoneNumberDisplay').innerHTML = formatPhoneNumber(jobInfo.supervisorPhoneNumber);
+            document.getElementById('supervisorPhoneNumberDisplay').innerHTML = jobInfo.supervisorPhoneNumber;
             var startDateComponents = jobInfo.startDate.split('-');
             var startDateFormatted = startDateComponents[1] + '-' + startDateComponents[0];
             document.getElementById('startDateDisplay').innerHTML = startDateFormatted;
@@ -715,3 +715,16 @@ function printDict(dict) {
     }
 }
 // Helper Functions -----------------------------------------------------------------------------
+function checkUserLoggedIn(username) {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'username') {
+            // If username in URL is different from the one in the cookie, redirect to the login page
+            if (value !== username) {
+                alert(`User ${username} is not logged in.`)
+                window.location.href = '/SignUp/Login.html';
+            }
+        }
+    }
+}
