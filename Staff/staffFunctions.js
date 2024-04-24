@@ -226,15 +226,26 @@ function reviewRequest(requesterUsername, requestType, userType, decision) {
     } else if (requestType === 'delete') {
         if (userType === 'Employer') {
             if (decision === 'approve') {
-                // APITO: /approveDeleteEmployerRequest
+                return fetch(`http://localhost:8080/approveDeleteEmployerRequest/${requesterUsername}`, {
+                    method: 'POST',
+                })
+                    .then(response => response.json());
             } else if (decision === 'deny') {
-                // APITO: /denyDeleteEmployerRequest
+                return fetch(`http://localhost:8080/denyDeleteEmployerRequest/${requesterUsername}`, {
+                    method: 'POST',
+                })
+                    .then(response => response.json());
             }
         } else if (userType === 'Professional') {
             if (decision === 'approve') {
-                // APITO: /approveDeleteProfessionalRequest
+                return fetch(`http://localhost:8080/approveDeleteProfessionalRequest/${requesterUsername}`, {
+                    method: 'POST',
+                })
+                    .then(response => response.json());
             } else if (decision === 'deny') {
-                // APITO: /denyDeleteProfessionalRequest
+                return fetch(`http://localhost:8080/denyDeleteProfessionalRequest/${requesterUsername}`, {
+                    method: 'POST',
+                })
             }
         }
     }
