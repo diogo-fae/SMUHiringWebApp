@@ -179,6 +179,7 @@ CREATE TABLE ProfessionalQualificationRequest (
 
 INSERT INTO `User` (firstName, lastName, phoneNumber, userId, userType, email, status)
 VALUES 
+    ('root', 'root', 1234567890, 'root', 'R', 'drodrigues@smu.edu', 'active'),
     ('Lisbeth',	'Monroe', 7326190982, 'monroe0982', 'S', 'drodrigues@smu.edu', 'active'),
     ('Jacob',	'Weiner', 9736545785, 'weiner5785', 'S', 'drodrigues@smu.edu', 'active'),
     ('Rachel',	'Marcos', 2016920793, 'marcos0793', 'S', 'drodrigues@smu.edu', 'active'),
@@ -211,6 +212,7 @@ VALUES
 
 INSERT INTO `Credentials` (userId, password)
 VALUES
+    ('root', '1234567.l'),
     ('monroe0982', '1234567.l'),
     ('weiner5785', '1234567.l'),
     ('marcos0793', '1234567.l'),
@@ -688,4 +690,4 @@ SELECT * FROM JobQualification;
 
 SELECT * FROM JobPosting WHERE (company = 'Sanderson Company' AND jobId = 'SC-SE-01-2024');
 
-SELECT * FROM Credentials WHERE userId = 'monroe0982';
+SELECT * FROM Credentials WHERE userId = 'root';
