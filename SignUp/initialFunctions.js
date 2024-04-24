@@ -30,7 +30,6 @@ function validateAndContinue(nextCard) {
             userInfo.lastName = document.getElementById('lastName').value;
             userInfo.email = document.getElementById('email').value;
             userInfo.phoneNumber = document.getElementById('phoneNumber').value.replaceAll(/[^0-9]/g, '').toString();
-            alert(JSON.stringify(userInfo));
 
             // Update card body with new content for Employer
             cardBody.innerHTML = getEmployerCard1();
@@ -43,7 +42,6 @@ function validateAndContinue(nextCard) {
             userInfo.email = document.getElementById('email').value;
             userInfo.phoneNumber = document.getElementById('phoneNumber').value.replaceAll(/[^0-9]/g, '').toString();
 
-            alert(JSON.stringify(userInfo));
             // Update card body with new content for Professional
             cardBody.innerHTML = getProfessionalCard1();
         }
@@ -58,7 +56,6 @@ function validateAndContinue(nextCard) {
             userInfo.graduationDate = document.getElementById('startDateDegree').value.toString();
             userInfo.university = document.getElementById('institution').value;
 
-            alert(JSON.stringify(userInfo));
             // Update card body with new content for Professional
             cardBody.innerHTML = getProfessionalCard2();
         }
@@ -98,9 +95,9 @@ function validateAndContinue(nextCard) {
             // }
 
             // Call endpoint to request Professional creation
-            alert(`Creating Professional account with the following information: ${userInfo.userId}`);
-            alert(userInfo)
-            alert(JSON.stringify(userInfo));
+            // alert(`Creating Professional account with the following information: ${userInfo.userId}`);
+            // alert(userInfo)
+            // alert(JSON.stringify(userInfo));
             // DONE APITODO: /registerProfessional
             fetch('http://localhost:8080/registerProfessional', {
                 method: 'POST',
@@ -115,7 +112,7 @@ function validateAndContinue(nextCard) {
                 })
                 .catch(error => {
                     // Handle any errors that occur during the fetch
-                    alert('Error creating Professional:', error);
+                    // alert('Error creating Professional:', error);
                 });
 
             // Redirect to login page
@@ -141,10 +138,10 @@ function validateAndContinue(nextCard) {
             //     }
             // }
 
-            alert(JSON.stringify(userInfo));
+            // alert(JSON.stringify(userInfo));
             // Call endpoint to request Employer creation
             // DONE APITODO: /registerEmployer
-            alert(`Creating Employer account with the following information: ${userInfo.userId}`);
+            // alert(`Creating Employer account with the following information: ${userInfo.userId}`);
             fetch('http://localhost:8080/registerEmployer', {
                 method: 'POST',
                 body: JSON.stringify(userInfo),
@@ -154,11 +151,11 @@ function validateAndContinue(nextCard) {
             }).then(response => response.json())
                 .then(data => {
                     // Handle the response data here
-                    alert("Account created successfully!")
+                    // alert("Account created successfully!")
                 })
                 .catch(error => {
                     // Handle any errors that occur during the fetch
-                    alert('Error creating Employer:', error);
+                    // alert('Error creating Employer:', error);
                 });
 
             // Redirect to login page

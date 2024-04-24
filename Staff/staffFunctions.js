@@ -43,7 +43,7 @@ function showEmployerInfo(employerInfo) {
             document.getElementById('zipCodeDisplay').innerHTML = employerInfo.zipCode;
         })
         .catch(error => {
-            alert('Error fetching data showEmployerInfo2():', error);
+            // alert('Error fetching data showEmployerInfo2():', error);
         });
     // alert(`Getting employer info for ${employerInfo.userId} from the API to show`)
     document.getElementById('usernameDisplay').innerHTML = employerInfo.userId;
@@ -185,7 +185,7 @@ function getRequests(requestQueue) {
 }
 function getEmployers() {
     // DONE APITODO: /getAllEmployers
-    alert('Getting all employers from the API')
+    // alert('Getting all employers from the API')
     return fetch('http://localhost:8080/getAllEmployers')
         .then(response => response.json());
 }
@@ -261,8 +261,8 @@ function updatePassword(apiLink, username, newPassword) {
     // DONE APITODO: /changePassword
     var passwordInfo = { "userId": username, "pwd": newPassword }
 
-    alert(passwordInfo.userId)
-    alert(`Changing password to ${passwordInfo.pwd}`);
+    // alert(passwordInfo.userId)
+    // alert(`Changing password to ${passwordInfo.pwd}`);
     fetch("http://localhost:8080/changePassword", {
         method: 'POST',
         body: JSON.stringify(passwordInfo),
@@ -272,8 +272,8 @@ function updatePassword(apiLink, username, newPassword) {
     })
         .then((response) => response.json())
         .then((data) => {
-            alert('Password changed successfully')
-            alert(data)
+            // alert('Password changed successfully')
+            // alert(data)
         });
     return true;
 }
@@ -369,7 +369,7 @@ function updateEmployer(userInfo) {
     })
         .then((response) => response.json())
         .then((data) => {
-            alert(data)
+            // alert(data)
         });
 }
 function updateProfessional(userInfo) {
@@ -559,7 +559,7 @@ function updateUser(userInfo) {
             }
             userInfo.qualifications = qualifications;
         }
-        alert(`Updating user info to ${userInfo.id}`);
+        // alert(`Updating user info to ${userInfo.id}`);
         // DONE APITODO: /updateProfessional
         return fetch('http://localhost:8080/updateProfessional', {
             method: 'POST',
@@ -584,7 +584,7 @@ function updateUser(userInfo) {
         if (companyNameInputValue) {
             userInfo.companyName = companyNameInputValue;
         }
-        alert(`Updating Employer with ID: ${userInfo.username}`)
+        // alert(`Updating Employer with ID: ${userInfo.username}`)
         // DONE APITODO: /updateEmployer
         return fetch("http://localhost:8080/updateEmployer", {
             method: 'POST',
@@ -597,7 +597,7 @@ function updateUser(userInfo) {
         })
             .then((response) => response.json())
             .then((data) => {
-                alert(data)
+                // alert(data)
             });
     } catch (error) {
         // alert("Error in fields for Employer")
@@ -605,7 +605,7 @@ function updateUser(userInfo) {
 
     // printDict(userInfo);
 
-    alert(`Updating Staff with ID: ${userInfo.username}`)
+    // alert(`Updating Staff with ID: ${userInfo.username}`)
     // DONE APITODO: /updateStaff
     return fetch("http://localhost:8080/updateStaff", {
         method: 'POST',
@@ -618,7 +618,7 @@ function updateUser(userInfo) {
     })
         .then((response) => response.json())
         .then((data) => {
-            alert(data)
+            // alert(data)
         });
 }
 // Function to update the card body with the initial content
@@ -706,7 +706,7 @@ function showEmployerAccountDetails(employerUsername) {
             }
         })
         .catch(error => {
-            alert('Error fetching data showEmployerInfo():', error);
+            // alert('Error fetching data showEmployerInfo():', error);
         });
 }
 // Function to update the card body with the initial content
@@ -832,7 +832,7 @@ function showProfessionalAccountDetails(clickedItem) {
             // editBt.href += `&professionalUsername=${username}`;
         })
         .catch(error => {
-            alert('Error fetching data showAccountDetails():', error);
+            // alert('Error fetching data showAccountDetails():', error);
         });
 }
 // API Calls ------------------------------------------------------------------------------------

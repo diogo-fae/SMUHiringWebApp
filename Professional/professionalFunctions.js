@@ -42,7 +42,7 @@ function showProfessionalInfo(professionalUsername) {
 }
 function showJobInfo(jobID) {
     // DONE APITODO: /getJobInfo
-    alert(`Getting job info for job with ID: ${jobID}`)
+    // alert(`Getting job info for job with ID: ${jobID}`)
     // Fetch data from the API using jobID
     fetch(`http://localhost:8080/getJobInfo/${jobID}`)
         .then(response => response.json())
@@ -81,7 +81,7 @@ function showJobInfo(jobID) {
 }
 function fillProfessionalEditForm(username) {
     // DONE APITODO: /getProfessionalInfo
-    alert(`Getting professional info for ${username} for updating`)
+    // alert(`Getting professional info for ${username} for updating`)
     // Fetch data from the API using username
     fetch(`http://localhost:8080/getProfessionalInfo/${username}`)
         .then(response => response.json())
@@ -122,8 +122,8 @@ function updatePassword(apiLink, username, newPassword) {
     // DONE APITODO: /changePassword
     var passwordInfo = { "userId": username, "pwd": newPassword }
 
-    alert(passwordInfo.userId)
-    alert(`Changing password to ${passwordInfo.pwd}`);
+    // alert(passwordInfo.userId)
+    // alert(`Changing password to ${passwordInfo.pwd}`);
     fetch("http://localhost:8080/changePassword", {
         method: 'POST',
         body: JSON.stringify(passwordInfo),
@@ -133,8 +133,8 @@ function updatePassword(apiLink, username, newPassword) {
     })
         .then((response) => response.json())
         .then((data) => {
-            alert('Password changed successfully')
-            alert(data)
+            // alert('Password changed successfully')
+            // alert(data)
         });
     return true;
 }
@@ -492,7 +492,7 @@ function showModalAndRedirect(modal, link) {
 function addJobMatchingRequestFunctionality() {
     // Get the professional username from the header
     var professionalUsername = document.getElementById('headerUsername').innerHTML;
-    alert(`Requesting job matching for: ${professionalUsername}`)
+    // alert(`Requesting job matching for: ${professionalUsername}`)
     // DONE APITODO: /requestJobMatching
     fetch(`http://localhost:8080/requestJobMatching/${professionalUsername}`, {
         method: 'POST',
@@ -515,7 +515,7 @@ function addJobMatchingRequestFunctionality() {
 function addDeleteRequestFunctionality() {
     var professionalUsername = document.getElementById('headerUsername').innerHTML;
     // DONE APITODO: /requestProfessionalDelete
-    alert(`User with ID ${professionalUsername} has been requested to be deleted`);
+    // alert(`User with ID ${professionalUsername} has been requested to be deleted`);
     fetch(`http://localhost:8080/requestProfessionalDelete/${professionalUsername}`, {
         method: 'POST',
     }).then(response => response.json())

@@ -179,8 +179,8 @@ function updatePassword(apiLink, username, newPassword) {
     // DONE APITODO: /changePassword
     var passwordInfo = { "userId": username, "pwd": newPassword }
 
-    alert(passwordInfo.userId)
-    alert(`Changing password to ${passwordInfo.pwd}`);
+    // alert(passwordInfo.userId)
+    // alert(`Changing password to ${passwordInfo.pwd}`);
     fetch("http://localhost:8080/changePassword", {
         method: 'POST',
         body: JSON.stringify(passwordInfo),
@@ -190,8 +190,8 @@ function updatePassword(apiLink, username, newPassword) {
     })
         .then((response) => response.json())
         .then((data) => {
-            alert('Password changed successfully')
-            alert(data)
+            // alert('Password changed successfully')
+            // alert(data)
         });
     return true;
 }
@@ -269,7 +269,7 @@ function postJob(jobInfo) {
     // jobInfo.jobQualificationsList.forEach(qualification => {
     //     printDict(qualification)
     // });
-    alert(`Posting job with jobID: ${jobInfo.jobId} and companyName: ${jobInfo.company}`)
+    // alert(`Posting job with jobID: ${jobInfo.jobId} and companyName: ${jobInfo.company}`)
     // DONE APITODO: /postJob
     fetch('http://localhost:8080/postJob', {
         method: 'POST',
@@ -438,7 +438,7 @@ function updateUser(apiLink, userInfo) {
     })
         .then((response) => response.json())
         .then((data) => {
-            alert(data)
+            // alert(data)
         });
 }
 // Function to update the card body with the initial content
@@ -643,7 +643,7 @@ function validateInputs() {
 }
 function deleteUser(apiLink, employerId) {
     // DONE APITODO: Implement API call to delete user
-    alert(`User with ID ${employerId} has requested to be deleted`);
+    // alert(`User with ID ${employerId} has requested to be deleted`);
     fetch(`http://localhost:8080/requestProfessionalDelete/${employerId}`, {
         method: 'POST',
     }).then(response => response.json())
