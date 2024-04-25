@@ -30,6 +30,7 @@ CREATE TABLE User (
                       phoneNumber BIGINT NOT NULL,
                       status VARCHAR(255) NOT NULL,
                       userType ENUM('S', 'R', 'E', 'P') NOT NULL,
+                      hasLoggedIn BOOLEAN DEFAULT TRUE,
                       CONSTRAINT phone_number_length CHECK (phoneNumber BETWEEN 1000000000 AND 9999999999)
 );
 
@@ -685,9 +686,3 @@ VALUES
 ('Mark and Martha Co.', 'MM_SI-01-2024', 'Tools', 'Eclipse'),
 ('Mark and Martha Co.', 'MM_SI-01-2024', 'Tools', 'IntelliJ'),
 ('Mark and Martha Co.', 'MM_SI-01-2024', 'Tools', 'Angular');
-
-SELECT * FROM JobQualification;
-
-SELECT * FROM JobPosting WHERE (company = 'Sanderson Company' AND jobId = 'SC-SE-01-2024');
-
-SELECT * FROM User WHERE userType = 'E';
