@@ -1,115 +1,180 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link class="page-redirect" href="form-validation.css" rel="stylesheet" />
+    <style>
+      .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link class="page-redirect" href="form-validation.css" rel="stylesheet">
-  <style>
-    .my-custom-scrollbar {
-      position: relative;
-      height: 200px;
-      overflow: auto;
-    }
+      .table-wrapper-scroll-y {
+        display: block;
+      }
+    </style>
+  </head>
 
-    .table-wrapper-scroll-y {
-      display: block;
-    }
-  </style>
-</head>
-
-<body class="bg-light">
-
-  <nav class="navbar navbar-expand bg-info navbar-dark bg-primary" style="background-color: #3A98B9!important;">
-    <a class="navbar-brand"><img src="/Images/Logo.png" style="margin-left: 10%;max-width: 90px;" alt="Logo"
-        class="logo">
-    </a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-    </ul>
-    <div class="navbar-header">
-      <a class="navbar-brand" class="page-redirect" href="#">Payment</a>
-    </div>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-    </ul>
-    <ul class="nav navbar-nav my-2 my-lg-0">
-      <li class="dropdown">
-        <button class="dropdown-toggle btn text-center" data-toggle="dropdown" id="headerUsername"
-          style="color:white">sujana_d
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu text-center">
-          <li><a class="page-redirect" href="/Professional/changePassword.html">Change Password</a></li>
-        </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav my-2 my-lg-0">
-      <li class="nav-item"><a class="nav-link" onclick="logout()" style="color:white"><i class="fas fa-sign-in-alt"></i>
-          Logout</a></li>
-    </ul>
-  </nav>
-
-  <!-- Bootstrap row -->
-  <div class="row" id="body-row">
-    <!-- Sidebar -->
-    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2"
-      style="background-color: #343a40!important; padding-right: 0%; min-height: 800px;">
-      <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
-        <a class="page-redirect" href="/Professional/viewAccount.html"
-          class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-          <div class="d-flex w-100 justify-content-start align-items-center">
-            <span class="fa fa-tasks fa-fw mr-3"></span>
-            <span class="menu-collapsed">View Account</span>
-          </div>
-        </a>
-        <a class="page-redirect" href="/Professional/editProfessionalDetails.html"
-          class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-          <div class="d-flex w-100 justify-content-start align-items-center">
-            <span class="fa fa-tasks fa-fw mr-3"></span>
-            <span class="menu-collapsed">Edit Account</span>
-          </div>
-        </a>
-        <a class="page-redirect" href="/Professional/browseJobs.html"
-          class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-          <div class="d-flex w-100 justify-content-start align-items-center">
-            <span class="fa fa-tasks fa-fw mr-3"></span>
-            <span class="menu-collapsed">Browse Job Descriptions</span>
-          </div>
-        </a>
-        <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action" id="requestJMBt"
-          style="color:white; padding: 8% 8%" data-toggle="modal" data-target="#initiateJobModal">
-          <div class="d-flex w-100 justify-content-start align-items-center"
-            onclick="addJobMatchingRequestFunctionality()">
-            <span class="fa fa-tasks fa-fw mr-3"></span>
-            <span class="menu-collapsed">Request Job Matching</span>
-          </div>
-        </a>
-        <a class="page-redirect" href="/Professional/payment.html"
-          class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-          <div class="d-flex w-100 justify-content-start align-items-center">
-            <span class="fa fa-tasks fa-fw mr-3"></span>
-            <span class="menu-collapsed">Make Payment</span>
-          </div>
-        </a>
-        <a class="page-redirect" href="/Professional/changePassword.html"
-          class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-          <div class="d-flex w-100 justify-content-start align-items-center">
-            <span class="fa fa-tasks fa-fw mr-3"></span>
-            <span class="menu-collapsed">Change Password</span>
-          </div>
-        </a>
-        <a class="page-redirect" href="#" class="bg-dark list-group-item list-group-item-action" id="requestDeleteBt"
-          style="color:white; padding: 8% 8%" data-toggle="modal" data-target="#initiateJobModal">
-          <div class="d-flex w-100 justify-content-start align-items-center" onclick="addDeleteRequestFunctionality()">
-            <span class="fa fa-tasks fa-fw mr-3"></span>
-            <span class="menu-collapsed">Delete Account</span>
-          </div>
-        </a>
+  <body class="bg-light">
+    <nav
+      class="navbar navbar-expand bg-info navbar-dark bg-primary"
+      style="background-color: #3a98b9 !important"
+    >
+      <a class="navbar-brand"
+        ><img
+          src="/Images/Logo.png"
+          style="margin-left: 10%; max-width: 90px"
+          alt="Logo"
+          class="logo"
+        />
+      </a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+      <div class="navbar-header">
+        <a class="navbar-brand" class="page-redirect" href="#">Make Payment</a>
+      </div>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+      <ul class="nav navbar-nav my-2 my-lg-0">
+        <li class="dropdown">
+          <button
+            class="dropdown-toggle btn text-center"
+            data-toggle="dropdown"
+            id="headerUsername"
+            style="color: white"
+          >
+            sujana_d <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu text-center">
+            <li>
+              <a class="page-redirect" href="/Professional/changePassword.html"
+                >Change Password</a
+              >
+            </li>
+          </ul>
+        </li>
       </ul>
-    </div>
+      <ul class="nav navbar-nav my-2 my-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" onclick="logout()" style="color: white"
+            ><i class="fas fa-sign-in-alt"></i> Logout</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-    <!-- MAIN -->
-    <div class="col py-3">
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+      <!-- Sidebar -->
+      <div
+        id="sidebar-container"
+        class="sidebar-expanded d-none d-md-block col-2"
+        style="
+          background-color: #343a40 !important;
+          padding-right: 0%;
+          min-height: 800px;
+        "
+      >
+        <ul class="list-group sticky-top sticky-offset" style="margin-top: 10%">
+          <a
+            class="page-redirect"
+            href="/Professional/viewAccount.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">View Account</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Professional/editProfessionalDetails.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Edit Account</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Professional/browseJobs.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Browse Job Descriptions</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="#"
+            class="bg-dark list-group-item list-group-item-action"
+            id="requestJMBt"
+            style="color: white; padding: 8% 8%"
+            data-toggle="modal"
+            data-target="#initiateJobModal"
+          >
+            <div
+              class="d-flex w-100 justify-content-start align-items-center"
+              onclick="addJobMatchingRequestFunctionality()"
+            >
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Request Job Matching</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Professional/payment.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Make Payment</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Professional/changePassword.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Change Password</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="#"
+            class="bg-dark list-group-item list-group-item-action"
+            id="requestDeleteBt"
+            style="color: white; padding: 8% 8%"
+            data-toggle="modal"
+            data-target="#initiateJobModal"
+          >
+            <div
+              class="d-flex w-100 justify-content-start align-items-center"
+              onclick="addDeleteRequestFunctionality()"
+            >
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Delete Account</span>
+            </div>
+          </a>
+        </ul>
+      </div>
+
+      <!-- MAIN -->
+      <!-- <div class="col py-3">
       <div class="row py-5">
         <div class="col-md-1 order-md-1 mb-2"></div>
         <div class="col-md-10 order-md-1 mb-2">
@@ -222,157 +287,380 @@
         </div>
         <div class="col-md-1 order-md-1 mb-2"></div>
       </div>
-    </div>
-    <!-- Modals -->
-    <div class="modal fade" id="jobMatchingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Your Job Matching has been requested.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            You have requested to delete your account.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="paymentSubmissionModal" tabindex="-1" role="dialog"
-      aria-labelledby="paymentSubmissionModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header border-0">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body text-center">
-            Your payment has been submitted.
-          </div>
-          <div class="modal-footer border-0">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </div> -->
 
-  <!-- Bootstrap core JavaScript
+      <div class="col py-3">
+        <div class="row py-5">
+          <div class="col-md-1 order-md-1 mb-2"></div>
+          <div class="col-md-12 order-md-1 mb-2">
+            <div class="container d-flex justify-content-center mt-5 mb-5">
+              <form class="needs-validation" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header p-0">
+                        <h2 class="mb-0">
+                          <button
+                            class="btn btn-light btn-block text-left p-3 rounded-0"
+                            data-toggle="collapse"
+                            data-target="#collapseOne"
+                            aria-expanded="true"
+                            aria-controls="collapseOne"
+                          >
+                            <div
+                              class="d-flex align-items-center justify-content-between"
+                            >
+                              <span>Payment Details</span>
+                            </div>
+                          </button>
+                        </h2>
+                      </div>
+                      <div
+                        id="collapseOne"
+                        class="collapse show"
+                        aria-labelledby="headingOne"
+                      >
+                        <div class="card-body payment-card-body">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="paymentAmount"
+                                  >Payment Amount</label
+                                >
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="paymentAmount"
+                                  placeholder="Enter Amount"
+                                  required
+                                />
+                                <div
+                                  id="paymentAmountValidationMessage"
+                                  class="invalid-feedback"
+                                >
+                                  Please enter the payment amount.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="remainingAmount"
+                                  >Remaining Amount</label
+                                >
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <p class="form-control-static">$ 60.00</p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="paymentDue">Payment Due</label>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <p class="form-control-static">04/05/2024</p>
+                              </div>
+                            </div>
+                          </div>
+                          <span class="text-muted certificate-text"
+                            ><i class="fa fa-lock"></i> Your transaction is
+                            secured</span
+                          >
+                          <div class="row mt-3">
+                            <div class="col-md-12" style="text-align: center">
+                              <button
+                                type="button"
+                                class="btn btn-primary"
+                                onclick="submitPayment()"
+                              >
+                                Submit
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-1 order-md-1 mb-2"></div>
+        </div>
+      </div>
+
+      <!-- Modals -->
+      <div
+        class="modal fade"
+        id="jobMatchingModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">Your Job Matching has been requested.</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="deleteModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              You have requested to delete your account.
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="paymentSubmissionModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="paymentSubmissionModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-0">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              Your payment has been submitted.
+            </div>
+            <div class="modal-footer border-0">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
     ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <title>SMU Hiring</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" class="page-redirect"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" class="page-redirect"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
-  <link rel="stylesheet" class="page-redirect"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <title>SMU Hiring</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      class="page-redirect"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      class="page-redirect"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css"
+    />
+    <link
+      rel="stylesheet"
+      class="page-redirect"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 
-  <script src="professionalFunctions.js"></script>
-  <script>
-    // Execute function when page loads
-    window.addEventListener('DOMContentLoaded', (event) => {
-      // Get the professional id from the URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const professionalUsername = urlParams.get('username');
-      checkUserLoggedIn(professionalUsername);
+    <script src="professionalFunctions.js"></script>
+    <script>
+      // Execute function when page loads
+      window.addEventListener('DOMContentLoaded', (event) => {
+        // Get the professional id from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const professionalUsername = urlParams.get('username');
+        checkUserLoggedIn(professionalUsername);
 
+        // Add the professional username to the header
+        showHeaderUsername(professionalUsername);
 
-      // Add the professional username to the header
-      showHeaderUsername(professionalUsername);
-
-      // Add username to links
-      addUsernameToLinks(professionalUsername);
-    });
-
-    (function () {
-      'use strict';
-
-      window.addEventListener('load', function () {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function (form) {
-          form.addEventListener('submit', function (event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-
-      $("#datepicker").datepicker({
-        format: "mm/yy",
-        startView: "months",
-        minViewMode: "months"
+        // Add username to links
+        addUsernameToLinks(professionalUsername);
       });
 
-    })();
+      (function () {
+        'use strict';
 
-    // Fixes dropdown menu not showing when clicking the button
-    $('.dropdown').click(function () {
-      $('.dropdown-menu').toggleClass('show');
-    });
-    $(document).click(function (event) {
-      if (!$(event.target).closest('.dropdown').length) {
-        // If the click is outside the dropdown, hide the dropdown menu
-        $('.dropdown-menu').removeClass('show');
+        window.addEventListener(
+          'load',
+          function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(
+              forms,
+              function (form) {
+                form.addEventListener(
+                  'submit',
+                  function (event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                  },
+                  false
+                );
+              }
+            );
+          },
+          false
+        );
+
+        $('#datepicker').datepicker({
+          format: 'mm/yy',
+          startView: 'months',
+          minViewMode: 'months',
+        });
+      })();
+
+      // Fixes dropdown menu not showing when clicking the button
+      $('.dropdown').click(function () {
+        $('.dropdown-menu').toggleClass('show');
+      });
+      $(document).click(function (event) {
+        if (!$(event.target).closest('.dropdown').length) {
+          // If the click is outside the dropdown, hide the dropdown menu
+          $('.dropdown-menu').removeClass('show');
+        }
+      });
+
+      function ShowMonthly() {
+        var chkYes = document.getElementById('flexRadioDefault1');
+        var monthly = document.getElementById('monthly');
+        var yearly = document.getElementById('yearly');
+        monthly.removeAttribute('hidden');
+        yearly.setAttribute('hidden', 'hidden');
       }
-    });
 
-    function ShowMonthly() {
-      var chkYes = document.getElementById("flexRadioDefault1");
-      var monthly = document.getElementById("monthly");
-      var yearly = document.getElementById("yearly");
-      monthly.removeAttribute("hidden");
-      yearly.setAttribute("hidden", "hidden");
-    }
+      function ShowYearly() {
+        var yearly = document.getElementById('yearly');
+        var monthly = document.getElementById('monthly');
+        yearly.removeAttribute('hidden');
+        monthly.setAttribute('hidden', 'hidden');
+      }
 
-    function ShowYearly() {
-      var yearly = document.getElementById("yearly");
-      var monthly = document.getElementById("monthly");
-      yearly.removeAttribute("hidden");
-      monthly.setAttribute("hidden", "hidden");
-    }
+      function submitPayment() {
+        // $('#paymentSubmissionModal').modal('show');
 
-    function submitPayment() {
-      $('#paymentSubmissionModal').modal('show');
-    }
+        // Get the payment amount input field and its corresponding validation message element
+        var paymentAmountInput = document.getElementById('paymentAmount');
+        var paymentAmountValidationMessage = document.getElementById(
+          'paymentAmountValidationMessage'
+        );
 
-  </script>
-</body>
+        // Check if the payment amount is empty
+        if (paymentAmountInput.value.trim() === '') {
+          // If the payment amount is empty, display the validation error message
+          paymentAmountInput.classList.add('is-invalid'); // Add Bootstrap's invalid class for styling
+          paymentAmountValidationMessage.style.display = 'block'; // Show the validation message
+          paymentAmountInput.focus(); // Focus on the input field
+          return; // Exit the function early
+        }
 
+        // If the payment amount is not empty, remove the validation error message and submit the form
+        paymentAmountInput.classList.remove('is-invalid'); // Remove Bootstrap's invalid class
+        paymentAmountValidationMessage.style.display = 'none'; // Hide the validation message
+
+        // Prepare the payload for the /makePayment request
+        var payload = {
+          userId: new URLSearchParams(window.location.search).get('username'), // Assuming employerUsername is defined outside the function
+          paymentAmount: parseFloat(paymentAmount.value), // Convert payment amount to float
+          dueDate: '04/05/2024', // Example due date
+        };
+
+        console.log(payload);
+
+        // Make a POST request to the backend API
+        fetch('http://localhost:8080/makePayment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            $('#paymentSubmissionModal').modal('show'); // Show the submission modal
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
+    </script>
+  </body>
 </html>

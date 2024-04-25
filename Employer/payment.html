@@ -120,7 +120,7 @@
         </div>
 
         <!-- MAIN -->
-        <div class="col py-3">
+        <!-- <div class="col py-3">
             <div class="row py-5">
                 <div class="col-md-1 order-md-1 mb-2"></div>
                 <div class="col-md-10 order-md-1 mb-2">
@@ -241,7 +241,102 @@
                 </div>
                 <div class="col-md-1 order-md-1 mb-2"></div>
             </div>
+        </div> -->
+        <div class="col py-3">
+            <div class="row py-5">
+                <div class="col-md-1 order-md-1 mb-2"></div>
+                <div class="col-md-12 order-md-1 mb-2">
+                    <div class="container d-flex justify-content-center mt-5 mb-5">
+                        <form class="needs-validation"
+                              novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header p-0">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-light btn-block text-left p-3 rounded-0"
+                                                        data-toggle="collapse"
+                                                        data-target="#collapseOne"
+                                                        aria-expanded="true"
+                                                        aria-controls="collapseOne">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <span>Payment Details</span>
+                                                    </div>
+                                                </button>
+                                            </h2>
+                                        </div>
+                                        <div id="collapseOne"
+                                             class="collapse show"
+                                             aria-labelledby="headingOne">
+                                            <div class="card-body payment-card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="paymentAmount">Payment Amount</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="number"
+                                                                   class="form-control"
+                                                                   id="paymentAmount"
+                                                                   placeholder="Enter Amount"
+                                                                   required>
+                                                            <div id="paymentAmountValidationMessage" class="invalid-feedback">
+                                                                Please enter the payment amount.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="remainingAmount">Remaining Amount:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <p class="form-control-static">$ 60.00</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="paymentDue">Payment Due</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <p class="form-control-static">04/05/2024</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span class="text-muted certificate-text"><i class="fa fa-lock"></i>
+                                                    Your transaction is
+                                                    secured</span>
+                                                <div class="row mt-3">
+                                                    <div class="col-md-12"
+                                                         style="text-align: center;"><button type="button"
+                                                                class="btn btn-primary"
+                                                                onclick="submitPayment()">Submit</button> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-1 order-md-1 mb-2"></div>
+            </div>
         </div>
+
+
+
         <div class="modal fade" id="initiateJobModal" tabindex="-1" role="dialog"
             aria-labelledby="initiateJobModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -434,7 +529,48 @@
         }
 
         function submitPayment() {
-            $('#paymentSubmissionModal').modal('show');
+            // $('#paymentSubmissionModal').modal('show');
+
+            // Get the payment amount input field and its corresponding validation message element
+            var paymentAmountInput = document.getElementById("paymentAmount");
+            var paymentAmountValidationMessage = document.getElementById("paymentAmountValidationMessage");
+
+            // Check if the payment amount is empty
+            if (paymentAmountInput.value.trim() === "") {
+                // If the payment amount is empty, display the validation error message
+                paymentAmountInput.classList.add('is-invalid'); // Add Bootstrap's invalid class for styling
+                paymentAmountValidationMessage.style.display = 'block'; // Show the validation message
+                paymentAmountInput.focus(); // Focus on the input field
+                return; // Exit the function early
+            }
+
+            // If the payment amount is not empty, remove the validation error message and submit the form
+            paymentAmountInput.classList.remove('is-invalid'); // Remove Bootstrap's invalid class
+            paymentAmountValidationMessage.style.display = 'none'; // Hide the validation message
+
+            // Prepare the payload for the /makePayment request
+            var payload = {
+                userId: employerUsername, // Assuming employerUsername is defined outside the function
+                paymentAmount: parseFloat(paymentAmount.value), // Convert payment amount to float
+                dueDate: "04/05/2024" // Example due date
+            };
+
+            // Make a POST request to the backend API
+            fetch('http://localhost:8080/makePayment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    $('#paymentSubmissionModal').modal('show'); // Show the submission modal
+                })
+                .catch(error => {
+                    console.error('Error:', error); 
+                });
         }
 
     </script>
