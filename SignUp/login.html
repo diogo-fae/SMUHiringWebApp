@@ -200,20 +200,36 @@
                     // Update cookies
                     document.cookie = `username=${user.userId}; path=/`;
                     document.cookie = `userType=${user.userType}; path=/`;
-                    if (user.userType === 'P') {
-                        window.location.href = '/Professional/viewAccount.html' + `?username=${user.userId}`;
-                    } else if (user.userType === 'E') {
-                        window.location.href = '/Employer/viewAccount.html' + `?username=${user.userId}`;
-                    } else if (user.userType === 'R') {
-                        window.location.href = '/Root/addAccount.html' + `?username=${user.userId}`;
-                    } else if (user.userType === 'S') {
-                        window.location.href = '/Staff/viewAccount.html' + `?username=${user.userId}`;
-                    }
-                    else {
+
+                    // Build the URL
+                    var url = '';
+                    if (data.userType === 'P') {
+                        url = '/Professional/';
+                    } else if (data.userType === 'E') {
+                        url = '/Employer/';
+                    } else if (data.userType === 'R') {
+                        url = '/Root/addAccount.htm' + `?username=${username}`;
+                        window.location.href = url
+                        return;
+                    } else if (data.userType === 'S') {
+                        url = '/Staff/';
+                    } else {
                         alert("Invalid username or password");
-                        form.classList.add('was-validated');
                         return;
                     }
+
+                    // Check if user has logged in already
+                    if (data.hasLoggedIn) {
+                        url += 'viewAccount.html';
+                    } else {
+                        url += 'changePassword.html';
+                        fetch(`http://localhost:8080/userLoggedIn/${username}`, {
+                            method: 'POST',
+                        })
+                    }
+
+                    url += `?username=${username}`;
+                    window.location.href = url;
                 }).catch((error) => {
                     alert("Error logging in.");
                     form.classList.add('was-validated');
@@ -245,7 +261,7 @@
             var password = document.getElementById('password').value;
             var passwordInfo = { "username": username, "password": password };
 
-            // alert(`User ${username} logging in.`);
+            // alert(`User ${ username } logging in.`);
             // DONE APITODO: /login
             fetch("http://localhost:8080/login", {
                 method: 'GET',
@@ -260,21 +276,35 @@
                 .then((data) => {
                     // alert(data)
                     // Update cookies
-                    document.cookie = `username=${username}; path=/`;
+                    document.cookie = `username = ${username}; path = /`;
                     document.cookie = `userType=${data.userType}; path=/`;
+
+                    // Build the URL
+                    var url = '';
                     if (data.userType === 'P') {
-                        window.location.href = '/Professional/viewAccount.html' + `?username=${username}`;
+                        url = '/Professional/';
                     } else if (data.userType === 'E') {
-                        window.location.href = '/Employer/viewAccount.html' + `?username=${username}`;
+                        url = '/Employer/';
                     } else if (data.userType === 'R') {
-                        window.location.href = '/Root/addAccount.html' + `?username=${username}`;
+                        url = '/Root/addAccount.htm' + `?username=${username}`;
+                        window.location.href = url
+                        return;
                     } else if (data.userType === 'S') {
-                        window.location.href = '/Staff/viewAccount.html' + `?username=${username}`;
-                    }
-                    else {
+                        url = '/Staff/';
+                    } else {
                         alert("Invalid username or password");
                         return;
                     }
+
+                    // Check if user has logged in already
+                    if (data.hasLoggedIn) {
+                        url += 'viewAccount.html';
+                    } else {
+                        url += 'changePassword.html';
+                    }
+
+                    url += `?username=${username}`;
+                    window.location.href = url;
                 });
         }
     </script>
