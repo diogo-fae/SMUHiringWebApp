@@ -7,6 +7,34 @@ function updateInitialCardBody() {
     var cardBody = document.getElementById('card-body');
     cardBody.innerHTML = getInitialCard();
 }
+
+function isUserIdValid() {
+    var inputElement = document.getElementById('username');
+    var inputFeedback = document.getElementById('username-feedback');
+    var inputVal = inputElement.value;
+    var pattern = "[a-zA-Z].{7,}";
+
+    if (!inputVal.match(pattern)) {
+        inputElement.setCustomValidity("Username must start with a letter and be at least 8 characters long");
+        inputFeedback.innerHTML = "Username must start with a letter and be at least 8 characters long";
+        return;
+    }
+    // Call API and check for unique username
+    fetch(`http://localhost:8080/isUserIdUnique/${inputVal}`, {
+        method: 'GET',
+    })
+        .then(response => response.json())
+        .then(isUnique => {
+            // Handle the response data here
+            if (!isUnique) {
+                inputElement.setCustomValidity("Username already exists");
+                inputFeedback.innerHTML = "Username already exists";
+            } else {
+                inputElement.setCustomValidity("");
+            }
+        });
+}
+
 // Function called by the buttons in the sign up card
 // Updates the userInfo dictionary with information entered and 
 // updates the card body with the next card content
@@ -282,13 +310,10 @@ function getInitialCard() {
                         <div class="mb-5">
                             <label for="username" class="font-weight-bold">Username</label>
                             <input type="text" class="form-control" id="username" placeholder="" value=""
-                                required pattern="[a-zA-Z].{7,}">
+                                required pattern="[a-zA-Z].{7,}" oninput="isUserIdValid()">
                             <div id="input-live-help" class="extra-text">Username must start with an alphabet
-                                and be at
-                                least 8 characters long.</div>
-                            <div class="invalid-feedback">
-                                If username already meets requirements, please enter a different username
-                                because it already exists.
+                                and be at least 8 characters long.</div>
+                            <div class="invalid-feedback" id="username-feedback">
                             </div>
                         </div>
                         <!-- Name -->
