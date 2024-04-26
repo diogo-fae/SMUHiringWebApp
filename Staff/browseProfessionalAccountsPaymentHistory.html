@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <link
+      rel="canonical"
+      class="page-redirect"
+      href="https://getbootstrap.com/docs/4.1/examples/checkout/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      class="page-redirect"
+      href="../../dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template -->
+    <link class="page-redirect" href="form-validation.css" rel="stylesheet" />
+    <style>
+      .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+      }
+
+      .table-wrapper-scroll-y {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body class="bg-light">
+    <!-- Navigation Bar -->
+    <nav
+      class="navbar navbar-expand bg-info navbar-dark bg-primary"
+      style="background-color: #296810 !important"
+    >
+      <a class="navbar-brand"
+        ><img
+          src="../Images/Logo.png"
+          style="margin-left: 2%; max-width: 90px"
+          alt="Logo"
+          class="logo"
+        />
+      </a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+
+      <div class="navbar-header">
+        <div class="navbar-brand" class="page-redirect" href="#">
+          Browse Professional Accounts
+        </div>
+      </div>
+
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+
+      <ul class="nav navbar-nav my-2 my-lg-0">
+        <li class="dropdown">
+          <button
+            class="dropdown-toggle btn text-center"
+            data-toggle="dropdown"
+            id="headerUsername"
+            style="color: white"
+          >
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu text-center">
+            <li>
+              <a class="page-redirect" href="/Staff/changePassword.html"
+                >Change Password</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav my-2 my-lg-0">
+        <li class="nav-item">
+          <a
+            type="button"
+            class="btn page-redirect"
+            onclick="logout()"
+            type="button"
+            style="color: white; background-color: none"
+            ><i class="fas fa-sign-in-alt"></i> Logout</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+      <!-- Sidebar -->
+      <div
+        id="sidebar-container"
+        class="sidebar-expanded d-none d-md-block col-2"
+        style="background-color: #343a40 !important; padding-right: 0%"
+      >
+        <ul class="list-group sticky-top sticky-offset" style="margin-top: 10%">
+          <a
+            class="page-redirect"
+            href="/Staff/viewAccount.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">View Account</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Staff/editAccount.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Edit Account</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Staff/viewCreateRequestsEmployer.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Review New Employer Accounts</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Staff/viewCreateRequestsProfessional.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed"
+                >Review New Professional Accounts</span
+              >
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Staff/viewDeleteRequestsEmployer.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed"
+                >Review Employer Account Deletion Requests</span
+              >
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Staff/viewDeleteRequestsProfessional.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed"
+                >Review Professional Account Deletion Requests</span
+              >
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Staff/browseEmployerAccounts.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Browse Employer Accounts</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Staff/browseProfessionalAccounts.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Browse Professional Accounts</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Staff/changePassword.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Change Password</span>
+            </div>
+          </a>
+        </ul>
+      </div>
+
+      <div class="col py-3">
+        <!-- Top Buttons -->
+        <div class="container-fluid mt-0">
+          <div class="col-md- order-md-1 d-flex justify-content-between">
+            <a
+              type="button"
+              class="btn btn-danger page-redirect"
+              href="/Staff/browseProfessionalAccounts.html"
+              >Back</a
+            >
+          </div>
+        </div>
+
+        <!-- Payment History Table -->
+        <div class="container-fluid mt-3">
+          <h2 id="paymentHistoryHeading"></h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Payment ID</th>
+                  <th scope="col">Payment Amount</th>
+                  <th scope="col">Due Date</th>
+                  <th scope="col">Payment Date</th>
+                </tr>
+              </thead>
+              <tbody id="paymentHistoryTableBody">
+                <!-- Placeholder row for loading message -->
+                <tr id="loadingRow">
+                  <td colspan="4" class="text-center">
+                    Payment History is Loading...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <title>SMU Hiring</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      class="page-redirect"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      class="page-redirect"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      class="page-redirect"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="staffFunctions.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        // Trigger the API to get payment data and populate the table
+        getPaymentHistory();
+      });
+
+      function getPaymentHistory() {
+        // Show loading message
+        document.getElementById('loadingRow').style.display = 'table-row';
+        const username = localStorage.getItem('username');
+        if (!username) {
+          document.getElementById('loadingRow').innerHTML =
+            '<td colspan="4" class="text-center">Please go back and select an user</td>';
+          document.getElementById(
+            'paymentHistoryHeading'
+          ).innerText = `Payment History`;
+          return;
+        }
+
+        document.getElementById(
+          'paymentHistoryHeading'
+        ).innerText = `Payment History - ${username}`;
+
+        // Uncomment this line to use the API call
+        fetch(`http://localhost:8080/getPaymentHistory/${username}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Failed to fetch payment history data');
+            }
+            return response.json();
+          })
+          .then((paymentHistory) => {
+            // Hide loading message
+            document.getElementById('loadingRow').style.display = 'none';
+            // Populate the table with payment data
+            populateTable(paymentHistory);
+          })
+          .catch((error) => {
+            console.error('Error fetching payment history:', error);
+            // Display error message in loading row
+            document.getElementById('loadingRow').innerHTML =
+              '<td colspan="4" class="text-center">Error loading! Payment History</td>';
+          });
+
+        // Comment out the mock data when using the API call
+        // var paymentHistory = [
+        //   {
+        //     paymentId: 1,
+        //     paymentAmount: 500.0,
+        //     dueDate: '2023-01-15',
+        //     paymentDate: '2023-01-10',
+        //   },
+        //   {
+        //     paymentId: 2,
+        //     paymentAmount: 75.0,
+        //     dueDate: '2023-02-20',
+        //     paymentDate: '2023-02-18',
+        //   },
+        //   {
+        //     paymentId: 3,
+        //     paymentAmount: 90.0,
+        //     dueDate: '2023-03-25',
+        //     paymentDate: '2023-03-22',
+        //   },
+        //   {
+        //     paymentId: 4,
+        //     paymentAmount: 65.0,
+        //     dueDate: '2023-04-10',
+        //     paymentDate: '2023-04-05',
+        //   },
+        //   {
+        //     paymentId: 5,
+        //     paymentAmount: 80.0,
+        //     dueDate: '2023-05-15',
+        //     paymentDate: '2023-05-10',
+        //   },
+        //   {
+        //     paymentId: 6,
+        //     paymentAmount: 55.0,
+        //     dueDate: '2023-06-20',
+        //     paymentDate: '2023-06-18',
+        //   },
+        //   {
+        //     paymentId: 7,
+        //     paymentAmount: 70.0,
+        //     dueDate: '2023-07-25',
+        //     paymentDate: '2023-07-22',
+        //   },
+        //   {
+        //     paymentId: 8,
+        //     paymentAmount: 45.0,
+        //     dueDate: '2023-08-10',
+        //     paymentDate: '2023-08-05',
+        //   },
+        //   {
+        //     paymentId: 9,
+        //     paymentAmount: 85.0,
+        //     dueDate: '2023-09-15',
+        //     paymentDate: '2023-09-10',
+        //   },
+        //   {
+        //     paymentId: 10,
+        //     paymentAmount: 60.0,
+        //     dueDate: '2023-10-20',
+        //     paymentDate: '2023-10-18',
+        //   },
+        // ];
+
+        // Populate the table with payment data
+        populateTable(paymentHistory);
+      }
+
+      function populateTable(paymentHistory) {
+        var tableBody = document.getElementById('paymentHistoryTableBody');
+
+        // Clear existing table rows
+        tableBody.innerHTML = '';
+
+        // Iterate over each payment object and create table rows
+        paymentHistory.forEach((payment) => {
+          var row = document.createElement('tr');
+
+          var idCell = document.createElement('td');
+          idCell.textContent = payment.paymentId;
+          row.appendChild(idCell);
+
+          var amountCell = document.createElement('td');
+          amountCell.textContent = payment.paymentAmount.toFixed(2);
+          row.appendChild(amountCell);
+
+          var dueDateCell = document.createElement('td');
+          dueDateCell.textContent = formatDate(payment.dueDate);
+          row.appendChild(dueDateCell);
+
+          var paymentDateCell = document.createElement('td');
+          paymentDateCell.textContent = formatDate(payment.paymentDate);
+          row.appendChild(paymentDateCell);
+
+          tableBody.appendChild(row);
+        });
+      }
+
+      function formatDate(dateString) {
+        // Format the date string to a readable format (e.g., "MM/DD/YYYY")
+        var date = new Date(dateString);
+        return date.toLocaleDateString();
+      }
+    </script>
+  </body>
+</html>
