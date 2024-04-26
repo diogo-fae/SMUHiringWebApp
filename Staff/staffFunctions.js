@@ -660,6 +660,7 @@ function updateEmployerAccountsList() {
                 // Add click event listener to each listItem to show account details
                 listItem.addEventListener('click', function () {
                     // Call showAccountDetails with the clicked item's id and name
+                    localStorage.setItem('username', item.userId);
                     showEmployerAccountDetails(item.userId);
                 });
 
