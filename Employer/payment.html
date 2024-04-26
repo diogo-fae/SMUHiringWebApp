@@ -1,126 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <link rel="canonical" class="page-redirect" href="https://getbootstrap.com/docs/4.1/examples/checkout/">
+    <link
+      rel="canonical"
+      class="page-redirect"
+      href="https://getbootstrap.com/docs/4.1/examples/checkout/"
+    />
 
     <!-- Bootstrap core CSS -->
-    <link class="page-redirect" href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      class="page-redirect"
+      href="../../dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Custom styles for this template -->
-    <link class="page-redirect" href="form-validation.css" rel="stylesheet">
+    <link class="page-redirect" href="form-validation.css" rel="stylesheet" />
     <style>
-        .my-custom-scrollbar {
-            position: relative;
-            height: 200px;
-            overflow: auto;
-        }
+      .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+      }
 
-        .table-wrapper-scroll-y {
-            display: block;
-        }
+      .table-wrapper-scroll-y {
+        display: block;
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-light">
+  <body class="bg-light">
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand bg-info navbar-dark bg-primary" style="background-color: #62849b!important;">
-        <a class="navbar-brand"><img src="../Images/Logo.png" style="margin-left: 2%;max-width: 90px;" alt="Logo"
-                class="logo">
-        </a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        </ul>
+    <nav
+      class="navbar navbar-expand bg-info navbar-dark bg-primary"
+      style="background-color: #62849b !important"
+    >
+      <a class="navbar-brand"
+        ><img
+          src="../Images/Logo.png"
+          style="margin-left: 2%; max-width: 90px"
+          alt="Logo"
+          class="logo"
+        />
+      </a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
 
-        <div class="navbar-header">
-            <div class="navbar-brand" class="page-redirect" href="#">Make Payment</div>
+      <div class="navbar-header">
+        <div class="navbar-brand" class="page-redirect" href="#">
+          Make Payment
         </div>
+      </div>
 
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        </ul>
-        <div id="headerCompany" style="color:white"></div>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+      <div id="headerCompany" style="color: white"></div>
 
-        <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="dropdown">
-                <button class="dropdown-toggle btn text-center" data-toggle="dropdown" id="headerUsername"
-                    style="color:white">
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu text-center">
-                    <li><a class="page-redirect" href="/Employer/changePassword.html">Change Password</a></li>
-                </ul>
+      <ul class="nav navbar-nav my-2 my-lg-0">
+        <li class="dropdown">
+          <button
+            class="dropdown-toggle btn text-center"
+            data-toggle="dropdown"
+            id="headerUsername"
+            style="color: white"
+          >
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu text-center">
+            <li>
+              <a class="page-redirect" href="/Employer/changePassword.html"
+                >Change Password</a
+              >
             </li>
-        </ul>
-        <ul class="nav navbar-nav my-2 my-lg-0">
-            <li class="nav-item"><a type="button" class="btn page-redirect" onclick="logout()" type="button"
-                    style="color:white;background-color: none;"><i class="fas fa-sign-in-alt"></i>
-                    Logout</a></li>
-        </ul>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav my-2 my-lg-0">
+        <li class="nav-item">
+          <a
+            type="button"
+            class="btn page-redirect"
+            onclick="logout()"
+            type="button"
+            style="color: white; background-color: none"
+            ><i class="fas fa-sign-in-alt"></i> Logout</a
+          >
+        </li>
+      </ul>
     </nav>
 
     <!-- Bootstrap row -->
     <div class="row" id="body-row">
-        <!-- Sidebar -->
-        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2"
-            style="background-color: #343a40!important; padding-right: 0%;">
-            <ul class="list-group sticky-top sticky-offset" style="margin-top:10%">
-                <a class="page-redirect" href="/Employer/viewAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">View Account</span>
-                    </div>
-                </a>
-                <a class="page-redirect" href="/Employer/editAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Edit Account</span>
-                    </div>
-                </a>
-                <a class="page-redirect" href="/Employer/browseJobs.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Browse Job Descriptions</span>
-                    </div>
-                </a>
-                <a class="page-redirect" href="/Employer/postJob.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Post New Job Description</span>
-                    </div>
-                </a>
-                <a class="page-redirect" href="/Employer/payment.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Make Payment</span>
-                    </div>
-                </a>
-                <a class="page-redirect" href="/Employer/changePassword.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Change Password</span>
-                    </div>
-                </a>
-                <a class="page-redirect" href="/Employer/deleteAccount.html"
-                    class="bg-dark list-group-item list-group-item-action" style="color:white; padding: 8% 8%">
-                    <div class="d-flex w-100 justify-content-start align-items-center">
-                        <span class="fa fa-tasks fa-fw mr-3"></span>
-                        <span class="menu-collapsed">Delete Account</span>
-                    </div>
-                </a>
-            </ul>
-        </div>
+      <!-- Sidebar -->
+      <div
+        id="sidebar-container"
+        class="sidebar-expanded d-none d-md-block col-2"
+        style="background-color: #343a40 !important; padding-right: 0%"
+      >
+        <ul class="list-group sticky-top sticky-offset" style="margin-top: 10%">
+          <a
+            class="page-redirect"
+            href="/Employer/viewAccount.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">View Account</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Employer/editAccount.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Edit Account</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Employer/browseJobs.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Browse Job Descriptions</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Employer/postJob.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Post New Job Description</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Employer/payment.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Make Payment</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Employer/changePassword.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Change Password</span>
+            </div>
+          </a>
+          <a
+            class="page-redirect"
+            href="/Employer/deleteAccount.html"
+            class="bg-dark list-group-item list-group-item-action"
+            style="color: white; padding: 8% 8%"
+          >
+            <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-tasks fa-fw mr-3"></span>
+              <span class="menu-collapsed">Delete Account</span>
+            </div>
+          </a>
+        </ul>
+      </div>
 
-        <!-- MAIN -->
-        <!-- <div class="col py-3">
+      <!-- MAIN -->
+      <!-- <div class="col py-3">
             <div class="row py-5">
                 <div class="col-md-1 order-md-1 mb-2"></div>
                 <div class="col-md-10 order-md-1 mb-2">
@@ -242,339 +307,441 @@
                 <div class="col-md-1 order-md-1 mb-2"></div>
             </div>
         </div> -->
-        <div class="col py-3">
-            <div class="row py-5">
-                <div class="col-md-1 order-md-1 mb-2"></div>
-                <div class="col-md-12 order-md-1 mb-2">
-                    <div class="container d-flex justify-content-center mt-5 mb-5">
-                        <form class="needs-validation"
-                              novalidate>
-                            <div class="row g-3">
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header p-0">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-light btn-block text-left p-3 rounded-0"
-                                                        data-toggle="collapse"
-                                                        data-target="#collapseOne"
-                                                        aria-expanded="true"
-                                                        aria-controls="collapseOne">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <span>Payment Details</span>
-                                                    </div>
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseOne"
-                                             class="collapse show"
-                                             aria-labelledby="headingOne">
-                                            <div class="card-body payment-card-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="paymentAmount">Payment Amount</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <input type="number"
-                                                                   class="form-control"
-                                                                   id="paymentAmount"
-                                                                   placeholder="Enter Amount"
-                                                                   required>
-                                                            <div id="paymentAmountValidationMessage" class="invalid-feedback">
-                                                                Please enter the payment amount.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="remainingAmount">Remaining Amount:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <p class="form-control-static">$ 60.00</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="paymentDue">Payment Due</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <p class="form-control-static">04/05/2024</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <span class="text-muted certificate-text"><i class="fa fa-lock"></i>
-                                                    Your transaction is
-                                                    secured</span>
-                                                <div class="row mt-3">
-                                                    <div class="col-md-12"
-                                                         style="text-align: center;"><button type="button"
-                                                                class="btn btn-primary"
-                                                                onclick="submitPayment()">Submit</button> </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+      <div class="col py-3">
+        <div class="row py-5">
+          <div class="col-md-1 order-md-1 mb-2"></div>
+          <div class="col-md-12 order-md-1 mb-2">
+            <div class="container d-flex justify-content-center mt-5 mb-5">
+              <form class="needs-validation" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header p-0">
+                        <h2 class="mb-0">
+                          <button
+                            class="btn btn-light btn-block text-left p-3 rounded-0"
+                            data-toggle="collapse"
+                            data-target="#collapseOne"
+                            aria-expanded="true"
+                            aria-controls="collapseOne"
+                          >
+                            <div
+                              class="d-flex align-items-center justify-content-between"
+                            >
+                              <span>Payment Details</span>
                             </div>
-                        </form>
+                          </button>
+                        </h2>
+                      </div>
+                      <div
+                        id="collapseOne"
+                        class="collapse show"
+                        aria-labelledby="headingOne"
+                      >
+                        <div class="card-body payment-card-body">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="paymentAmount"
+                                  >Payment Amount</label
+                                >
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="paymentAmount"
+                                  placeholder="Enter Amount"
+                                  required
+                                />
+                                <div
+                                  id="paymentAmountValidationMessage"
+                                  class="invalid-feedback"
+                                >
+                                  Please enter the payment amount.
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="remainingAmount"
+                                  >Remaining Amount</label
+                                >
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <p
+                                  id="remainingAmountValue"
+                                  class="form-control-static"
+                                ></p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="paymentDue">Payment Due</label>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <p
+                                  id="paymentDueValue"
+                                  class="form-control-static"
+                                ></p>
+                              </div>
+                            </div>
+                          </div>
+                          <span class="text-muted certificate-text"
+                            ><i class="fa fa-lock"></i> Your transaction is
+                            secured</span
+                          >
+                          <div class="row mt-3">
+                            <div class="col-md-12" style="text-align: center">
+                              <button
+                                type="button"
+                                class="btn btn-primary"
+                                onclick="submitPayment()"
+                              >
+                                Submit
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-                <div class="col-md-1 order-md-1 mb-2"></div>
+              </form>
             </div>
+          </div>
+          <div class="col-md-1 order-md-1 mb-2"></div>
         </div>
+      </div>
 
-
-
-        <div class="modal fade" id="initiateJobModal" tabindex="-1" role="dialog"
-            aria-labelledby="initiateJobModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header border-0">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et
-                        dolore magna aliqua
-                    </div>
-                    <div class="modal-footer border-0">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+      <div
+        class="modal fade"
+        id="initiateJobModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="initiateJobModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-0">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-        </div>
-        <div class="modal fade" id="paymentSubmissionModal" tabindex="-1" role="dialog"
-            aria-labelledby="paymentSubmissionModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header border-0">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body text-center">
-                        Your payment has been submitted.
-                    </div>
-                    <div class="modal-footer border-0">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+            <div class="modal-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua
             </div>
+            <div class="modal-footer border-0">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
-
-
+      </div>
+      <div
+        class="modal fade"
+        id="paymentSubmissionModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="paymentSubmissionModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-0">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              Your payment has been submitted.
+            </div>
+            <div class="modal-footer border-0">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Main Col END -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <title>SMU Hiring</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" class="page-redirect"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" class="page-redirect"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      class="page-redirect"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      class="page-redirect"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css"
+    />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" class="page-redirect"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <link
+      rel="stylesheet"
+      class="page-redirect"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 
     <script src="employerFunctions.js"></script>
     <script>
-        // Dictionary with employer information
-        let employerInfo = {};
+      // Dictionary with employer information
+      let employerInfo = {};
 
-        var saveModal = document.getElementById('saveModal');
+      var saveModal = document.getElementById('saveModal');
 
-        // Get the employer username from the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const employerUsername = urlParams.get('username');
-        checkUserLoggedIn(employerUsername);
+      // Get the employer username from the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const employerUsername = urlParams.get('username');
+      checkUserLoggedIn(employerUsername);
 
+      // Update links
+      addUsernameToLinks();
 
-        // Update links
-        addUsernameToLinks();
-
-        // Fill in the employer information
-        showHeaderUsername(employerUsername);
+      // Fill in the employer information
+      showHeaderUsername(employerUsername);
     </script>
     <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        'use strict';
 
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
+        window.addEventListener(
+          'load',
+          function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
 
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(
+              forms,
+              function (form) {
+                form.addEventListener(
+                  'submit',
+                  function (event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                  },
+                  false
+                );
+              }
+            );
+          },
+          false
+        );
 
-            // Makes the scrollable box clickable and changes the colors
-            $(document).ready(function () {
-                // Set the first item to be clicked when the page loads
-                $(".clickable-job-item:first").addClass("active");
+        // Makes the scrollable box clickable and changes the colors
+        $(document).ready(function () {
+          // Set the first item to be clicked when the page loads
+          $('.clickable-job-item:first').addClass('active');
 
-                // Handle item click event
-                $(".clickable-job-item").on("click", function () {
-                    $(".clickable-job-item").removeClass("active");
-                    $(this).addClass("active");
-                });
-            });
-
-        })();
-
-        // Fixes dropdown menu not showing when clicking the button
-        $('.dropdown').click(function () {
-            $('.dropdown-menu').toggleClass('show');
+          // Handle item click event
+          $('.clickable-job-item').on('click', function () {
+            $('.clickable-job-item').removeClass('active');
+            $(this).addClass('active');
+          });
         });
-        $(document).click(function (event) {
-            if (!$(event.target).closest('.dropdown').length) {
-                // If the click is outside the dropdown, hide the dropdown menu
-                $('.dropdown-menu').removeClass('show');
-            }
-        });
+      })();
 
-        function validateAndShowModal() {
-            // Validate your inputs here, for example:
-            var inputsValid = validateInputs();
-            var categorytable = document.getElementById('categorytable');
+      // Fixes dropdown menu not showing when clicking the button
+      $('.dropdown').click(function () {
+        $('.dropdown-menu').toggleClass('show');
+      });
+      $(document).click(function (event) {
+        if (!$(event.target).closest('.dropdown').length) {
+          // If the click is outside the dropdown, hide the dropdown menu
+          $('.dropdown-menu').removeClass('show');
+        }
+      });
 
-            if (inputsValid && categorytable.rows.length >= 3) {
-                // If all inputs are valid, show the modal
-                $('#exampleModal').modal('show');
-            } else {
-                // If any input is not valid, handle the validation error (e.g., display an error message)
-                form.classList.add('was-validated');
-                if (categorytable.rows.length < 3) {
-                    document.getElementById('cat-table-invalid-feedback').style.display = 'block';
-                }
-            }
+      function validateAndShowModal() {
+        // Validate your inputs here, for example:
+        var inputsValid = validateInputs();
+        var categorytable = document.getElementById('categorytable');
+
+        if (inputsValid && categorytable.rows.length >= 3) {
+          // If all inputs are valid, show the modal
+          $('#exampleModal').modal('show');
+        } else {
+          // If any input is not valid, handle the validation error (e.g., display an error message)
+          form.classList.add('was-validated');
+          if (categorytable.rows.length < 3) {
+            document.getElementById(
+              'cat-table-invalid-feedback'
+            ).style.display = 'block';
+          }
+        }
+      }
+
+      function validateAndContinue(href) {
+        // Validate inputs here
+        var inputsValid = validateInputs();
+        var form = document.querySelector('.needs-validation');
+
+        if (inputsValid) {
+          // If all inputs are valid, navigate to the link specified in the button's href
+          window.location.href = href;
+        } else {
+          // If any input is not valid, handle the validation error (e.g., display an error message)
+          form.classList.add('was-validated');
+        }
+      }
+
+      function validateInputs() {
+        // Implement your input validation logic here
+        // Return true if all inputs are valid, false otherwise
+        // Example validation logic:
+        var inputs = document.querySelectorAll('.needs-validation input');
+        for (var i = 0; i < inputs.length; i++) {
+          if (!inputs[i].checkValidity()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function saveChanges() {
+        // Implement the logic to save changes here
+        // This function is called when the "Save changes" button inside the modal is clicked
+        // Close the modal if needed: $('#exampleModal').modal('hide');
+      }
+
+      function ShowMonthly() {
+        var chkYes = document.getElementById('flexRadioDefault1');
+        var monthly = document.getElementById('monthly');
+        var yearly = document.getElementById('yearly');
+        monthly.removeAttribute('hidden');
+        yearly.setAttribute('hidden', 'hidden');
+      }
+      function ShowYearly() {
+        var yearly = document.getElementById('yearly');
+        var monthly = document.getElementById('monthly');
+        yearly.removeAttribute('hidden');
+        monthly.setAttribute('hidden', 'hidden');
+      }
+
+      function submitPayment() {
+        // $('#paymentSubmissionModal').modal('show');
+
+        // Get the payment amount input field and its corresponding validation message element
+        var paymentAmountInput = document.getElementById('paymentAmount');
+        var paymentAmountValidationMessage = document.getElementById(
+          'paymentAmountValidationMessage'
+        );
+
+        // Check if the payment amount is empty
+        if (paymentAmountInput.value.trim() === '') {
+          // If the payment amount is empty, display the validation error message
+          paymentAmountInput.classList.add('is-invalid'); // Add Bootstrap's invalid class for styling
+          paymentAmountValidationMessage.style.display = 'block'; // Show the validation message
+          paymentAmountInput.focus(); // Focus on the input field
+          return; // Exit the function early
         }
 
-        function validateAndContinue(href) {
-            // Validate inputs here
-            var inputsValid = validateInputs();
-            var form = document.querySelector('.needs-validation');
+        // If the payment amount is not empty, remove the validation error message and submit the form
+        paymentAmountInput.classList.remove('is-invalid'); // Remove Bootstrap's invalid class
+        paymentAmountValidationMessage.style.display = 'none'; // Hide the validation message
 
-            if (inputsValid) {
-                // If all inputs are valid, navigate to the link specified in the button's href
-                window.location.href = href;
-            } else {
-                // If any input is not valid, handle the validation error (e.g., display an error message)
-                form.classList.add('was-validated');
-            }
-        }
+        // Prepare the payload for the /makePayment request
+        var payload = {
+          userId: employerUsername,
+          paymentAmount: parseFloat(paymentAmount.value), // Convert payment amount to float
+          // dueDate: "04/05/2024"
+        };
 
-        function validateInputs() {
-            // Implement your input validation logic here
-            // Return true if all inputs are valid, false otherwise
-            // Example validation logic:
-            var inputs = document.querySelectorAll('.needs-validation input');
-            for (var i = 0; i < inputs.length; i++) {
-                if (!inputs[i].checkValidity()) {
-                    return false;
-                }
-            }
-            return true;
-        }
+        // Make a POST request to the backend API
+        fetch('http://localhost:8080/makePayment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            $('#paymentSubmissionModal').modal('show'); // Show the submission modal
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
 
-        function saveChanges() {
-            // Implement the logic to save changes here
-            // This function is called when the "Save changes" button inside the modal is clicked
-            // Close the modal if needed: $('#exampleModal').modal('hide');
-        }
+      document.addEventListener('DOMContentLoaded', function () {
+        // comment the code when we want to use the API
+        // MOCK DATA
+        document.getElementById('remainingAmountValue').innerText = '$ 60.00';
+        document.getElementById('paymentDueValue').innerText = '04/05/2024';
 
-        function ShowMonthly() {
-            var chkYes = document.getElementById("flexRadioDefault1");
-            var monthly = document.getElementById("monthly");
-            var yearly = document.getElementById("yearly");
-            monthly.removeAttribute("hidden");
-            yearly.setAttribute("hidden", "hidden");
-        }
-        function ShowYearly() {
-            var yearly = document.getElementById("yearly");
-            var monthly = document.getElementById("monthly");
-            yearly.removeAttribute("hidden");
-            monthly.setAttribute("hidden", "hidden");
-        }
+        // Uncomment the code when want to use the API
+        // fetchPaymentData();
+      });
 
-        function submitPayment() {
-            // $('#paymentSubmissionModal').modal('show');
+      // Integration to backend, to fetch the remainingAmountValue and paymentDueValue for an user
+      function fetchPaymentData() {
+        const username = new URLSearchParams(window.location.search).get(
+          'username'
+        );
+        fetch(`http://localhost:8080/getPayment/${username}`)
+          .then((response) => response.json())
+          .then((data) => {
+            // Update remaining amount
+            document.getElementById('remainingAmountValue').innerText =
+              '$ ' + data.remainingAmount;
 
-            // Get the payment amount input field and its corresponding validation message element
-            var paymentAmountInput = document.getElementById("paymentAmount");
-            var paymentAmountValidationMessage = document.getElementById("paymentAmountValidationMessage");
-
-            // Check if the payment amount is empty
-            if (paymentAmountInput.value.trim() === "") {
-                // If the payment amount is empty, display the validation error message
-                paymentAmountInput.classList.add('is-invalid'); // Add Bootstrap's invalid class for styling
-                paymentAmountValidationMessage.style.display = 'block'; // Show the validation message
-                paymentAmountInput.focus(); // Focus on the input field
-                return; // Exit the function early
-            }
-
-            // If the payment amount is not empty, remove the validation error message and submit the form
-            paymentAmountInput.classList.remove('is-invalid'); // Remove Bootstrap's invalid class
-            paymentAmountValidationMessage.style.display = 'none'; // Hide the validation message
-
-            // Prepare the payload for the /makePayment request
-            var payload = {
-                userId: employerUsername, // Assuming employerUsername is defined outside the function
-                paymentAmount: parseFloat(paymentAmount.value) // Convert payment amount to float
-                // dueDate: "04/05/2024" // Example due date
-            };
-
-            // Make a POST request to the backend API
-            fetch('http://localhost:8080/makePayment', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    $('#paymentSubmissionModal').modal('show'); // Show the submission modal
-                })
-                .catch(error => {
-                    console.error('Error:', error); 
-                });
-        }
-
+            // Update payment due date
+            document.getElementById('paymentDueValue').innerText = data.dueDate;
+          })
+          .catch((error) => {
+            console.error('Error fetching payment data:', error);
+          });
+      }
     </script>
-
-</body>
-
+  </body>
 </html>
