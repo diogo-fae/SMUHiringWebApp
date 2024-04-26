@@ -321,8 +321,7 @@ VALUES
     ('adams3774', 'Operating Systems', 'Windows'),
     ('adams3774', 'Operating Systems', 'Linux'),
     ('adams3774', 'Professional Experience', 'Senior Software Engineer'),
-
--- william0062 Programming Languages	C, C++, Matlab, Ruby
+    -- william0062 Programming Languages	C, C++, Matlab, Ruby
 -- william0062 Professional Experience	Senior Design Engineer, Design Specialist
 -- william0062 Operating Systems	Linux, Windows, Mac OS
 -- william0062 Tools	SmartDraw, AutoCAD, Fusion 360, CATIA
@@ -339,8 +338,7 @@ VALUES
     ('william0062', 'Tools', 'AutoCAD'),
     ('william0062', 'Tools', 'Fusion 360'),
     ('william0062', 'Tools', 'CATIA'),
-
--- bensen1173 Programming Languages	Java, C++, PHP, Python, HTML, SQL, Ruby, Scala
+    -- bensen1173 Programming Languages	Java, C++, PHP, Python, HTML, SQL, Ruby, Scala
 -- bensen1173 Operating Systems	Mac OS, Windows
 -- bensen1173 Software Tools	Eclipse, JIRA, React, Visual Studio, Azure, NodeJS
     ('bensen1173', 'Programming Languages', 'Java'),
@@ -359,8 +357,7 @@ VALUES
     ('bensen1173', 'Software Tools', 'Visual Studio'),
     ('bensen1173', 'Software Tools', 'Azure'),
     ('bensen1173', 'Software Tools', 'NodeJS'),
-
--- wilkinson7765 Operating Systems	Windows 
+    -- wilkinson7765 Operating Systems	Windows 
 -- wilkinson7765 Languages	Python, JavaScript, HTML, CSS, PHP
 -- wilkinson7765 Technology	Visual Paradigm, SmartDraw, React, Angular
     ('wilkinson7765', 'Operating Systems', 'Windows'),
@@ -373,8 +370,7 @@ VALUES
     ('wilkinson7765', 'Technology', 'SmartDraw'),
     ('wilkinson7765', 'Technology', 'React'),
     ('wilkinson7765', 'Technology', 'Angular'),
-
--- goldorf4773 Professional Experience	Software intern, Database programmer
+    -- goldorf4773 Professional Experience	Software intern, Database programmer
 -- goldorf4773 Programming Languages	Java, JavaScript, HTML 
 -- goldorf4773 Operating Systems	Windows, Mac OS
     ('goldorf4773', 'Professional Experience', 'Software intern'),
@@ -384,8 +380,7 @@ VALUES
     ('goldorf4773', 'Programming Languages', 'HTML'),
     ('goldorf4773', 'Operating Systems', 'Windows'),
     ('goldorf4773', 'Operating Systems', 'Mac OS'),
-
--- briggs2562 Programming Languages	Java, JavaScript, Swift, C, Matlab
+    -- briggs2562 Programming Languages	Java, JavaScript, Swift, C, Matlab
 -- briggs2562 Operating Systems	Mac OS 
 -- briggs2562 Tools	Xcode, NodeJS, Open GL, IntelliJ, Reaper, Postman
 -- briggs2562 Professional Experience	Software Intern 
@@ -402,8 +397,7 @@ VALUES
     ('briggs2562', 'Tools', 'Reaper'),
     ('briggs2562', 'Tools', 'Postman'),
     ('briggs2562', 'Professional Experience', 'Software Intern'),
-
--- cooper6373 Programming Languages	Java, C++
+    -- cooper6373 Programming Languages	Java, C++
 -- cooper6373 Operating Systems	Windows
 -- cooper6373 Technology	Eclipse, IntelliJ, Visual Studio
     ('cooper6373', 'Programming Languages', 'Java'),
@@ -412,8 +406,7 @@ VALUES
     ('cooper6373', 'Technology', 'Eclipse'),
     ('cooper6373', 'Technology', 'IntelliJ'),
     ('cooper6373', 'Technology', 'Visual Studio'),
-
--- sanderson3773 Programming Languages	Java, Scala, Ruby, PHP, JavaScript, HTML, CSS
+    -- sanderson3773 Programming Languages	Java, Scala, Ruby, PHP, JavaScript, HTML, CSS
 -- sanderson3773 Tools	Eclipse, React, Angular, IntelliJ
 -- sanderson3773 Database	SQL server, MySQL, Postgress
     ('sanderson3773', 'Programming Languages', 'Java'),
@@ -430,8 +423,7 @@ VALUES
     ('sanderson3773', 'Database', 'SQL server'),
     ('sanderson3773', 'Database', 'MySQL'),
     ('sanderson3773', 'Database', 'Postgress'),
-
--- white9785 Operating Systems	Windows, Linux
+    -- white9785 Operating Systems	Windows, Linux
 -- white9785 Languages	Python, PHP, JavaScript, HTML, CSS, Go
 -- white9785 Database	MySQL
 -- white9785 Technology	Visual Studio, Eclipse, IntelliJ, JIRA
@@ -448,8 +440,7 @@ VALUES
     ('white9785', 'Technology', 'Eclipse'),
     ('white9785', 'Technology', 'IntelliJ'),
     ('white9785', 'Technology', 'JIRA'),
-
--- hansen1990 Programming Languages	Java, JavaScript, HTML, CSS, Python, Scala
+    -- hansen1990 Programming Languages	Java, JavaScript, HTML, CSS, Python, Scala
 -- hansen1990 Operating Systems	Windows, Linux
 -- hansen1990 Technology	Eclipse, React, Angular, IntelliJ, JIRA
     ('hansen1990', 'Programming Languages', 'Java'),
@@ -465,8 +456,7 @@ VALUES
     ('hansen1990', 'Technology', 'Angular'),
     ('hansen1990', 'Technology', 'IntelliJ'),
     ('hansen1990', 'Technology', 'JIRA'),
-
--- wang8987 Languages	C, C++, Matlab, Ruby
+    -- wang8987 Languages	C, C++, Matlab, Ruby
 -- wang8987 Professional Experience	Design Engineer
 -- wang8987 Tools	Azure, AutoCAD, CATIA, Fusion 360, Rational
     ('wang8987', 'Languages', 'C'),
@@ -479,8 +469,7 @@ VALUES
     ('wang8987', 'Tools', 'CATIA'),
     ('wang8987', 'Tools', 'Fusion 360'),
     ('wang8987', 'Tools', 'Rational'),
-
--- tangen6475 Programming Languages	Java, C++, JavaScript, HTML, CSS
+    -- tangen6475 Programming Languages	Java, C++, JavaScript, HTML, CSS
 -- tangen6475 Tools	IntelliJ, Visual Studio, Angular
     ('tangen6475', 'Programming Languages', 'Java'),
     ('tangen6475', 'Programming Languages', 'C++'),
@@ -490,8 +479,7 @@ VALUES
     ('tangen6475', 'Tools', 'IntelliJ'),
     ('tangen6475', 'Tools', 'Visual Studio'),
     ('tangen6475', 'Tools', 'Angular'),
-
--- thomson2453 Databases	Access, SQL Server, SQL Lite, MySQL, Postgress
+    -- thomson2453 Databases	Access, SQL Server, SQL Lite, MySQL, Postgress
 -- thomson2453 Professional Experience	Database Designer, Database Administrator
 -- thomson2453 Tools	IntelliJ, JIRA
     ('thomson2453', 'Databases', 'Access'),
@@ -560,7 +548,6 @@ VALUES
 ('Sanderson Company', 'SC-SE-02-2024', 'Programming Languages', 'Java'),
 ('Sanderson Company', 'SC-SE-02-2024', 'Programming Languages', 'Python'),
 ('Sanderson Company', 'SC-SE-02-2024', 'Operating Systems', 'Windows'),
-
 -- Lake Waters Inc.	Software Intern	LW-SI-01-2024	Languages	C, C++, Matlab
 -- 			Operating Systems	Windows
 -- 			Tools	AutoCAD, Fusion 360, OpenGL
@@ -571,7 +558,6 @@ VALUES
 ('Lake Waters Inc.', 'LW-SI-01-2024', 'Tools', 'AutoCAD'),
 ('Lake Waters Inc.', 'LW-SI-01-2024', 'Tools', 'Fusion 360'),
 ('Lake Waters Inc.', 'LW-SI-01-2024', 'Tools', 'OpenGL'),
-
 -- Idea Implementers	Project Manager	IM-PM-01-2024	Operating Systems	Windows, Mac OS, Linux
 -- 			Tools	Azure, React, JIRA, Visual Studio
 -- 			Professional Experience	Software Engineer
@@ -599,7 +585,6 @@ VALUES
 ('Idea Implementers', 'IM-SI-02-2024', 'Operating Systems', 'Linux'),
 ('Idea Implementers', 'IM-SI-02-2024', 'Tools', 'Eclipse'),
 ('Idea Implementers', 'IM-SI-02-2024', 'Tools', 'IntelliJ'),
-
 -- Luke Brothers	Business Analyst	LB-BU-01-2024	Operating Systems	Windows, Mac OS, Linux
 -- 			Tools	SmartDraw, Rational, Azure, JIRA, Cypress
 ('Luke Brothers', 'LB-BA-01-2024', 'Operating Systems', 'Windows'),
@@ -610,7 +595,6 @@ VALUES
 ('Luke Brothers', 'LB-BA-01-2024', 'Tools', 'Azure'),
 ('Luke Brothers', 'LB-BA-01-2024', 'Tools', 'JIRA'),
 ('Luke Brothers', 'LB-BA-01-2024', 'Tools', 'Cypress'),
-
 -- Code Market	Python Programmer-I	CM-PP-01-2024	Programming Languages	Python 
 -- 			Tools	IntelliJ, Visual Studio
 -- 			Packages Familiar with	Scikit, Java-FX
@@ -641,7 +625,6 @@ VALUES
 ('Code Market', 'CM-SM-01-2024', 'Tools', 'Visual Studio'),
 ('Code Market', 'CM-SM-01-2024', 'Tools', 'Postman'),
 ('Code Market', 'CM-SM-01-2024', 'Tools', 'NodeJS'),
-
 -- Mark and Martha Co.	Senior Software Engineer	MM_SSE-01-2024	Programming Languages	Java, C++, Scala, JavaScript, Python
 -- 			Operating Systems	Linux, Mac OS, Windows
 -- 			Professional Experience	Software Engineer
