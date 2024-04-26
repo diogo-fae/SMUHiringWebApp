@@ -551,8 +551,8 @@
             // Prepare the payload for the /makePayment request
             var payload = {
                 userId: employerUsername, // Assuming employerUsername is defined outside the function
-                paymentAmount: parseFloat(paymentAmount.value), // Convert payment amount to float
-                dueDate: "04/05/2024" // Example due date
+                paymentAmount: parseFloat(paymentAmount.value) // Convert payment amount to float
+                // dueDate: "04/05/2024" // Example due date
             };
 
             // Make a POST request to the backend API
