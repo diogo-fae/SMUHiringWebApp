@@ -281,6 +281,9 @@
         if (!username) {
           document.getElementById('loadingRow').innerHTML =
             '<td colspan="4" class="text-center">Please go back and select an user</td>';
+          document.getElementById(
+            'paymentHistoryHeading'
+          ).innerText = `Payment History`;
           return;
         }
 
