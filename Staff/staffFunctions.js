@@ -760,6 +760,7 @@ function updateProfessionalAccountsList() {
                     var initiateJMBt = document.getElementById('initiateJMBt');
                     initiateJMBt.innerHTML = `Initiate Job Matching for ${item.userId}`;
                     // Call showAccountDetails with the clicked item's id and name
+                    localStorage.setItem('username', item.userId);
                     showProfessionalAccountDetails(item.userId);
                 });
 
